@@ -116,6 +116,21 @@
 
         let dropdownOpenCount = 0;
 
+        const globalOverlay = document.getElementById("globalOverlay");
+
+        function showOverlay() {
+          if (!globalOverlay) return;
+          globalOverlay.classList.remove("hidden");
+          document.body.classList.add("no-scroll");
+        }
+        function hideOverlayIfNoDropdownsOpen() {
+          if (!globalOverlay) return;
+          if (dropdownOpenCount === 0) {
+            globalOverlay.classList.add("hidden");
+            document.body.classList.remove("no-scroll");
+          }
+        }
+
         dropdowns.forEach((dropdown) => {
           const toggle = dropdown.querySelector(".dropdown-toggle");
           const menu =
@@ -129,6 +144,11 @@
               menu.classList.remove("hidden");
               dropdownOpenCount++;
               navRightSetWhite();
+
+              // Only show overlay when Pages dropdown is opened
+              if (dropdown.classList.contains("pages-dropdown")) {
+                showOverlay();
+              }
             }
           }
 
@@ -138,6 +158,11 @@
               dropdownOpenCount = Math.max(0, dropdownOpenCount - 1);
               if (dropdownOpenCount === 0 && !navRight.matches(":hover")) {
                 navRightRemoveWhite();
+              }
+
+              // Only hide overlay when Pages dropdown is closed (and no other dropdowns open)
+              if (dropdown.classList.contains("pages-dropdown")) {
+                hideOverlayIfNoDropdownsOpen();
               }
             }
           }
@@ -155,6 +180,7 @@
                   }
                 }
               });
+              hideOverlayIfNoDropdownsOpen();
               openDropdown();
             } else {
               closeDropdown();
@@ -169,6 +195,23 @@
             if (window.innerWidth >= 768) closeDropdown();
           });
         });
+
+        // Click overlay to close Pages dropdown
+        if (globalOverlay) {
+          globalOverlay.addEventListener("click", () => {
+            const pagesDropdown = document.querySelector(".pages-dropdown");
+            if (!pagesDropdown) return;
+            const pagesMenu =
+              pagesDropdown.querySelector(".dropdown-menu") ||
+              pagesDropdown.querySelector("ul");
+            if (pagesMenu && !pagesMenu.classList.contains("hidden")) {
+              pagesMenu.classList.add("hidden");
+              dropdownOpenCount = Math.max(0, dropdownOpenCount - 1);
+              hideOverlayIfNoDropdownsOpen();
+              if (!navRight.matches(":hover")) navRightRemoveWhite();
+            }
+          });
+        }
 
         navRight.addEventListener("mouseleave", () => {
           if (dropdownOpenCount === 0) navRightRemoveWhite();
