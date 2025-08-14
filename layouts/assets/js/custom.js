@@ -96,6 +96,13 @@
       document.addEventListener("DOMContentLoaded", () => {
         const navRight = document.querySelector(".nav-right");
         const dropdowns = document.querySelectorAll(".dropdown");
+        const pageOverlay = document.createElement("div");
+        pageOverlay.className = "dropdown-overlay";
+        document.body.appendChild(pageOverlay);
+
+        if (!navRight) {
+          return;
+        }
 
         // Dropdown code from your first block
         function navRightSetWhite() {
@@ -114,6 +121,16 @@
           });
         }
 
+        function showOverlay() {
+          pageOverlay.classList.add("active");
+          document.body.classList.add("no-scroll");
+        }
+
+        function hideOverlay() {
+          pageOverlay.classList.remove("active");
+          document.body.classList.remove("no-scroll");
+        }
+
         let dropdownOpenCount = 0;
 
         dropdowns.forEach((dropdown) => {
@@ -129,6 +146,7 @@
               menu.classList.remove("hidden");
               dropdownOpenCount++;
               navRightSetWhite();
+              showOverlay();
             }
           }
 
@@ -138,6 +156,7 @@
               dropdownOpenCount = Math.max(0, dropdownOpenCount - 1);
               if (dropdownOpenCount === 0 && !navRight.matches(":hover")) {
                 navRightRemoveWhite();
+                hideOverlay();
               }
             }
           }
@@ -170,12 +189,31 @@
           });
         });
 
+        pageOverlay.addEventListener("click", () => {
+          // Close all dropdowns when clicking on overlay
+          dropdowns.forEach((d) => {
+            const m = d.querySelector(".dropdown-menu") || d.querySelector("ul");
+            if (m && !m.classList.contains("hidden")) {
+              m.classList.add("hidden");
+            }
+          });
+          dropdownOpenCount = 0;
+          navRightRemoveWhite();
+          hideOverlay();
+        });
+
         navRight.addEventListener("mouseleave", () => {
-          if (dropdownOpenCount === 0) navRightRemoveWhite();
+          if (dropdownOpenCount === 0) {
+            navRightRemoveWhite();
+            hideOverlay();
+          }
         });
 
         navRight.addEventListener("mouseenter", () => {
-          if (dropdownOpenCount === 0) navRightRemoveWhite();
+          if (dropdownOpenCount === 0) {
+            navRightRemoveWhite();
+            hideOverlay();
+          }
         });
 
         // --- Your Search and other code goes here ---
@@ -265,69 +303,11 @@
           updateAllSVGFills();
         }
 
-        function updateAllSVGFills() {
-          const navRightEl = document.querySelector(".nav-right");
-          const searchSVG = document.querySelector("#searchButton svg");
-          const menuToggleSVG = document.querySelector("#menuToggle svg");
-          const scrolled = window.scrollY > 0;
-          const menuOpen = mobileMenuToggle?.classList.contains("open");
-
-          if (
-            navRightEl.classList.contains("bg-white") ||
-            scrolled ||
-            isSearchOpen ||
-            menuOpen
-          ) {
-            if (searchSVG) searchSVG.style.fill = "black";
-            if (menuToggleSVG) menuToggleSVG.style.fill = "black";
-          } else {
-            if (searchSVG) searchSVG.style.fill = "white";
-            if (menuToggleSVG) menuToggleSVG.style.fill = "white";
-          }
-        }
-
-        // Then add all your jQuery parts here...
-
-        // For example:
-        $(".dropdown")
-          .on("mouseenter", function () {
-            $(".nav-right").addClass("bg-white text-black");
-            $(".navbar > li > a")
-              .addClass("text-black")
-              .removeClass("text-white");
-            updateAllSVGFills();
-          })
-          .on("mouseleave", function () {
-            if ($(window).scrollTop() === 0) {
-              $(".nav-right").removeClass("bg-white text-black");
-              $(".navbar > li > a")
-                .removeClass("text-black")
-                .addClass("text-white");
-            }
-            updateAllSVGFills();
-          });
-
-        // More of your event listeners, etc...
-
-        // At the end, do your event listeners for scroll, clicks, resize etc
-
-        window.addEventListener("scroll", () => {
-          if (window.scrollY > 0) {
-            document.querySelector(".header").classList.add("sticky-header");
-          } else {
-            document.querySelector(".header").classList.remove("sticky-header");
-          }
-          updateAllSVGFills();
-        });
-
-        // Initial fill update
-        updateAllSVGFills();
-
-        if (searchButton) searchButton.addEventListener("click", openSearch);
-        if (closeBtnMobile)
-          closeBtnMobile.addEventListener("click", closeSearch);
-        if (closeBtnDesktop)
+        if (searchButton && closeBtnDesktop && closeBtnMobile && searchBox) {
+          searchButton.addEventListener("click", openSearch);
           closeBtnDesktop.addEventListener("click", closeSearch);
+          closeBtnMobile.addEventListener("click", closeSearch);
+        }
 
         if (mobileMenuToggle && navbarDefault) {
           mobileMenuToggle.addEventListener("click", () => {
@@ -378,6 +358,7 @@
               .removeClass("text-black")
               .addClass("text-white");
             updateAllSVGFills();
+            hideOverlay();
           }
         });
 
@@ -420,6 +401,10 @@
           isFirstItemUndeletable: true,
         });
       }
+
+      // =======================
+      // Navbar Dropdown End
+      // =======================
     },
 
     /*======================================
@@ -429,8 +414,16 @@
       /* Testimonials slider */
       var swiper = new Swiper(".testimonials-slider .mySwiper", {
         slidesPerView: 1,
-        spaceBetween: 0,
+        spaceBetween: 20,
         loop: true,
+        autoplay: {
+          delay: 5000,
+        },
+        speed: 700,
+        pagination: {
+          el: ".testimonials-slider .swiper-pagination",
+          clickable: true,
+        },
         navigation: {
           nextEl: ".testimonials-slider .swiper-button-next",
           prevEl: ".testimonials-slider .swiper-button-prev",
