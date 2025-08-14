@@ -1,0 +1,552 @@
+<!-- start-header -->
+<header class="header fixed top-0 left-0 w-full z-50" :class="{ 'header-open': open }">
+  <!-- navbar start -->
+  <nav class="">
+    <div class="flex items-stretch justify-between mx-auto">
+      <div class="shrink-0 max-w-[140px] md:max-w-[180px] xl:max-w-[200px] 1xl:max-w-[250px] 2xl:max-w-full">
+        <a href="/"
+          class="flex items-center py-2 md:py-5 lg:py-3 1xl:py-5 2xl:py-7 px-2.5 lg:px-5 1xl:px-10 bg-white transition-all logo-box">
+          <img src="assets/images/logo-dark.svg" class="lg:h-14 h-9" alt="Logo" />
+        </a>
+      </div>
+
+      <div
+        class="flex justify-end bg-transparent 2xl:gap-[60px] 1xl:gap-12 xl:gap-10 lg:gap-[30px] gap-4 w-full lg:pr-[60px] pr-4 1xl:pr-[100px] nav-right">
+        <div class="w-full md:w-auto mobile-nav main-menu block" id="navbar-default">
+          <ul
+            class="navbar font-medium flex items-stretch h-full flex-col text-white uppercase p-4 md:p-0 rounded-lg bg-gray-50 md:flex-row 1xl:space-x-[30px] xl:space-x-[26px] lg:space-x-[22px] space-x-3 2xl:space-x-[38px] rtl:space-x-reverse md:mt-0">
+            <li class="my-auto md:h-full flex">
+              <a href="./about.html" aria-current="page" class="nav-tab">About Orion</a>
+            </li>
+
+            <li class="my-auto md:h-full flex">
+              <a href="./career.html" class="nav-tab">Careers</a>
+            </li>
+
+            <li class="my-auto md:h-full flex">
+              <a href="./blog.html" class="nav-tab">Blog</a>
+            </li>
+
+            <li class="dropdown group my-auto md:h-full flex items-center justify-between md:relative">
+              <a href="javascript:;"
+                class="dropdown-toggle items-center gap-1 lg:gap-2 my-auto md:h-full justify-between w-full !flex nav-tab">
+                Pages
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="11" viewBox="0 0 19 11" fill="none"
+                  class="md:rotate-0 -rotate-90 md:group-hover:rotate-180 md:group-focus:rotate-180 md:group-active:rotate-180 transition-all duration-300 ease-in-out">
+                  <g clip-path="url(#clip0_128_578)">
+                    <path d="M1.58325 1.57143L9.49992 9.42857L17.4166 1.57143" stroke="currentcolor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round" />
+                  </g>
+                </svg>
+              </a>
+
+              <ul
+                class="absolute md:top-full top-0 bg-white left-auto right-0 1xl:min-w-[240px] lg:min-w-[215px] md:min-w-[195px] w-full hidden pb-2 group-hover/services:block group-active/services:block group-focus/services:block z-50">
+                <div class="flex items-center md:hidden px-4 sm:pb-5 sm:pt-6 pb-4 pt-5 border-b border-[#00000015]">
+                  <button class="back-btn text-xl mr-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                      <g clip-path="url(#clip0_4043_5130)">
+                        <path d="M6.56385 12.2339L1.33008 7.00011L6.56385 1.76634M2.05699 7.00011L12.6699 7.00011"
+                          stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                      </g>
+                    </svg>
+                  </button>
+                  <span class="text-primary-900 text-lg font-medium !p-0">Pages</span>
+                </div>
+                <!-- Mobile Header (Only visible on mobile) -->
+                <li
+                  class="2xl:text-base xl:text-sm lg:text-[13px] text-xs font-normal relative group/home lg:!px-[22px] !px-[14px]">
+                  <div
+                    class="!py-3 flex items-center justify-between text-[#464343] hover:text-primary-900 !border-b last:border-b-0 border-[#0000001A]">
+                    Homes
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none"
+                      class="transform group-hover/home:rotate-90 transition-all">
+                      <g clip-path="url(#clip0_3535_1971)">
+                        <path d="M4 11L9 6L4 1" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"
+                          stroke-linejoin="round" />
+                      </g>
+                    </svg>
+                  </div>
+
+                  <!-- Nested dropdown -->
+                  <div
+                    class="lg:absolute relative top-[-3px] 1xl:left-[250px] lg:left-[225px] left-0 1xl:min-w-[220px] xl:min-w-[182px] min-w-[150px] hidden group-hover/home:block group-active/home:block group-focus/home:block z-50">
+                    <!-- Triangle arrow -->
+                    <span
+                      class="absolute left-auto 1xl:right-[214px] xl:right-[175px] right-[143px] top-6 w-3 h-3 bg-white rotate-45 sm:border border-gray-200 z-[-1] lg:block hidden"></span>
+                    <ul class="lg:border border-b md:border-gray-200 border-[#0000001A] bg-white">
+                      <li
+                        class="2xl:text-base xl:text-sm lg:text-[13px] text-xs leading-2 font-normal xl:!px-[22px] md:!px-[14px]">
+                        <a href="./index-1.html"
+                          class="!py-3 block text-[#464343] hover:text-primary-900 lg:!border-b last:border-b-0 border-[#0000001A]">Home
+                          01</a>
+                      </li>
+                      <li
+                        class="2xl:text-base xl:text-sm lg:text-[13px] text-xs leading-2 font-normal xl:!px-[22px] md:!px-[14px]">
+                        <a href="./index-2.html"
+                          class="!py-3 block text-[#464343] hover:text-primary-900 lg:!border-b last:border-b-0 border-[#0000001A]">Home
+                          02</a>
+                      </li>
+                      <li
+                        class="2xl:text-base xl:text-sm lg:text-[13px] text-xs leading-2 font-normal xl:!px-[22px] md:!px-[14px]">
+                        <a href="./index-3.html"
+                          class="!py-3 block text-[#464343] hover:text-primary-900 lg:!border-b last:border-b-0 border-[#0000001A]">Home
+                          03</a>
+                      </li>
+                      <li
+                        class="2xl:text-base xl:text-sm lg:text-[13px] text-xs leading-2 font-normal xl:!px-[22px] md:!px-[14px]">
+                        <a href="./index-4.html" class="!py-3 block text-[#464343] hover:text-primary-900">Home
+                          04</a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+
+                <li class="2xl:text-base xl:text-sm lg:text-[13px] text-xs font-normal lg:!px-[22px] !px-[14px]">
+                  <a href="./about.html"
+                    class="!py-3 block text-[#464343] hover:text-primary-900 !border-b last:border-b-0 border-[#0000001A]">About
+                    Orion</a>
+                </li>
+
+                <li
+                  class="2xl:text-base xl:text-sm lg:text-[13px] text-xs font-normal relative group/home lg:!px-[22px] !px-[14px]">
+                  <div
+                    class="!py-3 flex items-center justify-between text-[#464343] hover:text-primary-900 !border-b last:border-b-0 border-[#0000001A]">
+                    Projects
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none"
+                      class="transform group-hover/projects:rotate-90 transition-all">
+                      <g clip-path="url(#clip0_3535_1971)">
+                        <path d="M4 11L9 6L4 1" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"
+                          stroke-linejoin="round" />
+                      </g>
+                    </svg>
+                  </div>
+
+                  <!-- Nested dropdown -->
+                  <div
+                    class="lg:absolute relative top-[-3px] 1xl:left-[250px] lg:left-[225px] left-0 1xl:min-w-[220px] xl:min-w-[182px] min-w-[150px] hidden group-hover/home:block group-active/home:block group-focus/home:block z-50">
+                    <!-- Triangle arrow -->
+                    <span
+                      class="absolute left-auto 1xl:right-[214px] xl:right-[175px] right-[143px] top-6 w-3 h-3 bg-white rotate-45 sm:border border-gray-200 z-[-1] lg:block hidden"></span>
+                    <ul class="lg:border border-b md:border-gray-200 border-[#0000001A] bg-white">
+                      <li
+                        class="2xl:text-base xl:text-sm lg:text-[13px] text-xs leading-2 font-normal xl:!px-[22px] md:!px-[14px]">
+                        <a href="./projects-1.html"
+                          class="!py-3 block text-[#464343] hover:text-primary-900 lg:!border-b last:border-b-0 border-[#0000001A]">Project
+                          01</a>
+                      </li>
+                      <li
+                        class="2xl:text-base xl:text-sm lg:text-[13px] text-xs leading-2 font-normal xl:!px-[22px] md:!px-[14px]">
+                        <a href="./projects-2.html"
+                          class="!py-3 block text-[#464343] hover:text-primary-900 lg:!border-b last:border-b-0 border-[#0000001A]">Project
+                          02</a>
+                      </li>
+                      <li
+                        class="2xl:text-base xl:text-sm lg:text-[13px] text-xs leading-2 font-normal xl:!px-[22px] md:!px-[14px]">
+                        <a href="./projects-3.html"
+                          class="!py-3 block text-[#464343] hover:text-primary-900 lg:!border-b last:border-b-0 border-[#0000001A]">Project
+                          03</a>
+                      </li>
+                      <li
+                        class="2xl:text-base xl:text-sm lg:text-[13px] text-xs leading-2 font-normal xl:!px-[22px] md:!px-[14px]">
+                        <a href="./project-detail.html"
+                          class="!py-3 block text-[#464343] hover:text-primary-900">Project
+                          Detail</a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+
+
+                <!-- Nested submenu parent -->
+                <li
+                  class="2xl:text-base xl:text-sm lg:text-[13px] text-xs font-normal relative group/home lg:!px-[22px] !px-[14px]">
+                  <div
+                    class="!py-3 flex items-center justify-between text-[#464343] hover:text-primary-900 !border-b last:border-b-0 border-[#0000001A]">
+                    Services
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none"
+                      class="transform group-hover/services:rotate-90 transition-all">
+                      <g clip-path="url(#clip0_3535_1971)">
+                        <path d="M4 11L9 6L4 1" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"
+                          stroke-linejoin="round" />
+                      </g>
+                    </svg>
+                  </div>
+
+                  <!-- Nested dropdown -->
+                  <div
+                    class="lg:absolute relative top-[-3px] 1xl:left-[250px] lg:left-[225px] left-0 1xl:min-w-[220px] xl:min-w-[182px] min-w-[150px] hidden group-hover/home:block group-active/home:block group-focus/home:block z-50">
+                    <!-- Triangle arrow -->
+                    <span
+                      class="absolute left-auto 1xl:right-[214px] xl:right-[175px] right-[143px] top-6 w-3 h-3 bg-white rotate-45 sm:border border-gray-200 z-[-1] lg:block hidden"></span>
+                    <ul class="lg:border border-b md:border-gray-200 border-[#0000001A] bg-white">
+                      <li
+                        class="2xl:text-base xl:text-sm lg:text-[13px] text-xs leading-2 font-normal xl:!px-[22px] md:!px-[14px]">
+                        <a href="./services-1.html"
+                          class="!py-3 block text-[#464343] hover:text-primary-900 lg:!border-b last:border-b-0 border-[#0000001A]">Services
+                          01</a>
+                      </li>
+                      <li
+                        class="2xl:text-base xl:text-sm lg:text-[13px] text-xs leading-2 font-normal xl:!px-[22px] md:!px-[14px]">
+                        <a href="./services-2.html"
+                          class="!py-3 block text-[#464343] hover:text-primary-900 lg:!border-b last:border-b-0 border-[#0000001A]">Services
+                          02</a>
+                      </li>
+                      <li
+                        class="2xl:text-base xl:text-sm lg:text-[13px] text-xs leading-2 font-normal xl:!px-[22px] md:!px-[14px]">
+                        <a href="./services-3.html"
+                          class="!py-3 block text-[#464343] hover:text-primary-900 lg:!border-b last:border-b-0 border-[#0000001A]">Services
+                          03</a>
+                      </li>
+                      <li
+                        class="2xl:text-base xl:text-sm lg:text-[13px] text-xs leading-2 font-normal xl:!px-[22px] md:!px-[14px]">
+                        <a href="./services-detail.html"
+                          class="!py-3 block text-[#464343] hover:text-primary-900">Service
+                          Detail</a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+
+                <!-- Nested submenu parent -->
+                <li
+                  class="2xl:text-base xl:text-sm lg:text-[13px] text-xs font-normal relative group/home lg:!px-[22px] !px-[14px]">
+                  <div
+                    class="!py-3 flex items-center justify-between text-[#464343] hover:text-primary-900 !border-b last:border-b-0 border-[#0000001A]">
+                    Teams
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none"
+                      class="transform group-hover/services:rotate-90 transition-all">
+                      <g clip-path="url(#clip0_3535_1971)">
+                        <path d="M4 11L9 6L4 1" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"
+                          stroke-linejoin="round" />
+                      </g>
+                    </svg>
+                  </div>
+
+                  <!-- Nested dropdown -->
+                  <div
+                    class="lg:absolute relative top-[-3px] 1xl:left-[250px] lg:left-[225px] left-0 1xl:min-w-[220px] xl:min-w-[182px] min-w-[150px] hidden group-hover/home:block group-active/home:block group-focus/home:block z-50">
+                    <!-- Triangle arrow -->
+                    <span
+                      class="absolute left-auto 1xl:right-[214px] xl:right-[175px] right-[143px] top-6 w-3 h-3 bg-white rotate-45 sm:border border-gray-200 z-[-1] lg:block hidden"></span>
+                    <ul class="lg:border border-b md:border-gray-200 border-[#0000001A] bg-white">
+                      <li
+                        class="2xl:text-base xl:text-sm lg:text-[13px] text-xs leading-2 font-normal xl:!px-[22px] md:!px-[14px]">
+                        <a href="./team-1.html"
+                          class="!py-3 block text-[#464343] hover:text-primary-900 lg:!border-b last:border-b-0 border-[#0000001A]">Team
+                          01</a>
+                      </li>
+                      <li
+                        class="2xl:text-base xl:text-sm lg:text-[13px] text-xs leading-2 font-normal xl:!px-[22px] md:!px-[14px]">
+                        <a href="./team-2.html"
+                          class="!py-3 block text-[#464343] hover:text-primary-900 lg:!border-b last:border-b-0 border-[#0000001A]">Team
+                          02</a>
+                      </li>
+                      <li
+                        class="2xl:text-base xl:text-sm lg:text-[13px] text-xs leading-2 font-normal xl:!px-[22px] md:!px-[14px]">
+                        <a href="./team-detail.html" class="!py-3 block text-[#464343] hover:text-primary-900">Team
+                          Detail</a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+
+                <!-- Nested submenu parent -->
+                <li
+                  class="2xl:text-base xl:text-sm lg:text-[13px] text-xs font-normal relative group/home lg:!px-[22px] !px-[14px]">
+                  <div
+                    class="!py-3 flex items-center justify-between text-[#464343] hover:text-primary-900 !border-b last:border-b-0 border-[#0000001A]">
+                    Blogs
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none"
+                      class="transform group-hover/services:rotate-90 transition-all">
+                      <g clip-path="url(#clip0_3535_1971)">
+                        <path d="M4 11L9 6L4 1" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"
+                          stroke-linejoin="round" />
+                      </g>
+                    </svg>
+                  </div>
+
+                  <!-- Nested dropdown -->
+                  <div
+                    class="lg:absolute relative top-[-3px] 1xl:left-[250px] lg:left-[225px] left-0 1xl:min-w-[220px] xl:min-w-[182px] min-w-[150px] hidden group-hover/home:block group-active/home:block group-focus/home:block z-50">
+                    <!-- Triangle arrow -->
+                    <span
+                      class="absolute left-auto 1xl:right-[214px] xl:right-[175px] right-[143px] top-6 w-3 h-3 bg-white rotate-45 sm:border border-gray-200 z-[-1] lg:block hidden"></span>
+                    <ul class="lg:border border-b md:border-gray-200 border-[#0000001A] bg-white">
+                      <li
+                        class="2xl:text-base xl:text-sm lg:text-[13px] text-xs leading-2 font-normal xl:!px-[22px] md:!px-[14px]">
+                        <a href="./blog-1.html"
+                          class="!py-3 block text-[#464343] hover:text-primary-900 lg:!border-b last:border-b-0 border-[#0000001A]">Blog
+                          01</a>
+                      </li>
+                      <li
+                        class="2xl:text-base xl:text-sm lg:text-[13px] text-xs leading-2 font-normal xl:!px-[22px] md:!px-[14px]">
+                        <a href="./blog-2.html"
+                          class="!py-3 block text-[#464343] hover:text-primary-900 lg:!border-b last:border-b-0 border-[#0000001A]">Blog
+                          02</a>
+                      </li>
+                      <li
+                        class="2xl:text-base xl:text-sm lg:text-[13px] text-xs leading-2 font-normal xl:!px-[22px] md:!px-[14px]">
+                        <a href="./blog-3.html"
+                          class="!py-3 block text-[#464343] hover:text-primary-900 lg:!border-b last:border-b-0 border-[#0000001A]">Blog
+                          03</a>
+                      </li>
+                      <li
+                        class="2xl:text-base xl:text-sm lg:text-[13px] text-xs leading-2 font-normal xl:!px-[22px] md:!px-[14px]">
+                        <a href="./blog-detail.html" class="!py-3 block text-[#464343] hover:text-primary-900">Blog
+                          Detail</a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <!-- More items -->
+
+                <li class="2xl:text-base xl:text-sm lg:text-[13px] text-xs font-normal lg:!px-[22px] !px-[14px]">
+                  <a href="./career.html"
+                    class="!py-3 block text-[#464343] hover:text-primary-900 !border-b last:border-b-0 border-[#0000001A]">Careers</a>
+                </li>
+                <li class="2xl:text-base xl:text-sm lg:text-[13px] text-xs font-normal lg:!px-[22px] !px-[14px]">
+                  <a href="./contact.html"
+                    class="!py-3 block text-[#464343] hover:text-primary-900 !border-b last:border-b-0 border-[#0000001A]">Contact</a>
+                </li>
+                <li class="2xl:text-base xl:text-sm lg:text-[13px] text-xs font-normal lg:!px-[22px] !px-[14px]">
+                  <a href="./coming-soon.html"
+                    class="!py-3 block text-[#464343] hover:text-primary-900 !border-b last:border-b-0 border-[#0000001A]">coming
+                    soon</a>
+                </li>
+                <li class="2xl:text-base xl:text-sm lg:text-[13px] text-xs font-normal lg:!px-[22px] !px-[14px]">
+                  <a href="./404.html"
+                    class="!py-3 block text-[#464343] hover:text-primary-900 !border-b last:border-b-0 border-[#0000001A]">404</a>
+                </li>
+                <li class="2xl:text-base xl:text-sm lg:text-[13px] text-xs font-normal lg:!px-[22px] !px-[14px]">
+                  <a href="./privacy-policy.html"
+                    class="!py-3 block text-[#464343] hover:text-primary-900 !border-b last:border-b-0 border-[#0000001A]">privacy
+                    policy</a>
+                </li>
+                <li class="2xl:text-base xl:text-sm lg:text-[13px] text-xs font-normal lg:!px-[22px] !px-[14px]">
+                  <a href="./terms-condition.html" class="!py-3 block text-[#464343] hover:text-primary-900">terms &
+                    conditions</a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="my-auto md:h-full flex">
+              <a href="./contact.html" class="nav-tab">Contact</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+  </nav>
+  <!-- navbar end -->
+</header>
+<!-- end-header -->
+
+<!-- start main wrapper -->
+<div class="main-wrapper z-0">
+  <!-- start hero section -->
+  <section
+    class="hero-section lg:h-screen sm:h-[700px] h-[450px] relative card-types z-1 2xl:mb-[100px] xl:mb-20 lg:mb-[70px] sm:mb-[50px] mb-10">
+    <div class="absolute top-0 left-0 w-full h-full">
+      <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper types2 h-full">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide relative">
+            <div class="absolute lg:h-screen sm:h-[700px] h-[450px] w-full">
+              <img src="assets/images/home-banner.webp" alt="hero img" class="w-full h-full object-cover">
+            </div>
+            <div class="container">
+              <div class="relative 2xl:pt-[290px] xl:pt-[200px] pt-[150px] lg:h-screen sm:h-[700px] h-[450px]">
+                <div class="flex flex-col justify-between h-full">
+                  <div
+                    class="bg-[#00000059] 2xl:max-w-[800px] 1xl:max-w-[650px] xl:max-w-[575px] max-w-[534px] w-full h-fit 1xl:p-[43px] p-[32px] 1xl:space-y-[55px] xl:space-y-8 sm:space-y-7 space-y-5">
+                    <h5
+                      class="text-white font-lexend tracking-[5px] uppercase m-0 font-normal sm:text-left text-center">
+                      Residential
+                    </h5>
+                    <h1 class="text-white sm:w-[90%] w-full font-normal sm:text-left text-center m-0">
+                      Building Homes with Heart</h1>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide relative">
+            <div class="absolute lg:h-screen sm:h-[700px] h-[450px] w-full">
+              <img src="assets/images/banner-slide-2.webp" alt="hero img" class="w-full h-full object-cover">
+            </div>
+            <div class="container">
+              <div class="relative 2xl:pt-[290px] xl:pt-[200px] pt-[150px] lg:h-screen sm:h-[700px] h-[450px]">
+                <div class="flex flex-col justify-between h-full">
+                  <div
+                    class="bg-[#00000059] 2xl:max-w-[800px] 1xl:max-w-[650px] xl:max-w-[575px] max-w-[534px] w-full h-fit 1xl:p-[43px] p-[32px] 1xl:space-y-[55px] xl:space-y-8 sm:space-y-7 space-y-5">
+                    <h5
+                      class="text-white font-lexend tracking-[5px] uppercase m-0 font-normal sm:text-left text-center">
+                      Commercial
+                    </h5>
+                    <h1 class="text-white sm:w-[90%] w-full font-normal sm:text-left text-center m-0">Smart Spaces
+                      for
+                      Business</h1>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide relative">
+            <div class="absolute lg:h-screen sm:h-[700px] h-[450px] w-full">
+              <img src="assets/images/hero-banner-3.webp" alt="hero img" class="w-full h-full object-cover">
+            </div>
+            <div class="container">
+              <div class="relative 2xl:pt-[290px] xl:pt-[200px] pt-[150px] lg:h-screen sm:h-[700px] h-[450px]">
+                <div class="flex flex-col justify-between h-full">
+                  <div
+                    class="bg-[#00000059] 2xl:max-w-[800px] 1xl:max-w-[650px] xl:max-w-[575px] max-w-[534px] w-full h-fit 1xl:p-[43px] p-[32px] 1xl:space-y-[55px] xl:space-y-8 sm:space-y-7 space-y-5">
+                    <h5
+                      class="text-white font-lexend tracking-[5px] uppercase m-0 font-normal sm:text-left text-center">
+                      Infrastructure
+                    </h5>
+                    <h1 class="text-white sm:w-[90%] w-full font-normal sm:text-left text-center m-0">Connecting
+                      Cities,
+                      Building Futures</h1>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide relative">
+            <div class="absolute lg:h-screen sm:h-[700px] h-[450px] w-full">
+              <img src="assets/images/banner-slide-4.webp" alt="hero img" class="w-full h-full object-cover">
+            </div>
+            <div class="container">
+              <div class="relative 2xl:pt-[290px] xl:pt-[200px] pt-[150px] lg:h-screen sm:h-[700px] h-[450px]">
+                <div class="flex flex-col justify-between h-full">
+                  <div
+                    class="bg-[#00000059] 2xl:max-w-[800px] 1xl:max-w-[650px] xl:max-w-[575px] max-w-[534px] w-full h-fit 1xl:p-[43px] p-[32px] 1xl:space-y-[55px] xl:space-y-8 sm:space-y-7 space-y-5">
+                    <h5
+                      class="text-white font-lexend tracking-[5px] uppercase m-0 font-normal sm:text-left text-center">
+                      Renovation
+                    </h5>
+                    <h1 class="text-white sm:w-[90%] w-full font-normal sm:text-left text-center m-0">Reimagining
+                      Existing Spaces</h1>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide relative">
+            <div class="absolute lg:h-screen sm:h-[700px] h-[450px] w-full">
+              <img src="assets/images/hero-banner-4.webp" alt="hero img" class="w-full h-full object-cover">
+            </div>
+            <div class="container">
+              <div class="relative 2xl:pt-[290px] xl:pt-[200px] pt-[150px] lg:h-screen sm:h-[700px] h-[450px]">
+                <div class="flex flex-col justify-between h-full">
+                  <div
+                    class="bg-[#00000059] 2xl:max-w-[800px] 1xl:max-w-[650px] xl:max-w-[575px] max-w-[534px] w-full h-fit 1xl:p-[43px] p-[32px] 1xl:space-y-[55px] xl:space-y-8 sm:space-y-7 space-y-5">
+                    <h5
+                      class="text-white font-lexend tracking-[5px] uppercase m-0 font-normal sm:text-left text-center">
+                      Industrial
+                    </h5>
+                    <h1 class="text-white sm:w-[90%] w-full font-normal sm:text-left text-center m-0">Powering
+                      Industrial Progress</h1>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide relative">
+            <div class="absolute lg:h-screen sm:h-[700px] h-[450px] w-full">
+              <img src="assets/images/hero-banner-6.webp" alt="hero img" class="w-full h-full object-cover">
+            </div>
+            <div class="container">
+              <div class="relative 2xl:pt-[290px] xl:pt-[200px] pt-[150px] lg:h-screen sm:h-[700px] h-[450px]">
+                <div class="flex flex-col justify-between h-full">
+                  <div
+                    class="bg-[#00000059] 2xl:max-w-[800px] 1xl:max-w-[650px] xl:max-w-[575px] max-w-[534px] w-full h-fit 1xl:p-[43px] p-[32px] 1xl:space-y-[55px] xl:space-y-8 sm:space-y-7 space-y-5">
+                    <h5
+                      class="text-white font-lexend tracking-[5px] uppercase m-0 font-normal sm:text-left text-center">
+                      Interiors
+                    </h5>
+                    <h1 class="text-white sm:w-[90%] w-full font-normal sm:text-left text-center m-0">Designing
+                      Functional Elegance</h1>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+
+    </div>
+    <div class="container absolute bottom-8 left-1/2 -translate-x-1/2 z-10 md:block hidden">
+      <div thumbsSlider="" class="swiper types !px-[10px] w-full">
+        <div class="swiper-wrapper">
+
+          <div class="swiper-slide hero-slide relative">
+
+            <div class="flex flex-col justify-center py-3">
+              <h4 class="m-0">Residential</h4>
+              <span class="!p2 m-0">Dream homes built.</span>
+            </div>
+            <div class="1xl:w-[125px] w-[105px] 1xl:h-[86px] h-[80px]">
+              <img src="../layouts/assets/images/card-slide.webp" alt="types" class="w-full h-full object-cover" />
+            </div>
+          </div>
+
+          <div class="swiper-slide hero-slide relative">
+
+            <div class="flex flex-col justify-center py-3">
+              <h4 class="m-0">Commercial</h4>
+              <span class="!p2 m-0">Smart business spaces.</span>
+            </div>
+            <div class="1xl:w-[125px] w-[105px]">
+              <img src="../layouts/assets/images/card-slide-2.png" alt="types" class="w-full h-full object-cover" />
+            </div>
+          </div>
+          <div class="swiper-slide hero-slide relative">
+
+            <div class="flex flex-col justify-center py-3">
+              <h4 class="m-0">Infrastructure</h4>
+              <span class="!p2 m-0">Strong urban foundations.</span>
+            </div>
+            <div class="1xl:w-[125px] w-[105px] ">
+              <img src="../layouts/assets/images/card-slide-3.webp" alt="types" class="w-full h-full object-cover" />
+            </div>
+          </div>
+          <div class="swiper-slide hero-slide relative">
+
+            <div class="flex flex-col justify-center py-3">
+              <h4 class="m-0">Renovation</h4>
+              <span class="!p2 m-0">Modern space upgrades.</span>
+            </div>
+            <div class="1xl:w-[125px] w-[105px]">
+              <img src="../layouts/assets/images/card-slide-4.png" alt="types" class="w-full h-full object-cover" />
+            </div>
+          </div>
+          <div class="swiper-slide hero-slide relative">
+
+            <div class="flex flex-col justify-center py-3">
+              <h4 class="m-0">Industrial</h4>
+              <span class="!p2 m-0">Durable industrial solutions.</span>
+            </div>
+            <div class="1xl:w-[125px] w-[105px]">
+              <img src="../layouts/assets/images/card-slide-5.webp" alt="types" class="w-full h-full object-cover" />
+            </div>
+          </div>
+          <div class="swiper-slide hero-slide relative">
+
+            <div class="flex flex-col justify-center py-3">
+              <h4 class="m-0">Interiors</h4>
+              <span class="!p2 m-0">Stylish interior finishes.</span>
+            </div>
+            <div class="1xl:w-[125px] w-[105px]">
+              <img src="../layouts/assets/images/card-slide-6.webp" alt="types" class="w-full h-full object-cover" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+  </section>
+  <!-- end hero section -->

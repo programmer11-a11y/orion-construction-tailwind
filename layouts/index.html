@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+  <meta charset="utf-8">
+  <!-- Page title -->
+  <title>Orion Construction - Tailwind HTML5 Template</title>
+  <!-- Project favicon link -->
+  <link rel="icon" href="assets/images/favicon.png" type="image/gif">
+  <!-- All device viewport meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Fonts style file -->
+  <link rel="stylesheet" href="assets/css/all-fontawesome.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+  <!-- Custom Libraries style start -->
+
+  <!-- Swiper Bundle slider style file -->
+  <link rel="stylesheet" type="text/css" href="assets/css/swiper-bundle.min.css">
+
+  <!-- Custom Libraries style end -->
+
+  <!-- Custom style file -->
+  <link rel="stylesheet" type="text/css" href="./assets/css/styles.css">
+
+
+</head>
+
+<body>
+
+  <!-- Preloader -->
+  <div class="preloader ">
+    <div class="preloader-inner">
+      <svg width="51" height="57" viewBox="0 0 51 57" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0.941162 23.948V5.20612L17.3693 14.23V32.9719L0.941162 23.948Z" stroke="#186F65" stroke-width="0.941101"/>
+        <path d="M17.5193 52.0581L1.28833 42.6871L17.3173 32.9719L33.5483 42.3429L17.5193 52.0581Z" stroke="#186F65" stroke-width="0.941101"/>
+        <path d="M33.4502 42.3429V23.601L49.8783 32.6248V51.3668L33.4502 42.3429Z" stroke="#186F65" stroke-width="0.941101"/>
+        <path d="M33.5157 23.5981L17.2847 14.2272L33.3136 4.51195L49.5446 13.8829L33.5157 23.5981Z" stroke="#186F65" stroke-width="0.941101"/>
+        </svg>
+    </div>
+  </div>
+
+
+  <div
+    class="text-md 1xl:text-lg font-lexend antialiased font-light text-black leading-md 1xl:leading-xl overflow-x-hidden"
+    x-data="{ show: false , open: false }">
+
+    <!-- start-header -->
+    <header class="header fixed top-0 left-0 w-full z-20 md:pr-5 lg:pr-10" :class="{ 'header-open': open }">
+      <!-- navbar start -->
+      <nav class="">
+        <div class="flex flex-wrap items-center justify-between mx-auto">
+          <div class="shrink-0 max-w-[140px] md:max-w-[180px] xl:max-w-[200px] 1xl:max-w-[250px] 2xl:max-w-full">
+            <a href="/"
+              class="flex items-center  py-2 md:py-5 lg:py-3 1xl:py-5 2xl:py-7 px-2.5 lg:px-5 1xl:px-10  bg-white transition-all logo-box">
+              <img src="assets/images/logo-dark.svg" class="lg:h-14 h-10" alt="Logo" />
+            </a>
+          </div>
+          <button data-collapse-toggle="navbar-default" type="button"
+            class="mobile-toggle inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-white rounded-lg md:hidden focus:outline-none dark:focus:ring-gray-600 group "
+            aria-controls="navbar-default" aria-expanded="false">
+            <span class="sr-only">Open main menu</span>
+            <svg class="w-5 h-5  group-[.active]:hidden block" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M1 1h15M1 7h15M1 13h15" />
+            </svg>
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5  group-[.active]:block hidden ">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M8.99996 10.6496L15.5998 17.2495C15.8198 17.462 16.1145 17.5796 16.4204 17.5769C16.7263 17.5743 17.0189 17.4516 17.2352 17.2353C17.4516 17.0189 17.5743 16.7263 17.5769 16.4204C17.5796 16.1145 17.462 15.8198 17.2495 15.5998L10.6496 8.99997L17.2495 2.40014C17.462 2.1801 17.5796 1.8854 17.5769 1.5795C17.5743 1.27361 17.4516 0.980992 17.2352 0.764683C17.0189 0.548373 16.7263 0.425676 16.4204 0.423018C16.1145 0.42036 15.8198 0.537953 15.5998 0.750471L8.99996 7.3503L2.40012 0.750471C2.1791 0.543206 1.8861 0.430064 1.58314 0.434983C1.28018 0.439903 0.991014 0.562499 0.776834 0.77683C0.562655 0.991162 0.440263 1.28041 0.435558 1.58338C0.430852 1.88635 0.544202 2.17926 0.751623 2.40014L7.35029 8.99997L0.750456 15.5998C0.639028 15.7074 0.550149 15.8362 0.489005 15.9785C0.427861 16.1208 0.395677 16.2739 0.394331 16.4288C0.392985 16.5837 0.422503 16.7374 0.481164 16.8807C0.539826 17.0241 0.626454 17.1544 0.735996 17.2639C0.845537 17.3735 0.975798 17.4601 1.11918 17.5188C1.26256 17.5774 1.41618 17.6069 1.57109 17.6056C1.726 17.6043 1.87909 17.5721 2.02143 17.5109C2.16377 17.4498 2.2925 17.3609 2.40012 17.2495L8.99996 10.6496Z" fill="currentColor"/>
+              </svg>              
+          </button>
+          <div class="w-full block md:w-auto md:relative mobile-nav main-menu " id="navbar-default">
+            <ul
+              class="navbar font-medium flex items-center flex-col text-white uppercase text-sm lg:text-md p-4 md:p-0  rounded-lg bg-gray-50 md:flex-row space-x-4 xl:space-x-8 rtl:space-x-reverse md:mt-0">
+              <li>
+                <a href="./about.html" aria-current="page" class="hover:!text-white hover:underline">About Orion</a>
+              </li>
+              <li>
+                <a href="./projects.html" class="hover:!text-white hover:underline">Projects</a>
+              </li>
+              <li>
+                <a href="./services.html" class="hover:!text-white hover:underline">Services</a>
+              </li>
+              <li>
+                <a href="./career.html" class="hover:!text-white hover:underline">Careers</a>
+              </li>
+              <li>
+                <a href="./blog.html" class="hover:!text-white hover:underline">Blog</a>
+              </li>
+              <li>
+                <a href="./contact.html" class="hover:!text-white hover:underline">Contact</a>
+              </li>
+              <li class="dropdown">
+                <a class="!flex items-center gap-2 hover:!text-white hover:underline" href="javascript:;">Pages 
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="11" viewBox="0 0 19 11" fill="none" class="md:block hidden">
+                    <g clip-path="url(#clip0_128_578)">
+                    <path d="M1.58325 1.57143L9.49992 9.42857L17.4166 1.57143" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </g>
+                    <defs>
+                    <clipPath id="clip0_128_578">
+                    <rect width="19" height="11" fill="currentcolor"/>
+                    </clipPath>
+                    </defs>
+                    </svg>
+                </a>
+                <ul class="dropdown-menu fade-down">
+                  <li class="border-b last:border-b-0 border-gray-300"><a href="./index-1.html" class="px-4 !py-3 block text-black hover:text-primary-900">Home 1</a></li>
+                  <li class="border-b last:border-b-0 border-gray-300"><a href="./index-2.html" class="px-4 !py-3 block text-black hover:text-primary-900">Home 2</a></li>
+                  <li class="border-b last:border-b-0 border-gray-300"><a href="./index-3.html" class="px-4 !py-3 block text-black hover:text-primary-900">Home 3</a></li>
+                  <li class="border-b last:border-b-0 border-gray-300"><a href="./projects.html" class="px-4 !py-3 block text-black hover:text-primary-900">Projects</a></li>
+                  <li class="border-b last:border-b-0 border-gray-300"><a href="./project-detail.html" class="px-4 !py-3 block text-black hover:text-primary-900">Project Detail</a></li>
+                  <li class="border-b last:border-b-0 border-gray-300"><a href="./services.html" class="px-4 !py-3 block text-black hover:text-primary-900">Services</a></li>
+                  <li class="border-b last:border-b-0 border-gray-300"><a href="./services-detail.html" class="px-4 !py-3 block text-black hover:text-primary-900">Service Detail</a></li>
+                  <li class="border-b last:border-b-0 border-gray-300"><a href="./blog.html" class="px-4 !py-3 block text-black hover:text-primary-900">Blog</a></li>
+                  <li class="border-b last:border-b-0 border-gray-300"><a href="./blog-detail.html" class="px-4 !py-3 block text-black hover:text-primary-900">Blog Detail</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!-- navbar end -->
+    </header>
+    <!-- end-header -->
+
+    <!-- start main wrapper -->
+    <div class="main-wrapper">
+      <!-- start hero section -->
+      <section class="hero-section relative w-full min-h-screen flex items-center justify-center">
+        <!-- hero banner img -->
+        <div
+          class="absolute top-0 left-0 w-full min-h-screen md:h-full before:absolute before:top-0 before:left-0 before:h-full before:w-full before:bg-primary-900 before:opacity-[0.85]">
+          <img src="assets/images/presentation-hero-img.jpg" alt="hero img" class="w-full h-full object-cover absolute top-0 left-0 bottom-0 right-0 -z-1">
+        </div>
+        <!-- start hero content -->
+        <div class="1xl:pt-56 py-32 1xl:pb-40 relative z-1">
+          <!-- container -->
+          <div class="max-w-[1315px] mx-auto text-center px-4">
+            <h1 class="text-white text-4xl lg:text-5xl leading-[1.2] 1xl:text-[90px] 1xl:leading-[100px] 2xl:text-[120px] 2xl:leading-[130px]">Elegant
+              Figma Template for Construction</h1>
+            <p class="text-white font-medium max-w-[1015px] mx-auto lg:mb-12 1xl:text-2xl 2xl:text-[32px] leading-snug">Take
+              advantage of beautiful layouts and create a trustworthy Construction Website.</p>
+            <a href="javascript:;" class="all-btn light-btn">Get this Template now</a>
+          </div>
+        </div>
+        <!-- end hero content slider-->
+
+      </section>
+      <!-- end hero section -->
+
+      <!-- start ... Included in Template section -->
+      <section class="relative py-10 lg:py-20">
+        <div class="container">
+          <div class="text-center  lg:mb-10 mb-5">
+            <h2 class="title">... Included in Template</h2>
+          </div>
+
+          <div class="grid  md:grid-cols-3 max-[420px]:grid-cols-1 grid-cols-2  gap-5 lg:gap-8 2xl:gap-10">
+            <div class="bg-gray-200 1xl:pt-14 1xl:px-10 pt-6 px-4 rounded-4xl text-center flex flex-col">
+              <h3 class="xl:text-3xl text-2xl leading-snug 1xl:text-[45px] xl:mb-5 mb-3">3+ Home pages</h3>
+              <p class="1xl:mb-12">Nisi vitae suscipit tellus mauris a diam. Tellus integer feugiat scelerisque varius
+                morbi.</p>
+              <img src="assets/images/home-pages.png" alt="img" class="mx-auto mt-auto">
+            </div>
+            <div class="bg-gray-200 1xl:pt-14 1xl:px-10 pt-6 px-4 rounded-4xl text-center flex flex-col">
+              <h3 class="xl:text-3xl text-2xl leading-snug 1xl:text-[45px] xl:mb-5 mb-3">Inner Pages</h3>
+              <p class="1xl:mb-12">Nisi vitae suscipit tellus mauris a diam. Tellus integer feugiat scelerisque varius
+                morbi.</p>
+              <img src="assets/images/inner-pages-icon.png" alt="img" class="mx-auto mt-auto">
+            </div>
+            <div class="bg-gray-200 1xl:pt-14 1xl:px-10 pt-6 px-4 rounded-4xl text-center flex flex-col">
+              <h3 class="xl:text-3xl text-2xl leading-snug 1xl:text-[45px] xl:mb-5 mb-3">40+ Section Variants</h3>
+              <p class="1xl:mb-12">Nisi vitae suscipit tellus mauris a diam. Tellus integer feugiat scelerisque varius
+                morbi.</p>
+              <img src="assets/images/section-variants.png" alt="img" class="mx-auto mt-auto">
+            </div>
+          </div>
+
+        </div>
+      </section>
+      <!-- end ... Included in Template section -->
+
+      <!-- start Home Pages section -->
+      <section class="relative pt-10 lg:pt-20 md:pb-0 pb-5 bg-primary-800 lg:rounded-t-[100px] sm:rounded-t-[50px] rounded-t-[30px]">
+        <div class="container">
+          <div class=" lg:mb-10 mb-5">
+            <h2 class="title text-white">Home Pages</h2>
+          </div>
+
+          <div class="grid md:grid-cols-3 max-[420px]:grid-cols-1 grid-cols-2 gap-5 lg:gap-8 2xl:gap-10">
+            <div class="group">
+              <div class="overflow-hidden md:rounded-t-4xl md:rounded-b-none rounded-xl relative before:pt-[114%] before:block">
+                <a href="./index-1.html" class="absolute top-0 left-0 w-full h-full block">
+                  <img src="assets/images/Home-1.jpg" alt="img" class="h-full w-full object-cover object-top">
+                </a>
+              </div>
+            </div>
+            <div class="group">
+              <div class="overflow-hidden md:rounded-t-4xl md:rounded-b-none rounded-xl relative before:pt-[114%] before:block">
+                <a href="./index-2.html" class="absolute top-0 left-0 w-full h-full block">
+                  <img src="assets/images/Home-2.jpg" alt="img" class="h-full w-full object-cover object-top">
+                </a>
+              </div>
+            </div>
+            <div class="group">
+              <div class="overflow-hidden md:rounded-t-4xl md:rounded-b-none rounded-xl relative before:pt-[114%] before:block">
+                <a href="./index-3.html" class="absolute top-0 left-0 w-full h-full block">
+                  <img src="assets/images/Home-3.jpg" alt="img" class="h-full w-full object-cover object-top">
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+      <!-- end Home Pages section -->
+
+      <!-- start Figma include section -->
+      <section class=" pt-10 lg:pt-20">
+        <div class="container 2xl:max-w-[1400px]">
+          <div
+            class="bg-gray-200 py-6 lg:px-12 px-6 flex items-center gap-4 lg:gap-10 lg:flex-nowrap flex-wrap rounded-xl">
+            <img src="assets/images/figma-logo-green.svg" alt="img" class="xl:w-40 lg:w-32 w-28 mx-auto" />
+            <div class="lg:w-auto w-full lg:text-left text-center">
+              <h3>Figma File included</h3>
+              <p class="mb-0">Lortem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                ut labore et dolore magna aliqua. Id interdum velit laoreet id donec ultrices tincidunt arcu.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- end Figma include section -->
+
+      <!-- start Other Pages section -->
+      <section class="relative pt-10 lg:pt-20">
+        <div class="container">
+          <div class="text-center lg:mb-10 mb-5">
+            <h2 class="title">Other Pages</h2>
+          </div>
+
+          <div
+            class="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-5 lg:gap-8 2xl:gap-10 after:content-[''] after:block after:pointer-events-none after:w-full after:h-[30%] after:absolute after:left-0 after:bottom-0 after:bg-gradient-to-t after:from-white ">
+            <div class="group bg-gray-100 md:rounded-2xl rounded-xl md:p-4 p-3 text-center">
+              <div class="overflow-hidden md:rounded-2xl rounded-xl relative before:pt-[96%] before:block group">
+                <a href="about.html" class="absolute top-0 left-0 w-full h-full block">
+                  <img src="assets/images/about-us.jpg" alt="img" class="h-full w-full object-cover object-top group-hover:object-bottom transition-all duration-[1500ms]">
+                </a>
+              </div>
+              <div class="md:pt-5 pt-3">
+                <h3 class="m-0 lg:text-[22px] md:text-[20px] text-lg"><a href="about.html">About</a></h3>
+              </div>
+            </div>
+            <div class="group bg-gray-100 md:rounded-2xl rounded-xl md:p-4 p-3 text-center">
+              <div class="overflow-hidden md:rounded-2xl rounded-xl relative before:pt-[96%] before:block group">
+                <a href="projects.html" class="absolute top-0 left-0 w-full h-full block">
+                  <img src="assets/images/project.jpg" alt="img" class="h-full w-full object-cover object-top	group-hover:object-bottom transition-all duration-[1500ms]">
+                </a>
+              </div>
+              <div class="md:pt-5 pt-3">
+                <h3 class="m-0 lg:text-[22px] md:text-[20px] text-lg"><a href="projects.html">Project</a></h3>
+              </div>
+            </div>
+            <div class="group bg-gray-100 md:rounded-2xl rounded-xl md:p-4 p-3 text-center">
+              <div class="overflow-hidden md:rounded-2xl rounded-xl relative before:pt-[96%] before:block group">
+                <a href="project-detail.html" class="absolute top-0 left-0 w-full h-full block">
+                  <img src="assets/images/project-detail.jpg" alt="img" class="h-full w-full object-cover object-top group-hover:object-bottom transition-all duration-[1500ms]">
+                </a>
+              </div>
+              <div class="md:pt-5 pt-3">
+                <h3 class="m-0 lg:text-[22px] md:text-[20px] text-lg"><a href="project-detail.html">Project detail</a></h3>
+              </div>
+            </div>
+            <div class="group bg-gray-100 md:rounded-2xl rounded-xl md:p-4 p-3 text-center">
+              <div class="overflow-hidden md:rounded-2xl rounded-xl relative before:pt-[96%] before:block group">
+                <a href="services.html" class="absolute top-0 left-0 w-full h-full block">
+                  <img src="assets/images/service.jpg" alt="img" class="h-full w-full object-cover object-top	group-hover:object-bottom transition-all duration-[1500ms]">
+                </a>
+              </div>
+              <div class="md:pt-5 pt-3">
+                <h3 class="m-0 lg:text-[22px] md:text-[20px] text-lg"><a href="services.html">Services</a></h3>
+              </div>
+            </div>
+            <div class="group bg-gray-100 md:rounded-2xl rounded-xl md:p-4 p-3 text-center">
+              <div class="overflow-hidden md:rounded-2xl rounded-xl relative before:pt-[96%] before:block group">
+                <a href="services-detail.html" class="absolute top-0 left-0 w-full h-full block">
+                  <img src="assets/images/service-detail.jpg" alt="img" class="h-full w-full object-cover object-top group-hover:object-bottom transition-all duration-[1500ms]">
+                </a>
+              </div>
+              <div class="md:pt-5 pt-3">
+                <h3 class="m-0 lg:text-[22px] md:text-[20px] text-lg"><a href="services-detail.html">Service detail</a></h3>
+              </div>
+            </div>
+            <div class="group bg-gray-100 md:rounded-2xl rounded-xl md:p-4 p-3 text-center">
+              <div class="overflow-hidden md:rounded-2xl rounded-xl relative before:pt-[96%] before:block group">
+                <a href="career.html" class="absolute top-0 left-0 w-full h-full block">
+                  <img src="assets/images/career.jpg" alt="img" class="h-full w-full object-cover object-top group-hover:object-bottom transition-all duration-[1500ms]">
+                </a>
+              </div>
+              <div class="md:pt-5 pt-3">
+                <h3 class="m-0 lg:text-[22px] md:text-[20px] text-lg"><a href="career.html">Career</a></h3>
+              </div>
+            </div>
+          </div>
+          <div class="relative">
+            <h3 class="text-center my-6">And Many More.......</h3>
+          </div>
+        </div>
+      </section>
+      <!-- end Other Pages section -->
+
+
+      <!-- start Why Us? section -->
+      <section class="feature-section relative py-8 lg:py-12">
+        <div class="container">
+            <h2 class="title  lg:mb-10 mb-5">Features</h2>
+
+          <div class="grid gap-4 md:gap-10 xl:gap-20 max-[420px]:grid-cols-1 grid-cols-2 md:grid-cols-4">
+            <div class="">
+              <img src="assets/images/reusable-section.svg" alt="Reusable Sections" class="md:w-10 w-7" />
+              <h4 class="text-lg xl:text-[25px] mt-3 md:mt-6 md:mb-4 mb-2 xl:mt-8 xl:mb-5">Reusable Sections</h4>
+              <p>Tincidunt vitae semper quis lectus nulla at volutpat diam. Fermentum posuere urna nec tincidunt.</p>
+            </div>
+            <div class="">
+              <img src="assets/images/customisable.svg" alt="100% Customisable"  class="md:w-10 w-7"/>
+              <h4 class="text-lg xl:text-[25px] mt-3 md:mt-6 md:mb-4 mb-2 xl:mt-8 xl:mb-5">100% Customisable</h4>
+              <p>Tincidunt vitae semper quis lectus nulla at volutpat diam. Fermentum posuere urna nec tincidunt.</p>
+            </div>
+            <div class="">
+              <img src="assets/images/premium-icon.svg" alt="Premium, custom, simply great"  class="md:w-10 w-7"/>
+              <h4 class="text-lg xl:text-[25px] mt-3 md:mt-6 md:mb-4 mb-2 xl:mt-8 xl:mb-5">Premium, custom, simply great</h4>
+              <p>Tincidunt vitae semper quis lectus nulla at volutpat diam. Fermentum posuere urna nec tincidunt.</p>
+            </div>
+            <div class="">
+              <img src="assets/images/pixel-perfectt-icon.svg" alt="pixel perfect"  class="md:w-10 w-7"/>
+              <h4 class="text-lg xl:text-[25px] mt-3 md:mt-6 md:mb-4 mb-2 xl:mt-8 xl:mb-5">Modular with pixel perfect</h4>
+              <p>Tincidunt vitae semper quis lectus nulla at volutpat diam. Fermentum posuere urna nec tincidunt.</p>
+            </div>
+
+          </div>
+        </div>
+      </section>
+      <!-- end Why Us? section -->
+
+    </div>
+
+    <!-- footer -->
+    <footer class="footer-part relative md:pt-12 xl:pt-[100px] overflow-hidden">
+      <!-- container -->
+      <div class="bg-primary-800 px-5 py-8 xl:p-12 relative z-1 ">
+        <div class="">
+          <div class="flex justify-between  flex-wrap">
+            <div class="1xl:w-3/12 lg:w-1/2 w-full 1xl:order-1 order-1 1xl:mb-0 mb-5 1xl:text-left text-center border-b 1xl:border-transparent border-white/20  1xl:pb-0 pb-4">
+              <h3 class=" text-white 1xl:mb-5 mb-3">info@webbytemplate.com</h3>
+              <p class="1xl:text-lg text-md text-white 1xl:mb-12 mb-4">We’re also on those platforms</p>
+              <ul class="flex items-center gap-8 1xl:justify-start justify-center">
+                <li>
+                  <a href="#" class="hover:underline group" target="_blank">
+                    <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg" class="fill-[#C3E8E3] group-hover:fill-white w-6"> 
+                      <path d="M18.7031 9.875C18.7031 14.4766 15.3262 18.2988 10.9102 18.9668V12.5469H13.0625L13.4707 9.875H10.9102V8.16797C10.9102 7.42578 11.2812 6.7207 12.4316 6.7207H13.582V4.45703C13.582 4.45703 12.543 4.27148 11.5039 4.27148C9.42578 4.27148 8.05273 5.57031 8.05273 7.87109V9.875H5.71484V12.5469H8.05273V18.9668C3.63672 18.2988 0.296875 14.4766 0.296875 9.875C0.296875 4.79102 4.41602 0.671875 9.5 0.671875C14.584 0.671875 18.7031 4.79102 18.7031 9.875Z" />
+                      </svg>                      
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="hover:underline group" target="_blank">
+                    <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg"  class="fill-[#C3E8E3] group-hover:fill-white w-6">
+                      <path d="M17.6582 4.01562C17.6582 4.20117 17.6582 4.34961 17.6582 4.53516C17.6582 9.69336 13.7617 15.5938 6.59961 15.5938C4.37305 15.5938 2.33203 14.9629 0.625 13.8496C0.921875 13.8867 1.21875 13.9238 1.55273 13.9238C3.37109 13.9238 5.04102 13.293 6.37695 12.2539C4.66992 12.2168 3.22266 11.1035 2.74023 9.54492C3 9.58203 3.22266 9.61914 3.48242 9.61914C3.81641 9.61914 4.1875 9.54492 4.48438 9.4707C2.70312 9.09961 1.36719 7.54102 1.36719 5.64844V5.61133C1.88672 5.9082 2.51758 6.05664 3.14844 6.09375C2.07227 5.38867 1.4043 4.20117 1.4043 2.86523C1.4043 2.12305 1.58984 1.45508 1.92383 0.898438C3.85352 3.23633 6.74805 4.79492 9.97656 4.98047C9.90234 4.68359 9.86523 4.38672 9.86523 4.08984C9.86523 1.9375 11.6094 0.193359 13.7617 0.193359C14.875 0.193359 15.877 0.638672 16.6191 1.41797C17.4727 1.23242 18.3262 0.898438 19.0684 0.453125C18.7715 1.38086 18.1777 2.12305 17.3613 2.60547C18.1406 2.53125 18.9199 2.30859 19.5879 2.01172C19.0684 2.79102 18.4004 3.45898 17.6582 4.01562Z" />
+                      </svg>                      
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="hover:underline group" target="_blank">
+                    <svg width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg"  class="fill-[#C3E8E3] group-hover:fill-white w-6">
+                      <path d="M8.56152 4.60742C10.8994 4.60742 12.8291 6.53711 12.8291 8.875C12.8291 11.25 10.8994 13.1426 8.56152 13.1426C6.18652 13.1426 4.29395 11.25 4.29395 8.875C4.29395 6.53711 6.18652 4.60742 8.56152 4.60742ZM8.56152 11.6582C10.083 11.6582 11.3076 10.4336 11.3076 8.875C11.3076 7.35352 10.083 6.12891 8.56152 6.12891C7.00293 6.12891 5.77832 7.35352 5.77832 8.875C5.77832 10.4336 7.04004 11.6582 8.56152 11.6582ZM13.9795 4.45898C13.9795 3.90234 13.5342 3.45703 12.9775 3.45703C12.4209 3.45703 11.9756 3.90234 11.9756 4.45898C11.9756 5.01562 12.4209 5.46094 12.9775 5.46094C13.5342 5.46094 13.9795 5.01562 13.9795 4.45898ZM16.7998 5.46094C16.874 6.83398 16.874 10.9531 16.7998 12.3262C16.7256 13.6621 16.4287 14.8125 15.4639 15.8145C14.499 16.7793 13.3115 17.0762 11.9756 17.1504C10.6025 17.2246 6.4834 17.2246 5.11035 17.1504C3.77441 17.0762 2.62402 16.7793 1.62207 15.8145C0.657227 14.8125 0.360352 13.6621 0.286133 12.3262C0.211914 10.9531 0.211914 6.83398 0.286133 5.46094C0.360352 4.125 0.657227 2.9375 1.62207 1.97266C2.62402 1.00781 3.77441 0.710938 5.11035 0.636719C6.4834 0.5625 10.6025 0.5625 11.9756 0.636719C13.3115 0.710938 14.499 1.00781 15.4639 1.97266C16.4287 2.9375 16.7256 4.125 16.7998 5.46094ZM15.0186 13.7734C15.4639 12.6973 15.3525 10.0996 15.3525 8.875C15.3525 7.6875 15.4639 5.08984 15.0186 3.97656C14.7217 3.27148 14.165 2.67773 13.46 2.41797C12.3467 1.97266 9.74902 2.08398 8.56152 2.08398C7.33691 2.08398 4.73926 1.97266 3.66309 2.41797C2.9209 2.71484 2.36426 3.27148 2.06738 3.97656C1.62207 5.08984 1.7334 7.6875 1.7334 8.875C1.7334 10.0996 1.62207 12.6973 2.06738 13.7734C2.36426 14.5156 2.9209 15.0723 3.66309 15.3691C4.73926 15.8145 7.33691 15.7031 8.56152 15.7031C9.74902 15.7031 12.3467 15.8145 13.46 15.3691C14.165 15.0723 14.7588 14.5156 15.0186 13.7734Z" />
+                      </svg>                      
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="hover:underline group" target="_blank">
+                    <svg width="21" height="15" viewBox="0 0 21 15" fill="none" xmlns="http://www.w3.org/2000/svg"  class="fill-[#C3E8E3] group-hover:fill-white w-6">
+                      <path d="M19.873 3.01367C20.3184 4.57227 20.3184 7.91211 20.3184 7.91211C20.3184 7.91211 20.3184 11.2148 19.873 12.8105C19.6504 13.7012 18.9453 14.3691 18.0918 14.5918C16.4961 15 10.1875 15 10.1875 15C10.1875 15 3.8418 15 2.24609 14.5918C1.39258 14.3691 0.6875 13.7012 0.464844 12.8105C0.0195312 11.2148 0.0195312 7.91211 0.0195312 7.91211C0.0195312 7.91211 0.0195312 4.57227 0.464844 3.01367C0.6875 2.12305 1.39258 1.41797 2.24609 1.19531C3.8418 0.75 10.1875 0.75 10.1875 0.75C10.1875 0.75 16.4961 0.75 18.0918 1.19531C18.9453 1.41797 19.6504 2.12305 19.873 3.01367ZM8.10938 10.918L13.3789 7.91211L8.10938 4.90625V10.918Z" />
+                      </svg>                 
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="hover:underline group" target="_blank">
+                    <svg width="19" height="20" viewBox="0 0 19 20" fill="none" xmlns="http://www.w3.org/2000/svg"  class="fill-[#C3E8E3] group-hover:fill-white w-6">
+                      <path d="M18.9062 9.875C18.9062 14.959 14.7871 19.0781 9.70312 19.0781C8.73828 19.0781 7.81055 18.9668 6.95703 18.6699C7.32812 18.0762 7.88477 17.0742 8.10742 16.2578C8.21875 15.8496 8.66406 14.0684 8.66406 14.0684C8.96094 14.6621 9.85156 15.1445 10.7793 15.1445C13.5625 15.1445 15.5664 12.584 15.5664 9.42969C15.5664 6.38672 13.0801 4.08594 9.88867 4.08594C5.91797 4.08594 3.80273 6.75781 3.80273 9.65234C3.80273 11.0254 4.50781 12.6953 5.6582 13.252C5.84375 13.3262 5.95508 13.2891 5.99219 13.1035C5.99219 12.9922 6.17773 12.3613 6.25195 12.0645C6.25195 11.9902 6.25195 11.8789 6.17773 11.8047C5.80664 11.3594 5.50977 10.5059 5.50977 9.68945C5.50977 7.68555 7.03125 5.71875 9.66602 5.71875C11.8926 5.71875 13.4883 7.24023 13.4883 9.4668C13.4883 11.9531 12.2266 13.6602 10.5938 13.6602C9.70312 13.6602 9.03516 12.918 9.2207 12.0273C9.48047 10.9141 10 9.72656 10 8.94727C10 8.24219 9.62891 7.64844 8.84961 7.64844C7.92188 7.64844 7.17969 8.61328 7.17969 9.875C7.17969 10.6914 7.43945 11.248 7.43945 11.248C7.43945 11.248 6.54883 15.1074 6.36328 15.8125C6.17773 16.6289 6.25195 17.7422 6.32617 18.4473C2.91211 17.1113 0.5 13.8086 0.5 9.875C0.5 4.79102 4.61914 0.671875 9.70312 0.671875C14.7871 0.671875 18.9062 4.79102 18.9062 9.875Z" />
+                      </svg>                                     
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="1xl:w-2/12 sm:w-1/3 w-full sm:mb-0 mb-4 1xl:order-2 order-3  1xl:text-left text-center">
+              <p class="font-medium 2xl:text-[20px] 1xl:text-lg text-md text-white mb-3">Home pages</p>
+              <ul class="text-white 1xl:text-lg text-md 1xl:space-y-1">
+                <li>
+                  <a href="./index-1.html" class="hover:underline">Home 1</a>
+                </li>
+                <li>
+                  <a href="./index-2.html" class="hover:underline">Home 2</a>
+                </li>
+                <li>
+                  <a href="./index-3.html" class="hover:underline">Home 3</a>
+                </li>
+              </ul>
+            </div> 
+            <div class="1xl:w-2/12 sm:w-1/3 w-full sm:mb-0 mb-4 1xl:order-3 order-4  1xl:text-left text-center">
+              <p class="font-medium 2xl:text-[20px] 1xl:text-lg text-md text-white mb-3">Other pages</p>
+              <ul class="text-white 1xl:text-lg text-md 1xl:space-y-1">
+                <li>
+                  <a href="./about.html" class="hover:underline">About</a>
+                </li>
+                <li>
+                  <a href="./projects.html" class="hover:underline">Portfolio</a>
+                </li>
+                <li>
+                  <a href="./project-detail.html" class="hover:underline">Portfolio Details</a>
+                </li>
+                <li>
+                  <a href="./services.html" class="hover:underline">Service</a>
+                </li>
+              </ul>
+            </div>
+            <div class="1xl:w-2/12 sm:w-1/3 w-full sm:mb-0 mb-4 1xl:order-4 order-5  1xl:text-left text-center">
+              <p class="font-medium 2xl:text-[20px] 1xl:text-lg text-md text-white mb-3">Other pages</p>
+              <ul class="text-white 1xl:text-lg text-md 1xl:space-y-1">
+                <li>
+                  <a href="./services-detail.html" class="hover:underline">Service Details</a>
+                </li>
+                <li>
+                  <a href="./career.html" class="hover:underline">Career</a>
+                </li>
+                <li>
+                  <a href="./contact.html" class="hover:underline">Contact us</a>
+                </li>
+              </ul>
+            </div>
+            <div class="1xl:w-3/12 lg:w-1/2  w-full 1xl:order-5 order-2 1xl:mb-0 mb-5  border-b 1xl:border-transparent border-white/20 1xl:pb-0 pb-4">
+              <a href="./index-1.html"> <img src="assets/images/logo-white.svg" alt="img" class="max-w-[150px] xl:max-w-full 1xl:mx-0 mx-auto"></a>
+                <p class="text-white 1xl:text-lg text-md mt-4 1xl:text-left text-center">© 2024 orion construction, All rights and reserves.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Newsletter Popup -->
+    <!-- link that opens popup -->
+    <a class="newsletter-popup-link hidden" href="#newsletter-popup">Newsletter Popup</a>
+    <!-- Newsletter Popup box-->
+    <div id="newsletter-popup" class="hidden mfp-hide mx-auto max-w-[850px] relative">
+      <div class="bg-white rounded-2xl relative overflow-hidden">
+        <img src="assets/images/newsletter-shape.svg" alt="newsletter-shape"
+          class="block absolute top-0 left-0 max-w-[200px] md:max-w-full">
+        <div class="flex flex-wrap items-center">
+          <div class="pt-10 md:py-6 px-10 sm:px-16 w-full sm:w-1/2 relative z-1 text-center sm:text-left">
+            <h2 class="text-2xl md:text-3xl mb-2">Our Newsletter</h2>
+            <p class="mb-6 text-dark-800">Pellentesque dignissim enim sit amet venenatis urna cursus.</p>
+            <!-- newsletter form -->
+            <form action="" class="relative">
+              <input type="email" placeholder="Email address"
+                class="form-control bg-gray-400 border border-primary-800 w-full rounded-5xl py-3 pl-6 pr-10">
+              <button type="submit"
+                class="btn btn-primary absolute top-2 right-2 w-[35px] h-[35px] p-0 max-w-full min-w-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                  <path
+                    d="M13.4095 1.3375C13.4095 0.923287 13.0737 0.587501 12.6595 0.5875L5.90948 0.587501C5.49526 0.587501 5.15948 0.923287 5.15948 1.3375C5.15948 1.75171 5.49526 2.0875 5.90948 2.0875H11.9095V8.0875C11.9095 8.50171 12.2453 8.8375 12.6595 8.8375C13.0737 8.8375 13.4095 8.50171 13.4095 8.0875L13.4095 1.3375ZM1.67877 13.3789L13.1898 1.86783L12.1291 0.807171L0.618107 12.3182L1.67877 13.3789Z"
+                    fill="currentColor" />
+                </svg>
+              </button>
+            </form>
+          </div>
+          <div class="w-full sm:w-1/2">
+            <img src="assets/images/newsletter-romantic-getaway-bro.svg" alt="newsletter img" class="block ">
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Newsletter popup -->
+    <!-- Cookei popup -->
+    <!-- link that opens popup -->
+    <a class="cookei-popup-link hidden" href="#cookei-popup">Cookei Popup</a>
+
+    <div id="cookei-popup" class="hidden mfp-hide cookei-popup mx-auto max-w-[550px] relative">
+      <div class="bg-primary-900 rounded-4xl py-6 px-5 md:px-8">
+        <div class="text-center text-white">
+          <div class="-mt-6 -ml-8">
+            <img src="assets/images/cookie-img.png" alt="cookie-img" class="block ">
+          </div>
+          <h2 class="text-2xl md:text-3xl text-white mb-5">Our Cookie policy</h2>
+          <p class="mb-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+            labore et dolore magna aliqua. Pellentesque elit ullamcorper dignissim cras tincidunt lobortis feugiat. Ac
+            odio tempor orci dapibus ultrices.</p>
+          <a href="javascript:;"
+            class="max-w-full btn bg-white text-dark-900 mb-5 hover:bg-dark-900 hover:text-white">Okay, I Agree</a>
+          <p class="text-md mb-0">I don’t want to see this anymore.</p>
+        </div>
+      </div>
+    </div>
+    <!-- End Cookei popup -->
+  </div>
+
+  <!-- Custom Libraries script js start -->
+  <!-- jquery min js file -->
+  <script src="assets/js/jquery.min.js"></script>
+  <!-- Swiper bundle js file -->
+  <script src="assets/js/swiper-bundle.min.js"></script>
+
+
+
+
+  <!-- custom script js -->
+  <script src="assets/js/alpine.min.js"></script>
+  <script src="assets/js/custom.js"></script>
+
+  <!-- Use this minifiy js for project speeded loading -->
+  <!-- <script src="assets/js/custom.min.js"></script> -->
+
+</body>
+
+</html>
