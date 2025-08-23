@@ -94,7 +94,7 @@
     font-family: "El Messiri";
   }
   .btn {
-    @apply 2xl:text-lg xl:text-base sm:text-[15px] text-sm leading-[24px] font-normal font-lexend tracking-normal xl:py-[10px] py-[8px] 1xl:px-[34px] xl:px-7 sm:px-5 px-4 inline-block;
+    @apply 2xl:text-lg xl:text-base sm:text-[15px] text-sm leading-[24px] font-normal font-lexend tracking-normal xl:py-[10px] py-[8px] 1xl:px-[34px] xl:px-7 sm:px-5 px-4 flex items-center justify-center w-fit !whitespace-nowrap;
   }
   .all-btn {
     @apply border border-primary-900 md:py-[10px] px-5 md:px-9 py-2 text-primary-900 text-md md:text-lg hover:bg-primary-900 hover:text-white inline-block;
@@ -126,7 +126,7 @@
   h4,
   h5,
   h6 {
-    @apply font-el-messiri text-black font-medium mb-4 leading-snug;
+    @apply font-el-messiri text-black font-medium leading-snug;
   }
   h1,
   .h1 {
@@ -138,20 +138,23 @@
 
   h3,
   .h3 {
-    @apply text-xl sm:text-2xl md:text-[23px] lg:text-[25px] 2xl:text-3xl;
+    @apply text-xl md:text-2xl xl:text-[25px] 2xl:text-3xl 2xl:leading-[42px] xl:leading-[36px] leading-[32px];
   }
-  h4 {
-    @apply 1xl:text-[25px] text-[22px] leading-[35px];
+  h4,
+  .h4 {
+    @apply 1xl:text-[25px] lg:text-[23px] sm:text-[22px] text-[19px] sm:leading-[35px] leading-[26px];
   }
-  h5 {
-    @apply text-base lg:text-[18px] xl:text-[20px] 2xl:text-2xl xl:leading-2xl;
+  h5,
+  .h5 {
+    @apply text-base lg:text-[17px] xl:text-[19px] 1xl:text-[20px] 2xl:text-2xl xl:leading-2xl;
   }
   h6,
   .h6 {
     @apply 2xl:text-xl 1xl:text-lg xl:text-[17px] sm:text-base text-sm;
   }
-  p {
-    @apply 2xl:text-lg 1xl:text-[17px] xl:text-base text-[15px] 2xl:!leading-8 1xl:!leading-7 xl:!leading-[26px] !leading-[25px];
+  p,
+  .p {
+    @apply 2xl:text-lg 1xl:text-[17px] xl:text-base text-[15px] 2xl:!leading-8 1xl:!leading-7 xl:!leading-[26px] sm:!leading-[25px] !leading-[23px] font-light;
   }
   .p2 {
     @apply mb-5 2xl:text-base lg:text-sm text-[13px] leading-[150%] block;
@@ -162,6 +165,11 @@
   .dropdown li a {
     @apply p-0;
   }
+
+  .faqs-list.active .service-hover-img {
+    @apply hidden;
+  }
+
   .faqs-title {
     @apply !text-lg sm:!text-2xl md:!text-[23px] lg:!text-[25px] 2xl:!text-3xl !leading-[25px];
   }
@@ -385,8 +393,32 @@
     }
 
     ul.navbar {
-      max-height: calc(100vh - 57px);
-      overflow: auto;
+      @apply max-h-[calc(100vh-57px)] overflow-auto;
+      /* max-height: calc(100vh - 57px);
+      overflow: auto; */
+    }
+
+    /* While a dropdown is open, let the dropdown capture scroll, not navbar */
+    .header.dropdown-open ul.navbar {
+      @apply overflow-hidden;
+    }
+
+    /* Ensure header dropdowns (Projects/Services/Pages) are full-screen and scrollable on mobile */
+    .navbar .dropdown-menu {
+      @apply top-0 left-0 right-0 h-screen w-full overflow-y-auto pb-[50px] transform-none;
+      -webkit-transform: none;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+
+    /* Keep back button visible while scrolling */
+    .navbar .dropdown-menu .back-btn {
+      @apply sticky top-0 z-20 bg-white;
+    }
+
+    /* Let outer dropdown capture the scroll, not inner lists */
+    .navbar .dropdown-menu ul {
+      @apply !max-h-none !overflow-visible;
     }
   }
 
@@ -413,7 +445,7 @@
   .card-types .swiper-pagination-bullet-active {
     @apply bg-white opacity-100;
   }
-  .swiper-slide-thumb-active {
+  .types .swiper-slide-thumb-active {
     @apply border-b-[3px] border-primary-900;
   }
 
@@ -455,13 +487,30 @@
   @apply 2xl:w-[42px] 2xl:h-[42px] md:w-10 md:h-10 sm:h-9 sm:w-9 w-8 h-8 opacity-0 -translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 hover:bg-primary-900 rounded-full flex items-center justify-center hover:text-white bg-white text-primary-900 transition-all duration-500 shadow-lg;
 }
 
-
 .dropdown-overlay.active {
   display: block;
 }
 body.no-scroll {
   overflow: hidden;
 }
-section{
+section {
   @apply dropdown-overlay;
+}
+/* Highlight active image */
+.client .swiper-slide-active img {
+  @apply 2xl:!w-[100px] 2xl:h-[100px] md:!w-[95px] md:h-[95px] sm:!w-[85px] sm:h-[85px] !w-[60px] h-[60px];
+}
+.client .swiper-slide-prev img,
+.client .swiper-slide-next img {
+  @apply 2xl:!w-[76px] 2xl:h-[76px] md:!w-[73px] md:h-[73px] !w-[65px] h-[65px];
+}
+.client .swiper-slide-prev {
+  @apply justify-start;
+}
+.client .swiper-slide-next {
+  @apply justify-end;
+}
+.all-testimonial .swiper-button-next:after,
+.all-testimonial .swiper-button-prev:after {
+  @apply font-semibold 2xl:text-[50px] xl:text-[45px] lg:text-[40px] md:text-[35px] sm:text-[30px] text-[23px];
 }

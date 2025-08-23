@@ -96,6 +96,23 @@
       document.addEventListener("DOMContentLoaded", () => {
         const navRight = document.querySelector(".nav-right");
         const dropdowns = document.querySelectorAll(".dropdown");
+        const headerEl = document.querySelector(".header");
+
+        dropdowns.forEach((dropdown) => {
+          const toggle = dropdown.querySelector(".dropdown-toggle");
+          // Try to find .dropdown-menu first, otherwise fallback to the first <ul>
+          const menu =
+            dropdown.querySelector(".dropdown-menu") ||
+            dropdown.querySelector("ul");
+          const backBtn = dropdown.querySelector(".back-btn");
+
+          if (backBtn && menu) {
+            backBtn.addEventListener("click", () => {
+              menu.classList.add("hidden");
+              isClickOpen = false;
+            });
+          }
+        });
 
         // Dropdown code from your first block
         function navRightSetWhite() {
@@ -127,8 +144,12 @@
           function openDropdown() {
             if (menu.classList.contains("hidden")) {
               menu.classList.remove("hidden");
+              menu.classList.add("block");
               dropdownOpenCount++;
               navRightSetWhite();
+              if (window.innerWidth < 768) {
+                headerEl?.classList.add("dropdown-open");
+              }
             }
           }
 
@@ -138,6 +159,9 @@
               dropdownOpenCount = Math.max(0, dropdownOpenCount - 1);
               if (dropdownOpenCount === 0 && !navRight.matches(":hover")) {
                 navRightRemoveWhite();
+                if (window.innerWidth < 768) {
+                  headerEl?.classList.remove("dropdown-open");
+                }
               }
             }
           }
@@ -151,6 +175,7 @@
                     d.querySelector(".dropdown-menu") || d.querySelector("ul");
                   if (m && !m.classList.contains("hidden")) {
                     m.classList.add("hidden");
+                    m.classList.remove("block");
                     dropdownOpenCount = Math.max(0, dropdownOpenCount - 1);
                   }
                 }
@@ -192,7 +217,15 @@
 
         function openSearch() {
           isSearchOpen = true;
-          navRight.classList.add("md:relative");
+          navRight.classList.add("md:relative", "bg-white");
+          // White nav while search open
+          navRight.classList.remove("bg-transparent", "!bg-transparent");
+          navRight.classList.add("bg-white", "text-black");
+          
+          navRight.querySelectorAll(".navbar > li > a").forEach((a) => {
+            a.classList.add("text-black");
+            a.classList.remove("text-white");
+          });
 
           if (mobileMenuToggle?.classList.contains("open")) {
             mobileMenuToggle.classList.remove("open", "active");
@@ -235,7 +268,7 @@
 
         function closeSearch() {
           isSearchOpen = false;
-          navRight.classList.remove("md:relative");
+          navRight.classList.remove("md:relative", "bg-white", "text-black");
 
           searchBox.classList.remove("hidden");
           searchBox.classList.add("flex");
@@ -259,6 +292,16 @@
             if (!isSearchOpen) {
               searchBox.classList.remove("flex");
               searchBox.classList.add("hidden");
+            }
+            // 👇 only remove white if searchBox is not flex
+            if (!searchBox.classList.contains("flex")) {
+              navRight.classList.remove("bg-white", "text-black");
+              navRight.classList.add("bg-transparent"); // restore original
+
+              navRight.querySelectorAll(".navbar > li > a").forEach((a) => {
+                a.classList.remove("text-black");
+                a.classList.add("text-white");
+              });
             }
           }, 300);
 
@@ -291,20 +334,24 @@
         // For example:
         $(".dropdown")
           .on("mouseenter", function () {
-            $(".nav-right").addClass("bg-white text-black");
-            $(".navbar > li > a")
-              .addClass("text-black")
-              .removeClass("text-white");
-            updateAllSVGFills();
+            // Only change background if searchbar is not open
+            if (!isSearchOpen) {
+              $(".nav-right").addClass("bg-white text-black");
+              $(".navbar > li > a")
+                .addClass("text-black")
+                .removeClass("text-white");
+              updateAllSVGFills();
+            }
           })
           .on("mouseleave", function () {
-            if ($(window).scrollTop() === 0) {
+            // Only change background if searchbar is not open and not scrolled
+            if (!isSearchOpen && $(window).scrollTop() === 0) {
               $(".nav-right").removeClass("bg-white text-black");
               $(".navbar > li > a")
                 .removeClass("text-black")
                 .addClass("text-white");
+              updateAllSVGFills();
             }
-            updateAllSVGFills();
           });
 
         // More of your event listeners, etc...
@@ -316,6 +363,15 @@
             document.querySelector(".header").classList.add("sticky-header");
           } else {
             document.querySelector(".header").classList.remove("sticky-header");
+            // If not scrolled and searchbar is not open, ensure nav-right is transparent
+            if (!isSearchOpen) {
+              navRight.classList.remove("bg-white", "text-black");
+              navRight.classList.add("bg-transparent");
+              navRight.querySelectorAll(".navbar > li > a").forEach((a) => {
+                a.classList.remove("text-black");
+                a.classList.add("text-white");
+              });
+            }
           }
           updateAllSVGFills();
         });
@@ -373,11 +429,14 @@
           ) {
             $(".dropdown-menu").addClass("hidden");
             $(".dropdown-toggle svg").css("transform", "");
-            $(".nav-right").removeClass("bg-white text-black");
-            $(".navbar > li > a")
-              .removeClass("text-black")
-              .addClass("text-white");
-            updateAllSVGFills();
+            // Only remove white background if searchbar is not open
+            if (!isSearchOpen) {
+              $(".nav-right").removeClass("bg-white text-black");
+              $(".navbar > li > a")
+                .removeClass("text-black")
+                .addClass("text-white");
+              updateAllSVGFills();
+            }
           }
         });
 
@@ -388,11 +447,41 @@
               if ($("#navbar-default").is(":visible")) {
                 $(".nav-right").addClass("bg-white text-black");
               } else {
-                $(".nav-right").removeClass("bg-white text-black");
+                // Only remove white background if searchbar is not open
+                if (!isSearchOpen) {
+                  $(".nav-right").removeClass("bg-white text-black");
+                }
               }
             }, 250);
           }
         });
+
+        // Ensure nav-right is white whenever the mobile nav has classes
+        // "w-full md:w-auto mobile-nav main-menu block open" (no structure changes)
+        const navRightEl = document.querySelector(".nav-right");
+        const enforceNavRightForMobileMenu = () => {
+          if (!navbarDefault || !navRightEl) return;
+          if (window.innerWidth >= 768) return;
+          const classes = navbarDefault.className;
+          const isOpen =
+            classes.includes("mobile-nav") &&
+            classes.includes("open") &&
+            classes.includes("block");
+          if (isOpen) {
+            navRightEl.classList.add("bg-white", "text-black");
+          } else if (!isSearchOpen) {
+            // Only remove white background if searchbar is not open
+            navRightEl.classList.remove("bg-white", "text-black");
+          }
+        };
+        enforceNavRightForMobileMenu();
+        const mo = new MutationObserver(enforceNavRightForMobileMenu);
+        if (navbarDefault) {
+          mo.observe(navbarDefault, {
+            attributes: true,
+            attributeFilter: ["class"],
+          });
+        }
       });
 
       if ($("#container").length > 0) {
@@ -426,16 +515,65 @@
      02. Slider Open JS
     ========================================*/
     slider_open: function () {
-      /* Testimonials slider */
-      var swiper = new Swiper(".testimonials-slider .mySwiper", {
-        slidesPerView: 1,
-        spaceBetween: 0,
+      // Clients (thumbnails)
+      var swiperClients = new Swiper(".client", {
         loop: true,
-        navigation: {
-          nextEl: ".testimonials-slider .swiper-button-next",
-          prevEl: ".testimonials-slider .swiper-button-prev",
+        spaceBetween: 20,
+        slidesPerView: 5,
+        centeredSlides: true,
+        centeredSlidesBounds: true,
+        slideToClickedSlide: true,
+        watchSlidesProgress: true,
+        breakpoints: {
+          0: {
+            slidesPerView: 1,
+            spaceBetween: 0,
+          },
+          640: {
+            slidesPerView: 3,
+            spaceBetween: 0,
+          },
+          992: {
+            slidesPerView: 5,
+            spaceBetween: 10,
+          },
         },
       });
+
+      // Testimonials
+      var swiperTestimonials = new Swiper(".testimonial", {
+        loop: true,
+        spaceBetween: 10,
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      });
+
+      // --- Sync both sliders ---
+      swiperTestimonials.on("slideChange", function () {
+        swiperClients.slideToLoop(swiperTestimonials.realIndex, 500, true);
+        updateClientInfo();
+      });
+
+      swiperClients.on("click", function () {
+        swiperTestimonials.slideToLoop(swiperClients.clickedIndex, 500, true);
+        updateClientInfo();
+      });
+
+      // --- Update client name & role ---
+      function updateClientInfo() {
+        let activeSlide =
+          swiperTestimonials.slides[swiperTestimonials.activeIndex];
+        let name = activeSlide.getAttribute("data-name") || "";
+        let role = activeSlide.getAttribute("data-role") || "";
+
+        document.getElementById("client-name").textContent = name;
+        document.getElementById("client-role").textContent = role;
+      }
+
+      // Initialize on load
+      updateClientInfo();
 
       /* Our Work slider */
       var swiper = new Swiper(".our-work-slider .mySwiper", {
@@ -691,22 +829,102 @@
         },
       });
 
-
-      var swiper = new Swiper(".mySwiper", {
-        spaceBetween: 10,
-        slidesPerView: 4,
-        freeMode: true,
-        watchSlidesProgress: true,
+      // Blogs cards
+      var swiper = new Swiper(".blog", {
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false,
+        },
+        breakpoints: {
+          0: {
+            slidesPerView: 1,
+            spaceBetween: 20,
+          },
+          430: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          500: {
+            slidesPerView: 2,
+            spaceBetween: 35,
+          },
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 45,
+          },
+          992: {
+            slidesPerView: 3,
+            spaceBetween: 40,
+          },
+          1199: {
+            slidesPerView: 3,
+            spaceBetween: 55,
+          },
+          1380: {
+            slidesPerView: 3,
+            spaceBetween: 64,
+          },
+          1752: {
+            slidesPerView: 3,
+            spaceBetween: 80,
+          },
+        },
       });
-      var swiper2 = new Swiper(".mySwiper2", {
-        spaceBetween: 10,
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
+
+      var swiper = new Swiper(".company-logos", {
+        slidesPerView: 6,
+        spaceBetween: 30,
+        loop: true,
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false,
         },
-        thumbs: {
-          swiper: swiper,
+        breakpoints: {
+          0: {
+            slidesPerView: 2,
+            spaceBetween: 10,
+          },
+
+          376: {
+            slidesPerView: 3,
+            spaceBetween: 30,
+          },
+          500: {
+            slidesPerView: 4,
+            spaceBetween: 30,
+          },
+          768: {
+            slidesPerView: 4,
+            spaceBetween: 30,
+          },
+          992: {
+            slidesPerView: 5,
+            spaceBetween: 50,
+          },
+          1199: {
+            slidesPerView: 6,
+            spaceBetween: 50,
+          },
+          1380: {
+            slidesPerView: 6,
+            spaceBetween: 50,
+          },
+          1752: {
+            slidesPerView: 6,
+            spaceBetween: 30,
+          },
         },
+      });
+
+
+      document.addEventListener("DOMContentLoaded", function () {
+        new Swiper(".home-2-hero", {
+          loop: true,
+          navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          },
+        });
       });
     },
 
@@ -771,27 +989,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
-
-// const hoverImage = document.getElementById("hoverImage");
-
-// document.querySelectorAll(".group").forEach((el) => {
-//   el.addEventListener("mouseenter", () => {
-//     const imgUrl = el.getAttribute("data-img");
-//     hoverImage.src = imgUrl;
-//     hoverImage.classList.add("opacity-100");
-//   });
-
-//   el.addEventListener("mouseleave", () => {
-//     hoverImage.classList.remove("opacity-100");
-//   });
-
-//   el.addEventListener("mousemove", (e) => {
-//     const section = el.closest("section");
-//     const rect = section.getBoundingClientRect();
-//     hoverImage.style.left = `${e.clientX - rect.left + 10}px`;
-//     hoverImage.style.top = `${e.clientY - rect.top + 10}px`;
-//   });
-// });
 
 const hoverImage = document.getElementById("hoverImage");
 
