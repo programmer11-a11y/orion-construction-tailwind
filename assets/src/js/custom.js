@@ -1267,8 +1267,8 @@ headerButtons.forEach((btn) => {
             // store handler so we can cancel if user re-opens quickly
             overlayEl._overlayHideHandler = onEnd;
             overlayEl.addEventListener("transitionend", onEnd);
-            // fallback in case transitionend doesn't fire
-            overlayEl._overlayHideTO = setTimeout(onEnd, 250);
+            // fallback in case transitionend doesn't fire (reduced to match faster overlay transition)
+            overlayEl._overlayHideTO = setTimeout(onEnd, 150);
           }
           headerEl?.classList.remove("dropdown-open");
         };
@@ -1289,8 +1289,14 @@ headerButtons.forEach((btn) => {
               overlayEl._overlayHideTO = null;
             }
           } catch {}
+          // Disable transition for instant hide
+          overlayEl.style.transition = "none";
           overlayEl.classList.remove("show");
           overlayEl.classList.add("hidden");
+          // Restore transition after hide (for next show animation)
+          requestAnimationFrame(() => {
+            overlayEl.style.transition = "";
+          });
           headerEl?.classList.remove("dropdown-open");
         };
 
@@ -1434,9 +1440,25 @@ headerButtons.forEach((btn) => {
         function closeDropdownMenu(menu) {
           if (!menu) return;
           if (isDesktop()) {
+            // Mark this menu as closing first
+            menu.classList.add("closing");
+
+            // Check if any OTHER menus are still open (excluding the one being closed)
+            let otherMenusOpen = false;
+            dropdowns.forEach((d) => {
+              const m = d.querySelector(".dropdown-menu") || d.querySelector("ul");
+              if (m && m !== menu && isMenuVisible(m)) {
+                otherMenusOpen = true;
+              }
+            });
+
+            // Hide overlay IMMEDIATELY if no other menus, search, or mobile menu is open
+            if (!otherMenusOpen && !isSearchOpen && !isMobileMenuOpen()) {
+              hideOverlayInstant();
+            }
+
             animateDropdown(menu, false, () => {
-              // After dropdown animation completes, update overlay state.
-              // If nothing else is open, hide overlay instantly (synced with dropdown close).
+              // After dropdown animation completes, double-check overlay state
               if (typeof updateOverlayState === "function") {
                 const stillOpen = anyMenuOpen();
                 if (!stillOpen && !isSearchOpen && !isMobileMenuOpen()) {
@@ -1446,9 +1468,6 @@ headerButtons.forEach((btn) => {
                     updateOverlayState();
                   } catch (err) {}
                 }
-              } else {
-                if (!anyMenuOpen() && !isSearchOpen && !isMobileMenuOpen())
-                  hideOverlayInstant();
               }
             });
             return;
@@ -1460,6 +1479,20 @@ headerButtons.forEach((btn) => {
             return;
           // Keep 'open' during animation; remove it at the end
           menu.classList.add("closing");
+
+          // Check if any OTHER menus are still open (excluding the one being closed)
+          let otherMenusOpen = false;
+          dropdowns.forEach((d) => {
+            const m = d.querySelector(".dropdown-menu") || d.querySelector("ul");
+            if (m && m !== menu && isMenuVisible(m)) {
+              otherMenusOpen = true;
+            }
+          });
+
+          // Hide overlay IMMEDIATELY if no other menus, search, or mobile menu is open
+          if (!otherMenusOpen && !isSearchOpen && !isMobileMenuOpen()) {
+            hideOverlayInstant();
+          }
 
           // Mobile slide-out to right if it was opened as a mobile panel
           const isMobilePanel = menu.dataset.mobilePanel === "1";
@@ -2195,8 +2228,9 @@ headerButtons.forEach((btn) => {
             headerEl.classList.add(nonStickyPositionClass);
           }
 
-          // Update nav color state
-          if (scrolled || isSearchOpen || anyMenuOpen() || isMobileMenuOpen()) {
+          // Update nav color state based on scroll, dropdown state, or hover on nav-right
+          const navRightHovered = navRight.matches(":hover");
+          if (scrolled || isSearchOpen || anyMenuOpen() || isMobileMenuOpen() || navRightHovered) {
             navRightSetWhite();
           } else {
             navRightSetTransparent();
@@ -2282,6 +2316,16 @@ headerButtons.forEach((btn) => {
           }
         }
 
+        // Add hover detection specifically for nav-right
+        navRight?.addEventListener("mouseenter", () => {
+          navRightSetWhite();
+          updateAllSVGFills?.();
+          if (typeof updateHeaderBtnState === "function")
+            updateHeaderBtnState();
+        });
+        navRight?.addEventListener("mouseleave", ensureIdleTransparent);
+
+        // Also handle header hover for consistency (optional)
         headerEl?.addEventListener("mouseenter", () => {
           navRightSetWhite();
           updateAllSVGFills?.();
@@ -2289,9 +2333,30 @@ headerButtons.forEach((btn) => {
             updateHeaderBtnState();
         });
         headerEl?.addEventListener("mouseleave", ensureIdleTransparent);
-        navRight?.addEventListener("mouseleave", ensureIdleTransparent);
         // when cursor goes onto the page overlay, treat it as leaving the header/nav
         overlayEl?.addEventListener("mouseenter", ensureIdleTransparent);
+
+        // Add continuous hover detection for nav-right
+        let navRightHoverCheckInterval;
+        function startNavRightHoverCheck() {
+          if (navRightHoverCheckInterval) return;
+          navRightHoverCheckInterval = setInterval(() => {
+            if (!navRight) return;
+            const isHovered = navRight.matches(":hover");
+            const scrolled = window.scrollY > 20;
+
+            if (scrolled || isSearchOpen || anyMenuOpen() || isMobileMenuOpen() || isHovered) {
+              navRightSetWhite();
+            } else if (!scrolled && !isSearchOpen && !anyMenuOpen() && !isMobileMenuOpen() && !isHovered) {
+              navRightSetTransparent();
+            }
+            updateAllSVGFills?.();
+            updateHeaderBtnState?.();
+          }, 100); // Check every 100ms for responsive hover detection
+        }
+
+        startNavRightHoverCheck();
+
         document.addEventListener("pointermove", () => {
           if (window.scrollY === 0 && !pointerOverHeader())
             ensureIdleTransparent();

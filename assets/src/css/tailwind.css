@@ -1039,7 +1039,7 @@ button[value="brown"] .color-block {
 
   /* Page overlay for dropdown/search/mobile-menu */
   #pageOverlay {
-    @apply fixed inset-0 bg-black/50 opacity-0 pointer-events-none transition-opacity duration-200 z-40;
+    @apply fixed inset-0 bg-black/50 opacity-0 pointer-events-none transition-opacity duration-100 z-40;
   }
   #pageOverlay.show {
     @apply opacity-100 pointer-events-auto;
