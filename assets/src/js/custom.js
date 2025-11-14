@@ -34,6 +34,7 @@
 
 ========================================*/
 // --- ELEMENTS ---
+// THEME OPTIONS
 const sidebar = document.getElementById("themeSidebar");
 const toggleBtn = document.getElementById("themeToggleBtn");
 const header = document.getElementById("mainHeader");
@@ -110,7 +111,7 @@ document.addEventListener("keydown", (e) => {
 // --- THEME COLOR LOGIC ---
 function setTheme(theme) {
   document.body.className = theme;
-  localStorage.setItem('selectedTheme', theme);
+  localStorage.setItem("selectedTheme", theme);
 
   // Toggle active state for theme buttons
   themeButtons.forEach((btn) => btn.classList.remove("active"));
@@ -146,7 +147,7 @@ headerButtons.forEach((btn) => {
     const sticky = btn.dataset.sticky === "true";
     setHeaderSticky(sticky);
     window.setHeaderSticky(sticky);
-    localStorage.setItem('headerSticky', sticky);
+    localStorage.setItem("headerSticky", sticky);
 
     // Toggle active class
     headerButtons.forEach((b) => b.classList.remove("active"));
@@ -156,25 +157,26 @@ headerButtons.forEach((btn) => {
 
 // Load saved theme and header settings on DOM ready
 document.addEventListener("DOMContentLoaded", () => {
-  const savedTheme = localStorage.getItem('selectedTheme');
-  if (savedTheme) {
-    setTheme(savedTheme);
-  }
+  const savedTheme = localStorage.getItem("selectedTheme");
+  if (savedTheme) setTheme(savedTheme);
 
-  const savedSticky = localStorage.getItem('headerSticky');
+  // --- APPLY SAVED HEADER TYPE + BUTTON STATE ---
+  const savedSticky = localStorage.getItem("headerSticky");
   if (savedSticky !== null) {
-    const sticky = savedSticky === 'true';
-    setHeaderSticky(sticky);
-    window.setHeaderSticky(sticky);
+    const sticky = savedSticky === "true";
 
-    // Set active button
-    const activeBtn = [...headerButtons].find(btn => (btn.dataset.sticky === 'true') === sticky);
-    if (activeBtn) {
-      headerButtons.forEach(b => b.classList.remove("active"));
-      activeBtn.classList.add("active");
-    }
+    // update header position
+    setHeaderSticky(sticky);
+
+    // update active class
+    headerButtons.forEach(b => b.classList.remove("active"));
+    const targetBtn = document.querySelector(
+      `.header-options button[data-sticky="${sticky}"]`
+    );
+    if (targetBtn) targetBtn.classList.add("active");
   }
 });
+
 
 (function ($) {
   journea_travel_agency = {
@@ -231,12 +233,24 @@ document.addEventListener("DOMContentLoaded", () => {
           isScrollLocked = true;
 
           // Save current scroll position
-          scrollPosition = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
+          scrollPosition =
+            window.scrollY ||
+            window.pageYOffset ||
+            document.documentElement.scrollTop;
 
           // Lock scroll using overflow hidden only (no position changes to prevent flicker)
           document.documentElement.style.overflow = "hidden";
           document.body.style.overflow = "hidden";
-          document.body.style.paddingRight = `${window.innerWidth - document.documentElement.clientWidth}px`;
+          document.body.style.paddingRight = `${
+            window.innerWidth - document.documentElement.clientWidth
+          }px`;
+
+          // Hide scrollbar completely for all browsers
+          document.documentElement.style.scrollbarWidth = "none";
+          const webkitStyle = document.createElement('style');
+          webkitStyle.id = 'hideScrollbarStyle';
+          webkitStyle.textContent = '::-webkit-scrollbar { display: none; }';
+          document.head.appendChild(webkitStyle);
         }
 
         function unlockScroll() {
@@ -249,6 +263,11 @@ document.addEventListener("DOMContentLoaded", () => {
           document.documentElement.style.overflow = "";
           document.body.style.overflow = "";
           document.body.style.paddingRight = "";
+
+          // Restore scrollbar
+          document.documentElement.style.scrollbarWidth = "";
+          const styleEl = document.getElementById('hideScrollbarStyle');
+          if (styleEl) styleEl.remove();
 
           // Restore scroll position (no flicker because we never changed position property)
           window.scrollTo(0, savedPosition);
@@ -386,12 +405,12 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         window.closeNewsletter = function () {
-          if (newsletterOverlay) {
-            newsletterOverlay.classList.add("hidden");
-            newsletterOverlay.style.pointerEvents = "none";
-          }
-          showCookiePopup(); // still locked until cookie closes
-        };
+           if (newsletterOverlay) {
+             newsletterOverlay.classList.add("hidden");
+             newsletterOverlay.style.pointerEvents = "none";
+           }
+           showCookiePopup(); // remains locked until cookie closes
+         };
 
         window.subscribeNewsletter = function (e) {
           e.preventDefault();
@@ -760,16 +779,38 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (headerEl) {
           if (headerEl.classList.contains("relative"))
-            nonStickyPositionClass = "relative";
+              nonStickyPositionClass = "relative";
           else if (headerEl.classList.contains("absolute"))
-            nonStickyPositionClass = "absolute";
+              nonStickyPositionClass = "absolute";
           else {
-            nonStickyPositionClass = "relative";
-            headerEl.classList.add("relative");
+              nonStickyPositionClass = "relative";
+              headerEl.classList.add("relative");
           }
+          
           headerEl.classList.remove("fixed", "sticky", "sticky-header");
           headerEl.classList.add("top-0", "left-0", "w-full", "z-50");
-        }
+      
+          // ----------------------------
+          // APPLY SAVED HEADER TYPE GLOBALLY
+          // ----------------------------
+          const savedSticky = localStorage.getItem("headerSticky");
+      
+          if (savedSticky !== null) {
+              const sticky = savedSticky === "true";
+              isHeaderStickyEnabled = sticky;
+      
+              if (!sticky) {
+                  headerEl.classList.remove("sticky-header", "fixed", "sticky");
+                  headerEl.classList.add(nonStickyPositionClass); // "absolute" or "relative"
+              } else {
+                  if (window.scrollY > 0) {
+                      headerEl.classList.add("sticky-header", "fixed");
+                      headerEl.classList.remove("absolute", "relative");
+                  }
+              }
+          }
+      }
+      
 
         const isDesktop = () => window.innerWidth >= 991;
         const NO_TOGGLE_CLASS = "no-toggle-color";
@@ -1215,17 +1256,27 @@ document.addEventListener("DOMContentLoaded", () => {
           }
 
           // Update SVG colors
-          document.querySelectorAll("#searchButton svg").forEach((svg) => setSVGColor(svg, color));
-          document.querySelectorAll("#menuToggle svg").forEach((svg) => setSVGColor(svg, color));
+          document
+            .querySelectorAll("#searchButton svg")
+            .forEach((svg) => setSVGColor(svg, color));
+          document
+            .querySelectorAll("#menuToggle svg")
+            .forEach((svg) => setSVGColor(svg, color));
           document.querySelectorAll(".nav-right svg").forEach((svg) => {
             if (svg.closest(".back-btn")) return;
             if (svg.closest(".dropdown-menu li.relative")) return;
             if (svg.classList.contains("dropdown-arrow")) return;
             setSVGColor(svg, color);
           });
-          document.querySelectorAll(".dropdown-svg, .dropdown .dropdown-toggle svg").forEach((svg) => setSVGColor(svg, color));
-          document.querySelectorAll(".back-btn svg").forEach((svg) => setSVGColor(svg, color));
-          document.querySelectorAll(".dropdown-menu svg, .dropdown-menu .transform").forEach((svg) => setSVGColor(svg, color));
+          document
+            .querySelectorAll(".dropdown-svg, .dropdown .dropdown-toggle svg")
+            .forEach((svg) => setSVGColor(svg, color));
+          document
+            .querySelectorAll(".back-btn svg")
+            .forEach((svg) => setSVGColor(svg, color));
+          document
+            .querySelectorAll(".dropdown-menu svg, .dropdown-menu .transform")
+            .forEach((svg) => setSVGColor(svg, color));
         }
 
         // Call updateNavColors on page load to set initial colors
@@ -1471,7 +1522,7 @@ document.addEventListener("DOMContentLoaded", () => {
             menu.style.right = "0";
             menu.style.height = "auto";
             menu.style.width = "100%";
-            menu.style.zIndex = "70";
+            menu.style.zIndex = "200";
             if (!menu.style.background) menu.style.background = "#fff";
             menu.style.transform = "translateX(100%)";
             menu.style.transition = "transform 300ms ease";
@@ -1490,7 +1541,8 @@ document.addEventListener("DOMContentLoaded", () => {
             // Check if any OTHER menus are still open (excluding the one being closed)
             let otherMenusOpen = false;
             dropdowns.forEach((d) => {
-              const m = d.querySelector(".dropdown-menu") || d.querySelector("ul");
+              const m =
+                d.querySelector(".dropdown-menu") || d.querySelector("ul");
               if (m && m !== menu && isMenuVisible(m)) {
                 otherMenusOpen = true;
               }
@@ -1527,7 +1579,8 @@ document.addEventListener("DOMContentLoaded", () => {
           // Check if any OTHER menus are still open (excluding the one being closed)
           let otherMenusOpen = false;
           dropdowns.forEach((d) => {
-            const m = d.querySelector(".dropdown-menu") || d.querySelector("ul");
+            const m =
+              d.querySelector(".dropdown-menu") || d.querySelector("ul");
             if (m && m !== menu && isMenuVisible(m)) {
               otherMenusOpen = true;
             }
@@ -2252,15 +2305,16 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         window.setHeaderSticky = function (isSticky) {
-          if (!headerEl) return;
+          localStorage.setItem("headerSticky", isSticky);
+
           isHeaderStickyEnabled = !!isSticky;
-          if (!isHeaderStickyEnabled) {
+
+          if (!isSticky) {
+            // STATIC MODE
             headerEl.classList.remove("sticky-header", "fixed", "sticky");
-            headerEl.classList.remove(
-              nonStickyPositionClass === "relative" ? "absolute" : "relative",
-            );
-            headerEl.classList.add(nonStickyPositionClass);
+            headerEl.classList.add("absolute"); // or relative
           } else {
+            // STICKY MODE
             if (window.scrollY > 0) {
               headerEl.classList.add("sticky-header", "fixed");
               headerEl.classList.remove("absolute", "relative");
@@ -2299,7 +2353,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
           // Update nav color state based on scroll, dropdown state, or hover on header
           const headerHovered = headerEl.matches(":hover");
-          if (scrolled || isSearchOpen || anyMenuOpen() || isMobileMenuOpen() || headerHovered) {
+          if (
+            scrolled ||
+            isSearchOpen ||
+            anyMenuOpen() ||
+            isMobileMenuOpen() ||
+            headerHovered
+          ) {
             navRightSetWhite();
           } else {
             navRightSetTransparent();
@@ -2414,9 +2474,21 @@ document.addEventListener("DOMContentLoaded", () => {
             const isHovered = headerEl.matches(":hover");
             const scrolled = window.scrollY > 20;
 
-            if (scrolled || isSearchOpen || anyMenuOpen() || isMobileMenuOpen() || isHovered) {
+            if (
+              scrolled ||
+              isSearchOpen ||
+              anyMenuOpen() ||
+              isMobileMenuOpen() ||
+              isHovered
+            ) {
               navRightSetWhite();
-            } else if (!scrolled && !isSearchOpen && !anyMenuOpen() && !isMobileMenuOpen() && !isHovered) {
+            } else if (
+              !scrolled &&
+              !isSearchOpen &&
+              !anyMenuOpen() &&
+              !isMobileMenuOpen() &&
+              !isHovered
+            ) {
               navRightSetTransparent();
             }
             updateAllSVGFills?.();
@@ -4099,10 +4171,21 @@ document.addEventListener("DOMContentLoaded", () => {
       function lockScroll() {
         if (isScrollLocked) return;
         isScrollLocked = true;
-        scrollPosition = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
+        scrollPosition =
+          window.scrollY ||
+          window.pageYOffset ||
+          document.documentElement.scrollTop;
         document.documentElement.style.overflow = "hidden";
         document.body.style.overflow = "hidden";
-        document.body.style.paddingRight = `${window.innerWidth - document.documentElement.clientWidth}px`;
+        document.body.style.paddingRight = `${
+          window.innerWidth - document.documentElement.clientWidth
+        }px`;
+        // Hide scrollbar completely for all browsers
+        document.documentElement.style.scrollbarWidth = "none";
+        const webkitStyle = document.createElement('style');
+        webkitStyle.id = 'hideScrollbarStylePreloader';
+        webkitStyle.textContent = '::-webkit-scrollbar { display: none; }';
+        document.head.appendChild(webkitStyle);
       }
 
       function unlockScroll() {
@@ -4111,6 +4194,10 @@ document.addEventListener("DOMContentLoaded", () => {
         document.documentElement.style.overflow = "";
         document.body.style.overflow = "";
         document.body.style.paddingRight = "";
+        // Restore scrollbar
+        document.documentElement.style.scrollbarWidth = "";
+        const styleEl = document.getElementById('hideScrollbarStylePreloader');
+        if (styleEl) styleEl.remove();
         window.scrollTo(0, scrollPosition);
       }
 
@@ -4128,7 +4215,7 @@ document.addEventListener("DOMContentLoaded", () => {
           // Start opacity fade using CSS
           preloaderEl.style.transition = "opacity 300ms ease-out";
           preloaderEl.style.opacity = "0";
-  
+
           // After fade completes, hide element, unlock scroll, and remove
           setTimeout(() => {
             preloaderEl.style.display = "none";
