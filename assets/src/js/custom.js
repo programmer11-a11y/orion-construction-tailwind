@@ -109,7 +109,8 @@ document.addEventListener("keydown", (e) => {
 
 // --- THEME COLOR LOGIC ---
 function setTheme(theme) {
-  document.documentElement.className = theme;
+  document.body.className = theme;
+  localStorage.setItem('selectedTheme', theme);
 
   // Toggle active state for theme buttons
   themeButtons.forEach((btn) => btn.classList.remove("active"));
@@ -131,7 +132,7 @@ function setHeaderSticky(sticky) {
     header.style.zIndex = "999";
   } else {
     header.classList.remove("header-sticky");
-    header.style.position = "";
+    header.style.position = "relative";
     header.style.top = "";
     header.style.left = "";
     header.style.right = "";
@@ -144,11 +145,35 @@ headerButtons.forEach((btn) => {
   btn.addEventListener("click", () => {
     const sticky = btn.dataset.sticky === "true";
     setHeaderSticky(sticky);
+    window.setHeaderSticky(sticky);
+    localStorage.setItem('headerSticky', sticky);
 
     // Toggle active class
     headerButtons.forEach((b) => b.classList.remove("active"));
     btn.classList.add("active");
   });
+});
+
+// Load saved theme and header settings on DOM ready
+document.addEventListener("DOMContentLoaded", () => {
+  const savedTheme = localStorage.getItem('selectedTheme');
+  if (savedTheme) {
+    setTheme(savedTheme);
+  }
+
+  const savedSticky = localStorage.getItem('headerSticky');
+  if (savedSticky !== null) {
+    const sticky = savedSticky === 'true';
+    setHeaderSticky(sticky);
+    window.setHeaderSticky(sticky);
+
+    // Set active button
+    const activeBtn = [...headerButtons].find(btn => (btn.dataset.sticky === 'true') === sticky);
+    if (activeBtn) {
+      headerButtons.forEach(b => b.classList.remove("active"));
+      activeBtn.classList.add("active");
+    }
+  }
 });
 
 (function ($) {
@@ -4069,7 +4094,7 @@ headerButtons.forEach((btn) => {
     Preloader_js: function () {
       // Disable scroll while preloader is active using proper scroll lock
       let scrollPosition = 0;
-      let isScrollLocked = false;
+      let isScrollLocked = true;
 
       function lockScroll() {
         if (isScrollLocked) return;
@@ -4098,21 +4123,19 @@ headerButtons.forEach((btn) => {
 
         // Wait 2 seconds, then start fade
         setTimeout(() => {
-          // Unlock scroll while preloader is still visible to prevent flicker
-          unlockScroll();
-
-          // Small delay to let scroll unlock settle
+          preloaderEl.style.willChange = "opacity";
+          preloaderEl.style.pointerEvents = "none";
+          // Start opacity fade using CSS
+          preloaderEl.style.transition = "opacity 300ms ease-out";
+          preloaderEl.style.opacity = "0";
+  
+          // After fade completes, hide element, unlock scroll, and remove
           setTimeout(() => {
-            // Start opacity fade using CSS
-            preloaderEl.style.transition = "opacity 600ms ease-out";
-            preloaderEl.style.opacity = "0";
-
-            // After fade completes, hide and remove element
-            setTimeout(() => {
-              preloaderEl.style.display = "none";
-              $preloader.remove();
-            }, 600); // Match transition duration
-          }, 50); // Small delay for smooth transition
+            preloaderEl.style.display = "none";
+            preloaderEl.style.willChange = "";
+            unlockScroll();
+            $preloader.remove();
+          }, 300); // Match transition duration
         }, 2000);
       } else {
         // If no preloader, enable scroll immediately
