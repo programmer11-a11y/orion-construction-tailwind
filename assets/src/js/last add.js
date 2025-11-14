@@ -1578,7 +1578,7 @@ headerButtons.forEach((btn) => {
             headerEl?.matches(":hover") ||
             navRight?.matches(":hover") ||
             document.querySelector(
-              ".navbar > li:hover, .dropdown:hover, .dropdown-menu:hover",
+              ".navbar > li:hover, .dropdown:hover, .dropdown-menu:hover, .logo:hover",
             )
           );
 
@@ -2196,6 +2196,18 @@ headerButtons.forEach((btn) => {
             if (typeof updateHeaderBtnState === "function")
               updateHeaderBtnState();
           });
+        }
+
+        // Also toggle nav background when hovering the logobox
+        const logoBox = document.querySelector('.logo');
+        if (logoBox) {
+          logoBox.addEventListener("mouseenter", () => {
+            navRightSetWhite();
+            updateAllSVGFills?.();
+            if (typeof updateHeaderBtnState === "function")
+              updateHeaderBtnState();
+          });
+          logoBox.addEventListener("mouseleave", ensureIdleTransparent);
         }
 
         // ---------- SVG fill updater (exposed on window) ----------

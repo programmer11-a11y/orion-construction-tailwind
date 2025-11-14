@@ -1163,12 +1163,12 @@ headerButtons.forEach((btn) => {
         updateHeaderBtnState();
         window.addEventListener("scroll", updateHeaderBtnState);
 
-        // Function to update navbar text and icon colors based on nav-right background
+        // Function to update navbar text and icon colors based on header background
         function updateNavColors() {
           if (!shouldToggleColors()) return;
-          if (!navRight) return;
+          if (!headerEl) return;
 
-          const isWhite = navRight.classList.contains("bg-white");
+          const isWhite = headerEl.classList.contains("bg-white");
           const color = isWhite ? "black" : "white";
 
           // Update navbar text colors
@@ -2272,9 +2272,9 @@ headerButtons.forEach((btn) => {
             headerEl.classList.add(nonStickyPositionClass);
           }
 
-          // Update nav color state based on scroll, dropdown state, or hover on nav-right
-          const navRightHovered = navRight.matches(":hover");
-          if (scrolled || isSearchOpen || anyMenuOpen() || isMobileMenuOpen() || navRightHovered) {
+          // Update nav color state based on scroll, dropdown state, or hover on header
+          const headerHovered = headerEl.matches(":hover");
+          if (scrolled || isSearchOpen || anyMenuOpen() || isMobileMenuOpen() || headerHovered) {
             navRightSetWhite();
           } else {
             navRightSetTransparent();
@@ -2294,18 +2294,18 @@ headerButtons.forEach((btn) => {
         // ---------- Nav background helpers ----------
         const navRightSetWhite = () => {
           if (!shouldToggleColors()) return;
-          if (!navRight) return;
-          navRight.classList.add("bg-white");
-          navRight.classList.remove("bg-transparent");
+          if (!headerEl) return;
+          headerEl.classList.add("bg-white");
+          headerEl.classList.remove("bg-transparent");
           // Update colors using the new function
           updateNavColors();
         };
 
         const navRightSetTransparent = () => {
           if (!shouldToggleColors()) return;
-          if (!navRight) return;
-          navRight.classList.remove("bg-white");
-          navRight.classList.add("bg-transparent");
+          if (!headerEl) return;
+          headerEl.classList.remove("bg-white");
+          headerEl.classList.add("bg-transparent");
           // Update colors using the new function
           updateNavColors();
         };
@@ -2380,13 +2380,13 @@ headerButtons.forEach((btn) => {
         // when cursor goes onto the page overlay, treat it as leaving the header/nav
         overlayEl?.addEventListener("mouseenter", ensureIdleTransparent);
 
-        // Add continuous hover detection for nav-right
-        let navRightHoverCheckInterval;
-        function startNavRightHoverCheck() {
-          if (navRightHoverCheckInterval) return;
-          navRightHoverCheckInterval = setInterval(() => {
-            if (!navRight) return;
-            const isHovered = navRight.matches(":hover");
+        // Add continuous hover detection for header
+        let headerHoverCheckInterval;
+        function startHeaderHoverCheck() {
+          if (headerHoverCheckInterval) return;
+          headerHoverCheckInterval = setInterval(() => {
+            if (!headerEl) return;
+            const isHovered = headerEl.matches(":hover");
             const scrolled = window.scrollY > 20;
 
             if (scrolled || isSearchOpen || anyMenuOpen() || isMobileMenuOpen() || isHovered) {
@@ -2399,7 +2399,7 @@ headerButtons.forEach((btn) => {
           }, 100); // Check every 100ms for responsive hover detection
         }
 
-        startNavRightHoverCheck();
+        startHeaderHoverCheck();
 
         document.addEventListener("pointermove", () => {
           if (window.scrollY === 0 && !pointerOverHeader())
@@ -4064,12 +4064,32 @@ headerButtons.forEach((btn) => {
     popup_open: function () {},
 
     /*======================================
-     04. Preloader JS
+      04. Preloader JS
     ========================================*/
     Preloader_js: function () {
-      // Disable scroll while preloader is active
-      const scrollY = window.scrollY;
-      $("html").addClass("no-scroll");
+      // Disable scroll while preloader is active using proper scroll lock
+      let scrollPosition = 0;
+      let isScrollLocked = false;
+
+      function lockScroll() {
+        if (isScrollLocked) return;
+        isScrollLocked = true;
+        scrollPosition = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
+        document.documentElement.style.overflow = "hidden";
+        document.body.style.overflow = "hidden";
+        document.body.style.paddingRight = `${window.innerWidth - document.documentElement.clientWidth}px`;
+      }
+
+      function unlockScroll() {
+        if (!isScrollLocked) return;
+        isScrollLocked = false;
+        document.documentElement.style.overflow = "";
+        document.body.style.overflow = "";
+        document.body.style.paddingRight = "";
+        window.scrollTo(0, scrollPosition);
+      }
+
+      lockScroll();
 
       const $preloader = $(".preloader");
 
@@ -4078,24 +4098,25 @@ headerButtons.forEach((btn) => {
 
         // Wait 2 seconds, then start fade
         setTimeout(() => {
-          // Step 1: Remove scroll lock FIRST (while preloader still visible)
-          $("html").removeClass("no-scroll");
+          // Unlock scroll while preloader is still visible to prevent flicker
+          unlockScroll();
 
-          // Step 2: Small delay to let scroll unlock settle
+          // Small delay to let scroll unlock settle
           setTimeout(() => {
-            // Step 3: Start opacity fade using CSS
+            // Start opacity fade using CSS
             preloaderEl.style.transition = "opacity 600ms ease-out";
             preloaderEl.style.opacity = "0";
 
-            // Step 4: After fade completes, remove element
+            // After fade completes, hide and remove element
             setTimeout(() => {
+              preloaderEl.style.display = "none";
               $preloader.remove();
-            }, 650); // Slightly longer than transition time
-          }, 100); // Allow scroll unlock to settle
+            }, 600); // Match transition duration
+          }, 50); // Small delay for smooth transition
         }, 2000);
       } else {
         // If no preloader, enable scroll immediately
-        $("html").removeClass("no-scroll");
+        unlockScroll();
       }
     },
 
