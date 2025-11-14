@@ -1,25 +1,27 @@
 {
-  "name": "orion-construction",
+  "name": "orion-2.0",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "cross-env TAILWIND_MODE=WATCH postcss tailwind.css -o ./layouts/assets/css/styles.css -w --verbose",
-    "build": "cross-env NODE_ENV=production postcss tailwind.css -o ./layouts/assets/css/styles.css"
+    "dev": "npx concurrently \"npm:tailwind:watch\" \"npm:merge:watch\"",
+    "build": "npm run tailwind:build && npm run merge:build",
+    "tailwind:watch": "npx tailwindcss -i ./assets/src/css/tailwind.css -o ./assets/src/css/temp-output.css --watch",
+    "tailwind:build": "npx tailwindcss -i ./assets/src/css/tailwind.css -o ./assets/src/css/temp-output.css --minify",
+    "merge:watch": "npx shx echo 'Watching CSS...' && npx shx cat ./assets/src/css/swiper-bundle.css ./assets/src/css/temp-output.css > ./assets/src/css/output.css && npx shx watch ' ./assets/src/css/temp-output.css ' ' npx shx cat ./assets/src/css/swiper-bundle.css ./assets/src/css/temp-output.css > ./assets/src/css/output.css '",
+    "merge:build": "npx shx cat ./assets/src/css/swiper-bundle.css ./assets/src/css/temp-output.css > ./assets/src/css/output.css && npx shx rm ./assets/src/css/temp-output.css"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "autoprefixer": "^10.4.14",
-    "postcss": "^8.4.21",
-    "postcss-cli": "^10.1.0",
-    "tailwindcss": "^3.3.1"
-  },
   "dependencies": {
-    "@tailwindcss/typography": "^0.5.9",
-    "cross-env": "^7.0.3",
-    "cssnano": "^6.0.0",
-    "swiper": "^11.2.10"
+    "@tailwindcss/cli": "^4.1.12",
+    "aos": "^2.3.4",
+    "swiper": "^12.0.3",
+    "tailwindcss": "^4.1.12"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0",
+    "shx": "^0.4.0"
   }
 }
