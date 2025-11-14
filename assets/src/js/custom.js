@@ -199,21 +199,34 @@ headerButtons.forEach((btn) => {
 
         // --- Scroll Lock Helpers ---
         let scrollPosition = 0;
+        let isScrollLocked = false;
 
         function lockScroll() {
-          scrollPosition = window.scrollY;
-          document.body.style.position = "fixed";
-          document.body.style.top = `-${scrollPosition}px`;
-          document.body.style.width = "100%";
+          if (isScrollLocked) return;
+          isScrollLocked = true;
+
+          // Save current scroll position
+          scrollPosition = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
+
+          // Lock scroll using overflow hidden only (no position changes to prevent flicker)
+          document.documentElement.style.overflow = "hidden";
           document.body.style.overflow = "hidden";
+          document.body.style.paddingRight = `${window.innerWidth - document.documentElement.clientWidth}px`;
         }
 
         function unlockScroll() {
-          document.body.style.position = "";
-          document.body.style.top = "";
-          document.body.style.width = "";
+          if (!isScrollLocked) return;
+          isScrollLocked = false;
+
+          const savedPosition = scrollPosition;
+
+          // Remove scroll lock
+          document.documentElement.style.overflow = "";
           document.body.style.overflow = "";
-          window.scrollTo(0, scrollPosition);
+          document.body.style.paddingRight = "";
+
+          // Restore scroll position (no flicker because we never changed position property)
+          window.scrollTo(0, savedPosition);
         }
 
         // --- Accordion Smooth Transition ---
@@ -515,12 +528,18 @@ headerButtons.forEach((btn) => {
           if (cookieOverlay) {
             cookieOverlay.classList.add("opacity-0");
             cookieOverlay.style.pointerEvents = "none";
+
+            // Wait for fade animation to complete before hiding and unlocking scroll
             setTimeout(() => {
               cookieOverlay.classList.add("hidden");
-              unlockScroll(); // unlock scroll after cookie popup closes
               resetAccordions();
               cookieOverlay.style.pointerEvents = "none";
-            }, 300);
+
+              // Unlock scroll after popup is fully hidden
+              setTimeout(() => {
+                unlockScroll();
+              }, 50); // Small additional delay to ensure smooth transition
+            }, 350); // Match CSS transition duration
           }
         };
 
@@ -1603,10 +1622,19 @@ headerButtons.forEach((btn) => {
             dropdown.querySelector("ul");
           if (!toggle || !menu) return;
 
+          // Hover: delayed open to prevent accidental triggers when cursor moves quickly
+          let hoverOpenTimer = null;
+
           // Click: open/close this menu, but first close others immediately
           toggle.addEventListener("click", (e) => {
             e.preventDefault();
             e.stopPropagation();
+
+            // Cancel any pending hover timer
+            if (hoverOpenTimer) {
+              clearTimeout(hoverOpenTimer);
+              hoverOpenTimer = null;
+            }
 
             const wasOpen = isMenuVisible(menu);
             // close others immediately
@@ -1627,23 +1655,39 @@ headerButtons.forEach((btn) => {
             updateDropdownToggleColors();
             updateHeaderBtnState?.();
           });
-
-          // Hover: immediate close others and open this
           dropdown.addEventListener("pointerenter", () => {
             if (!isDesktop()) return;
-            // Immediately close others and open this
-            closeAllDropdowns(menu);
-            openDropdownMenu(menu);
-            navRightSetWhite();
-            showOverlay();
-            updateAllSVGFills();
-            updateDropdownToggleColors();
-            updateHeaderBtnState?.();
+
+            // Clear any existing timer
+            if (hoverOpenTimer) {
+              clearTimeout(hoverOpenTimer);
+              hoverOpenTimer = null;
+            }
+
+            // Add delay before opening (prevents accidental opening when cursor moves quickly from address bar)
+            hoverOpenTimer = setTimeout(() => {
+              // Close others and open this
+              closeAllDropdowns(menu);
+              openDropdownMenu(menu);
+              navRightSetWhite();
+              showOverlay();
+              updateAllSVGFills();
+              updateDropdownToggleColors();
+              updateHeaderBtnState?.();
+              hoverOpenTimer = null;
+            }, 200); // 200ms delay - enough to prevent accidental hovers
           });
 
-          // Leave: close this menu
+          // Leave: close this menu and cancel any pending open timer
           dropdown.addEventListener("pointerleave", () => {
             if (!isDesktop()) return;
+
+            // Cancel pending open timer if cursor leaves before delay completes
+            if (hoverOpenTimer) {
+              clearTimeout(hoverOpenTimer);
+              hoverOpenTimer = null;
+            }
+
             // Close this one immediately
             closeDropdownMenu(menu);
             removeNavWhiteIfNoSearch();
@@ -4024,15 +4068,31 @@ headerButtons.forEach((btn) => {
     ========================================*/
     Preloader_js: function () {
       // Disable scroll while preloader is active
+      const scrollY = window.scrollY;
       $("html").addClass("no-scroll");
 
       const $preloader = $(".preloader");
 
       if ($preloader.length) {
-        // If preloader exists, fade it out
-        $preloader.delay(2000).fadeOut("slow", function () {
+        const preloaderEl = $preloader[0];
+
+        // Wait 2 seconds, then start fade
+        setTimeout(() => {
+          // Step 1: Remove scroll lock FIRST (while preloader still visible)
           $("html").removeClass("no-scroll");
-        });
+
+          // Step 2: Small delay to let scroll unlock settle
+          setTimeout(() => {
+            // Step 3: Start opacity fade using CSS
+            preloaderEl.style.transition = "opacity 600ms ease-out";
+            preloaderEl.style.opacity = "0";
+
+            // Step 4: After fade completes, remove element
+            setTimeout(() => {
+              $preloader.remove();
+            }, 650); // Slightly longer than transition time
+          }, 100); // Allow scroll unlock to settle
+        }, 2000);
       } else {
         // If no preloader, enable scroll immediately
         $("html").removeClass("no-scroll");
