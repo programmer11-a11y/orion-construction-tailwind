@@ -169,14 +169,13 @@ document.addEventListener("DOMContentLoaded", () => {
     setHeaderSticky(sticky);
 
     // update active class
-    headerButtons.forEach(b => b.classList.remove("active"));
+    headerButtons.forEach((b) => b.classList.remove("active"));
     const targetBtn = document.querySelector(
-      `.header-options button[data-sticky="${sticky}"]`
+      `.header-options button[data-sticky="${sticky}"]`,
     );
     if (targetBtn) targetBtn.classList.add("active");
   }
 });
-
 
 (function ($) {
   journea_travel_agency = {
@@ -247,9 +246,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
           // Hide scrollbar completely for all browsers
           document.documentElement.style.scrollbarWidth = "none";
-          const webkitStyle = document.createElement('style');
-          webkitStyle.id = 'hideScrollbarStyle';
-          webkitStyle.textContent = '::-webkit-scrollbar { display: none; }';
+          const webkitStyle = document.createElement("style");
+          webkitStyle.id = "hideScrollbarStyle";
+          webkitStyle.textContent = "::-webkit-scrollbar { display: none; }";
           document.head.appendChild(webkitStyle);
         }
 
@@ -266,7 +265,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
           // Restore scrollbar
           document.documentElement.style.scrollbarWidth = "";
-          const styleEl = document.getElementById('hideScrollbarStyle');
+          const styleEl = document.getElementById("hideScrollbarStyle");
           if (styleEl) styleEl.remove();
 
           // Restore scroll position (no flicker because we never changed position property)
@@ -405,12 +404,12 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         window.closeNewsletter = function () {
-           if (newsletterOverlay) {
-             newsletterOverlay.classList.add("hidden");
-             newsletterOverlay.style.pointerEvents = "none";
-           }
-           showCookiePopup(); // remains locked until cookie closes
-         };
+          if (newsletterOverlay) {
+            newsletterOverlay.classList.add("hidden");
+            newsletterOverlay.style.pointerEvents = "none";
+          }
+          showCookiePopup(); // remains locked until cookie closes
+        };
 
         window.subscribeNewsletter = function (e) {
           e.preventDefault();
@@ -779,38 +778,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (headerEl) {
           if (headerEl.classList.contains("relative"))
-              nonStickyPositionClass = "relative";
+            nonStickyPositionClass = "relative";
           else if (headerEl.classList.contains("absolute"))
-              nonStickyPositionClass = "absolute";
+            nonStickyPositionClass = "absolute";
           else {
-              nonStickyPositionClass = "relative";
-              headerEl.classList.add("relative");
+            nonStickyPositionClass = "relative";
+            headerEl.classList.add("relative");
           }
-          
+
           headerEl.classList.remove("fixed", "sticky", "sticky-header");
           headerEl.classList.add("top-0", "left-0", "w-full", "z-50");
-      
+
           // ----------------------------
           // APPLY SAVED HEADER TYPE GLOBALLY
           // ----------------------------
           const savedSticky = localStorage.getItem("headerSticky");
-      
+
           if (savedSticky !== null) {
-              const sticky = savedSticky === "true";
-              isHeaderStickyEnabled = sticky;
-      
-              if (!sticky) {
-                  headerEl.classList.remove("sticky-header", "fixed", "sticky");
-                  headerEl.classList.add(nonStickyPositionClass); // "absolute" or "relative"
-              } else {
-                  if (window.scrollY > 0) {
-                      headerEl.classList.add("sticky-header", "fixed");
-                      headerEl.classList.remove("absolute", "relative");
-                  }
+            const sticky = savedSticky === "true";
+            isHeaderStickyEnabled = sticky;
+
+            if (!sticky) {
+              headerEl.classList.remove("sticky-header", "fixed", "sticky");
+              headerEl.classList.add(nonStickyPositionClass); // "absolute" or "relative"
+            } else {
+              if (window.scrollY > 0) {
+                headerEl.classList.add("sticky-header", "fixed");
+                headerEl.classList.remove("absolute", "relative");
               }
+            }
           }
-      }
-      
+        }
 
         const isDesktop = () => window.innerWidth >= 991;
         const NO_TOGGLE_CLASS = "no-toggle-color";
@@ -4182,9 +4180,9 @@ document.addEventListener("DOMContentLoaded", () => {
         }px`;
         // Hide scrollbar completely for all browsers
         document.documentElement.style.scrollbarWidth = "none";
-        const webkitStyle = document.createElement('style');
-        webkitStyle.id = 'hideScrollbarStylePreloader';
-        webkitStyle.textContent = '::-webkit-scrollbar { display: none; }';
+        const webkitStyle = document.createElement("style");
+        webkitStyle.id = "hideScrollbarStylePreloader";
+        webkitStyle.textContent = "::-webkit-scrollbar { display: none; }";
         document.head.appendChild(webkitStyle);
       }
 
@@ -4196,7 +4194,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.body.style.paddingRight = "";
         // Restore scrollbar
         document.documentElement.style.scrollbarWidth = "";
-        const styleEl = document.getElementById('hideScrollbarStylePreloader');
+        const styleEl = document.getElementById("hideScrollbarStylePreloader");
         if (styleEl) styleEl.remove();
         window.scrollTo(0, scrollPosition);
       }
@@ -4435,21 +4433,28 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// contact form validations and intl-tel-input for country flag dropdown menu
+// contact form validations and intl-tel-input for country flag dropdown menu ===========================
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("contactForm");
-  // Expose contact form validators for reuse (newsletter, etc.)
+  if (!form) return;
+
+  // Expose validation helpers for other modules if needed
   window.contactValidateField = validateField;
   window.contactShowError = showError;
   window.contactClearError = clearError;
-  if (!form) return;
+
   const submitBtn = form.querySelector('button[type="submit"]');
   const successMessage = document.getElementById("successMessage");
-  const fileInput = document.getElementById("fileUpload");
+
+  // Keep these DOM refs (will also be used inside the unified manager)
+  const fileUpload = document.getElementById("fileUpload");
   const uploadButton = document.getElementById("uploadButton");
   const fileLabel = document.getElementById("fileLabel");
   const dropArea = document.getElementById("dropArea");
 
+  // -------------------------
+  // Validation rules & labels
+  // -------------------------
   const validationRules = {
     fullName: {
       required: true,
@@ -4498,7 +4503,7 @@ document.addEventListener("DOMContentLoaded", () => {
       required: true,
       message: "Please Select Your Experience",
     },
-    fileInput: { required: true, message: "No file uploaded" },
+    // single entry for fileUpload
     fileUpload: { required: true, message: "No file uploaded" },
   };
 
@@ -4513,152 +4518,61 @@ document.addEventListener("DOMContentLoaded", () => {
     budget: "Budget",
     message: "Message",
     experience: "Experience",
-    fileInput: "File Upload",
     fileUpload: "File Upload",
   };
 
-  // Open native file dialog when custom button clicked
-  if (uploadButton && fileInput) {
-    uploadButton.addEventListener("click", (e) => {
-      e.preventDefault();
-      fileInput.click();
-    });
-  }
+  // -------------------------
+  // Helper used by other file inputs (not the main fileUpload)
+  // -------------------------
+  // This function updates a label element for file inputs OTHER than the main
+  // contact page drop area. We DO NOT use it for #fileUpload drop area to avoid conflicts.
+  function updateFileLabelForStandalone(input) {
+    try {
+      const lbl = (input && input.dataset && input.dataset.labelId)
+        ? document.getElementById(input.dataset.labelId)
+        : null;
+      if (!lbl) return;
 
-  // Show uploaded file names
-  function updateFileLabel() {
-    if (fileInput && fileLabel) {
-      if (fileInput.files.length > 0) {
-        const names = Array.from(fileInput.files)
-          .map((f) => f.name)
-          .join(", ");
-        fileLabel.textContent = names;
+      if (input.files && input.files.length > 0) {
+        const names = Array.from(input.files).map((f) => f.name).join(", ");
+        lbl.textContent = names;
       } else {
-        fileLabel.textContent = "Drop files here or Select Files";
+        lbl.textContent = "No File Choosen";
       }
+    } catch (err) {
+      // fail silently
     }
   }
 
-  // Add validation for both fileInput (careers.html) and fileUpload (contact-us.html)
+  // Attach change handler for OTHER file inputs on the page (if any).
+  // Skip the main #fileUpload (we use unified manager there).
   const allFileInputs = form.querySelectorAll('input[type="file"]');
   allFileInputs.forEach((input) => {
+    if (input.id === "fileUpload") return; // skip main unified manager
     input.addEventListener("change", () => {
-      updateFileLabel();
-      const fieldName = input.name; // This will be either "fileInput" or "fileUpload"
-      const validation = validateField(fieldName, undefined, input);
-      console.log(`File input validation for ${fieldName}:`, validation);
-      if (validation.isValid) {
-        clearError(input);
-      } else {
-        console.log(`Showing error for ${fieldName}:`, validation.message);
-        showError(input, validation.message);
-      }
+      updateFileLabelForStandalone(input);
+      // run validation for this input if any rule exists
+      const validation = validateField(input.name, undefined, input);
+      if (validation.isValid) clearError(input);
+      else showError(input, validation.message);
     });
   });
 
-  // DRAG & DROP FUNCTIONALITY
-  if (dropArea && fileInput) {
-    ["dragenter", "dragover"].forEach((eventName) => {
-      dropArea.addEventListener(
-        eventName,
-        (e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          dropArea.classList.add("bg-gray-100");
-        },
-        false,
-      );
-    });
-
-    ["dragleave", "drop"].forEach((eventName) => {
-      dropArea.addEventListener(
-        eventName,
-        (e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          dropArea.classList.remove("bg-gray-100");
-        },
-        false,
-      );
-    });
-
-    dropArea.addEventListener("drop", (e) => {
-      if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
-        fileInput.files = e.dataTransfer.files;
-        updateFileLabel();
-        const fieldName = fileInput.name; // This will be either "fileInput" or "fileUpload"
-        const validation = validateField(fieldName, undefined, fileInput);
-        if (validation.isValid) {
-          clearError(fileInput);
-        } else {
-          showError(fileInput, validation.message);
-        }
-        e.dataTransfer.clearData();
-      }
-    });
-  }
-
-  // Helper: find visible wrapper for file input (the dashed-border div)
-  function findFileWrapper(input) {
-    // Look for different wrapper structures
-    const col = input.closest(".col-span-2");
-    if (col) {
-      return col.querySelector("div.border") || input.parentElement;
-    }
-
-    // For careers.html structure, look for the direct parent with border class
-    const parentWithBorder = input.closest("div[class*='border']");
-    if (parentWithBorder) {
-      return parentWithBorder;
-    }
-
-    // Fallback to parent element
-    return input.parentElement;
-  }
-
-  // Helper: find error message element for file inputs
-  function findFileErrorElement(input) {
-    // Try multiple strategies to find the error message
-    let errorElement = null;
-
-    // Strategy 1: Look in the same container as the input
-    const container = input.closest("div");
-    if (container) {
-      errorElement = container.querySelector(".error-message");
-    }
-
-    // Strategy 2: Look in parent elements
-    if (!errorElement) {
-      let parent = input.parentElement;
-      while (parent && !errorElement) {
-        errorElement = parent.querySelector(".error-message");
-        parent = parent.parentElement;
-      }
-    }
-
-    // Strategy 3: Look for any error message in the form
-    if (!errorElement) {
-      errorElement = form.querySelector(".error-message");
-    }
-
-    console.log(`Finding error element for ${input.name}:`, errorElement);
-    return errorElement;
-  }
-
+  // -------------------------
+  // Validation functions
+  // -------------------------
   function validateField(fieldName, value, input) {
     const rules = validationRules[fieldName];
     if (!rules) return { isValid: true };
     const label = fieldLabels[fieldName] || fieldName;
 
     // Check if field has 'required' attribute in HTML
-    const isRequiredInHTML = input && input.hasAttribute("required");
+    const isRequiredInHTML = input && input.hasAttribute && input.hasAttribute("required");
 
-    // If field doesn't have 'required' attribute, don't validate required rules
+    // If input present but not marked required in HTML, skip required checks
     if (input && !isRequiredInHTML && rules.required) {
-      // Skip required validation if field doesn't have required attribute
-      // Only validate other rules (pattern, minLength, etc.)
+      // Only validate pattern/minLength if value exists
       if (value && value.trim()) {
-        // Only validate pattern/minLength if there's a value
         if (rules.minLength && value.trim().length < rules.minLength)
           return { isValid: false, message: rules.message };
         if (rules.pattern && !rules.pattern.test(value.trim()))
@@ -4667,14 +4581,15 @@ document.addEventListener("DOMContentLoaded", () => {
       return { isValid: true };
     }
 
+    // File input handling
     if (input && input.type === "file") {
-      if (rules.required && isRequiredInHTML && input.files.length === 0) {
+      if (rules.required && isRequiredInHTML && (!input.files || input.files.length === 0)) {
         return { isValid: false, message: rules.message };
       }
       return { isValid: true };
     }
 
-    // Special handling for phone fields with intlTelInput
+    // Phone (intlTelInput)
     if (fieldName === "phone" && input) {
       const iti = window.intlTelInputGlobals?.getInstance(input);
       if (iti) {
@@ -4684,7 +4599,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         return { isValid: true };
       } else {
-        // Fallback for when intlTelInput is not initialized
         if (isRequiredInHTML && (!value || !value.trim())) {
           return { isValid: false, message: rules.message };
         }
@@ -4701,39 +4615,54 @@ document.addEventListener("DOMContentLoaded", () => {
     return { isValid: true };
   }
 
+  // Helper to find wrapper for file input to style borders
+  function findFileWrapper(input) {
+    if (!input) return null;
+    const col = input.closest(".col-span-2");
+    if (col) {
+      return col.querySelector("div.border") || input.parentElement;
+    }
+    const parentWithBorder = input.closest("div[class*='border']");
+    if (parentWithBorder) return parentWithBorder;
+    return input.parentElement;
+  }
+
+  // Helper to find the error message element for inputs
+  function findFileErrorElement(input) {
+    if (!input) return null;
+    let errorElement = null;
+    const container = input.closest("div");
+    if (container) errorElement = container.querySelector(".error-message");
+
+    if (!errorElement) {
+      let parent = input.parentElement;
+      while (parent && !errorElement) {
+        errorElement = parent.querySelector(".error-message");
+        parent = parent.parentElement;
+      }
+    }
+
+    if (!errorElement) {
+      errorElement = form.querySelector(".error-message");
+    }
+    return errorElement;
+  }
+
+  // Show error for any input (file or non-file)
   function showError(input, message) {
     if (!input) return;
 
     if (input.type === "file") {
-      // Try to find the wrapper - could be different structures
-      let wrapper = findFileWrapper(input);
-      if (!wrapper) {
-        // Fallback: look for parent div with border class
-        wrapper = input.parentElement;
-      }
-
+      let wrapper = findFileWrapper(input) || input.parentElement;
       if (wrapper) {
-        wrapper.classList.remove(
-          "border-dashed",
-          "border-black",
-          "focus:border-primary-900",
-        );
-        wrapper.classList.add(
-          "border",
-          "border-red-500",
-          "shadow-[0_0_10px_0_#D21C1C26]",
-        );
+        wrapper.classList.remove("border-dashed", "border-black", "focus:border-primary-900");
+        wrapper.classList.add("border", "border-red-500", "shadow-[0_0_10px_0_#D21C1C26]");
         wrapper.style.borderStyle = "solid";
       }
-
-      // Use the specialized helper function for file inputs
       const errorElement = findFileErrorElement(input);
-
       if (errorElement) {
         const errorText = errorElement.querySelector(".error-text");
-        if (errorText) {
-          errorText.textContent = message;
-        }
+        if (errorText) errorText.textContent = message;
         errorElement.classList.remove("opacity-0", "hidden", "invisible");
         errorElement.classList.add("opacity-100", "flex");
       }
@@ -4741,27 +4670,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     input.classList.add("border-red-500", "shadow-[0_0_10px_0_#D21C1C26]");
-
-    // Look for error message in different possible locations
-    let errorElement = input.parentNode?.querySelector(".error-message");
-    if (!errorElement) {
-      errorElement = input.parentElement?.querySelector(".error-message");
-    }
-    if (!errorElement) {
-      errorElement = input
-        .closest(".relative, .form-group")
-        ?.querySelector(".error-message");
-    }
-    if (!errorElement) {
-      errorElement = input.closest("div")?.querySelector(".error-message");
-    }
+    let errorElement =
+      input.parentNode?.querySelector(".error-message") ||
+      input.parentElement?.querySelector(".error-message") ||
+      input.closest(".relative, .form-group")?.querySelector(".error-message") ||
+      input.closest("div")?.querySelector(".error-message");
 
     if (errorElement) {
       const errorText = errorElement.querySelector(".error-text");
-      if (errorText) {
-        errorText.textContent = message;
-      }
-
+      if (errorText) errorText.textContent = message;
       errorElement.classList.remove("hidden", "opacity-0", "invisible");
       errorElement.classList.add("opacity-100", "flex");
     }
@@ -4771,77 +4688,54 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!input) return;
 
     if (input.type === "file") {
-      // Try to find the wrapper - could be different structures
-      let wrapper = findFileWrapper(input);
-      if (!wrapper) {
-        // Fallback: look for parent div with border class
-        wrapper = input.parentElement;
-      }
-
+      let wrapper = findFileWrapper(input) || input.parentElement;
       if (wrapper) {
-        wrapper.classList.remove(
-          "border-red-500",
-          "shadow-[0_0_10px_0_#D21C1C26]",
-        );
-        wrapper.classList.add(
-          "border",
-          "border-black",
-          "focus:border-primary-900",
-        );
+        wrapper.classList.remove("border-red-500", "shadow-[0_0_10px_0_#D21C1C26]");
+        wrapper.classList.add("border", "border-black", "focus:border-primary-900");
         wrapper.style.borderStyle = "solid";
       }
 
-      // Use the specialized helper function for file inputs
       const errorElement = findFileErrorElement(input);
-
       if (errorElement) {
         const errorText = errorElement.querySelector(".error-text");
-        if (errorText) {
-          errorText.textContent = "";
-        }
+        if (errorText) errorText.textContent = "";
         errorElement.classList.add("opacity-0", "invisible");
         errorElement.classList.remove("opacity-100");
       }
 
-      if (input.files.length === 0 && fileLabel) {
-        fileLabel.textContent = "No File Choosen";
+      if ((!input.files || input.files.length === 0) && fileLabel) {
+        // For contact/enquiry page preference
+        if (window.location.pathname.includes("contact") || window.location.pathname.includes("enquiry")) {
+          fileLabel.textContent = "No File Choosen";
+        } else {
+          fileLabel.textContent = "Drop files here or Select Files";
+        }
       }
       return;
     }
 
     input.classList.remove("border-red-500", "shadow-[0_0_10px_0_#D21C1C26]");
-
-    // Look for error message in different possible locations
-    let errorElement = input.parentNode?.querySelector(".error-message");
-    if (!errorElement) {
-      errorElement = input.parentElement?.querySelector(".error-message");
-    }
-    if (!errorElement) {
-      errorElement = input
-        .closest(".relative, .form-group")
-        ?.querySelector(".error-message");
-    }
-    if (!errorElement) {
-      errorElement = input.closest("div")?.querySelector(".error-message");
-    }
+    let errorElement =
+      input.parentNode?.querySelector(".error-message") ||
+      input.parentElement?.querySelector(".error-message") ||
+      input.closest(".relative, .form-group")?.querySelector(".error-message") ||
+      input.closest("div")?.querySelector(".error-message");
 
     if (errorElement) {
       const errorText = errorElement.querySelector(".error-text");
-      if (errorText) {
-        errorText.textContent = "";
-      }
+      if (errorText) errorText.textContent = "";
       errorElement.classList.add("opacity-0", "invisible");
       errorElement.classList.remove("opacity-100");
     }
   }
 
-  // Validate on blur / input (text fields)
+  // -------------------------
+  // Validate text/textarea on blur/input
+  // -------------------------
   form.querySelectorAll("input:not([type=file]), textarea").forEach((input) => {
     input.addEventListener("blur", () => {
-      // Only validate if field is required or has a value
       const isRequiredInHTML = input.hasAttribute("required");
       const hasValue = input.value && input.value.trim() !== "";
-
       if (isRequiredInHTML || hasValue) {
         const validation = validateField(input.name, input.value, input);
         if (!validation.isValid) showError(input, validation.message);
@@ -4850,6 +4744,7 @@ document.addEventListener("DOMContentLoaded", () => {
         clearError(input);
       }
     });
+
     input.addEventListener("input", () => {
       if (input.classList.contains("border-red-500")) {
         const validation = validateField(input.name, input.value, input);
@@ -4858,26 +4753,264 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Form submit
+  // -------------------------
+  // intl-tel-input init + limit phone digits
+  // -------------------------
+  const phoneInputs = document.querySelectorAll("#phone");
+  phoneInputs.forEach((phoneInput) => {
+    if (!phoneInput || !window.intlTelInput) return;
+
+    const alreadyWrapped = !!phoneInput.closest(".iti");
+    const alreadyInstance =
+      !!(window.intlTelInputGlobals?.getInstance && window.intlTelInputGlobals.getInstance(phoneInput));
+    if (alreadyWrapped || alreadyInstance || phoneInput.dataset.itiInited === "1") return;
+
+    try {
+      window.intlTelInput(phoneInput, {
+        initialCountry: "in",
+        autoHideDialCode: true,
+        nationalMode: false,
+        placeholderNumberType: "NONE",
+        utilsScript:
+          "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/18.1.1/js/utils.min.js",
+      });
+      phoneInput.value = "";
+      phoneInput.dataset.itiInited = "1";
+    } catch (err) {
+      // silent
+    }
+  });
+
+  phoneInputs.forEach((phoneInput) => {
+    phoneInput.addEventListener("input", (e) => {
+      const iti = window.intlTelInputGlobals.getInstance(phoneInput);
+      if (iti) {
+        const countryData = iti.getSelectedCountryData();
+        const dialCode = countryData.dialCode || "";
+        let fullValue = e.target.value.replace(/\D/g, "");
+
+        if (dialCode && fullValue.startsWith(dialCode)) {
+          const numberWithoutCode = fullValue.slice(dialCode.length);
+          if (numberWithoutCode.length > 10) {
+            const limitedNumber = numberWithoutCode.slice(0, 10);
+            e.target.value = dialCode + limitedNumber;
+          }
+        } else {
+          if (fullValue.length > 10) {
+            e.target.value = fullValue.slice(0, 10);
+          }
+        }
+      }
+    });
+  });
+
+  // -------------------------
+  // Unified File Manager
+  // Handles: drag/drop, multiple files, remove single, validation show-on-interaction-or-submit,
+  // does NOT display filenames inside dropArea label (only in fileInfo area)
+  // -------------------------
+  (function initUnifiedFileManager() {
+    function init() {
+      const fileUploadEl = document.getElementById("fileUpload");
+      const dropAreaEl = document.getElementById("dropArea");
+      const fileInfoEl = document.getElementById("fileInfo");
+      let fileLabelEl = document.getElementById("fileLabel");
+      const uploadBtnEl = document.getElementById("uploadButton");
+
+      if (!fileUploadEl || !fileInfoEl || !dropAreaEl) return;
+
+      if (!fileLabelEl) {
+        fileLabelEl = dropAreaEl.querySelector("p") || document.createElement("p");
+        fileLabelEl.id = "fileLabel";
+      }
+
+      // internal state
+      let fileList = []; // array-of-File (single source of truth)
+      let fileTouched = false; // true after add/remove action
+      let submitAttempted = false; // true after form submit attempt
+
+      // expose manager for submit/reset hooks
+      window.fileManager = {
+        markSubmitAttempted() {
+          submitAttempted = true;
+          updateUI();
+        },
+        clearAllFiles() {
+          // mutate same array reference (safer)
+          fileList.length = 0;
+          fileTouched = false;
+          submitAttempted = false;
+
+          // reset native input
+          const dt = new DataTransfer();
+          fileUploadEl.files = dt.files;
+
+          // reset UI
+          fileInfoEl.innerHTML = "";
+          fileInfoEl.classList.add("hidden");
+          // reset label
+          if (window.location.pathname.includes("contact") || window.location.pathname.includes("enquiry")) {
+            fileLabelEl.textContent = "No File Choosen";
+          } else {
+            fileLabelEl.textContent = "Drop files here or Select Files";
+          }
+
+          // reset error
+          clearError(fileUploadEl);
+        },
+      };
+
+      function updateInputFiles() {
+        const dt = new DataTransfer();
+        fileList.forEach((f) => dt.items.add(f));
+        fileUploadEl.files = dt.files;
+      }
+
+      function updateUI() {
+        fileInfoEl.innerHTML = "";
+
+        if (!fileList.length) {
+          fileInfoEl.classList.add("hidden");
+          // keep drop area label static (never show filenames here)
+          fileLabelEl.textContent = window.location.pathname.includes("contact") || window.location.pathname.includes("enquiry")
+            ? "No File Choosen"
+            : "Drop files here or Select Files";
+
+          // clear native input
+          const dt = new DataTransfer();
+          fileUploadEl.files = dt.files;
+
+          // validation: only show error if user touched or submit attempted
+          if (fileTouched || submitAttempted) {
+            const validation = validateField("fileUpload", undefined, fileUploadEl);
+            if (validation.isValid) clearError(fileUploadEl);
+            else showError(fileUploadEl, validation.message);
+          } else {
+            clearError(fileUploadEl);
+          }
+          return;
+        }
+
+        fileInfoEl.classList.remove("hidden");
+
+        fileList.forEach((file, index) => {
+          const row = document.createElement("div");
+          row.className =
+            "w-full flex justify-between items-center bg-primary-900/12 border-b-2 border-primary-900 px-5 py-[13px] mt-3";
+
+          row.innerHTML = `
+            <p class="text-black flex items-center gap-3">${file.name}</p>
+            <button type="button" class="removeSingleFile text-primary-900" data-index="${index}">Remove</button>
+          `;
+
+          fileInfoEl.appendChild(row);
+        });
+
+        // keep drop area label static
+        fileLabelEl.textContent = window.location.pathname.includes("contact") || window.location.pathname.includes("enquiry")
+          ? "No File Choosen"
+          : "Drop files here or Select Files";
+
+        // sync native input
+        updateInputFiles();
+
+        // show/clear validation based on submitAttempted or user interaction
+        if (submitAttempted) {
+          const validation = validateField("fileUpload", undefined, fileUploadEl);
+          if (validation.isValid) clearError(fileUploadEl);
+          else showError(fileUploadEl, validation.message);
+        } else {
+          if (fileTouched) clearError(fileUploadEl);
+        }
+      }
+
+      function addFiles(files) {
+        if (!files || !files.length) return;
+        // prevent duplicates by name+size (optional)
+        const arr = Array.from(files);
+        arr.forEach((f) => {
+          const exists = fileList.some((ff) => ff.name === f.name && ff.size === f.size && ff.lastModified === f.lastModified);
+          if (!exists) fileList.push(f);
+        });
+        fileTouched = true;
+        updateUI();
+      }
+
+      // Delegated remove handler (works if user clicks inner elements)
+      fileInfoEl.addEventListener("click", (e) => {
+        const btn = e.target.closest(".removeSingleFile");
+        if (!btn) return;
+        const idx = Number(btn.dataset.index);
+        if (Number.isNaN(idx)) return;
+        fileList.splice(idx, 1);
+        fileTouched = true;
+        updateUI();
+      });
+
+      // input change -> add files
+      fileUploadEl.addEventListener("change", (e) => {
+        if (e.target.files && e.target.files.length) {
+          addFiles(e.target.files);
+        }
+      });
+
+      // upload button triggers native dialog
+      if (uploadBtnEl) {
+        uploadBtnEl.addEventListener("click", (e) => {
+          e.preventDefault();
+          fileUploadEl.click();
+        });
+      }
+
+      // drag/drop on dropArea
+      dropAreaEl.addEventListener("dragover", (e) => {
+        e.preventDefault();
+        dropAreaEl.classList.add("ring-1", "ring-primary-900");
+      });
+      dropAreaEl.addEventListener("dragleave", () => {
+        dropAreaEl.classList.remove("ring-1", "ring-primary-900");
+      });
+      dropAreaEl.addEventListener("drop", (e) => {
+        e.preventDefault();
+        dropAreaEl.classList.remove("ring-1", "ring-primary-900");
+        if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files.length) {
+          addFiles(e.dataTransfer.files);
+        }
+      });
+
+      // initial UI: no error shown on page load
+      updateUI();
+    }
+
+    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+    else init();
+  })();
+
+  // -------------------------
+  // Form submit handler
+  // -------------------------
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
+
+    // mark that submit was attempted so file manager will show validation if needed
+    if (window.fileManager && typeof window.fileManager.markSubmitAttempted === "function") {
+      window.fileManager.markSubmitAttempted();
+    }
+
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
     let isFormValid = true;
 
+    // validate each rule-defined field that exists on the form
     Object.keys(validationRules).forEach((fieldName) => {
       const input = form.querySelector(`[name="${fieldName}"]`);
-      if (!input) {
-        // Skip validation for fields that don't exist in this form
-        return;
-      }
+      if (!input) return;
 
-      // Only validate fields that are required or have values
       const isRequiredInHTML = input.hasAttribute("required");
-      const value = input.type === "file" ? undefined : data[fieldName] || "";
+      const value = input.type === "file" ? undefined : (data[fieldName] || "");
 
-      // Skip validation if field is not required and is empty
-      if (!isRequiredInHTML && (!value || value.trim() === "")) {
+      // Skip if not required and empty
+      if (!isRequiredInHTML && (!value || (typeof value === "string" && value.trim() === ""))) {
         return;
       }
 
@@ -4890,22 +5023,31 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    if (!isFormValid) return;
+    if (!isFormValid) {
+      // focus the first invalid field optionally
+      const firstInvalid = form.querySelector(".border-red-500, .error-message.opacity-100");
+      if (firstInvalid) firstInvalid.scrollIntoView({ behavior: "smooth", block: "center" });
+      return;
+    }
 
+    // Simulate submit process (your real submit code should go here)
     submitBtn.disabled = true;
     submitBtn.classList.add("opacity-50");
     await new Promise((r) => setTimeout(r, 1000));
 
     if (successMessage) {
-      successMessage.classList.add("translate-x-0", "opacity-100", "flex");
-      successMessage.classList.remove("translate-x-[400px]");
+      // show then hide
+      successMessage.classList.remove("translate-x-[400px]", "opacity-0");
+      successMessage.classList.add("translate-x-0", "opacity-100");
       setTimeout(() => {
         successMessage.classList.add("translate-x-[400px]", "opacity-0");
-        successMessage.classList.remove("translate-x-0", "opacity-100", "flex");
+        successMessage.classList.remove("translate-x-0", "opacity-100");
       }, 3500);
     }
 
+    // Reset form and file manager properly
     form.reset();
+    // hide and clear any existing error messages
     form.querySelectorAll(".error-message").forEach((el) => {
       el.classList.add("opacity-0", "invisible");
       el.classList.remove("opacity-100");
@@ -4913,75 +5055,36 @@ document.addEventListener("DOMContentLoaded", () => {
       if (span) span.textContent = "";
     });
 
-    if (fileInput) clearError(fileInput);
-    if (fileLabel) fileLabel.textContent = "Drop files here or Select Files";
+    // clear unified file manager state/UI (if exists)
+    if (window.fileManager && typeof window.fileManager.clearAllFiles === "function") {
+      window.fileManager.clearAllFiles();
+    } else {
+      // fallback: if fileUpload exists, manually clear
+      if (fileUpload) {
+        const dt = new DataTransfer();
+        fileUpload.files = dt.files;
+        clearError(fileUpload);
+        if (fileLabel) {
+          if (window.location.pathname.includes("contact") || window.location.pathname.includes("enquiry")) {
+            fileLabel.textContent = "No File Choosen";
+          } else {
+            fileLabel.textContent = "Drop files here or Select Files";
+          }
+        }
+        const fileInfo = document.getElementById("fileInfo");
+        if (fileInfo) {
+          fileInfo.classList.add("hidden");
+          fileInfo.innerHTML = "";
+        }
+      }
+    }
+
     submitBtn.disabled = false;
     submitBtn.classList.remove("opacity-50");
   });
-  // Initialize intlTelInput for all phone inputs (guard against double-init)
-  const phoneInputs = document.querySelectorAll("#phone");
-  phoneInputs.forEach((phoneInput) => {
-    if (!phoneInput || !window.intlTelInput) return;
-
-    // Skip if already wrapped/initialized to avoid duplicate flag UI
-    const alreadyWrapped = !!phoneInput.closest(".iti");
-    const alreadyInstance = !!(
-      window.intlTelInputGlobals?.getInstance &&
-      window.intlTelInputGlobals.getInstance(phoneInput)
-    );
-    if (
-      alreadyWrapped ||
-      alreadyInstance ||
-      phoneInput.dataset.itiInited === "1"
-    )
-      return;
-
-    try {
-      window.intlTelInput(phoneInput, {
-        initialCountry: "in", // Use India as default instead of auto
-        autoHideDialCode: true,
-        nationalMode: false,
-        placeholderNumberType: "NONE",
-        utilsScript:
-          "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/18.1.1/js/utils.min.js",
-      });
-      phoneInput.value = "";
-      phoneInput.dataset.itiInited = "1";
-    } catch (err) {
-      // fail silently if intlTelInput throws
-    }
-  });
-
-  // Limit phone number to 10 digits (excluding country code) for all phone inputs
-  phoneInputs.forEach((phoneInput) => {
-    phoneInput.addEventListener("input", (e) => {
-      const iti = window.intlTelInputGlobals.getInstance(phoneInput);
-      if (iti) {
-        const countryData = iti.getSelectedCountryData();
-        const dialCode = countryData.dialCode || "";
-
-        // Get the full value with country code
-        let fullValue = e.target.value.replace(/\D/g, "");
-
-        // If the number starts with the country code, separate it
-        if (dialCode && fullValue.startsWith(dialCode)) {
-          const numberWithoutCode = fullValue.slice(dialCode.length);
-
-          // Limit the actual phone number to 10 digits
-          if (numberWithoutCode.length > 10) {
-            const limitedNumber = numberWithoutCode.slice(0, 10);
-            e.target.value = dialCode + limitedNumber;
-          }
-        } else {
-          // If no country code detected, just limit to 10 digits
-          if (fullValue.length > 10) {
-            e.target.value = fullValue.slice(0, 10);
-          }
-        }
-      }
-    });
-  });
 });
+
+
 // number counting for coming soon page
 document.addEventListener("DOMContentLoaded", () => {
   // Check if countdown elements exist

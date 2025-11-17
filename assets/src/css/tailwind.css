@@ -727,7 +727,7 @@ button[value="brown"] .color-block {
 
     .mobile-nav li .nav-tab,
     .mobile-nav li .nav-tab-2 {
-      @apply text-black text-start px-3 py-4;
+      @apply text-black text-start px-3 lg:py-4 py-3;
     }
 
     .mobile-nav li {
@@ -1419,4 +1419,5 @@ button[value="brown"] .color-block {
   #searchPanel {
     @apply lg:absolute relative top-[0] left-0 right-0 z-60 bg-white overflow-visible rounded-none;
   }
+  
 }
