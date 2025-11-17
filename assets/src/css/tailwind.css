@@ -298,6 +298,11 @@ button[value="brown"] .color-block {
   }
   .preloader {
     @apply fixed top-0 left-0 z-100 w-full h-full bg-white overflow-hidden;
+    will-change: opacity;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
   }
   .preloader-inner {
     @apply absolute top-1/2 left-1/2 -translate-x-1/2	-translate-y-1/2;
@@ -722,7 +727,7 @@ button[value="brown"] .color-block {
 
     .mobile-nav li .nav-tab,
     .mobile-nav li .nav-tab-2 {
-      @apply text-black text-start px-3 py-4;
+      @apply text-black text-start px-3 lg:py-4 py-3;
     }
 
     .mobile-nav li {
@@ -750,7 +755,7 @@ button[value="brown"] .color-block {
       @apply fixed top-0 left-0 right-0 sm:h-fit max-h-[calc(100vh-9vh)] w-full overflow-y-auto pb-4 z-[70] bg-white transform translate-x-full transition-transform duration-300;
     }
     .header-three .navbar .dropdown-menu {
-      @apply fixed top-0 left-0 right-0 sm:h-fit max-h-[calc(100vh-15vh)] w-full overflow-y-auto pb-4 z-[70] bg-white transform translate-x-full transition-transform duration-300;
+      @apply fixed top-0 left-0 right-0 sm:h-fit max-h-[calc(100vh-17vh)] w-full overflow-y-auto pb-4 z-[70] bg-white transform translate-x-full transition-transform duration-300;
     }
 
     .navbar .dropdown-menu.open {
@@ -869,10 +874,14 @@ button[value="brown"] .color-block {
   }
   html.no-scroll {
     overflow: hidden !important;
-    position: fixed !important;
-    width: 100% !important;
-    height: 100% !important;
     overscroll-behavior: none !important;
+    height: 100%;
+  }
+
+  html.no-scroll body {
+    overflow: hidden !important;
+    height: 100%;
+    touch-action: none;
   }
 
   /* Highlight active image */
@@ -1039,7 +1048,7 @@ button[value="brown"] .color-block {
 
   /* Page overlay for dropdown/search/mobile-menu */
   #pageOverlay {
-    @apply fixed inset-0 bg-black/50 opacity-0 pointer-events-none transition-opacity duration-200 z-40;
+    @apply fixed inset-0 bg-black/50 opacity-0 pointer-events-none transition-opacity duration-100 z-40;
   }
   #pageOverlay.show {
     @apply opacity-100 pointer-events-auto;
@@ -1302,7 +1311,16 @@ button[value="brown"] .color-block {
 
   #cookieOverlay {
     @apply transition-opacity duration-300;
+    will-change: opacity;
+    backface-visibility: hidden;
   }
+
+  #newsletterOverlay {
+    @apply transition-opacity duration-300;
+    will-change: opacity;
+    backface-visibility: hidden;
+  }
+
   .accordion-content {
     @apply transition-[max-height,opacity] duration-[350ms];
   }
@@ -1401,4 +1419,5 @@ button[value="brown"] .color-block {
   #searchPanel {
     @apply lg:absolute relative top-[0] left-0 right-0 z-60 bg-white overflow-visible rounded-none;
   }
+  
 }
