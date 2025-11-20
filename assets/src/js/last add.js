@@ -2498,7 +2498,7 @@ document.querySelectorAll("li[class*='group/']").forEach((dropdown) => {
                     <label for="firstName" class="block xl:mb-3 mb-1.5 p text-black">First
                         Name *</label>
                     <input type="text" id="firstName" name="firstName" required
-                        class="w-full xl:px-3 px-2 1xl:py-[14px] py-2.5 border border-black focus:border-primary-900 outline-none" />
+                        class="w-full xl:px-3 px-2 1xl:py-[14px] sm:py-2.5 py-2 border border-black focus:border-primary-900 outline-none" />
 
                     <!-- Error message with SVG icon -->
                     <div
@@ -2517,7 +2517,7 @@ document.querySelectorAll("li[class*='group/']").forEach((dropdown) => {
                     <label for="lastName" class="block xl:mb-3 mb-1.5 p text-black">Last
                         Name *</label>
                     <input type="text" id="lastName" name="lastName" required
-                        class="w-full xl:px-3 px-2 1xl:py-[14px] py-2.5 border border-black focus:border-primary-900 outline-none" />
+                        class="w-full xl:px-3 px-2 1xl:py-[14px] sm:py-2.5 py-2 border border-black focus:border-primary-900 outline-none" />
 
                     <!-- Error message with SVG icon -->
                     <div
@@ -2536,7 +2536,7 @@ document.querySelectorAll("li[class*='group/']").forEach((dropdown) => {
                     <label for="email" class="block xl:mb-3 mb-1.5 p text-black">Email
                         Address *</label>
                     <input type="email" id="email" name="email" required
-                        class="w-full xl:px-3 px-2 1xl:py-[14px] py-2.5 border border-black focus:border-primary-900 outline-none" />
+                        class="w-full xl:px-3 px-2 1xl:py-[14px] sm:py-2.5 py-2 border border-black focus:border-primary-900 outline-none" />
                     <!-- Error message with SVG icon -->
                     <div
                         class="text-red-500 mt-2 opacity-0 transition-all ease-in-out error-message hidden items-center gap-2">
@@ -2563,7 +2563,7 @@ document.querySelectorAll("li[class*='group/']").forEach((dropdown) => {
                         Your Comment *
                     </label>
                     <textarea id="message" name="message" required
-                        class="w-full xl:px-3 px-2 1xl:py-[14px] py-2.5 border border-black focus:border-primary-900 outline-none 1xl:min-h-[160px] xl:min-h-[148px] lg:min-h-[130px] sm:min-h-[100px] min-h-[90px] resize-y"></textarea>
+                        class="w-full xl:px-3 px-2 1xl:py-[14px] sm:py-2.5 py-2 border border-black focus:border-primary-900 outline-none 1xl:min-h-[160px] xl:min-h-[148px] lg:min-h-[130px] sm:min-h-[100px] min-h-[90px] resize-y"></textarea>
                     <!-- Error message with SVG icon -->
                     <div
                         class="text-red-500 mt-2 opacity-0 transition-all ease-in-out error-message hidden items-center gap-2">

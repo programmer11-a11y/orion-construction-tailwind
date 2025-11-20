@@ -384,11 +384,11 @@ button[value="brown"] .color-block {
   }
   h1,
   .h1 {
-    @apply 2xl:text-[70px] 1xl:text-[55px] xl:text-[48px] lg:text-[42px] sm:text-[36px] text-[30px] 2xl:leading-[84px] 1xl:leading-[66px] xl:leading-[60px] lg:leading-[52px] sm:leading-[44px] leading-[36px];
+    @apply 2xl:text-[70px] 1xl:text-[55px] xl:text-[48px] lg:text-[42px] sm:text-[36px] text-[28px] 2xl:leading-[84px] 1xl:leading-[66px] xl:leading-[60px] lg:leading-[52px] sm:leading-[44px] leading-[36px];
   }
   h2,
   .h2 {
-    @apply text-[28px] sm:text-3xl md:text-[35px] xl:text-4xl 1xl:text-[46px] 2xl:text-5xl 2xl:leading-[70px] 1xl:leading-[55px] xl:leading-[50px] sm:leading-10 leading-9;
+    @apply text-[26px] sm:text-3xl md:text-[35px] xl:text-4xl 1xl:text-[46px] 2xl:text-5xl 2xl:leading-[70px] 1xl:leading-[55px] xl:leading-[50px] sm:leading-10 leading-9;
   }
   h3,
   .h3 {
@@ -439,6 +439,9 @@ button[value="brown"] .color-block {
   .dropdown-svg path {
     @apply !fill-none;
   }
+  .dropdown-text {
+    @apply !py-0;
+  }
   .navbar li a {
     @apply py-2 flex items-center;
   }
@@ -467,7 +470,7 @@ button[value="brown"] .color-block {
   .header-three .dropdown-scroll {
     @apply lg:max-h-[80vh] max-h-[75vh];
   }
-.dropdown-scroll {
+  .dropdown-scroll {
     @apply lg:max-h-[80vh] max-h-[100vh];
   }
 
@@ -516,6 +519,15 @@ button[value="brown"] .color-block {
   }
   .no-toggle-color {
     @apply bg-white;
+  }
+  .header.sticky-header{
+    @apply !fixed;
+  }
+  .dropdown-open.toggle-color {
+    @apply bg-white;
+  }
+  .toggle-color {
+    @apply lg:bg-transparent bg-primary-900 hover:bg-white;
   }
   .header.sticky-header .navbar li .nav-tab,
   .header.sticky-header .navbar li.dropdown span {
@@ -727,7 +739,7 @@ button[value="brown"] .color-block {
 
     .mobile-nav li .nav-tab,
     .mobile-nav li .nav-tab-2 {
-      @apply text-black text-start px-3 lg:py-4 py-3;
+      @apply text-black text-start sm:px-3 lg:py-4 py-3;
     }
 
     .mobile-nav li {
@@ -768,6 +780,13 @@ button[value="brown"] .color-block {
 
     .navbar .dropdown-menu ul {
       @apply md:max-h-none overflow-visible;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .reply-sibling {
+      border: none !important;
+      margin-left: 0 !important;
     }
   }
 
@@ -957,7 +976,7 @@ button[value="brown"] .color-block {
     @apply 2xl:mr-10 xl:mr-6 mr-3 2xl:max-w-8 max-w-7 w-full;
   }
   .services-image-before {
-    @apply overflow-hidden relative 1xl:before:pt-[69%] xl:before:pt-[60%] lg:before:pt-[64%] md:before:pt-[65%] before:pt-[60%] before:block 2xl:max-w-[260px] xl:max-w-[230px] lg:max-w-[215px] md:max-w-[185px] max-w-[288px] w-full flex-shrink-0 2xl:mr-11 xl:mr-8  md:mr-6 md:mb-0 mb-5;
+    @apply overflow-hidden relative 1xl:before:pt-[69%] xl:before:pt-[60%] lg:before:pt-[64%] md:before:pt-[65%] before:pt-[60%] before:block 2xl:max-w-[260px] xl:max-w-[230px] lg:max-w-[215px] md:max-w-[185px] max-w-[288px] w-full flex-shrink-0 2xl:mr-11 xl:mr-8 lg:mr-6 md:mr-5 md:mb-0 mb-5;
   }
   /* .service-content {
     @apply 2xl:mr-[96px] 1xl:mr-[75px] xl:mr-[65px] lg:mr-11 md:mr-[30px] md:mb-0 mb-[22px];
@@ -966,7 +985,7 @@ button[value="brown"] .color-block {
     @apply 2xl:w-[63%] md:w-[63%] md:mb-0 mb-[22px];
   }
   .service-arrow {
-    @apply 2xl:w-[100px] 2xl:h-[100px] 1xl:w-[75px] 1xl:h-[75px] xl:w-[65px] xl:h-[65px] lg:w-[60px] lg:h-[60px] w-[55px] h-[55px] 2xl:p-[22px] 1xl:p-4 lg:p-3 p-2 flex items-center justify-center transition my-auto flex-shrink-0;
+    @apply 2xl:w-[100px] 2xl:h-[100px] 1xl:w-[75px] 1xl:h-[75px] xl:w-[65px] xl:h-[65px] sm:w-[50px] sm:h-[50px] w-[46px] h-[46px] 2xl:p-[22px] 1xl:p-4 lg:p-3 p-2 flex items-center justify-center transition my-auto flex-shrink-0;
   }
   .projects-2 .project .project-box {
     @apply bg-[#F6F6F6] h-full;
@@ -1334,7 +1353,7 @@ button[value="brown"] .color-block {
     @apply sm:text-[#FFFFFF99] text-black sm:hover:text-white xl:mb-4 mb-3 w-fit z-50 ml-auto pr-4 pt-4;
   }
   .cookie-content-box {
-    @apply bg-white w-full 2xl:p-10 xl:p-8 sm:p-6 p-4 max-[640px]:pt-0 max-h-screen my-auto h-full flex flex-col items-center justify-between;
+    @apply bg-white w-full 2xl:p-10 xl:p-8 sm:p-6 p-4 max-[640px]:pt-0 !pb-6 max-[321px]:!pb-147 max-h-screen my-auto h-full flex flex-col justify-between;
   }
 
   .blog-details-content .author-name {
@@ -1419,5 +1438,4 @@ button[value="brown"] .color-block {
   #searchPanel {
     @apply lg:absolute relative top-[0] left-0 right-0 z-60 bg-white overflow-visible rounded-none;
   }
-  
 }
