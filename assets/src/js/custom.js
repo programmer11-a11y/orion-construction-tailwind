@@ -2246,8 +2246,7 @@ document.addEventListener("DOMContentLoaded", () => {
           updateAllSVGFills();
           if (typeof updateHeaderBtnState === "function")
             updateHeaderBtnState();
-          fixMobileIdleIconColor();
-
+          forceMobileIdleBlack();
         }
 
         searchButton?.addEventListener("click", (e) => {
@@ -2841,7 +2840,7 @@ document.addEventListener("DOMContentLoaded", () => {
                   });
               }
             });
-            // --- GLOBAL POINTER EXIT FIX (navbar idle reset) ---
+
             // --- GLOBAL POINTER EXIT FIX (Address bar / outside window) ---
             document.addEventListener("pointerout", (e) => {
               // Pointer left browser content area (into tabs, URL bar, OS area)
@@ -2896,10 +2895,29 @@ document.addEventListener("DOMContentLoaded", () => {
             }
           };
         })();
+        function forceMobileIdleBlack() {
+          const isMobile = window.innerWidth <= 991;
+          if (!isMobile) return;
+          if (isSearchOpen || isMobileMenuOpen() || anyMenuOpen()) return;
+        
+          // Header background & text
+          // headerEl.classList.add("bg-white");
+          // headerEl.classList.remove("bg-transparent");
+        
+          // Navbar text
+          document.querySelectorAll(".nav-right .navbar > li").forEach(li => {
+            li.classList.remove("text-white");
+            li.classList.add("text-black");
+          });
+        
+          // SVG icons
+          document.querySelectorAll("#menuToggle svg, #searchButton svg, .nav-right svg")
+            .forEach(svg => setSVGColor(svg, "black"));
+        }
+        
       });
 
       document.addEventListener("DOMContentLoaded", () => {
-        // Run nested submenu accordion for all practical widths (desktop too).
         // Hover handlers are disabled on desktop in favor of click accordion.
         const MOBILE_MAX = 5000;
 
