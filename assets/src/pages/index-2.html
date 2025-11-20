@@ -136,13 +136,13 @@
     </div>
 
     <!-- start-header -->
-    <header class="header relative w-full z-50 bg-white shadow-none no-toggle-color" :class="{ 'header-open': open }">
+    <header class="header relative w-full bg-white z-50 no-toggle-color" :class="{ 'header-open': open }">
       <!-- navbar start -->
       <nav class="container-2 bg-white">
         <div class="flex items-stretch justify-between mx-auto">
           <div
             class="shrink-0 max-w-[140px] md:max-w-[126px] lg:max-w-[180px] xl:max-w-[200px] 1xl:max-w-[230px] 2xl:max-w-full">
-            <a href="../index-2.html"
+            <a href="./index-2.html"
               class="flex items-center py-2 md:py-5 sm:py-4 lg:py-3 1xl:py-5 2xl:py-7 pr-2.5 lg:pr-5 1xl:pr-10 !pl-0 bg-white transition-all logo-box">
               <img src="../images/logo-dark.svg" class="lg:h-14 h-9" alt="Logo" loading="lazy" decoding="async" />
             </a>
@@ -152,23 +152,25 @@
             <div class="w-full lg:w-auto mobile-nav main-menu block" id="navbar-default">
               <ul
                 class="lg:container-fluid container-2 navbar font-medium flex items-stretch h-full flex-col text-black uppercase p-4 pt-0 lg:p-0 lg:flex-row lg:mt-0">
-                <li class="my-auto lg:h-full flex 2xl:px-[18px] xl:px-[14px] lg:px-[10px] px-[6px] font-lexend">
+                <li class="my-auto lg:h-full flex 2xl:px-[18px] xl:px-[14px] lg:px-[10px] sm:px-[6px] font-lexend">
                   <a href="./about-us.html" aria-current="page" class="nav-tab">About Orion</a>
                 </li>
 
                 <li
-                  class="dropdown group my-auto lg:h-full lg:static flex items-center justify-between 2xl:px-[18px] xl:px-[14px] lg:px-[10px] px-[6px]">
-                  <a href="javascript:;"
+                  class="dropdown group my-auto lg:h-full lg:static flex items-center justify-between 2xl:px-[18px] xl:px-[14px] lg:px-[10px] sm:px-[6px]">
+                  <div
                     class="dropdown-toggle items-center gap-1 lg:gap-2 my-auto lg:h-full justify-between w-full flex nav-tab font-lexend">
-                    Projects
+                    <a href="./projects.html" class="dropdown-text">
+                      Projects
+                    </a>
                     <svg xmlns="http://www.w3.org/2000/svg" width="12" height="11" viewBox="0 0 19 11" fill="none"
-                      class="dropdown-svg transition-all duration-300 ease-in-out">
+                      class="dropdown-arrow-area dropdown-svg transition-all duration-300 ease-in-out">
                       <g clip-path="url(#clip0_128_578)">
                         <path d="M1.58325 1.57143L9.49992 9.42857L17.4166 1.57143" stroke="currentcolor"
                           class="fill-none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                       </g>
                     </svg>
-                  </a>
+                  </div>
                   <div class="dropdown-menu fade-down lg:top-full top-0 absolute w-full z-50 lg:h-fit h-screen hidden">
                     <div class="bg-white">
                       <div class="container-2">
@@ -193,9 +195,11 @@
                             class="grid lg:grid-cols-5 sm:grid-cols-3 min-[412px]:grid-cols-2 grid-cols-1 2xl:gap-7 xl:gap-6 gap-5 pt-[22px] 2xl:pb-10 lg:pb-9 pb-[30px] h-full">
                             <li class="flex flex-col items-start sm:gap-[17px] gap-[12px] group/project">
                               <div class="relative w-full">
-                                <a href="./project-detail-1.html" class="w-full h-full">
+                                <a href="./project-detail-1.html"
+                                  class="w-full h-full overflow-hidden relative sm:before:pt-[116%] before:pt-[60%] before:block">
                                   <img src="../images/project-nav-1.webp" alt="project-1"
-                                    class="w-full h-full object-cover" loading="lazy" decoding="async" />
+                                    class="w-full h-full object-cover absolute top-0 left-0 right-0 bottom-0"
+                                    loading="lazy" decoding="async" />
                                 </a>
                                 <a href="./project-detail-1.html" class="project-arrow group/arrow">
                                   <svg xmlns="http://www.w3.org/2000/svg" width="39" height="39" viewBox="0 0 39 39"
@@ -217,9 +221,11 @@
 
                             <li class="flex flex-col items-start sm:gap-[17px] gap-[12px] group/project">
                               <div class="relative w-full">
-                                <a href="./project-detail-2.html" class="w-full h-full">
+                                <a href="./project-detail-2.html"
+                                  class="w-full h-full overflow-hidden relative sm:before:pt-[116%] before:pt-[60%] before:block">
                                   <img src="../images/project-nav-2.webp" alt="project-1"
-                                    class="w-full h-full object-cover" loading="lazy" decoding="async" />
+                                    class="w-full h-full object-cover absolute top-0 left-0 right-0 bottom-0"
+                                    loading="lazy" decoding="async" />
                                 </a>
                                 <a href="./project-detail-2.html" class="project-arrow group/arrow">
                                   <svg xmlns="http://www.w3.org/2000/svg" width="39" height="39" viewBox="0 0 39 39"
@@ -241,9 +247,11 @@
 
                             <li class="flex flex-col items-start sm:gap-[17px] gap-[12px] group/project">
                               <div class="relative w-full">
-                                <a href="./project-detail-3.html" class="w-full h-full">
+                                <a href="./project-detail-3.html"
+                                  class="w-full h-full overflow-hidden relative sm:before:pt-[116%] before:pt-[60%] before:block">
                                   <img src="../images/project-nav-3.webp" alt="project-1"
-                                    class="w-full h-full object-cover" loading="lazy" decoding="async" />
+                                    class="w-full h-full object-cover absolute top-0 left-0 right-0 bottom-0"
+                                    loading="lazy" decoding="async" />
                                 </a>
                                 <a href="./project-detail-3.html" class="project-arrow group/arrow">
                                   <svg xmlns="http://www.w3.org/2000/svg" width="39" height="39" viewBox="0 0 39 39"
@@ -265,9 +273,11 @@
 
                             <li class="flex flex-col items-start sm:gap-[17px] gap-[12px] group/project">
                               <div class="relative w-full">
-                                <a href="./project-detail-4.html" class="w-full h-full">
+                                <a href="./project-detail-4.html"
+                                  class="w-full h-full overflow-hidden relative sm:before:pt-[116%] before:pt-[60%] before:block">
                                   <img src="../images/project-nav-4.webp" alt="project-1"
-                                    class="w-full h-full object-cover" loading="lazy" decoding="async" />
+                                    class="w-full h-full object-cover absolute top-0 left-0 right-0 bottom-0"
+                                    loading="lazy" decoding="async" />
                                 </a>
                                 <a href="./project-detail-4.html" class="project-arrow group/arrow">
                                   <svg xmlns="http://www.w3.org/2000/svg" width="39" height="39" viewBox="0 0 39 39"
@@ -289,9 +299,11 @@
 
                             <li class="flex flex-col items-start sm:gap-[17px] gap-[12px] group/project">
                               <div class="relative w-full">
-                                <a href="./project-detail-5.html" class="w-full h-full">
+                                <a href="./project-detail-5.html"
+                                  class="w-full h-full overflow-hidden relative sm:before:pt-[116%] before:pt-[60%] before:block">
                                   <img src="../images/project-nav-5.webp" alt="project-1"
-                                    class="w-full h-full object-cover" loading="lazy" decoding="async" />
+                                    class="w-full h-full object-cover absolute top-0 left-0 right-0 bottom-0"
+                                    loading="lazy" decoding="async" />
                                 </a>
                                 <a href="./project-detail-5.html" class="project-arrow group/arrow">
                                   <svg xmlns="http://www.w3.org/2000/svg" width="39" height="39" viewBox="0 0 39 39"
@@ -312,7 +324,7 @@
                             </li>
                           </ul>
                           <div
-                            class="flex sm:items-center items-start sm:flex-nowrap flex-wrap sm:gap-[18px] gap-2 justify-between w-full border-t border-[#00000026] xl:py-[30px] sm:py-6 py-[18px]">
+                            class="flex sm:items-center items-start sm:flex-nowrap flex-wrap sm:gap-[18px] gap-2 justify-between w-full border-t border-[#00000026] 2xl:py-[30px] 1xl:py-6 sm:py-5 py-[18px]">
                             <p
                               class="m-0 font-lexend font-light normal-case sm:text-center text-start text-black cursor-default">
                               © All rights reserved to Orion Constructions
@@ -328,21 +340,23 @@
                 </li>
 
                 <li
-                  class="dropdown group my-auto lg:h-full lg:static flex items-center justify-between 2xl:px-[18px] xl:px-[14px] lg:px-[10px] px-[6px]">
-                  <a href="javascript:;"
+                  class="dropdown group my-auto lg:h-full lg:static flex items-center justify-between 2xl:px-[18px] xl:px-[14px] lg:px-[10px] sm:px-[6px]">
+                  <div
                     class="dropdown-toggle items-center gap-1 lg:gap-2 my-auto lg:h-full justify-between w-full flex nav-tab font-lexend">
-                    Services
+                    <a href="./services.html" class="dropdown-text">
+                      Services
+                    </a>
                     <svg xmlns="http://www.w3.org/2000/svg" width="12" height="11" viewBox="0 0 19 11" fill="none"
-                      class="dropdown-svg transition-all duration-300 ease-in-out">
+                      class="dropdown-arrow-area dropdown-svg transition-all duration-300 ease-in-out">
                       <g clip-path="url(#clip0_128_578)">
                         <path d="M1.58325 1.57143L9.49992 9.42857L17.4166 1.57143" stroke="currentcolor"
                           class="fill-none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                       </g>
                     </svg>
-                  </a>
+                  </div>
                   <div class="dropdown-menu fade-down lg:top-full top-0 absolute w-full z-50 lg:h-fit h-screen hidden">
                     <div class="bg-white">
-                      <div class="lg:container-2 mx-auto px-4">
+                      <div class="container-2">
                         <!-- Mobile Header (Only visible on mobile) -->
                         <div
                           class="back-btn bg-white flex items-center lg:hidden pb-3 pt-2.5 border-b border-[#00000015]">
@@ -356,29 +370,48 @@
                               </g>
                             </svg>
                           </button>
-                          <span class="text-primary-900 md:text-base text-[15px] font-medium p-0">Services</span>
+                          <span
+                            class="dropdown-text text-primary-900 md:text-base text-[15px] font-medium p-0">Services</span>
                         </div>
 
                         <div class="overflow-y-auto h-full lg:h-auto dropdown-scroll">
                           <ul
-                            class="grid xl:grid-cols-3 sm:grid-cols-2 grid-cols-1 1xl:gap-[57px] xl:gap-y-[55px] lg:gap-y-10 sm:gap-y-[28px] gap-y-6 gap-[55px] pt-[20px] 1xl:pb-[55px] lg:pb-10 pb-7 normal-case">
+                            class="grid xl:grid-cols-3 sm:grid-cols-2 grid-cols-1 2xl:gap-[57px] xl:gap-y-[50 px] lg:gap-y-10 sm:gap-y-[28px] sm:gap-x-5 sm:pt-5 pt-3 1xl:pb-[55px] lg:pb-10 pb-7 normal-case sm:divide-y-0 divide-y divide-gray-300">
                             <li
-                              class="flex flex-col items-start 2xl:gap-3 lg:gap-[10px] gap-[6px] max-w-[455px] w-full">
-                              <h4 class="m-0 text-start">
-                                <a href="./services-detail-1.html" class="hover:text-primary-900">Building
-                                  Construction</a>
-                              </h4>
+                              class="flex flex-col items-start 2xl:gap-3 lg:gap-[10px] gap-[6px] max-w-[455px] w-full sm:p-0 py-4">
+                              <div class="flex items-center justify-between w-full group/services">
+                                <h4 class="m-0 text-start">
+                                  <a href="./services-detail-1.html"
+                                    class="group-hover/services:text-primary-900">Building
+                                    Construction</a>
+                                </h4>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                  class="text-black group-hover/services:text-primary-900 lg:hidden block flex-shrink-0">
+                                  <path fill="currentColor"
+                                    d="M12.646 6.646a.5.5 0 0 1 .708 0l5 5a.5.5 0 0 1 0 .708l-5 5a.5.5 0 0 1-.708-.708l4.147-4.146H6a.5.5 0 0 1 0-1h10.793l-4.147-4.146a.5.5 0 0 1 0-.708"
+                                    stroke-width="0.3" stroke="currentColor" />
+                                </svg>
+                              </div>
                               <p class="text-gray-400 normal-case font-light m-0 text-start">
                                 We deliver high-quality structures built to
                                 last, with attention to safety and durability.
                               </p>
                             </li>
                             <li
-                              class="flex flex-col items-start 2xl:gap-3 lg:gap-[10px] gap-[6px] max-w-[455px] w-full">
-                              <h4 class="m-0 text-start">
-                                <a href="./services-detail-2.html" class="hover:text-primary-900">Architectural
-                                  Design</a>
-                              </h4>
+                              class="flex flex-col items-start 2xl:gap-3 lg:gap-[10px] gap-[6px] max-w-[455px] w-full sm:p-0 py-4">
+                              <div class="flex items-center justify-between w-full group/services">
+                                <h4 class="m-0 text-start">
+                                  <a href="./services-detail-2.html"
+                                    class="group-hover/services:text-primary-900">Architectural
+                                    Design</a>
+                                </h4>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                  class="text-black group-hover/services:text-primary-900 lg:hidden block flex-shrink-0">
+                                  <path fill="currentColor"
+                                    d="M12.646 6.646a.5.5 0 0 1 .708 0l5 5a.5.5 0 0 1 0 .708l-5 5a.5.5 0 0 1-.708-.708l4.147-4.146H6a.5.5 0 0 1 0-1h10.793l-4.147-4.146a.5.5 0 0 1 0-.708"
+                                    stroke-width="0.3" stroke="currentColor" />
+                                </svg>
+                              </div>
                               <p class="text-gray-400 normal-case font-light m-0 text-start">
                                 We create innovative designs tailored to your
                                 space, blending style, function, and
@@ -386,11 +419,20 @@
                               </p>
                             </li>
                             <li
-                              class="flex flex-col items-start 2xl:gap-3 lg:gap-[10px] gap-[6px] max-w-[455px] w-full">
-                              <h4 class="m-0 text-start">
-                                <a href="./services-detail-3.html" class="hover:text-primary-900">Infrastructure
-                                  Development</a>
-                              </h4>
+                              class="flex flex-col items-start 2xl:gap-3 lg:gap-[10px] gap-[6px] max-w-[455px] w-full sm:p-0 py-4">
+                              <div class="flex items-center justify-between w-full group/services">
+                                <h4 class="m-0 text-start">
+                                  <a href="./services-detail-3.html"
+                                    class="group-hover/services:text-primary-900">Infrastructure
+                                    Development</a>
+                                </h4>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                  class="text-black group-hover/services:text-primary-900 lg:hidden block flex-shrink-0">
+                                  <path fill="currentColor"
+                                    d="M12.646 6.646a.5.5 0 0 1 .708 0l5 5a.5.5 0 0 1 0 .708l-5 5a.5.5 0 0 1-.708-.708l4.147-4.146H6a.5.5 0 0 1 0-1h10.793l-4.147-4.146a.5.5 0 0 1 0-.708"
+                                    stroke-width="0.3" stroke="currentColor" />
+                                </svg>
+                              </div>
                               <p class="text-gray-400 normal-case font-light m-0 text-start">
                                 We build public infrastructure that supports
                                 growth, ensures utility access, and lasts
@@ -398,11 +440,20 @@
                               </p>
                             </li>
                             <li
-                              class="flex flex-col items-start 2xl:gap-3 lg:gap-[10px] gap-[6px] max-w-[455px] w-full">
-                              <h4 class="m-0 text-start">
-                                <a href="./services-detail-4.html" class="hover:text-primary-900">Building
-                                  Renovation</a>
-                              </h4>
+                              class="flex flex-col items-start 2xl:gap-3 lg:gap-[10px] gap-[6px] max-w-[455px] w-full sm:p-0 py-4">
+                              <div class="flex items-center justify-between w-full group/services">
+                                <h4 class="m-0 text-start">
+                                  <a href="./services-detail-4.html"
+                                    class="group-hover/services:text-primary-900">Building
+                                    Renovation</a>
+                                </h4>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                  class="text-black group-hover/services:text-primary-900 lg:hidden block flex-shrink-0">
+                                  <path fill="currentColor"
+                                    d="M12.646 6.646a.5.5 0 0 1 .708 0l5 5a.5.5 0 0 1 0 .708l-5 5a.5.5 0 0 1-.708-.708l4.147-4.146H6a.5.5 0 0 1 0-1h10.793l-4.147-4.146a.5.5 0 0 1 0-.708"
+                                    stroke-width="0.3" stroke="currentColor" />
+                                </svg>
+                              </div>
                               <p class="text-gray-400 normal-case font-light m-0 text-start">
                                 We transform outdated buildings into modern,
                                 functional spaces through expert
@@ -410,11 +461,20 @@
                               </p>
                             </li>
                             <li
-                              class="flex flex-col items-start 2xl:gap-3 lg:gap-[10px] gap-[6px] max-w-[455px] w-full">
-                              <h4 class="m-0 text-start">
-                                <a href="./services-detail-5.html" class="hover:text-primary-900">Pre-Construction
-                                  Planning</a>
-                              </h4>
+                              class="flex flex-col items-start 2xl:gap-3 lg:gap-[10px] gap-[6px] max-w-[455px] w-full sm:p-0 py-4">
+                              <div class="flex items-center justify-between w-full group/services">
+                                <h4 class="m-0 text-start">
+                                  <a href="./services-detail-5.html"
+                                    class="group-hover/services:text-primary-900">Pre-Construction
+                                    Planning</a>
+                                </h4>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                  class="text-black group-hover/services:text-primary-900 lg:hidden block flex-shrink-0">
+                                  <path fill="currentColor"
+                                    d="M12.646 6.646a.5.5 0 0 1 .708 0l5 5a.5.5 0 0 1 0 .708l-5 5a.5.5 0 0 1-.708-.708l4.147-4.146H6a.5.5 0 0 1 0-1h10.793l-4.147-4.146a.5.5 0 0 1 0-.708"
+                                    stroke-width="0.3" stroke="currentColor" />
+                                </svg>
+                              </div>
                               <p class="text-gray-400 normal-case font-light m-0 text-start">
                                 We offer project planning to align scope,
                                 budget, and timeline before construction
@@ -422,43 +482,80 @@
                               </p>
                             </li>
                             <li
-                              class="flex flex-col items-start 2xl:gap-3 lg:gap-[10px] gap-[6px] max-w-[455px] w-full">
-                              <h4 class="m-0 text-start">
-                                <a href="./services-detail-6.html" class="hover:text-primary-900">Project Management</a>
-                              </h4>
+                              class="flex flex-col items-start 2xl:gap-3 lg:gap-[10px] gap-[6px] max-w-[455px] w-full sm:p-0 py-4">
+                              <div class="flex items-center justify-between w-full group/services">
+                                <h4 class="m-0 text-start">
+                                  <a href="./services-detail-6.html"
+                                    class="group-hover/services:text-primary-900">Project
+                                    Management</a>
+                                </h4>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                  class="text-black group-hover/services:text-primary-900 lg:hidden block flex-shrink-0">
+                                  <path fill="currentColor"
+                                    d="M12.646 6.646a.5.5 0 0 1 .708 0l5 5a.5.5 0 0 1 0 .708l-5 5a.5.5 0 0 1-.708-.708l4.147-4.146H6a.5.5 0 0 1 0-1h10.793l-4.147-4.146a.5.5 0 0 1 0-.708"
+                                    stroke-width="0.3" stroke="currentColor" />
+                                </svg>
+                              </div>
                               <p class="text-gray-400 normal-case font-light m-0 text-start">
                                 We manage all project phases, ensuring
                                 quality, speed, and clear coordination.
                               </p>
                             </li>
                             <li
-                              class="flex flex-col items-start 2xl:gap-3 lg:gap-[10px] gap-[6px] max-w-[455px] w-full">
-                              <h4 class="m-0 text-start">
-                                <a href="./services-detail-7.html" class="hover:text-primary-900">Bridge
-                                  Construction</a>
-                              </h4>
+                              class="flex flex-col items-start 2xl:gap-3 lg:gap-[10px] gap-[6px] max-w-[455px] w-full sm:p-0 py-4">
+                              <div class="flex items-center justify-between w-full group/services">
+                                <h4 class="m-0 text-start">
+                                  <a href="./services-detail-7.html"
+                                    class="group-hover/services:text-primary-900">Bridge
+                                    Construction</a>
+                                </h4>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                  class="text-black group-hover/services:text-primary-900 lg:hidden block flex-shrink-0">
+                                  <path fill="currentColor"
+                                    d="M12.646 6.646a.5.5 0 0 1 .708 0l5 5a.5.5 0 0 1 0 .708l-5 5a.5.5 0 0 1-.708-.708l4.147-4.146H6a.5.5 0 0 1 0-1h10.793l-4.147-4.146a.5.5 0 0 1 0-.708"
+                                    stroke-width="0.3" stroke="currentColor" />
+                                </svg>
+                              </div>
                               <p class="text-gray-400 normal-case font-light m-0 text-start">
                                 We construct durable, high-load bridges with
                                 precise engineering and performance.
                               </p>
                             </li>
                             <li
-                              class="flex flex-col items-start 2xl:gap-3 lg:gap-[10px] gap-[6px] max-w-[455px] w-full">
-                              <h4 class="m-0 text-start">
-                                <a href="./service-detail-8.html" class="hover:text-primary-900">Landscape
-                                  Construction</a>
-                              </h4>
+                              class="flex flex-col items-start 2xl:gap-3 lg:gap-[10px] gap-[6px] max-w-[455px] w-full sm:p-0 py-4">
+                              <div class="flex items-center justify-between w-full group/services">
+                                <h4 class="m-0 text-start">
+                                  <a href="./service-detail-8.html"
+                                    class="group-hover/services:text-primary-900">Landscape
+                                    Construction</a>
+                                </h4>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                  class="text-black group-hover/services:text-primary-900 lg:hidden block flex-shrink-0">
+                                  <path fill="currentColor"
+                                    d="M12.646 6.646a.5.5 0 0 1 .708 0l5 5a.5.5 0 0 1 0 .708l-5 5a.5.5 0 0 1-.708-.708l4.147-4.146H6a.5.5 0 0 1 0-1h10.793l-4.147-4.146a.5.5 0 0 1 0-.708"
+                                    stroke-width="0.3" stroke="currentColor" />
+                                </svg>
+                              </div>
                               <p class="text-gray-400 normal-case font-light m-0 text-start">
                                 We design and build outdoor spaces that
                                 enhance beauty, usability, and value.
                               </p>
                             </li>
                             <li
-                              class="flex flex-col items-start 2xl:gap-3 lg:gap-[10px] gap-[6px] max-w-[455px] w-full">
-                              <h4 class="m-0 text-start">
-                                <a href="./services-detail-9.html" class="hover:text-primary-900">Flooring & Roofing
-                                  Solutions</a>
-                              </h4>
+                              class="flex flex-col items-start 2xl:gap-3 lg:gap-[10px] gap-[6px] max-w-[455px] w-full sm:p-0 py-4">
+                              <div class="flex items-center justify-between w-full group/services">
+                                <h4 class="m-0 text-start">
+                                  <a href="./services-detail-9.html"
+                                    class="group-hover/services:text-primary-900">Flooring & Roofing
+                                    Solutions</a>
+                                </h4>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                  class="text-black group-hover/services:text-primary-900 lg:hidden block flex-shrink-0">
+                                  <path fill="currentColor"
+                                    d="M12.646 6.646a.5.5 0 0 1 .708 0l5 5a.5.5 0 0 1 0 .708l-5 5a.5.5 0 0 1-.708-.708l4.147-4.146H6a.5.5 0 0 1 0-1h10.793l-4.147-4.146a.5.5 0 0 1 0-.708"
+                                    stroke-width="0.3" stroke="currentColor" />
+                                </svg>
+                              </div>
                               <p class="text-gray-400 normal-case font-light m-0 text-start">
                                 We install weatherproof roofing and durable
                                 flooring built for performance and appeal.
@@ -466,7 +563,7 @@
                             </li>
                           </ul>
                           <div
-                            class="flex sm:items-center items-start sm:flex-nowrap flex-wrap sm:gap-[18px] gap-2 justify-between w-full border-t border-[#00000026] xl:py-[30px] sm:py-6 py-[18px]">
+                            class="flex sm:items-center items-start sm:flex-nowrap flex-wrap sm:gap-[18px] gap-2 justify-between w-full border-t border-[#00000026] 2xl:py-[30px] 1xl:py-6 sm:py-5 py-[18px]">
                             <p
                               class="m-0 font-lexend font-light normal-case sm:text-center text-start text-black cursor-default">
                               © All rights reserved to Orion Constructions
@@ -481,27 +578,27 @@
                   </div>
                 </li>
 
-                <li class="my-auto lg:h-full flex 2xl:px-[18px] xl:px-[14px] lg:px-[10px] px-[6px] font-lexend">
+                <li class="my-auto lg:h-full flex 2xl:px-[18px] xl:px-[14px] lg:px-[10px] sm:px-[6px] font-lexend">
                   <a href="./careers.html" class="nav-tab">Careers</a>
                 </li>
 
-                <li class="my-auto lg:h-full flex 2xl:px-[18px] xl:px-[14px] lg:px-[10px] px-[6px] font-lexend">
+                <li class="my-auto lg:h-full flex 2xl:px-[18px] xl:px-[14px] lg:px-[10px] sm:px-[6px] font-lexend">
                   <a href="./blogs.html" class="nav-tab">Blog</a>
                 </li>
 
                 <li
-                  class="dropdown group my-auto lg:h-full flex items-center justify-between lg:relative 2xl:px-[18px] xl:px-[14px] lg:px-[10px] px-[6px] pages">
-                  <a href="javascript:;"
+                  class="dropdown group my-auto lg:h-full flex items-center justify-between lg:relative 2xl:px-[18px] xl:px-[14px] lg:px-[10px] sm:px-[6px] pages">
+                  <div
                     class="dropdown-toggle items-center gap-1 lg:gap-2 my-auto lg:h-full justify-between w-full flex nav-tab font-lexend">
                     Pages
                     <svg xmlns="http://www.w3.org/2000/svg" width="12" height="11" viewBox="0 0 19 11" fill="none"
-                      class="dropdown-svg transition-all duration-300 ease-in-out">
+                      class="dropdown-arrow-area dropdown-svg transition-all duration-300 ease-in-out">
                       <g clip-path="url(#clip0_128_578)">
                         <path d="M1.58325 1.57143L9.49992 9.42857L17.4166 1.57143" stroke="currentcolor"
                           class="fill-none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                       </g>
                     </svg>
-                  </a>
+                  </div>
                   <!-- Mobile Header (Only visible on mobile) -->
                   <div
                     class="dropdown-menu border-0 lg:h-fit h-screen overflow-auto lg:shadow-[0_15px_19px_0_#0000001c] absolute lg:top-full top-0 bg-white left-auto right-0 1xl:min-w-[240px] lg:min-w-[215px] md:min-w-[195px] w-full hidden lg:pb-2 group-hover/services:flex group-active/services:flex group-focus/services:flex z-50 flex-col">
@@ -520,7 +617,7 @@
                       <ul class="bg-white flex flex-col lg:!max-h-full lg:!overflow-visible">
                         <!-- Mobile Header (Only visible on mobile) -->
                         <li
-                          class="relative pages-submenu-parent group/home lg:px-[22px] px-[14px] border-b border-[#0000001A]">
+                          class="relative pages-submenu-parent group/home lg:px-[22px] sm:px-[14px] border-b border-[#0000001A]">
                           <div
                             class="p2 !font-normal 2xl:py-3 lg:py-[10px] py-3 flex items-center justify-between text-gray-400 hover:text-primary-900 dropdown-link">
                             Homes
@@ -540,7 +637,7 @@
                             <span
                               class="absolute left-auto 1xl:right-[204px] xl:right-[166px] right-[144px] top-6 w-3 h-3 bg-white rotate-45 sm:border border-gray-200 z-[-1] lg:block hidden"></span>
                             <ul
-                              class="lg:border lg:divide-y lg:border-gray-200 lg:divide-[#0000001A] bg-white xl:px-[22px] lg:px-[14px] px-[12px] lg:py-0 py-3">
+                              class="lg:border lg:divide-y lg:border-gray-200 lg:divide-[#0000001A] bg-white xl:px-[22px] lg:px-[14px] sm:px-[12px] lg:py-0 py-3">
                               <li class="p2 2xl:py-3 lg:py-[10px] py-2">
                                 <a href="./index.html"
                                   class="block text-gray-400 hover:text-primary-900 font-normal">Home 01</a>
@@ -561,7 +658,7 @@
                           </div>
                         </li>
 
-                        <li class="lg:px-[22px] px-[14px] border-b border-[#0000001A]">
+                        <li class="lg:px-[22px] sm:px-[14px] border-b border-[#0000001A]">
                           <div
                             class="p2 !font-normal 2xl:py-3 lg:py-[10px] py-3 flex items-center justify-between text-gray-400 hover:text-primary-900">
                             <a href="./about-us.html"
@@ -570,7 +667,7 @@
                         </li>
 
                         <li
-                          class="relative pages-submenu-parent group/projects lg:px-[22px] px-[14px] border-b border-[#0000001A]">
+                          class="relative pages-submenu-parent group/projects lg:px-[22px] sm:px-[14px] border-b border-[#0000001A]">
                           <div
                             class="p2 !font-normal 2xl:py-3 lg:py-[10px] py-3 flex items-center justify-between text-gray-400 hover:text-primary-900">
                             Projects
@@ -590,7 +687,7 @@
                             <span
                               class="absolute left-auto 1xl:right-[204px] xl:right-[166px] right-[144px] top-6 w-3 h-3 bg-white rotate-45 sm:border border-gray-200 z-[-1] lg:block hidden"></span>
                             <ul
-                              class="lg:border lg:divide-y lg:border-gray-200 lg:divide-[#0000001A] bg-white xl:px-[22px] lg:px-[14px] px-[12px] lg:py-0 py-3">
+                              class="lg:border lg:divide-y lg:border-gray-200 lg:divide-[#0000001A] bg-white xl:px-[22px] lg:px-[14px] sm:px-[12px] lg:py-0 py-3">
                               <li class="p2 2xl:py-3 lg:py-[10px] py-2">
                                 <a href="./projects.html"
                                   class="block text-gray-400 hover:text-primary-900 font-normal">Project 01</a>
@@ -614,7 +711,7 @@
 
                         <!-- Nested submenu parent -->
                         <li
-                          class="relative pages-submenu-parent group/services lg:px-[22px] px-[14px] border-b border-[#0000001A]">
+                          class="relative pages-submenu-parent group/services lg:px-[22px] sm:px-[14px] border-b border-[#0000001A]">
                           <div
                             class="p2 !font-normal 2xl:py-3 lg:py-[10px] py-3 flex items-center justify-between text-gray-400 hover:text-primary-900 dropdown-link">
                             Services
@@ -634,7 +731,7 @@
                             <span
                               class="absolute left-auto 1xl:right-[204px] xl:right-[166px] right-[144px] top-6 w-3 h-3 bg-white rotate-45 sm:border border-gray-200 z-[-1] lg:block hidden"></span>
                             <ul
-                              class="lg:border lg:divide-y lg:border-gray-200 lg:divide-[#0000001A] bg-white xl:px-[22px] lg:px-[14px] px-[12px] lg:py-0 py-3">
+                              class="lg:border lg:divide-y lg:border-gray-200 lg:divide-[#0000001A] bg-white xl:px-[22px] lg:px-[14px] sm:px-[12px] lg:py-0 py-3">
                               <li class="p2 2xl:py-3 lg:py-[10px] py-2">
                                 <a href="./services.html"
                                   class="block text-gray-400 hover:text-primary-900 font-normal">Services 01</a>
@@ -658,7 +755,7 @@
 
                         <!-- Nested submenu parent -->
                         <li
-                          class="relative pages-submenu-parent group/team lg:px-[22px] px-[14px] border-b border-[#0000001A]">
+                          class="relative pages-submenu-parent group/team lg:px-[22px] sm:px-[14px] border-b border-[#0000001A]">
                           <div
                             class="p2 !font-normal 2xl:py-3 lg:py-[10px] py-3 flex items-center justify-between text-gray-400 hover:text-primary-900">
                             Teams
@@ -678,7 +775,7 @@
                             <span
                               class="absolute left-auto 1xl:right-[204px] xl:right-[166px] right-[144px] top-6 w-3 h-3 bg-white rotate-45 sm:border border-gray-200 z-[-1] lg:block hidden"></span>
                             <ul
-                              class="lg:border lg:divide-y lg:border-gray-200 lg:divide-[#0000001A] bg-white xl:px-[22px] lg:px-[14px] px-[12px] lg:py-0 py-3">
+                              class="lg:border lg:divide-y lg:border-gray-200 lg:divide-[#0000001A] bg-white xl:px-[22px] lg:px-[14px] sm:px-[12px] lg:py-0 py-3">
                               <li class="p2 2xl:py-3 lg:py-[10px] py-2">
                                 <a href="./team.html"
                                   class="block text-gray-400 hover:text-primary-900 font-normal">Team 01</a>
@@ -698,7 +795,7 @@
 
                         <!-- Nested submenu parent -->
                         <li
-                          class="relative pages-submenu-parent group/blogs lg:px-[22px] px-[14px] border-b border-[#0000001A]">
+                          class="relative pages-submenu-parent group/blogs lg:px-[22px] sm:px-[14px] border-b border-[#0000001A]">
                           <div
                             class="p2 !font-normal 2xl:py-3 lg:py-[10px] py-3 flex items-center justify-between text-gray-400 hover:text-primary-900">
                             Blogs
@@ -713,12 +810,12 @@
 
                           <!-- Nested dropdown -->
                           <div
-                            class="pages-submenu-panel lg:px-0 px-4 absolute top-0 1xl:left-[239px] lg:left-[214px] left-0 1xl:min-w-[220px] xl:min-w-[182px] lg:min-w-[160px] hidden lg:group-hover/home:blogs lg:group-active/home:blogs lg:group-focus/home:blogs z-50 lg:pl-[10px]">
+                            class="pages-submenu-panel lg:px-0 px-4 absolute top-0 1xl:left-[239px] lg:left-[214px] left-0 1xl:min-w-[220px] xl:min-w-[182px] lg:min-w-[160px] hidden lg:group-hover/blogs:block lg:group-active/blogs:block lg:group-focus/blogs:block z-50 lg:pl-[10px]">
                             <!-- Triangle arrow -->
                             <span
                               class="absolute left-auto 1xl:right-[204px] xl:right-[166px] right-[144px] top-6 w-3 h-3 bg-white rotate-45 sm:border border-gray-200 z-[-1] lg:block hidden"></span>
                             <ul
-                              class="lg:border lg:divide-y lg:border-gray-200 lg:divide-[#0000001A] bg-white xl:px-[22px] lg:px-[14px] px-[12px] lg:py-0 py-3">
+                              class="lg:border lg:divide-y lg:border-gray-200 lg:divide-[#0000001A] bg-white xl:px-[22px] lg:px-[14px] sm:px-[12px] lg:py-0 py-3">
                               <li class="p2 2xl:py-3 lg:py-[10px] py-2">
                                 <a href="./blogs.html"
                                   class="block text-gray-400 hover:text-primary-900 font-normal">Blog 01</a>
@@ -741,7 +838,7 @@
                         </li>
                         <!-- More items -->
 
-                        <li class="lg:px-[22px] px-[14px] border-b border-[#0000001A]">
+                        <li class="lg:px-[22px] sm:px-[14px] border-b border-[#0000001A]">
                           <div
                             class="p2 !font-normal 2xl:py-3 lg:py-[10px] py-3 flex items-center justify-between text-gray-400 hover:text-primary-900">
                             <a href="./careers.html"
@@ -749,7 +846,7 @@
                           </div>
                         </li>
 
-                        <li class="lg:px-[22px] px-[14px] border-b border-[#0000001A]">
+                        <li class="lg:px-[22px] sm:px-[14px] border-b border-[#0000001A]">
                           <div
                             class="p2 !font-normal 2xl:py-3 lg:py-[10px] py-3 flex items-center justify-between text-gray-400 hover:text-primary-900">
                             <a href="./contact-us.html"
@@ -757,7 +854,7 @@
                           </div>
                         </li>
 
-                        <li class="lg:px-[22px] px-[14px] border-b border-[#0000001A]">
+                        <li class="lg:px-[22px] sm:px-[14px] border-b border-[#0000001A]">
                           <div
                             class="p2 !font-normal 2xl:py-3 lg:py-[10px] py-3 flex items-center justify-between text-gray-400 hover:text-primary-900">
                             <a href="./privacy-policy.html"
@@ -766,7 +863,7 @@
                           </div>
                         </li>
 
-                        <li class="lg:px-[22px] px-[14px] border-b border-[#0000001A]">
+                        <li class="lg:px-[22px] sm:px-[14px] border-b border-[#0000001A]">
                           <div
                             class="p2 !font-normal 2xl:py-3 lg:py-[10px] py-3 flex items-center justify-between text-gray-400 hover:text-primary-900">
                             <a href="./terms-condition.html"
@@ -775,7 +872,7 @@
                           </div>
                         </li>
 
-                        <li class="relative pages-submenu-parent group/other lg:px-[22px] px-[14px]">
+                        <li class="relative pages-submenu-parent group/other lg:px-[22px] sm:px-[14px]">
                           <div
                             class="p2 !font-normal py-3 flex items-center justify-between text-gray-400 hover:text-primary-900">
                             Other Pages
@@ -798,7 +895,7 @@
                             <!-- Scrollable wrapper -->
                             <div class="2xl:max-h-60 1xl:max-h-50 xl:max-h-45 lg:max-h-28 max-h-fit overflow-y-auto">
                               <ul
-                                class="lg:border lg:divide-y lg:border-gray-200 lg:divide-[#0000001A] bg-white xl:px-[22px] lg:px-[14px] px-[12px] lg:py-0 py-3">
+                                class="lg:border lg:divide-y lg:border-gray-200 lg:divide-[#0000001A] bg-white xl:px-[22px] lg:px-[14px] sm:px-[12px] lg:py-0 py-3">
                                 <li class="p2 2xl:py-3 lg:py-[10px] py-2">
                                   <a href="./faq.html"
                                     class="block text-gray-400 hover:text-primary-900 font-normal">Faq's</a>
@@ -824,6 +921,14 @@
                                     class="block text-gray-400 hover:text-primary-900 font-normal">Category</a>
                                 </li>
                                 <li class="p2 2xl:py-3 lg:py-[10px] py-2">
+                                  <a href="./packages.html"
+                                    class="block text-gray-400 hover:text-primary-900 font-normal">Packages</a>
+                                </li>
+                                <li class="p2 2xl:py-3 lg:py-[10px] py-2">
+                                  <a href="./testimonials.html"
+                                    class="block text-gray-400 hover:text-primary-900 font-normal">Testimonials</a>
+                                </li>
+                                <li class="p2 2xl:py-3 lg:py-[10px] py-2">
                                   <a href="./gallery.html"
                                     class="block text-gray-400 hover:text-primary-900 font-normal">Gallery</a>
                                 </li>
@@ -836,7 +941,7 @@
                   </div>
                 </li>
 
-                <li class="my-auto lg:h-full flex 2xl:px-[18px] xl:px-[14px] lg:px-[10px] px-[6px] font-lexend">
+                <li class="my-auto lg:h-full flex 2xl:px-[18px] xl:px-[14px] lg:px-[10px] sm:px-[6px] font-lexend">
                   <a href="./contact-us.html" class="nav-tab">Contact</a>
                 </li>
               </ul>
@@ -1019,13 +1124,13 @@
     <!-- start main wrapper -->
     <div class="main-wrapper z-1">
       <!-- start hero section -->
-      <section class="relative 2xl:mb-[100px] 1xl:mb-20 lg:mb-[70px] md:mb-[50px] mb-8 z-1 card-types">
+      <section class="relative 2xl:mb-[100px] 1xl:mb-20 lg:mb-[60px] md:mb-[50px] mb-8 z-1 card-types">
         <div class="flex md:flex-col flex-col-reverse">
           <div class="container-2">
             <!-- start hero content -->
             <div class="1xl:pt-24 xl:pt-[4.5rem] md:pt-[3.5rem] pt-7 1xl:pb-16 md:pb-10">
               <!-- container -->
-              <div class="w-full xl:w-[60%] md:w-[70%]" data-aos="fade-right">
+              <div class="w-full xl:w-[60%] md:w-[70%]">
                 <h6 class="font-medium sub-title 1xl:mb-8 mb-7">
                   Collaborate with us
                 </h6>
@@ -1037,7 +1142,7 @@
           </div>
           <!-- end hero content slider-->
           <!-- hero banner img -->
-          <div class="relative w-full block 1xl:px-[100px] lg:px-[90px] sm:px-[60px] px-0" data-aos="fade-up">
+          <div class="relative w-full block 1xl:px-[100px] lg:px-[90px] sm:px-[60px] px-0">
             <div class="relative">
               <div
                 class="absolute 2xl:-right-[6.4rem] xl:-right-[4.8rem] -right-16 1xl:-top-[6.3rem] md:-top-[5.8rem] md:bottom-auto sm:-bottom-16 -bottom-[3.8rem] 2xl:w-[204px] 1xl:h-[204px] md:w-[155px] md:h-[185px] sm:w-[150px] sm:h-[150px] w-[132px] h-[132px] rounded-full flex items-center justify-center mr-0 ml-auto z-3">
@@ -1079,33 +1184,33 @@
       <!-- end hero section -->
 
       <!-- start count section -->
-      <section class="relative 2xl:mb-[100px] 1xl:mb-20 lg:mb-[70px] md:mb-[50px] mb-8" data-aos="fade-up">
+      <section class="relative 2xl:mb-[100px] 1xl:mb-20 lg:mb-[60px] md:mb-[50px] mb-8">
         <div class="container-2">
           <div
-            class="md:flex items-start justify-between grid sm:grid-cols-2 grid-cols-1 w-full gap-4 2xl:pb-[60px] xl:pb-[50px] lg:pb-10 sm:pb-[30px] sm:border-b border-[#00000026]">
+            class="md:flex items-start justify-between grid sm:grid-cols-2 grid-cols-1 w-full sm:gap-4 2xl:pb-[60px] xl:pb-[50px] lg:pb-10 sm:pb-[30px] sm:border-b border-[#00000026]">
             <div
-              class="flex flex-col items-start justify-center xl:gap-[10px] gap-2 sm:border-t-0 border-t border-[#00000026] sm:py-0 py-6 last:pb-0">
+              class="flex flex-col items-start justify-center xl:gap-[10px] sm:gap-2 sm:border-t-0 border-t border-[#00000026] sm:py-0 py-5 last:pb-0">
               <h2 data-start="0" data-end="450" data-duration="2500" data-suffix="+" class="count-up text-primary-900">
                 450+
               </h2>
               <p class="font-normal">Completed Projects</p>
             </div>
             <div
-              class="flex flex-col items-start justify-center xl:gap-[10px] gap-2 sm:border-t-0 border-t border-[#00000026] sm:py-0 py-6 last:pb-0">
+              class="flex flex-col items-start justify-center xl:gap-[10px] sm:gap-2 sm:border-t-0 border-t border-[#00000026] sm:py-0 py-5 last:pb-0">
               <h2 data-start="0" data-end="200" data-duration="2500" data-suffix="+" class="count-up text-primary-900">
                 200+
               </h2>
               <p class="font-normal">Skilled Team Members</p>
             </div>
             <div
-              class="flex flex-col items-start justify-center xl:gap-[10px] gap-2 sm:border-t-0 border-t border-[#00000026] sm:py-0 py-6 last:pb-0">
+              class="flex flex-col items-start justify-center xl:gap-[10px] sm:gap-2 sm:border-t-0 border-t border-[#00000026] sm:py-0 py-5 last:pb-0">
               <h2 data-start="0" data-end="25" data-duration="2500" data-suffix="+" class="count-up text-primary-900">
                 25+
               </h2>
               <p class="font-normal">Years of Experience</p>
             </div>
             <div
-              class="flex flex-col items-start justify-center xl:gap-[10px] gap-2 sm:border-t-0 border-t border-[#00000026] sm:py-0 py-6 last:pb-0">
+              class="flex flex-col items-start justify-center xl:gap-[10px] sm:gap-2 sm:border-t-0 border-t border-[#00000026] sm:py-0 py-5 last:pb-0">
               <h2 data-start="0" data-end="150" data-duration="2500" data-suffix="+" class="count-up text-primary-900">
                 150+
               </h2>
@@ -1121,7 +1226,7 @@
         <div class="about-image-with-text-section relative overflow-hidden">
           <div class="container-2">
             <div class="flex flex-wrap">
-              <div class="w-full lg:w-1/2 order-2 lg:order-1" data-aos="fade-right">
+              <div class="w-full lg:w-1/2 order-2 lg:order-1">
                 <div
                   class="2xl:pt-[120px] xl:pt-[90px] lg:pt-[70px] pt-10 2xl:pb-44 xl:pb-28 lg:pb-20 sm:pb-7 pb-10 2xl:pr-[128px] xl:pr-[75px] lg:pr-[65px] pr-0">
                   <h2 class="2xl:mb-6 xl:mb-5 mb-4 lg:w-[85%]">
@@ -1177,8 +1282,7 @@
                 </div>
               </div>
               <div
-                class="w-full lg:w-1/2 lg:absolute relative top-0 right-0 lg:h-full md:h-[430px] sm:h-[350px] h-full order-1 lg:order-2"
-                data-aos="fade-left">
+                class="w-full lg:w-1/2 lg:absolute relative top-0 right-0 lg:h-full md:h-[430px] sm:h-[350px] h-full order-1 lg:order-2">
                 <img src="../images/discover-banner.webp" alt="img" class="h-full w-full object-cover" loading="lazy"
                   decoding="async" />
                 <!-- customer's review -->
@@ -1215,7 +1319,7 @@
       <!-- end About Us section -->
 
       <!-- start text-slider section -->
-      <section class="relative 2xl:mb-[100px] 1xl:mb-20 lg:mb-[70px] md:mb-[50px] mb-8 z-1">
+      <section class="relative 2xl:mb-[100px] 1xl:mb-20 lg:mb-[60px] md:mb-[50px] mb-8 z-1">
         <div class="text-slider overflow-hidden">
           <div class="slider-track flex animate-slides items-center 1xl:gap-7 md:gap-5 gap-4 flex-nowrap shrink-0">
             <!-- original set -->
@@ -1266,12 +1370,12 @@
       <!-- end text-slider section -->
 
       <!-- start services section -->
-      <section class="relative 2xl:mb-[100px] 1xl:mb-20 lg:mb-[70px] md:mb-[50px] mb-8 z-1">
+      <section class="relative 2xl:mb-[100px] 1xl:mb-20 lg:mb-[60px] md:mb-[50px] mb-8 z-1">
         <div class="container-2">
           <div
             class="flex sm:items-center items-start justify-between w-full sm:flex-row flex-col sm:gap-4 2xl:mb-10 1xl:mb-8 md:mb-7 sm:mb-5 mb-3">
-            <h2 class="m-0" data-aos="fade-right">Our Services</h2>
-            <div class="w-auto sm:flex hidden items-center justify-end" data-aos="fade-left">
+            <h2 class="m-0">Our Services</h2>
+            <div class="w-auto sm:flex hidden items-center justify-end">
               <a href="./services-2.html" class="btn btn-primary-reverse sm:block hidden">
                 View all Services
               </a>
@@ -1403,13 +1507,12 @@
       <!-- end services section -->
 
       <!-- start Our Projects section -->
-      <section class="relative 2xl:mb-[100px] 1xl:mb-20 lg:mb-[70px] md:mb-[50px] mb-8 bg-gray-300">
+      <section class="relative 2xl:mb-[100px] 1xl:mb-20 lg:mb-[60px] md:mb-[50px] mb-8 bg-gray-300">
         <div class="container-2">
-          <div class="2xl:py-[90px] 1xl:py-[75px] xl:py-[70px] lg:py-[65px] md:py-[60px] py-10 our-projects-home-2">
+          <div class="2xl:py-[90px] 1xl:py-[75px] xl:py-[60px] lg:py-[65px] md:py-[60px] py-10 our-projects-home-2">
             <!-- <div class="flex flex-col items-start 2xl:gap-[30px] xl:gap-[25px] lg:gap-5 sm:gap-4 gap-2.5"> -->
             <div class="flex items-end justify-between 1xl:mb-10 md:mb-8 mb-[22px] w-full">
-              <div class="flex flex-col items-start 2xl:gap-[30px] xl:gap-[25px] lg:gap-5 sm:gap-4 gap-2.5"
-                data-aos="fade-right">
+              <div class="flex flex-col items-start 2xl:gap-[30px] xl:gap-[25px] lg:gap-5 sm:gap-4 gap-2.5">
                 <h6 class="sub-title">Portfolio</h6>
                 <h2>Our Projects</h2>
               </div>
@@ -1441,7 +1544,7 @@
               <div class="swiper-wrapper">
                 <!-- projects box - 1 -->
                 <div class="swiper-slide !h-auto project">
-                  <div class="project-box group !bg-white" data-aos="fade-up">
+                  <div class="project-box group !bg-white">
                     <div class="project-img-before">
                       <a href="./project-detail-1.html" class="absolute top-0 left-0 w-full h-full block">
                         <img src="../images/project-1.webp" alt="img"
@@ -1475,7 +1578,7 @@
                 </div>
                 <!-- projects box - 2 -->
                 <div class="swiper-slide !h-auto project">
-                  <div class="project-box group !bg-white" data-aos="fade-up">
+                  <div class="project-box group !bg-white">
                     <div class="project-img-before">
                       <a href="./project-detail-2.html" class="absolute top-0 left-0 w-full h-full block">
                         <img src="../images/project-2.webp" alt="img"
@@ -1509,7 +1612,7 @@
                 </div>
                 <!-- projects box - 3 -->
                 <div class="swiper-slide !h-auto project">
-                  <div class="project-box group !bg-white" data-aos="fade-up">
+                  <div class="project-box group !bg-white">
                     <div class="project-img-before">
                       <a href="./project-detail-3.html" class="absolute top-0 left-0 w-full h-full block">
                         <img src="../images/project-3.webp" alt="img"
@@ -1543,7 +1646,7 @@
                 </div>
                 <!-- projects box - 4 -->
                 <div class="swiper-slide !h-auto project">
-                  <div class="project-box group !bg-white" data-aos="fade-up">
+                  <div class="project-box group !bg-white">
                     <div class="project-img-before">
                       <a href="./project-detail-4.html" class="absolute top-0 left-0 w-full h-full block">
                         <img src="../images/project-4.webp" alt="img"
@@ -1577,7 +1680,7 @@
                 </div>
                 <!-- projects box - 5 -->
                 <div class="swiper-slide !h-auto project">
-                  <div class="project-box group !bg-white" data-aos="fade-up">
+                  <div class="project-box group !bg-white">
                     <div class="project-img-before">
                       <a href="./project-detail-5.html" class="absolute top-0 left-0 w-full h-full block">
                         <img src="../images/project-5.webp" alt="img"
@@ -1611,7 +1714,7 @@
                 </div>
                 <!-- projects box - 6 -->
                 <div class="swiper-slide !h-auto project">
-                  <div class="project-box group !bg-white" data-aos="fade-up">
+                  <div class="project-box group !bg-white">
                     <div class="project-img-before">
                       <a href="./project-detail-6.html" class="absolute top-0 left-0 w-full h-full block">
                         <img src="../images/project-6.webp" alt="img"
@@ -1645,7 +1748,7 @@
                 </div>
                 <!-- projects box  - 7-->
                 <div class="swiper-slide !h-auto project">
-                  <div class="project-box group !bg-white" data-aos="fade-up">
+                  <div class="project-box group !bg-white">
                     <div class="project-img-before">
                       <a href="./project-detail-7.html" class="absolute top-0 left-0 w-full h-full block">
                         <img src="../images/project-7.webp" alt="img"
@@ -1679,7 +1782,7 @@
                 </div>
                 <!-- projects box - 8 -->
                 <div class="swiper-slide !h-auto project">
-                  <div class="project-box group !bg-white" data-aos="fade-up">
+                  <div class="project-box group !bg-white">
                     <div class="project-img-before">
                       <a href="./project-detail-8.html" class="absolute top-0 left-0 w-full h-full block">
                         <img src="../images/project-8.webp" alt="img"
@@ -1704,9 +1807,8 @@
                         </a>
                       </h4>
                       <p class="text-gray-400">
-                        Road development with four-lane paving, drainage,
-                        street lighting, markings, and crash protection
-                        systems included.
+                        Road development with four-lane paving, drainage, street lighting, markings, and crash
+                        protection systems included.
                       </p>
                     </div>
                   </div>
@@ -1719,14 +1821,14 @@
       <!-- end Our Projects section -->
 
       <!-- start packages section -->
-      <section class="relative 2xl:mb-[100px] 1xl:mb-20 lg:mb-[70px] md:mb-[50px] mb-8">
+      <section class="relative 2xl:mb-[100px] 1xl:mb-20 lg:mb-[60px] md:mb-[50px] mb-8">
         <div class="container-2">
           <div>
             <!-- Header -->
             <div
               class="flex sm:items-center items-start justify-between w-full sm:flex-row flex-col sm:gap-4 2xl:mb-10 1xl:mb-8 md:mb-7 sm:mb-5 mb-3">
-              <h2 class="m-0" data-aos="fade-right">Construction Packages</h2>
-              <div class="w-auto sm:flex hidden items-center justify-end" data-aos="fade-left">
+              <h2 class="m-0">Construction Packages</h2>
+              <div class="w-auto sm:flex hidden items-center justify-end">
                 <a href="./packages.html" class="btn btn-primary-reverse sm:block hidden">
                   View all Plans
                 </a>
@@ -1736,8 +1838,7 @@
             <div class="grid xl:grid-cols-2 grid-cols-1 2xl:gap-10 1xl:gap-8 sm:gap-7 gap-5">
               <!-- Residential Build -->
               <div
-                class="relative border border-[#00000026] 2xl:p-[38px] sm:p-[27px] p-5 bg-white flex items-start justify-start sm:flex-row flex-col 2xl:gap-[30px] 1xl:gap-[18px] xl:gap-[15px] md:gap-8 gap-5 w-full"
-                data-aos="fade-up">
+                class="relative border border-[#00000026] 2xl:p-[38px] sm:p-[27px] p-5 bg-white flex items-start justify-start sm:flex-row flex-col 2xl:gap-[30px] 1xl:gap-[18px] xl:gap-[15px] md:gap-8 gap-5 w-full">
                 <div class="2xl:w-[257px] 1xl:w-[224px] xl:w-[210px] md:w-1/2 sm:w-[70%] w-full">
                   <h4 class="font-medium 2xl:mb-[18px] 1xl:mb-[14px] xl:mb-[7px] mb-3">
                     Residential Build
@@ -1803,8 +1904,7 @@
               </div>
               <!-- Commercial Site -->
               <div
-                class="relative border border-[#00000026] 2xl:p-[38px] sm:p-[27px] p-5 bg-white flex items-start justify-start sm:flex-row flex-col 2xl:gap-[30px] 1xl:gap-[18px] xl:gap-[15px] md:gap-8 gap-5 w-full"
-                data-aos="fade-up" data-aos-delay="100">
+                class="relative border border-[#00000026] 2xl:p-[38px] sm:p-[27px] p-5 bg-white flex items-start justify-start sm:flex-row flex-col 2xl:gap-[30px] 1xl:gap-[18px] xl:gap-[15px] md:gap-8 gap-5 w-full">
                 <div class="2xl:w-[257px] 1xl:w-[224px] xl:w-[210px] md:w-1/2 sm:w-[70%] w-full">
                   <h4 class="font-medium 2xl:mb-[18px] 1xl:mb-[14px] xl:mb-[7px] mb-3">
                     Commercial Site
@@ -1868,8 +1968,7 @@
               </div>
               <!-- Industrial Projects -->
               <div
-                class="relative border border-[#00000026] 2xl:p-[38px] sm:p-[27px] p-5 bg-white flex items-start justify-start sm:flex-row flex-col 2xl:gap-[30px] 1xl:gap-[18px] xl:gap-[15px] md:gap-8 gap-5 w-full"
-                data-aos="fade-up" data-aos-delay="200">
+                class="relative border border-[#00000026] 2xl:p-[38px] sm:p-[27px] p-5 bg-white flex items-start justify-start sm:flex-row flex-col 2xl:gap-[30px] 1xl:gap-[18px] xl:gap-[15px] md:gap-8 gap-5 w-full">
                 <div class="p2 mostPopular-tag">Most Popular</div>
                 <div class="2xl:w-[257px] 1xl:w-[224px] xl:w-[210px] md:w-1/2 sm:w-[70%] w-full">
                   <h4 class="font-medium 2xl:mb-[18px] 1xl:mb-[14px] xl:mb-[7px] mb-3">
@@ -1934,8 +2033,7 @@
               </div>
               <!-- Civil Works -->
               <div
-                class="relative border border-[#00000026] 2xl:p-[38px] sm:p-[27px] p-5 bg-white flex items-start justify-start sm:flex-row flex-col 2xl:gap-[30px] 1xl:gap-[18px] xl:gap-[15px] md:gap-8 gap-5 w-full"
-                data-aos="fade-up" data-aos-delay="300">
+                class="relative border border-[#00000026] 2xl:p-[38px] sm:p-[27px] p-5 bg-white flex items-start justify-start sm:flex-row flex-col 2xl:gap-[30px] 1xl:gap-[18px] xl:gap-[15px] md:gap-8 gap-5 w-full">
                 <div class="2xl:w-[257px] 1xl:w-[224px] xl:w-[210px] md:w-1/2 sm:w-[70%] w-full">
                   <h4 class="font-medium 2xl:mb-[18px] 1xl:mb-[14px] xl:mb-[7px] mb-3">
                     Civil Works
@@ -2004,19 +2102,19 @@
       <!-- end packages section -->
 
       <!-- start Our Gallery (marquee sliders) -->
-      <section class="relative 2xl:mb-[100px] 1xl:mb-20 lg:mb-[70px] md:mb-[50px] mb-8 our-gallery-marquee">
+      <section class="relative 2xl:mb-[100px] 1xl:mb-20 lg:mb-[60px] md:mb-[50px] mb-8 our-gallery-marquee">
         <div class="container-2">
           <!-- Header -->
           <div
             class="flex sm:items-center justify-between w-full sm:flex-row flex-col sm:gap-4 2xl:mb-10 1xl:mb-8 md:mb-7 sm:mb-5 mb-3">
-            <h2 class="m-0" data-aos="fade-right">Our Gallery</h2>
-            <div class="w-auto flex items-center justify-end gap-4" data-aos="fade-left">
-              <a href="./gallery.html" class="btn btn-primary-reverse sm:block hidden">View Gallery</a>
+            <h2 class="m-0">Our Gallery</h2>
+            <div class="w-auto sm:flex hidden items-center justify-end gap-4">
+              <a href="./gallery.html" class="btn btn-primary-reverse">View Gallery</a>
             </div>
           </div>
         </div>
         <!-- Row 1: marquee -->
-        <div class="overflow-hidden select-none" data-aos="fade-up">
+        <div class="overflow-hidden select-none">
           <div
             class="js-gallery js-marquee row-1 flex flex-nowrap items-stretch 1xl:gap-9 md:gap-7 sm:gap-5 gap-2 will-change-transform"
             data-speed="40" data-direction="left">
@@ -2071,7 +2169,7 @@
           </div>
         </div>
         <!-- Row 2: constant-speed marquee (reverse) -->
-        <div class="overflow-hidden select-none 1xl:mt-9 md:mt-7 sm:mt-5 mt-2" data-aos="fade-up">
+        <div class="overflow-hidden select-none 1xl:mt-9 md:mt-7 sm:mt-5 mt-2">
           <div
             class="js-gallery js-marquee row-2 flex flex-nowrap items-stretch 1xl:gap-9 md:gap-7 sm:gap-5 gap-2 will-change-transform"
             data-speed="40" data-direction="right">
@@ -2173,6 +2271,11 @@
           <!-- Thumbnails -->
           <div id="lightboxThumbs" class="flex gap-2 overflow-x-auto p-4 w-full justify-center thumb-item"></div>
         </div>
+        <div class="container-2">
+          <div class="w-auto flex sm:hidden items-center justify-start gap-4 mt-5">
+            <a href="./gallery.html" class="btn btn-primary-reverse">View Gallery</a>
+          </div>
+        </div>
       </section>
       <!-- end Our Gallery (marquee sliders) -->
 
@@ -2185,9 +2288,9 @@
         <div class="container-2 relative testimonials-2 2xl:py-[100px] 1xl:py-20 lg:py-[70px] sm:py-[50px] py-10">
           <!-- Heading -->
           <div class="flex items-center justify-between 2xl:mb-[85px] 1xl:mb-[60px] xl:mb-[50px] md:mb-[44px] mb-5">
-            <h2 data-aos="fade-right">What Our Clients Say</h2>
+            <h2>What Our Clients Say</h2>
             <div class="w-auto md:flex hidden items-center justify-end gap-4">
-              <a href="./testimonials.html" class="btn btn-primary-reverse sm:block hidden" data-aos="fade-left">Read
+              <a href="./testimonials.html" class="btn btn-primary-reverse sm:block hidden">Read
                 all Reviews</a>
             </div>
           </div>
@@ -2198,7 +2301,7 @@
                 <!-- 1st testimonial -->
                 <div class="swiper-slide h-auto">
                   <!-- Left -->
-                  <div data-aos="fade-right">
+                  <div>
                     <div class="2xl:mb-[100px] 1xl:mb-[70px] lg:mb-[50px] mb-9">
                       <div class="flex items-center gap-1 1xl:mb-12 xl:mb-9 md:mb-7 sm:mb-6 mb-[22px]">
                         <span class="flex items-center gap-[6px]">
@@ -2236,19 +2339,16 @@
                       </div>
                       <h6
                         class="md:mb-6 font-normal font-lexend 1xl:leading-9 xl:leading-8 sm:leading-[29px] leading-[24px] lg:line-clamp-8 line-clamp-6">
-                        “Orion Construction transformed our office space
-                        project into a seamless and stress-free experience.
-                        From the initial planning to the final walk-through,
-                        their team showed professionalism, transparency, and a
-                        strong commitment to excellence. Every milestone was
-                        met on time, and their craftsmanship truly stood out.
-                        The finished space is both practical and beautifully
-                        executed. We’re thrilled with the outcome and wouldn’t
-                        hesitate to recommend them to others.”
+                        “Orion Construction transformed our office space project into a seamless and stress-free
+                        experience. From the initial planning to the final walk-through, their team showed
+                        professionalism, transparency, and a strong commitment to excellence. Every milestone was met on
+                        time, and their craftsmanship truly stood out. The finished space is both practical and
+                        beautifully executed. We’re thrilled with the outcome and wouldn’t hesitate to recommend them to
+                        others.”
                       </h6>
                     </div>
                     <div
-                      class="overflow-hidden relative before:block sm:before:pt-[109%] before:pt-[100%] !block md:w-full sm:w-1/2 w-full mx-auto md:!hidden sm:mb-7 mb-5 ml-0">
+                      class="overflow-hidden relative before:block sm:before:pt-[109%] before:pt-[90%] !block md:w-full sm:w-1/2 w-full mx-auto md:!hidden sm:mb-7 mb-5 ml-0">
                       <img src="../images/2nd-testimonial-1.webp"
                         class="w-full h-full object-cover absolute top-0 bottom-0 left-0 right-0" loading="lazy"
                         decoding="async" />
@@ -2271,7 +2371,7 @@
                 <!-- 2nd testimonial -->
                 <div class="swiper-slide h-auto">
                   <!-- Left -->
-                  <div data-aos="fade-right">
+                  <div>
                     <div class="2xl:mb-[100px] 1xl:mb-[70px] lg:mb-[50px] mb-9">
                       <div class="flex items-center gap-1 1xl:mb-12 xl:mb-9 md:mb-7 sm:mb-6 mb-[22px]">
                         <span class="flex items-center gap-[6px]">
@@ -2304,18 +2404,15 @@
                       </div>
                       <p
                         class="h6 mb-6 font-normal font-lexend 1xl:leading-9 xl:leading-8 sm:leading-[29px] leading-[24px] lg:line-clamp-8 line-clamp-6">
-                        “Orion Construction delivered our corporate facility
-                        professionalism. From design input to the final
-                        walkthrough, their team was responsive, clear in
-                        communication, and truly committed to quality. The
-                        build stayed on schedule and budget, and the results
-                        are both functional and impressive. I’m extremely
-                        pleased with the outcome and would gladly collaborate
-                        with them again.”
+                        “Orion Construction delivered our corporate facility professionalism. From design input to the
+                        final walkthrough, their team was responsive, clear in communication, and truly committed to
+                        quality. The build stayed on schedule and budget, and the results are both functional and
+                        impressive. I’m extremely pleased with the outcome and would gladly collaborate with them
+                        again.”
                       </p>
                     </div>
                     <div
-                      class="overflow-hidden relative before:block sm:before:pt-[109%] before:pt-[100%] !block md:w-full sm:w-1/2 w-full mx-auto md:!hidden sm:mb-7 mb-5 ml-0">
+                      class="overflow-hidden relative before:block sm:before:pt-[109%] before:pt-[90%] !block md:w-full sm:w-1/2 w-full mx-auto md:!hidden sm:mb-7 mb-5 ml-0">
                       <img src="../images/2nd-testimonial-2.webp"
                         class="w-full h-full object-cover absolute top-0 bottom-0 left-0 right-0" loading="lazy"
                         decoding="async" />
@@ -2340,7 +2437,7 @@
                 <!-- 3rd testimonial -->
                 <div class="swiper-slide h-auto">
                   <!-- Left -->
-                  <div data-aos="fade-right">
+                  <div>
                     <div class="2xl:mb-[100px] 1xl:mb-[70px] lg:mb-[50px] mb-9">
                       <div class="flex items-center gap-1 1xl:mb-12 xl:mb-9 md:mb-7 sm:mb-6 mb-[22px]">
                         <span class="flex items-center gap-[6px]">
@@ -2373,18 +2470,14 @@
                       </div>
                       <p
                         class="h6 mb-6 font-normal font-lexend 1xl:leading-9 xl:leading-8 sm:leading-[29px] leading-[24px] lg:line-clamp-8 line-clamp-6">
-                        “We entrusted Orion Construction with our wellness
-                        center renovation, and the experience exceeded
-                        expectations. They brought creativity, structure, and
-                        clarity to every stage of the project. Their
-                        dedication to safety, timelines, and fine
-                        craftsmanship was evident throughout. The end result
-                        is elegant, efficient, and exactly what we
-                        envisioned.”
+                        “We entrusted Orion Construction with our wellness center renovation, and the experience
+                        exceeded expectations. They brought creativity, structure, and clarity to every stage of the
+                        project. Their dedication to safety, timelines, and fine craftsmanship was evident throughout.
+                        The end result is elegant, efficient, and exactly what we envisioned.”
                       </p>
                     </div>
                     <div
-                      class="overflow-hidden relative before:block sm:before:pt-[109%] before:pt-[100%] !block md:w-full sm:w-1/2 w-full mx-auto md:!hidden sm:mb-7 mb-5 ml-0">
+                      class="overflow-hidden relative before:block sm:before:pt-[109%] before:pt-[90%] !block md:w-full sm:w-1/2 w-full mx-auto md:!hidden sm:mb-7 mb-5 ml-0">
                       <img src="../images/2nd-testimonial-3.webp"
                         class="w-full h-full object-cover absolute top-0 bottom-0 left-0 right-0" loading="lazy"
                         decoding="async" />
@@ -2409,7 +2502,7 @@
                 <!-- 4th testimonial -->
                 <div class="swiper-slide h-auto">
                   <!-- Left -->
-                  <div data-aos="fade-right">
+                  <div>
                     <div class="2xl:mb-[100px] 1xl:mb-[70px] lg:mb-[50px] mb-9">
                       <div class="flex items-center gap-1 1xl:mb-12 xl:mb-9 md:mb-7 sm:mb-6 mb-[22px]">
                         <span class="flex items-center gap-[6px]">
@@ -2442,17 +2535,14 @@
                       </div>
                       <p
                         class="h6 mb-6 font-normal font-lexend 1xl:leading-9 xl:leading-8 sm:leading-[29px] leading-[24px] lg:line-clamp-8 line-clamp-6">
-                        “Our logistics hub was a large-scale project, and
-                        Orion Construction managed it flawlessly. From
-                        planning and permits to execution, their team kept us
-                        informed and involved. Their reliability, clear
-                        coordination, and quality workmanship made the process
-                        smooth and successful. I wouldn’t hesitate to
-                        recommend them to industry peers.”
+                        “Our logistics hub was a large-scale project, and Orion Construction managed it flawlessly. From
+                        planning and permits to execution, their team kept us informed and involved. Their reliability,
+                        clear coordination, and quality workmanship made the process smooth and successful. I wouldn’t
+                        hesitate to recommend them to industry peers.”
                       </p>
                     </div>
                     <div
-                      class="overflow-hidden relative before:block sm:before:pt-[109%] before:pt-[100%] !block md:w-full sm:w-1/2 w-full mx-auto md:!hidden sm:mb-7 mb-5 ml-0">
+                      class="overflow-hidden relative before:block sm:before:pt-[109%] before:pt-[90%] !block md:w-full sm:w-1/2 w-full mx-auto md:!hidden sm:mb-7 mb-5 ml-0">
                       <img src="../images/2nd-testimonial-4.webp"
                         class="w-full h-full object-cover absolute top-0 bottom-0 left-0 right-0" loading="lazy"
                         decoding="async" />
@@ -2477,7 +2567,7 @@
                 <!-- 5th testimonial -->
                 <div class="swiper-slide h-auto">
                   <!-- Left -->
-                  <div data-aos="fade-right">
+                  <div>
                     <div class="2xl:mb-[100px] 1xl:mb-[70px] lg:mb-[50px] mb-9">
                       <div class="flex items-center gap-1 1xl:mb-12 xl:mb-9 md:mb-7 sm:mb-6 mb-[22px]">
                         <span class="flex items-center gap-[6px]">
@@ -2510,17 +2600,14 @@
                       </div>
                       <p
                         class="h6 mb-6 font-normal font-lexend 1xl:leading-9 xl:leading-8 sm:leading-[29px] leading-[24px] lg:line-clamp-8 line-clamp-6">
-                        “We hired Orion Construction for our creative studio
-                        fit-out, and they delivered with excellence. Their
-                        ability to interpret our vision and execute with
-                        precision was impressive. The team communicated
-                        clearly, maintained high standards, and ensured
-                        everything was completed on time. The final result
-                        truly reflects their skill and dedication.”
+                        “We hired Orion Construction for our creative studio fit-out, and they delivered with
+                        excellence. Their ability to interpret our vision and execute with precision was impressive. The
+                        team communicated clearly, maintained high standards, and ensured everything was completed on
+                        time. The final result truly reflects their skill and dedication.”
                       </p>
                     </div>
                     <div
-                      class="overflow-hidden relative before:block sm:before:pt-[109%] before:pt-[100%] !block md:w-full sm:w-1/2 w-full mx-auto md:!hidden sm:mb-7 mb-5 ml-0">
+                      class="overflow-hidden relative before:block sm:before:pt-[109%] before:pt-[90%] !block md:w-full sm:w-1/2 w-full mx-auto md:!hidden sm:mb-7 mb-5 ml-0">
                       <img src="../images/2nd-testimonial-5.webp"
                         class="w-full h-full object-cover absolute top-0 bottom-0 left-0 right-0" loading="lazy"
                         decoding="async" />
@@ -2545,7 +2632,7 @@
                 <!-- 6th testimonial -->
                 <div class="swiper-slide h-auto">
                   <!-- Left -->
-                  <div data-aos="fade-right">
+                  <div>
                     <div class="2xl:mb-[100px] 1xl:mb-[70px] lg:mb-[50px] mb-9">
                       <div class="flex items-center gap-1 1xl:mb-12 xl:mb-9 md:mb-7 sm:mb-6 mb-[22px]">
                         <span class="flex items-center gap-[6px]">
@@ -2578,22 +2665,17 @@
                       </div>
                       <p
                         class="h6 mb-6 font-normal font-lexend 1xl:leading-9 xl:leading-8 sm:leading-[29px] leading-[24px] lg:line-clamp-8 line-clamp-6">
-                        “Partnering with Orion Construction was one of the
-                        best decisions we made for our office renovation. From
-                        the very first consultation, their team demonstrated
-                        unmatched professionalism, clear communication, and a
-                        deep understanding of our vision. Every phase—from
-                        planning and budgeting to execution and final
-                        detailing—was handled with care, precision, and
-                        transparency. They consistently met deadlines,
-                        maintained a clean site, and brought incredible
-                        craftsmanship to every corner of the project. The
-                        final result not only meets our functional needs but
-                        also exceeds expectations in design and finish.
+                        “Partnering with Orion Construction was one of the best decisions we made for our office
+                        renovation. From the very first consultation, their team demonstrated unmatched professionalism,
+                        clear communication, and a deep understanding of our vision. Every phase—from planning and
+                        budgeting to execution and final detailing—was handled with care, precision, and transparency.
+                        They consistently met deadlines, maintained a clean site, and brought incredible craftsmanship
+                        to every corner of the project. The final result not only meets our functional needs but also
+                        exceeds expectations in design and finish.
                       </p>
                     </div>
                     <div
-                      class="overflow-hidden relative before:block sm:before:pt-[109%] before:pt-[100%] !block md:w-full sm:w-1/2 w-full mx-auto md:!hidden sm:mb-7 mb-5 ml-0">
+                      class="overflow-hidden relative before:block sm:before:pt-[109%] before:pt-[90%] !block md:w-full sm:w-1/2 w-full mx-auto md:!hidden sm:mb-7 mb-5 ml-0">
                       <img src="../images/2nd-testimonial-6.webp"
                         class="w-full h-full object-cover absolute top-0 bottom-0 left-0 right-0" loading="lazy"
                         decoding="async" />
@@ -2617,7 +2699,7 @@
                 </div>
               </div>
             </div>
-            <div class="md:w-[30%] w-full md:!block !hidden" data-aos="fade-left">
+            <div class="md:w-[30%] w-full md:!block !hidden">
               <div thumbsSlider class="swiper client-2">
                 <div class="swiper-wrapper">
                   <div class="swiper-slide">
@@ -2702,7 +2784,7 @@
               class="md:p-5 xl:p-[30px] xl:pl-0 md:pl-0 py-4 bg-primary-900 relative before:bg-primary-900 before:w-[500%] before:h-full before:absolute before:left-0 before:top-0 before:-ml-[499%] after:w-[500%] after:h-full after:absolute after:left-0 after:top-0 after:-mr-[499%] after:bg-primary-900 md:after:hidden">
               <div
                 class="overflow-hidden relative 2xl:before:pt-[86.6%] xl:before:pt-[90%] lg:before:pt-[100%] md:before:pt-[140%] before:pt-[66%] before:block z-1">
-                <img src="../images/award-nbanner.webp" alt="img"
+                <img src="../images/award-banner.webp" alt="img"
                   class="w-full h-full object-cover absolute top-0 bottom-0 left-0 right-0" loading="lazy"
                   decoding="async" />
               </div>
@@ -2791,10 +2873,10 @@
       <!-- end about Image with text section -->
 
       <!-- start Our News & Blogs section -->
-      <section class="relative 2xl:mb-[100px] 1xl:mb-20 lg:mb-[70px] md:mb-[50px] mb-8 blog-grid-slider">
+      <section class="relative 2xl:mb-[100px] 1xl:mb-20 lg:mb-[60px] md:mb-[50px] mb-8 blog-grid-slider">
         <div class="container-2 relative">
           <div class="sm:flex items-end justify-between 2xl:mb-[50px] md:mb-10 sm:mb-[34px] mb-7 relative">
-            <div class="w-fit" data-aos="fade-right">
+            <div class="w-fit">
               <p class="sub-title 2xl:mb-7 lg:mb-6 md:mb-5 mb-3.5 w-fit">
                 Latest Updates
               </p>
@@ -2807,7 +2889,7 @@
                 and development.
               </p>
             </div>
-            <div class="sm:flex hidden gap-2 project-custom-arrow relative sm:mb-3 mb-0" data-aos="fade-left">
+            <div class="sm:flex hidden gap-2 project-custom-arrow relative sm:mb-3 mb-0">
               <div class="swiper-button-prev arrow-slider absolute flex-shrink-0">
                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="23" viewBox="0 0 36 23" fill="none"
                   class="flex-shrink-0">
@@ -2834,7 +2916,7 @@
             <div class="swiper-wrapper">
               <!-- blog box - 1 -->
               <div class="swiper-slide !h-auto">
-                <div class="blog-box group" data-aos="fade-up">
+                <div class="blog-box group">
                   <div class="blog-img-before">
                     <a href="./blog-detail-1.html" class="absolute top-0 left-0 w-full h-full block">
                       <img src="../images/blog-1.webp" alt="img" class="h-full w-full object-cover" loading="lazy"
@@ -2859,7 +2941,7 @@
               </div>
               <!-- blog box - 2 -->
               <div class="swiper-slide !h-auto">
-                <div class="blog-box group" data-aos="fade-up">
+                <div class="blog-box group">
                   <div class="blog-img-before">
                     <a href="./blog-detail-2.html" class="absolute top-0 left-0 w-full h-full block">
                       <img src="../images/blog-2.webp" alt="img" class="h-full w-full object-cover" loading="lazy"
@@ -2885,7 +2967,7 @@
               </div>
               <!-- blog box - 3 -->
               <div class="swiper-slide !h-auto">
-                <div class="blog-box group" data-aos="fade-up">
+                <div class="blog-box group">
                   <div class="blog-img-before">
                     <a href="./blog-detail-3.html" class="absolute top-0 left-0 w-full h-full block">
                       <img src="../images/blog-3.webp" alt="img" class="h-full w-full object-cover" loading="lazy"
@@ -2911,7 +2993,7 @@
               </div>
               <!-- blog box - 4 -->
               <div class="swiper-slide !h-auto">
-                <div class="blog-box group" data-aos="fade-up">
+                <div class="blog-box group">
                   <div class="blog-img-before">
                     <a href="./blog-detail-4.html" class="absolute top-0 left-0 w-full h-full block">
                       <img src="../images/blog-4.webp" alt="img" class="h-full w-full object-cover" loading="lazy"
@@ -2937,7 +3019,7 @@
               </div>
               <!-- blog box - 5 -->
               <div class="swiper-slide !h-auto">
-                <div class="blog-box group" data-aos="fade-up">
+                <div class="blog-box group">
                   <div class="blog-img-before">
                     <a href="./blog-detail-5.html" class="absolute top-0 left-0 w-full h-full block">
                       <img src="../images/blog-5.webp" alt="img" class="h-full w-full object-cover" loading="lazy"
@@ -2963,7 +3045,7 @@
               </div>
               <!-- blog box - 6 -->
               <div class="swiper-slide !h-auto">
-                <div class="blog-box group" data-aos="fade-up">
+                <div class="blog-box group">
                   <div class="blog-img-before">
                     <a href="./blog-detail-6.html" class="absolute top-0 left-0 w-full h-full block">
                       <img src="../images/blog-6.webp" alt="img" class="h-full w-full object-cover" loading="lazy"
@@ -3018,7 +3100,7 @@
       <!-- start Contact Now section -->
       <section
         class="2xl:-mt-[80px] 1xl:-mt-[60px] lg:-mt-[50px] sm:-mt-[30px] bg-cover bg-no-repeat bg-center pb-8 md:pb-12 sm:pt-14 pt-0 md:pt-24 xl:pt-48 relative py-20 before:w-full before:h-full before:absolute before:top-0 before:left-0 before:bg-gradient-to-b before:from-white before:to-white/0"
-        data-aos="fade-up" style="background-image: url('../images/quotation-banner.webp')">
+        style="background-image: url('../images/quotation-banner.webp')">
         <div class="relative z-1">
           <div class="container-2">
             <div class="xl:max-w-[60%] md:max-w-[68%] w-full">
@@ -3174,7 +3256,7 @@
 
         <div class="relative bg-white mx-auto flex flex-col sm:flex-row sm:items-stretch">
           <!-- Left: Image -->
-          <div class="sm:w-[47%] w-full sm:h-auto h-[250px] relative">
+          <div class="sm:w-[47%] w-full sm:h-auto h-[215px] relative">
             <img src="../images/newsletter-banner.webp" alt="newsletter"
               class="sm:absolute inset-0 w-full h-full object-cover" loading="lazy" decoding="async" />
 
@@ -3186,13 +3268,13 @@
 
           <!-- Right: Form Content -->
           <div
-            class="w-full sm:w-[53%] 2xl:px-[65px] 2xl:p-11 xl:p-10 sm:p-7 p-5 2xl:py-[50px] relative bg-white flex-1">
-            <h2 class="mb-[6px] font-normal text-center">New Project</h2>
-            <p class="xl:mb-7 md:mb-6 mb-5 text-gray-400 text-center">
+            class="w-full sm:w-[53%] 2xl:px-[65px] 2xl:p-11 xl:p-10 sm:p-7 px-4 py-3 2xl:py-[50px] relative bg-white flex-1">
+            <h2 class="sm:mb-[6px] mb-0 font-normal text-center">New Project</h2>
+            <p class="xl:mb-7 md:mb-6 sm:mb-5 mb-4 text-gray-400 text-center">
               Experience modern living like never before
             </p>
 
-            <h4 class="text-primary-900 text-center 1xl:mb-[14px] mb-[10px]">
+            <h4 class="text-primary-900 text-center 1xl:mb-[14px] sm:mb-[10px] mb-1.5">
               - Launch Offer -
             </h4>
             <p class="text-center text-black">
@@ -3201,7 +3283,7 @@
               and get exclusive early-bird discounts!
             </p>
 
-            <form id="contactForm" novalidate class="xl:space-y-5 space-y-3 1xl:mt-7 mt-5.5">
+            <form id="contactForm" novalidate class="xl:space-y-5 space-y-3 1xl:mt-7 sm:mt-5.5 mt-4">
               <div class="relative col-span-1">
                 <input type="text" id="fullName" name="fullName" placeholder="Enter Full name" required
                   class="p w-full xl:px-3 px-2 2xl:py-[10px] py-2 border focus:border-primary-900 outline-none" />
@@ -3280,10 +3362,9 @@
           <div id="initialPopupWrapper"
             class="bg-white xl:max-w-[630px] max-w-[510px] w-full 2xl:p-10 xl:p-8 p-6 relative animate-slide-up">
             <!-- Cookie Icon -->
-            <div
-              class="2xl:mb-6 xl:mb-5 mb-4 2xl:w-[70px] 1xl:w-[65px] xl:w-[60px] lg:w-[55px] w-[50px] h-full flex-shrink-0">
+            <div class="2xl:mb-6 xl:mb-5 mb-4 flex-shrink-0">
               <svg xmlns="http://www.w3.org/2000/svg" width="65" height="63" viewBox="0 0 65 63" fill="none"
-                class="fill-primary-900">
+                class="fill-primary-900 2xl:w-[70px] lg:w-[55px] sm:w-[50px] w-[42px] h-full">
                 <path fill-rule="evenodd" clip-rule="evenodd"
                   d="M51.658 4.45131C53.5713 1.89398 48.8113 -1.67602 46.898 0.881309C44.9753 3.43864 49.74 7.00864 51.658 4.45131ZM34.4987 1.23598C28.4183 0.656022 22.2918 1.67094 16.7233 4.18064C11.1327 6.73331 6.19066 10.9193 3.67532 16.8273C1.75266 21.3446 0.0819894 25.5166 0.00265605 30.944C-0.0720106 36.3293 1.42132 42.7273 5.27599 51.8693C7.51599 57.1753 14.1847 59.4153 19.3133 60.6426C25.24 62.0613 31.7733 62.43 35.7633 61.884C39.0347 61.436 42.67 60.736 45.7267 58.258C50.8553 54.0906 55.536 49.382 58.3267 44.454C61.15 39.4746 62.186 33.968 59.3673 28.6526C58.6207 27.2526 57.4727 26.898 56.194 26.506C55.704 26.352 55.2 26.198 54.696 25.9786C49.5627 23.748 46.5013 21.172 46.2633 19.674C46.0393 18.274 46.3007 17.2753 46.576 16.2346C46.7253 15.6746 46.8747 15.1006 46.9587 14.4473C47.052 13.6446 47.0427 11.7593 45.2647 10.8026C43.888 10.056 43.006 8.60931 42.1847 7.26064C41.9855 6.92775 41.7864 6.60575 41.5873 6.29464C40.2527 4.25064 38.3067 1.62798 34.4987 1.23598ZM18.66 8.43198C13.8347 10.6346 9.91932 14.088 7.97332 18.6566C6.05999 23.1553 4.72999 26.5853 4.66932 31.014C4.60399 35.4753 5.83599 41.1826 9.57866 50.0586C11.1607 53.806 16.9007 55.2713 20.4007 56.1066C25.8933 57.4226 31.834 57.7166 35.1333 57.264C38.3253 56.83 40.8127 56.242 42.7867 54.6413C47.7333 50.6186 51.896 46.344 54.2667 42.158C55.6947 39.6426 58.3967 32.1573 54.2667 30.6826C45.5167 27.5653 43.2207 24.5226 41.9513 21.4706C41.1113 19.436 41.2 17.3173 41.7973 15.2453C41.8907 14.9373 41.9747 14.634 42.152 14.3586C41.2276 13.6827 40.4124 12.869 39.7347 11.946C39.3333 11.414 38.9507 10.7746 38.554 10.112C37.42 8.20798 36.1647 6.10331 34.018 5.88398C28.7663 5.38863 23.476 6.26498 18.6647 8.42731M56.978 13.822C58.0607 11.2646 53.4593 8.50664 51.7187 10.6813C49.3853 13.598 55.5453 17.168 56.9733 13.822M62.3773 6.75198C65.1773 6.82198 66.0546 1.41331 63.334 0.638642C59.7687 -0.383358 58.7607 6.66331 62.3773 6.75198ZM61.9993 19.9633C64.6967 20.0053 65.546 16.6546 62.9187 16.174C59.4747 15.544 58.504 19.9073 61.9993 19.9633ZM27.5687 16.2113C25.52 17.9846 23.574 15.5813 23.238 13.6446C22.7153 10.658 24.904 8.19398 27.7553 9.79464C30.0187 11.064 29.244 14.7553 27.5687 16.2113ZM18.408 23.6546C20.5733 21.4893 16.7747 17.532 14.5347 19.7813C13.2187 21.088 14.04 22.5906 15.104 23.6546C15.3207 23.8719 15.5782 24.0443 15.8617 24.162C16.1452 24.2796 16.4491 24.3401 16.756 24.3401C17.0629 24.3401 17.3668 24.2796 17.6503 24.162C17.9338 24.0443 18.1912 23.8719 18.408 23.6546ZM27.8907 27.5653C29.454 30.692 34.942 27.9013 32.6367 24.896C32.4269 24.6261 32.1644 24.4016 31.8652 24.2364C31.5659 24.0711 31.2362 23.9684 30.896 23.9346C28.9873 23.72 26.892 25.568 27.8907 27.5653ZM27.942 36.922C28.656 38.7606 30.3827 39.694 32.2867 38.966C33.9433 38.336 34.214 35.3913 33.4673 33.884C32.772 32.4886 30.9847 32.036 29.5707 32.5773C27.928 33.212 27.3307 35.3446 27.9327 36.894L27.942 36.922ZM43.8087 37.4633C45.5353 36.6046 48.8207 37.4026 48.8207 39.6613C48.8207 41.528 46.4733 43.8846 44.6253 44.188C42.8427 44.4913 40.6213 42.76 40.906 40.898C41.13 39.442 42.5673 38.084 43.8133 37.4633M30.6487 46.806C30.3072 46.6708 29.9396 46.6148 29.5734 46.6423C29.2072 46.6697 28.8521 46.78 28.5347 46.9646C27.578 47.5153 26.6633 48.6773 26.486 49.7973C26.0893 52.224 28.6187 52.784 30.462 52.6673C33.6353 52.462 32.9727 47.7393 30.6487 46.806ZM18.1093 47.0393C18.544 46.7584 18.873 46.341 19.0445 45.8527C19.216 45.3644 19.2202 44.833 19.0567 44.342C18.3427 41.9246 15.5193 41.5326 13.844 43.4786C13.46 43.9252 13.259 44.5006 13.2815 45.0891C13.304 45.6777 13.5483 46.236 13.9653 46.652L13.9793 46.6706L13.9933 46.6893C15.0293 47.9773 16.9707 48.4066 18.1093 47.0393ZM9.55532 32.666C10.8807 33.996 12.1407 34.2433 13.928 33.814C16.84 33.114 14.6467 25.3393 9.55532 28.2793C7.97799 29.1893 8.71532 31.826 9.55532 32.666Z" />
               </svg>
@@ -3299,7 +3380,7 @@
             </p>
 
             <!-- Buttons -->
-            <div class="flex xl:gap-[22px] md:gap-4 gap-[10px] flex-wrap items-center">
+            <div class="flex xl:gap-[22px] md:gap-4 gap-[10px] flex-wrap items-center p-0">
               <button onclick="acceptCookies()" class="btn btn-primary w-fit">
                 Accept All
               </button>
@@ -3311,7 +3392,7 @@
         </div>
 
         <!-- Privacy Preference Center -->
-        <div id="settingsPanel" class="hidden settingsPanel">
+        <div id="settingsPanel" class="hidden settingsPanel bg-white">
           <!-- Close Button -->
           <button onclick="closeCookiePopup()" class="closeCookie">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -3321,9 +3402,9 @@
                 fill="currentColor" fill-opacity="0.6" />
             </svg>
           </button>
-          <div class="cookie-content-box">
-            <div class="flex-1">
-              <div class>
+          <div class="flex-1 max-h-screen h-full bg-white flex flex-col items-start justify-between">
+            <div class>
+              <div class="cookie-content-box">
                 <!-- Header -->
                 <h4 class="mb-3">Privacy Preference Center</h4>
                 <p class="mb-5">
@@ -3461,7 +3542,8 @@
               </div>
             </div>
             <!-- Action Buttons -->
-            <div class="mt-5 flex xl:gap-[22px] md:gap-4 gap-[10px] flex-wrap w-full">
+            <div
+              class="flex xl:gap-[22px] md:gap-4 gap-[10px] flex-wrap sticky bottom-0 bg-white w-full 2xl:p-10 xl:p-8 sm:p-6 p-4 border-t border-gray-300">
               <button onclick="rejectAll()" class="flex-1 btn btn-primary w-fit">
                 Reject All
               </button>

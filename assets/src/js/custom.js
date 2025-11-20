@@ -1656,6 +1656,8 @@ document.addEventListener("DOMContentLoaded", () => {
           } else {
             // Use immediate hide to avoid delayed overlay showing after dropdown close
             hideOverlayImmediate();
+            fixMobileIdleIconColor();
+
             try {
               // (removed: re-enable scrolling)
             } catch (e) {}
@@ -1703,34 +1705,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
           // Click: open/close this menu, but first close others immediately
           toggle.addEventListener("click", (e) => {
+            // detect if user clicked arrow
+            const arrow = e.target.closest(".dropdown-arrow-area");
+
+            // IF CLICKED ON TEXT → LET IT GO TO LINK (both desktop & mobile)
+            if (!arrow) {
+              return; // do nothing, allow browser navigation
+            }
+
+            // IF CLICKED ON ARROW → OPEN DROPDOWN
             e.preventDefault();
             e.stopPropagation();
 
-            // Cancel any pending hover timer
-            if (hoverOpenTimer) {
-              clearTimeout(hoverOpenTimer);
-              hoverOpenTimer = null;
-            }
-
             const wasOpen = isMenuVisible(menu);
-            // close others immediately
             closeAllDropdowns(menu);
 
             if (wasOpen) {
               closeDropdownMenu(menu);
             } else {
               openDropdownMenu(menu);
-              // ensure nav white & overlay
               navRightSetWhite();
               showOverlay();
             }
 
-            // update visuals
             updateOverlayState();
             updateAllSVGFills();
             updateDropdownToggleColors();
             updateHeaderBtnState?.();
           });
+
           dropdown.addEventListener("pointerenter", () => {
             if (!isDesktop()) return;
 
@@ -1806,6 +1809,8 @@ document.addEventListener("DOMContentLoaded", () => {
             updateDropdownToggleColors();
             if (typeof updateHeaderBtnState === "function")
               updateHeaderBtnState();
+            fixMobileIdleIconColor();
+
           }
         });
 
@@ -1937,6 +1942,23 @@ document.addEventListener("DOMContentLoaded", () => {
             updateHeaderBtnState();
         }
 
+        function fixMobileIdleIconColor() {
+          const isMobile = window.innerWidth <= 991;
+          const noOpen =
+            !isSearchOpen && !isMobileMenuOpen() && !anyMenuOpen();
+          const atTop = window.scrollY === 0;
+        
+          if (isMobile && noOpen && atTop) {
+            headerEl.classList.remove("bg-white");
+            headerEl.classList.add("bg-transparent");
+        
+            document.querySelectorAll(
+              "#menuToggle svg, #searchButton svg, .nav-right svg"
+            ).forEach(svg => setSVGColor(svg, "white"));
+          }
+        }
+        
+
         window.updateAllSVGFills = updateAllSVGFills;
 
         ["openSearch", "closeSearch"].forEach((fn) => {
@@ -1963,6 +1985,8 @@ document.addEventListener("DOMContentLoaded", () => {
           updateAllSVGFills();
           updateDropdownToggleColors();
           updateHeaderBtnState();
+          fixMobileIdleIconColor();
+
         });
         updateHeaderBtnState();
         updateDropdownToggleColors();
@@ -2222,6 +2246,7 @@ document.addEventListener("DOMContentLoaded", () => {
           updateAllSVGFills();
           if (typeof updateHeaderBtnState === "function")
             updateHeaderBtnState();
+          forceMobileIdleBlack();
         }
 
         searchButton?.addEventListener("click", (e) => {
@@ -2259,6 +2284,8 @@ document.addEventListener("DOMContentLoaded", () => {
               closeMobileMenu(() => {
                 mobileMenuToggle.classList.remove("open");
                 updateMenuToggleIcon(false);
+              fixMobileIdleIconColor();
+
                 // If mobile, at top, and nothing else is open, force transparent (with a short re-check)
                 if (
                   window.innerWidth <= 991 &&
@@ -2371,6 +2398,8 @@ document.addEventListener("DOMContentLoaded", () => {
           // Small debounce to recheck SVG color after layout paints
           requestAnimationFrame(() => {
             updateAllSVGFills();
+            fixMobileIdleIconColor();
+
           });
         });
 
@@ -2811,7 +2840,7 @@ document.addEventListener("DOMContentLoaded", () => {
                   });
               }
             });
-            // --- GLOBAL POINTER EXIT FIX (navbar idle reset) ---
+
             // --- GLOBAL POINTER EXIT FIX (Address bar / outside window) ---
             document.addEventListener("pointerout", (e) => {
               // Pointer left browser content area (into tabs, URL bar, OS area)
@@ -2866,10 +2895,29 @@ document.addEventListener("DOMContentLoaded", () => {
             }
           };
         })();
+        function forceMobileIdleBlack() {
+          const isMobile = window.innerWidth <= 991;
+          if (!isMobile) return;
+          if (isSearchOpen || isMobileMenuOpen() || anyMenuOpen()) return;
+        
+          // Header background & text
+          // headerEl.classList.add("bg-white");
+          // headerEl.classList.remove("bg-transparent");
+        
+          // Navbar text
+          document.querySelectorAll(".nav-right .navbar > li").forEach(li => {
+            li.classList.remove("text-white");
+            li.classList.add("text-black");
+          });
+        
+          // SVG icons
+          document.querySelectorAll("#menuToggle svg, #searchButton svg, .nav-right svg")
+            .forEach(svg => setSVGColor(svg, "black"));
+        }
+        
       });
 
       document.addEventListener("DOMContentLoaded", () => {
-        // Run nested submenu accordion for all practical widths (desktop too).
         // Hover handlers are disabled on desktop in favor of click accordion.
         const MOBILE_MAX = 5000;
 
@@ -2978,111 +3026,111 @@ document.addEventListener("DOMContentLoaded", () => {
         // Simple, editable HTML template for the inline reply form.
         // Edit REPLY_FORM_HTML below to change fields/text/styles in one place.
         const REPLY_FORM_HTML = `
-         <div class="reply-panel-box">
-    <div class="md:px-0 2xl:ml-10 xl:ml-8 ml-6">
-        <div class="2xl:mb-[42px] xl:mb-7 mb-[22px]">
-            <h3 class="sm:text-start text-center font-medium 1xl:mb-3 mb-2">
-               Leave a Reply
-            </h3>
-            <p class="sm:text-start text-center text-black">
-                Share your thoughts or continue the discussion — your feedback matters!
-            </p>
-        </div>
+          <div class="reply-panel-box">
+      <div class="md:px-0 2xl:ml-10 xl:ml-8 sm:ml-6">
+          <div class="2xl:mb-[42px] xl:mb-7 mb-[22px]">
+              <h3 class="text-start font-medium 1xl:mb-3 mb-2">
+                Leave a Reply
+              </h3>
+              <p class="text-start text-black">
+                  Share your thoughts or continue the discussion — your feedback matters!
+              </p>
+          </div>
 
-        <form id="contactForm" method="post" novalidate>
-            <div class="grid grid-cols-1 sm:grid-cols-2 2xl:gap-[30px] 1xl:gap-6 xl:gap-[20px] gap-[15px]">
-                <!-- Name Fields -->
-                <div class="relative">
-                    <label for="firstName" class="block xl:mb-3 mb-1.5 p text-black">First
-                        Name *</label>
-                    <input type="text" id="firstName" name="firstName" required
-                        class="w-full xl:px-3 px-2 2xl:py-[14px] py-2 border border-black focus:border-primary-900 outline-none" />
+          <form id="contactForm" method="post" novalidate>
+              <div class="grid grid-cols-1 sm:grid-cols-2 2xl:gap-[30px] 1xl:gap-6 xl:gap-[20px] gap-[15px]">
+                  <!-- Name Fields -->
+                  <div class="relative">
+                      <label for="firstName" class="block xl:mb-3 mb-1.5 p text-black">First
+                          Name *</label>
+                      <input type="text" id="firstName" name="firstName" required
+                          class="w-full xl:px-3 px-2 2xl:py-[14px] py-2 border border-black focus:border-primary-900 outline-none" />
 
-                    <!-- Error message with SVG icon -->
-                    <div
-                        class="text-red-500 mt-2 opacity-0 transition-all ease-in-out error-message hidden items-center gap-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
-                            <path
-                                d="M9.35 9.35H7.65V4.25H9.35M9.35 12.75H7.65V11.05H9.35M8.5 0C7.38376 0 6.27846 0.219859 5.24719 0.647024C4.21592 1.07419 3.27889 1.70029 2.48959 2.48959C0.895533 4.08365 0 6.24566 0 8.5C0 10.7543 0.895533 12.9163 2.48959 14.5104C3.27889 15.2997 4.21592 15.9258 5.24719 16.353C6.27846 16.7801 7.38376 17 8.5 17C10.7543 17 12.9163 16.1045 14.5104 14.5104C16.1045 12.9163 17 10.7543 17 8.5C17 7.38376 16.7801 6.27846 16.353 5.24719C15.9258 4.21592 15.2997 3.27889 14.5104 2.48959C13.7211 1.70029 12.7841 1.07419 11.7528 0.647024C10.7215 0.219859 9.61624 0 8.5 0Z"
-                                fill="#D21C1C" />
-                        </svg>
-                        <span class="error-text p2"></span>
-                    </div>
-                </div>
+                      <!-- Error message with SVG icon -->
+                      <div
+                          class="text-red-500 mt-2 opacity-0 transition-all ease-in-out error-message hidden items-center gap-2">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
+                              <path
+                                  d="M9.35 9.35H7.65V4.25H9.35M9.35 12.75H7.65V11.05H9.35M8.5 0C7.38376 0 6.27846 0.219859 5.24719 0.647024C4.21592 1.07419 3.27889 1.70029 2.48959 2.48959C0.895533 4.08365 0 6.24566 0 8.5C0 10.7543 0.895533 12.9163 2.48959 14.5104C3.27889 15.2997 4.21592 15.9258 5.24719 16.353C6.27846 16.7801 7.38376 17 8.5 17C10.7543 17 12.9163 16.1045 14.5104 14.5104C16.1045 12.9163 17 10.7543 17 8.5C17 7.38376 16.7801 6.27846 16.353 5.24719C15.9258 4.21592 15.2997 3.27889 14.5104 2.48959C13.7211 1.70029 12.7841 1.07419 11.7528 0.647024C10.7215 0.219859 9.61624 0 8.5 0Z"
+                                  fill="#D21C1C" />
+                          </svg>
+                          <span class="error-text p2"></span>
+                      </div>
+                  </div>
 
-                <!-- Name Fields -->
-                <div class="relative">
-                    <label for="lastName" class="block xl:mb-3 mb-1.5 p text-black">Last
-                        Name *</label>
-                    <input type="text" id="lastName" name="lastName" required
-                        class="w-full xl:px-3 px-2 2xl:py-[14px] py-2 border border-black focus:border-primary-900 outline-none" />
+                  <!-- Name Fields -->
+                  <div class="relative">
+                      <label for="lastName" class="block xl:mb-3 mb-1.5 p text-black">Last
+                          Name *</label>
+                      <input type="text" id="lastName" name="lastName" required
+                          class="w-full xl:px-3 px-2 2xl:py-[14px] py-2 border border-black focus:border-primary-900 outline-none" />
 
-                    <!-- Error message with SVG icon -->
-                    <div
-                        class="text-red-500 mt-2 opacity-0 transition-all ease-in-out error-message hidden items-center gap-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
-                            <path
-                                d="M9.35 9.35H7.65V4.25H9.35M9.35 12.75H7.65V11.05H9.35M8.5 0C7.38376 0 6.27846 0.219859 5.24719 0.647024C4.21592 1.07419 3.27889 1.70029 2.48959 2.48959C0.895533 4.08365 0 6.24566 0 8.5C0 10.7543 0.895533 12.9163 2.48959 14.5104C3.27889 15.2997 4.21592 15.9258 5.24719 16.353C6.27846 16.7801 7.38376 17 8.5 17C10.7543 17 12.9163 16.1045 14.5104 14.5104C16.1045 12.9163 17 10.7543 17 8.5C17 7.38376 16.7801 6.27846 16.353 5.24719C15.9258 4.21592 15.2997 3.27889 14.5104 2.48959C13.7211 1.70029 12.7841 1.07419 11.7528 0.647024C10.7215 0.219859 9.61624 0 8.5 0Z"
-                                fill="#D21C1C" />
-                        </svg>
-                        <span class="error-text p2"></span>
-                    </div>
-                </div>
+                      <!-- Error message with SVG icon -->
+                      <div
+                          class="text-red-500 mt-2 opacity-0 transition-all ease-in-out error-message hidden items-center gap-2">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
+                              <path
+                                  d="M9.35 9.35H7.65V4.25H9.35M9.35 12.75H7.65V11.05H9.35M8.5 0C7.38376 0 6.27846 0.219859 5.24719 0.647024C4.21592 1.07419 3.27889 1.70029 2.48959 2.48959C0.895533 4.08365 0 6.24566 0 8.5C0 10.7543 0.895533 12.9163 2.48959 14.5104C3.27889 15.2997 4.21592 15.9258 5.24719 16.353C6.27846 16.7801 7.38376 17 8.5 17C10.7543 17 12.9163 16.1045 14.5104 14.5104C16.1045 12.9163 17 10.7543 17 8.5C17 7.38376 16.7801 6.27846 16.353 5.24719C15.9258 4.21592 15.2997 3.27889 14.5104 2.48959C13.7211 1.70029 12.7841 1.07419 11.7528 0.647024C10.7215 0.219859 9.61624 0 8.5 0Z"
+                                  fill="#D21C1C" />
+                          </svg>
+                          <span class="error-text p2"></span>
+                      </div>
+                  </div>
 
-                <!-- Email -->
-                <div class="relative">
-                    <label for="email" class="block xl:mb-3 mb-1.5 p text-black">Email
-                        Address *</label>
-                    <input type="email" id="email" name="email" required
-                        class="w-full xl:px-3 px-2 2xl:py-[14px] py-2 border border-black focus:border-primary-900 outline-none" />
-                    <!-- Error message with SVG icon -->
-                    <div
-                        class="text-red-500 mt-2 opacity-0 transition-all ease-in-out error-message hidden items-center gap-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
-                            <path
-                                d="M9.35 9.35H7.65V4.25H9.35M9.35 12.75H7.65V11.05H9.35M8.5 0C7.38376 0 6.27846 0.219859 5.24719 0.647024C4.21592 1.07419 3.27889 1.70029 2.48959 2.48959C0.895533 4.08365 0 6.24566 0 8.5C0 10.7543 0.895533 12.9163 2.48959 14.5104C3.27889 15.2997 4.21592 15.9258 5.24719 16.353C6.27846 16.7801 7.38376 17 8.5 17C10.7543 17 12.9163 16.1045 14.5104 14.5104C16.1045 12.9163 17 10.7543 17 8.5C17 7.38376 16.7801 6.27846 16.353 5.24719C15.9258 4.21592 15.2997 3.27889 14.5104 2.48959C13.7211 1.70029 12.7841 1.07419 11.7528 0.647024C10.7215 0.219859 9.61624 0 8.5 0Z"
-                                fill="#D21C1C" />
-                        </svg>
-                        <span class="error-text p2"></span>
-                    </div>
-                </div>
+                  <!-- Email -->
+                  <div class="relative">
+                      <label for="email" class="block xl:mb-3 mb-1.5 p text-black">Email
+                          Address *</label>
+                      <input type="email" id="email" name="email" required
+                          class="w-full xl:px-3 px-2 2xl:py-[14px] py-2 border border-black focus:border-primary-900 outline-none" />
+                      <!-- Error message with SVG icon -->
+                      <div
+                          class="text-red-500 mt-2 opacity-0 transition-all ease-in-out error-message hidden items-center gap-2">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
+                              <path
+                                  d="M9.35 9.35H7.65V4.25H9.35M9.35 12.75H7.65V11.05H9.35M8.5 0C7.38376 0 6.27846 0.219859 5.24719 0.647024C4.21592 1.07419 3.27889 1.70029 2.48959 2.48959C0.895533 4.08365 0 6.24566 0 8.5C0 10.7543 0.895533 12.9163 2.48959 14.5104C3.27889 15.2997 4.21592 15.9258 5.24719 16.353C6.27846 16.7801 7.38376 17 8.5 17C10.7543 17 12.9163 16.1045 14.5104 14.5104C16.1045 12.9163 17 10.7543 17 8.5C17 7.38376 16.7801 6.27846 16.353 5.24719C15.9258 4.21592 15.2997 3.27889 14.5104 2.48959C13.7211 1.70029 12.7841 1.07419 11.7528 0.647024C10.7215 0.219859 9.61624 0 8.5 0Z"
+                                  fill="#D21C1C" />
+                          </svg>
+                          <span class="error-text p2"></span>
+                      </div>
+                  </div>
 
-                <div>
-                    <label class="block p xl:mb-3 mb-[8px] text-black">
-                        Your Website
-                    </label>
-                    <input type="text"
-                        class="w-full border border-black xl:px-3 px-2 2xl:py-[14px] py-2 focus:outline-none" />
-                </div>
+                  <div>
+                      <label class="block p xl:mb-3 mb-[8px] text-black">
+                          Your Website
+                      </label>
+                      <input type="text"
+                          class="w-full border border-black xl:px-3 px-2 2xl:py-[14px] py-2 focus:outline-none" />
+                  </div>
 
-                <!-- Message -->
-                <div class="relative sm:col-span-2 col-span-1">
-                    <label for="message" class="block xl:mb-3 mb-1.5 p text-black">
-                        Your Comment *
-                    </label>
-                    <textarea id="message" name="message" required
-                        class="w-full xl:px-3 px-2 2xl:py-[14px] py-2 border border-black focus:border-primary-900 outline-none 1xl:min-h-[160px] xl:min-h-[148px] lg:min-h-[130px] sm:min-h-[100px] min-h-[90px] resize-y"></textarea>
-                    <!-- Error message with SVG icon -->
-                    <div
-                        class="text-red-500 mt-2 opacity-0 transition-all ease-in-out error-message hidden items-center gap-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
-                            <path
-                                d="M9.35 9.35H7.65V4.25H9.35M9.35 12.75H7.65V11.05H9.35M8.5 0C7.38376 0 6.27846 0.219859 5.24719 0.647024C4.21592 1.07419 3.27889 1.70029 2.48959 2.48959C0.895533 4.08365 0 6.24566 0 8.5C0 10.7543 0.895533 12.9163 2.48959 14.5104C3.27889 15.2997 4.21592 15.9258 5.24719 16.353C6.27846 16.7801 7.38376 17 8.5 17C10.7543 17 12.9163 16.1045 14.5104 14.5104C16.1045 12.9163 17 10.7543 17 8.5C17 7.38376 16.7801 6.27846 16.353 5.24719C15.9258 4.21592 15.2997 3.27889 14.5104 2.48959C13.7211 1.70029 12.7841 1.07419 11.7528 0.647024C10.7215 0.219859 9.61624 0 8.5 0Z"
-                                fill="#D21C1C" />
-                        </svg>
-                        <span class="error-text p2"></span>
-                    </div>
-                </div>
-            </div>
+                  <!-- Message -->
+                  <div class="relative sm:col-span-2 col-span-1">
+                      <label for="message" class="block xl:mb-3 mb-1.5 p text-black">
+                          Your Comment *
+                      </label>
+                      <textarea id="message" name="message" required
+                          class="w-full xl:px-3 px-2 2xl:py-[14px] py-2 border border-black focus:border-primary-900 outline-none 1xl:min-h-[160px] xl:min-h-[148px] lg:min-h-[130px] sm:min-h-[100px] min-h-[90px] resize-y"></textarea>
+                      <!-- Error message with SVG icon -->
+                      <div
+                          class="text-red-500 mt-2 opacity-0 transition-all ease-in-out error-message hidden items-center gap-2">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
+                              <path
+                                  d="M9.35 9.35H7.65V4.25H9.35M9.35 12.75H7.65V11.05H9.35M8.5 0C7.38376 0 6.27846 0.219859 5.24719 0.647024C4.21592 1.07419 3.27889 1.70029 2.48959 2.48959C0.895533 4.08365 0 6.24566 0 8.5C0 10.7543 0.895533 12.9163 2.48959 14.5104C3.27889 15.2997 4.21592 15.9258 5.24719 16.353C6.27846 16.7801 7.38376 17 8.5 17C10.7543 17 12.9163 16.1045 14.5104 14.5104C16.1045 12.9163 17 10.7543 17 8.5C17 7.38376 16.7801 6.27846 16.353 5.24719C15.9258 4.21592 15.2997 3.27889 14.5104 2.48959C13.7211 1.70029 12.7841 1.07419 11.7528 0.647024C10.7215 0.219859 9.61624 0 8.5 0Z"
+                                  fill="#D21C1C" />
+                          </svg>
+                          <span class="error-text p2"></span>
+                      </div>
+                  </div>
+              </div>
 
-            <div class="flex items-center gap-5 2xl:mt-[26px] xl:mt-5 mt-4">
-                <button type="submit" class="btn btn-primary">Leave Comment</button>
-                <button type="button"
-                    class="reply-cancel btn btn-outline text-[#D21C1C] border-b border-transparent hover:border-[#D21C1C]">Cancel</button>
-            </div>
-        </form>
-    </div>
-</div>`;
+              <div class="flex items-center gap-5 2xl:mt-[26px] xl:mt-5 mt-4">
+                  <button type="submit" class="btn btn-primary">Leave Comment</button>
+                  <button type="button"
+                      class="reply-cancel btn btn-outline text-[#D21C1C] border-b border-transparent hover:border-[#D21C1C]">Cancel</button>
+              </div>
+          </form>
+      </div>
+  </div>`;
 
         // --- Slim Reply Handler (minimal JS, same behavior) ---
         (function slimReply() {
@@ -3347,11 +3395,11 @@ document.addEventListener("DOMContentLoaded", () => {
         (function ensureNoAvatarInReply() {
           const style = document.createElement("style");
           style.textContent = `
-            .reply-wrap img{display:none!important}
-            .reply-wrap > .overflow-hidden{display:none!important;width:0!important;max-width:0!important;margin:0!important;padding:0!important}
-            .comments-list > .reply-wrap{border-top-width:0!important;border-top-style:none!important}
-            .comments-list > .reply-sibling{border-top-width:0!important;border-top-style:none!important}
-          `;
+              .reply-wrap img{display:none!important}
+              .reply-wrap > .overflow-hidden{display:none!important;width:0!important;max-width:0!important;margin:0!important;padding:0!important}
+              .comments-list > .reply-wrap{border-top-width:0!important;border-top-style:none!important}
+              .comments-list > .reply-sibling{border-top-width:0!important;border-top-style:none!important}
+            `;
           document.head.appendChild(style);
         })();
       });
@@ -3761,119 +3809,108 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       // OUR GALLERY constant-speed marquee (no Swiper) in index-2.html
-      document.addEventListener("DOMContentLoaded", function () {
-        // -----------------
-        // Marquee Init
-        // -----------------
-        const containers = document.querySelectorAll(
-          ".our-gallery-marquee .js-marquee",
-        );
-        containers.forEach((track) => initMarquee(track));
+      document.addEventListener("DOMContentLoaded", () => {
+        /* =========================================================
+           MARQUEE SYSTEM (NO JUMP, NO FLASHING, NO FREEZE)
+        ========================================================= */
 
-        function initMarquee(track) {
-          const speed = parseFloat(track.getAttribute("data-speed")) || 40; // px/sec
-          const dir = track.getAttribute("data-direction") === "right" ? 1 : -1;
+        const tracks = document.querySelectorAll(".js-marquee");
 
-          if (dir === 1) {
-            const originals = Array.from(track.children);
-            const imgs = originals.flatMap((el) =>
-              Array.from(el.querySelectorAll("img")),
-            );
-            const pending = imgs.filter((im) => !im.complete);
+        tracks.forEach((track) => {
+          waitForImages(track, () => {
+            const speed = parseFloat(track.dataset.speed) || 40;
+            const direction = track.dataset.direction === "right" ? 1 : -1;
 
-            const start = () => {
-              const originalWidth = Math.round(track.scrollWidth);
-              const containerWidth = track.parentElement.clientWidth;
-              if (track.scrollWidth < originalWidth + containerWidth + 10) {
-                originals.forEach((ch) => {
-                  const clone = ch.cloneNode(true);
-                  clone.classList.add("cloned");
-                  track.appendChild(clone);
-                });
-              }
+            setupInfiniteTrack(track);
+            startScroll(track, speed, direction);
 
-              track.style.willChange = "transform";
-              track.style.backfaceVisibility = "hidden";
+            // REMOVE PRELOADER (if exists)
+            document.body.classList.add("page-loaded");
+          });
+        });
 
-              const firstItem = originals[0];
-              const firstWidth = Math.round(
-                firstItem.getBoundingClientRect().width ||
-                  firstItem.scrollWidth,
-              );
-              let offset = -(originalWidth - firstWidth);
-              let last = performance.now();
-              function step(now) {
-                const dt = (now - last) / 1000;
-                last = now;
-                offset += speed * dt;
-                if (offset >= 0) offset = -(originalWidth - firstWidth);
-                track.style.transform = `translate3d(${offset}px,0,0)`;
-                requestAnimationFrame(step);
-              }
-              requestAnimationFrame(step);
-            };
+        function waitForImages(track, callback) {
+          const imgs = track.querySelectorAll("img");
+          let loaded = 0;
 
-            if (pending.length) {
-              let loaded = 0;
-              const done = () => {
-                loaded += 1;
-                if (loaded === pending.length) start();
-              };
-              pending.forEach((im) => {
-                im.addEventListener("load", done, { once: true });
-                im.addEventListener("error", done, { once: true });
-              });
+          if (imgs.length === 0) return callback();
+
+          imgs.forEach((img) => {
+            if (img.complete) {
+              loaded++;
+              if (loaded === imgs.length) callback();
             } else {
-              start();
+              img.onload = img.onerror = () => {
+                loaded++;
+                if (loaded === imgs.length) callback();
+              };
             }
-            return;
+          });
+        }
+
+        function setupInfiniteTrack(track) {
+          const items = Array.from(track.children);
+          const wrapperWidth = track.parentElement.offsetWidth;
+
+          // Make sure track is wide enough (200%)
+          while (track.scrollWidth < wrapperWidth * 2) {
+            items.forEach((el) => {
+              const clone = el.cloneNode(true);
+              clone.classList.add("cloned");
+              track.appendChild(clone);
+            });
           }
 
-          // Left direction
-          const children = Array.from(track.children);
-          const contentWidth = track.scrollWidth;
-          children.forEach((ch) => {
-            const clone = ch.cloneNode(true);
-            clone.classList.add("cloned");
-            track.appendChild(clone);
-          });
-          let offset = 0;
+          track.style.display = "flex";
+          track.style.whiteSpace = "nowrap";
+          track.style.willChange = "transform";
+          track.style.backfaceVisibility = "hidden";
+        }
+
+        function startScroll(track, speed, direction) {
+          let x = 0;
           let last = performance.now();
+
           function step(now) {
             const dt = (now - last) / 1000;
             last = now;
-            offset += dir * speed * dt;
-            if (dir < 0 && -offset >= contentWidth) offset = 0;
-            track.style.transform = `translate3d(${offset}px,0,0)`;
+
+            x += direction * speed * dt;
+
+            const width = track.scrollWidth / 2; // because duplicated
+
+            if (direction < 0 && x <= -width) x = 0;
+            if (direction > 0 && x >= 0) x = -width;
+
+            track.style.transform = `translate3d(${x}px,0,0)`;
+
             requestAnimationFrame(step);
           }
+
           requestAnimationFrame(step);
         }
 
-        // -----------------
-        // Lightbox Init
-        // -----------------
+        /* =========================================================
+           LIGHTBOX SYSTEM (Your same code, untouched)
+        ========================================================= */
+
         let currentIndex = 0;
         let galleryImages = [];
 
         function setupLightbox() {
-          // Only original images for indexing
           galleryImages = Array.from(
             document.querySelectorAll(".js-gallery img"),
           ).filter((img) => !img.closest(".cloned"));
 
-          // Delegate click on the parent container
           document.querySelectorAll(".js-gallery").forEach((gallery) => {
             gallery.addEventListener("click", (e) => {
               const img = e.target.closest("img");
               if (!img) return;
 
-              // Find index in original images
               const index = galleryImages.indexOf(
-                Array.from(galleryImages).find(
-                  (original) => original.src === img.src,
-                ),
+                galleryImages.find((g) => g.src === img.src),
               );
+
               if (index >= 0) openLightbox(index);
             });
           });
@@ -3883,14 +3920,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
         function openLightbox(index) {
           currentIndex = index;
+
           const lightbox = document.getElementById("galleryLightbox");
           lightbox.classList.remove("hidden");
           lightbox.classList.add("flex");
 
-          // Save current scroll
           scrollTop = window.scrollY || document.documentElement.scrollTop;
 
-          // Lock scroll without jumping
           document.body.style.position = "fixed";
           document.body.style.top = `-${scrollTop}px`;
           document.body.style.left = "0";
@@ -3903,7 +3939,6 @@ document.addEventListener("DOMContentLoaded", () => {
           const lightbox = document.getElementById("galleryLightbox");
           lightbox.classList.add("hidden");
 
-          // Unlock scroll and restore position
           document.body.style.position = "";
           document.body.style.top = "";
           document.body.style.left = "";
@@ -3914,6 +3949,7 @@ document.addEventListener("DOMContentLoaded", () => {
         function updateLightbox() {
           const main = document.getElementById("lightboxMain");
           const thumbs = document.getElementById("lightboxThumbs");
+
           if (!galleryImages.length) return;
 
           const img = galleryImages[currentIndex];
@@ -3926,10 +3962,12 @@ document.addEventListener("DOMContentLoaded", () => {
             t.className =
               "w-20 h-20 object-cover cursor-pointer border-2 " +
               (i === currentIndex ? "border-white" : "border-transparent");
+
             t.addEventListener("click", () => {
               currentIndex = i;
               updateLightbox();
             });
+
             thumbs.appendChild(t);
           });
         }
@@ -3948,16 +3986,12 @@ document.addEventListener("DOMContentLoaded", () => {
         window.toggleFullscreen = function () {
           const mainImg = document.querySelector("#lightboxMain img");
           if (!mainImg) return;
-          if (mainImg.requestFullscreen) {
-            mainImg.requestFullscreen();
-          } else if (mainImg.webkitRequestFullscreen) {
+          if (mainImg.requestFullscreen) mainImg.requestFullscreen();
+          else if (mainImg.webkitRequestFullscreen)
             mainImg.webkitRequestFullscreen();
-          } else if (mainImg.msRequestFullscreen) {
-            mainImg.msRequestFullscreen();
-          }
+          else if (mainImg.msRequestFullscreen) mainImg.msRequestFullscreen();
         };
 
-        // Initialize lightbox
         setupLightbox();
       });
 
@@ -4528,13 +4562,16 @@ document.addEventListener("DOMContentLoaded", () => {
   // contact page drop area. We DO NOT use it for #fileUpload drop area to avoid conflicts.
   function updateFileLabelForStandalone(input) {
     try {
-      const lbl = (input && input.dataset && input.dataset.labelId)
-        ? document.getElementById(input.dataset.labelId)
-        : null;
+      const lbl =
+        input && input.dataset && input.dataset.labelId
+          ? document.getElementById(input.dataset.labelId)
+          : null;
       if (!lbl) return;
 
       if (input.files && input.files.length > 0) {
-        const names = Array.from(input.files).map((f) => f.name).join(", ");
+        const names = Array.from(input.files)
+          .map((f) => f.name)
+          .join(", ");
         lbl.textContent = names;
       } else {
         lbl.textContent = "No File Choosen";
@@ -4567,7 +4604,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const label = fieldLabels[fieldName] || fieldName;
 
     // Check if field has 'required' attribute in HTML
-    const isRequiredInHTML = input && input.hasAttribute && input.hasAttribute("required");
+    const isRequiredInHTML =
+      input && input.hasAttribute && input.hasAttribute("required");
 
     // If input present but not marked required in HTML, skip required checks
     if (input && !isRequiredInHTML && rules.required) {
@@ -4583,7 +4621,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // File input handling
     if (input && input.type === "file") {
-      if (rules.required && isRequiredInHTML && (!input.files || input.files.length === 0)) {
+      if (
+        rules.required &&
+        isRequiredInHTML &&
+        (!input.files || input.files.length === 0)
+      ) {
         return { isValid: false, message: rules.message };
       }
       return { isValid: true };
@@ -4655,8 +4697,16 @@ document.addEventListener("DOMContentLoaded", () => {
     if (input.type === "file") {
       let wrapper = findFileWrapper(input) || input.parentElement;
       if (wrapper) {
-        wrapper.classList.remove("border-dashed", "border-black", "focus:border-primary-900");
-        wrapper.classList.add("border", "border-red-500", "shadow-[0_0_10px_0_#D21C1C26]");
+        wrapper.classList.remove(
+          "border-dashed",
+          "border-black",
+          "focus:border-primary-900",
+        );
+        wrapper.classList.add(
+          "border",
+          "border-red-500",
+          "shadow-[0_0_10px_0_#D21C1C26]",
+        );
         wrapper.style.borderStyle = "solid";
       }
       const errorElement = findFileErrorElement(input);
@@ -4673,7 +4723,9 @@ document.addEventListener("DOMContentLoaded", () => {
     let errorElement =
       input.parentNode?.querySelector(".error-message") ||
       input.parentElement?.querySelector(".error-message") ||
-      input.closest(".relative, .form-group")?.querySelector(".error-message") ||
+      input
+        .closest(".relative, .form-group")
+        ?.querySelector(".error-message") ||
       input.closest("div")?.querySelector(".error-message");
 
     if (errorElement) {
@@ -4690,8 +4742,15 @@ document.addEventListener("DOMContentLoaded", () => {
     if (input.type === "file") {
       let wrapper = findFileWrapper(input) || input.parentElement;
       if (wrapper) {
-        wrapper.classList.remove("border-red-500", "shadow-[0_0_10px_0_#D21C1C26]");
-        wrapper.classList.add("border", "border-black", "focus:border-primary-900");
+        wrapper.classList.remove(
+          "border-red-500",
+          "shadow-[0_0_10px_0_#D21C1C26]",
+        );
+        wrapper.classList.add(
+          "border",
+          "border-black",
+          "focus:border-primary-900",
+        );
         wrapper.style.borderStyle = "solid";
       }
 
@@ -4705,7 +4764,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if ((!input.files || input.files.length === 0) && fileLabel) {
         // For contact/enquiry page preference
-        if (window.location.pathname.includes("contact") || window.location.pathname.includes("enquiry")) {
+        if (
+          window.location.pathname.includes("contact") ||
+          window.location.pathname.includes("enquiry")
+        ) {
           fileLabel.textContent = "No File Choosen";
         } else {
           fileLabel.textContent = "Drop files here or Select Files";
@@ -4718,7 +4780,9 @@ document.addEventListener("DOMContentLoaded", () => {
     let errorElement =
       input.parentNode?.querySelector(".error-message") ||
       input.parentElement?.querySelector(".error-message") ||
-      input.closest(".relative, .form-group")?.querySelector(".error-message") ||
+      input
+        .closest(".relative, .form-group")
+        ?.querySelector(".error-message") ||
       input.closest("div")?.querySelector(".error-message");
 
     if (errorElement) {
@@ -4761,9 +4825,16 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!phoneInput || !window.intlTelInput) return;
 
     const alreadyWrapped = !!phoneInput.closest(".iti");
-    const alreadyInstance =
-      !!(window.intlTelInputGlobals?.getInstance && window.intlTelInputGlobals.getInstance(phoneInput));
-    if (alreadyWrapped || alreadyInstance || phoneInput.dataset.itiInited === "1") return;
+    const alreadyInstance = !!(
+      window.intlTelInputGlobals?.getInstance &&
+      window.intlTelInputGlobals.getInstance(phoneInput)
+    );
+    if (
+      alreadyWrapped ||
+      alreadyInstance ||
+      phoneInput.dataset.itiInited === "1"
+    )
+      return;
 
     try {
       window.intlTelInput(phoneInput, {
@@ -4820,7 +4891,8 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!fileUploadEl || !fileInfoEl || !dropAreaEl) return;
 
       if (!fileLabelEl) {
-        fileLabelEl = dropAreaEl.querySelector("p") || document.createElement("p");
+        fileLabelEl =
+          dropAreaEl.querySelector("p") || document.createElement("p");
         fileLabelEl.id = "fileLabel";
       }
 
@@ -4849,7 +4921,10 @@ document.addEventListener("DOMContentLoaded", () => {
           fileInfoEl.innerHTML = "";
           fileInfoEl.classList.add("hidden");
           // reset label
-          if (window.location.pathname.includes("contact") || window.location.pathname.includes("enquiry")) {
+          if (
+            window.location.pathname.includes("contact") ||
+            window.location.pathname.includes("enquiry")
+          ) {
             fileLabelEl.textContent = "No File Choosen";
           } else {
             fileLabelEl.textContent = "Drop files here or Select Files";
@@ -4872,9 +4947,11 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!fileList.length) {
           fileInfoEl.classList.add("hidden");
           // keep drop area label static (never show filenames here)
-          fileLabelEl.textContent = window.location.pathname.includes("contact") || window.location.pathname.includes("enquiry")
-            ? "No File Choosen"
-            : "Drop files here or Select Files";
+          fileLabelEl.textContent =
+            window.location.pathname.includes("contact") ||
+            window.location.pathname.includes("enquiry")
+              ? "No File Choosen"
+              : "Drop files here or Select Files";
 
           // clear native input
           const dt = new DataTransfer();
@@ -4882,7 +4959,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
           // validation: only show error if user touched or submit attempted
           if (fileTouched || submitAttempted) {
-            const validation = validateField("fileUpload", undefined, fileUploadEl);
+            const validation = validateField(
+              "fileUpload",
+              undefined,
+              fileUploadEl,
+            );
             if (validation.isValid) clearError(fileUploadEl);
             else showError(fileUploadEl, validation.message);
           } else {
@@ -4893,30 +4974,55 @@ document.addEventListener("DOMContentLoaded", () => {
 
         fileInfoEl.classList.remove("hidden");
 
+        const frag = document.createDocumentFragment();
+
         fileList.forEach((file, index) => {
           const row = document.createElement("div");
           row.className =
-            "w-full flex justify-between items-center bg-primary-900/12 border-b-2 border-primary-900 px-5 py-[13px] mt-3";
+            "w-full flex justify-between items-center bg-primary-900/12 border-b-2 border-primary-900 sm:px-5 px-3.5 py-[12px] mt-3";
 
-          row.innerHTML = `
-            <p class="text-black flex items-center gap-3">${file.name}</p>
-            <button type="button" class="removeSingleFile text-primary-900" data-index="${index}">Remove</button>
-          `;
+          const p = document.createElement("p");
+          p.className = "text-black flex items-center gap-3";
 
-          fileInfoEl.appendChild(row);
+          // add icon + file name
+          p.innerHTML = `
+             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="flex-shrink-0 sm:w-6 sm:h-6 w-5 h-5">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M14 22H10C6.229 22 4.343 22 3.172 20.828C2.001 19.656 2 17.771 2 14V10C2 6.229 2 4.343 3.172 3.172C4.344 2.001 6.239 2 10.03 2C10.636 2 11.121 2 11.53 2.017C11.5167 2.097 11.51 2.17833 11.51 2.261L11.5 5.095C11.5 6.192 11.5 7.162 11.605 7.943C11.719 8.79 11.98 9.637 12.672 10.329C13.362 11.019 14.21 11.281 15.057 11.395C15.838 11.5 16.808 11.5 17.905 11.5H21.957C22 12.034 22 12.69 22 13.563V14C22 17.771 22 19.657 20.828 20.828C19.656 21.999 17.771 22 14 22Z" fill="#186F65"/>
+                <path d="M19.352 7.61711L15.392 4.05411C14.265 3.03911 13.702 2.53111 13.009 2.26611L13 5.00011C13 7.35711 13 8.53611 13.732 9.26811C14.464 10.0001 15.643 10.0001 18 10.0001H21.58C21.218 9.29611 20.568 8.71211 19.352 7.61711Z" fill="#186F65"/>
+              </svg>
+              <span>${file.name}</span>
+            `;
+
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.dataset.index = index;
+          btn.className = "removeSingleFile text-primary-900 btn !p-1";
+          btn.textContent = "Remove";
+
+          row.appendChild(p);
+          row.appendChild(btn);
+          frag.appendChild(row);
         });
 
+        fileInfoEl.appendChild(frag);
+
         // keep drop area label static
-        fileLabelEl.textContent = window.location.pathname.includes("contact") || window.location.pathname.includes("enquiry")
-          ? "No File Choosen"
-          : "Drop files here or Select Files";
+        fileLabelEl.textContent =
+          window.location.pathname.includes("contact") ||
+          window.location.pathname.includes("enquiry")
+            ? "No File Choosen"
+            : "Drop files here or Select Files";
 
         // sync native input
         updateInputFiles();
 
         // show/clear validation based on submitAttempted or user interaction
         if (submitAttempted) {
-          const validation = validateField("fileUpload", undefined, fileUploadEl);
+          const validation = validateField(
+            "fileUpload",
+            undefined,
+            fileUploadEl,
+          );
           if (validation.isValid) clearError(fileUploadEl);
           else showError(fileUploadEl, validation.message);
         } else {
@@ -4929,7 +5035,12 @@ document.addEventListener("DOMContentLoaded", () => {
         // prevent duplicates by name+size (optional)
         const arr = Array.from(files);
         arr.forEach((f) => {
-          const exists = fileList.some((ff) => ff.name === f.name && ff.size === f.size && ff.lastModified === f.lastModified);
+          const exists = fileList.some(
+            (ff) =>
+              ff.name === f.name &&
+              ff.size === f.size &&
+              ff.lastModified === f.lastModified,
+          );
           if (!exists) fileList.push(f);
         });
         fileTouched = true;
@@ -4973,7 +5084,11 @@ document.addEventListener("DOMContentLoaded", () => {
       dropAreaEl.addEventListener("drop", (e) => {
         e.preventDefault();
         dropAreaEl.classList.remove("ring-1", "ring-primary-900");
-        if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files.length) {
+        if (
+          e.dataTransfer &&
+          e.dataTransfer.files &&
+          e.dataTransfer.files.length
+        ) {
           addFiles(e.dataTransfer.files);
         }
       });
@@ -4982,7 +5097,8 @@ document.addEventListener("DOMContentLoaded", () => {
       updateUI();
     }
 
-    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+    if (document.readyState === "loading")
+      document.addEventListener("DOMContentLoaded", init);
     else init();
   })();
 
@@ -4993,7 +5109,10 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
 
     // mark that submit was attempted so file manager will show validation if needed
-    if (window.fileManager && typeof window.fileManager.markSubmitAttempted === "function") {
+    if (
+      window.fileManager &&
+      typeof window.fileManager.markSubmitAttempted === "function"
+    ) {
       window.fileManager.markSubmitAttempted();
     }
 
@@ -5007,10 +5126,13 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!input) return;
 
       const isRequiredInHTML = input.hasAttribute("required");
-      const value = input.type === "file" ? undefined : (data[fieldName] || "");
+      const value = input.type === "file" ? undefined : data[fieldName] || "";
 
       // Skip if not required and empty
-      if (!isRequiredInHTML && (!value || (typeof value === "string" && value.trim() === ""))) {
+      if (
+        !isRequiredInHTML &&
+        (!value || (typeof value === "string" && value.trim() === ""))
+      ) {
         return;
       }
 
@@ -5025,8 +5147,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!isFormValid) {
       // focus the first invalid field optionally
-      const firstInvalid = form.querySelector(".border-red-500, .error-message.opacity-100");
-      if (firstInvalid) firstInvalid.scrollIntoView({ behavior: "smooth", block: "center" });
+      const firstInvalid = form.querySelector(
+        ".border-red-500, .error-message.opacity-100",
+      );
+      if (firstInvalid)
+        firstInvalid.scrollIntoView({ behavior: "smooth", block: "center" });
       return;
     }
 
@@ -5056,7 +5181,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // clear unified file manager state/UI (if exists)
-    if (window.fileManager && typeof window.fileManager.clearAllFiles === "function") {
+    if (
+      window.fileManager &&
+      typeof window.fileManager.clearAllFiles === "function"
+    ) {
       window.fileManager.clearAllFiles();
     } else {
       // fallback: if fileUpload exists, manually clear
@@ -5065,7 +5193,10 @@ document.addEventListener("DOMContentLoaded", () => {
         fileUpload.files = dt.files;
         clearError(fileUpload);
         if (fileLabel) {
-          if (window.location.pathname.includes("contact") || window.location.pathname.includes("enquiry")) {
+          if (
+            window.location.pathname.includes("contact") ||
+            window.location.pathname.includes("enquiry")
+          ) {
             fileLabel.textContent = "No File Choosen";
           } else {
             fileLabel.textContent = "Drop files here or Select Files";
@@ -5083,7 +5214,6 @@ document.addEventListener("DOMContentLoaded", () => {
     submitBtn.classList.remove("opacity-50");
   });
 });
-
 
 // number counting for coming soon page
 document.addEventListener("DOMContentLoaded", () => {

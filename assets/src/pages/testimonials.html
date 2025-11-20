@@ -28,7 +28,7 @@
     <!-- Preloader -->
     <div class="preloader">
         <div class="preloader-inner">
-             <svg width="51" height="57" viewBox="0 0 51 57" fill="none" xmlns="http://www.w3.org/2000/svg"
+            <svg width="51" height="57" viewBox="0 0 51 57" fill="none" xmlns="http://www.w3.org/2000/svg"
                 class="stroke-primary-900">
                 <path d="M0.941162 23.948V5.20612L17.3693 14.23V32.9719L0.941162 23.948Z" stroke-width="0.941101" />
                 <path d="M17.5193 52.0581L1.28833 42.6871L17.3173 32.9719L33.5483 42.3429L17.5193 52.0581Z"
@@ -123,28 +123,30 @@
                             <ul
                                 class="navbar font-medium flex items-stretch h-full flex-col text-black uppercase p-4 lg:p-0 lg:flex-row lg:mt-0">
                                 <li
-                                    class="my-auto lg:h-full flex 2xl:px-[18px] xl:px-[14px] lg:px-[10px] px-[6px] group">
+                                    class="my-auto lg:h-full flex 2xl:px-[18px] xl:px-[14px] lg:px-[10px] sm:px-[6px] group">
                                     <a href="./about-us.html" aria-current="page" class="nav-tab-2">About Orion</a>
                                 </li>
                                 <li
-                                    class="dropdown group my-auto lg:h-full lg:static flex items-center justify-between 2xl:px-[18px] xl:px-[14px] lg:px-[10px] px-[6px]">
-                                    <a href="javascript:;"
+                                    class="dropdown group my-auto lg:h-full lg:static flex items-center justify-between 2xl:px-[18px] xl:px-[14px] lg:px-[10px] sm:px-[6px]">
+                                    <div
                                         class="dropdown-toggle items-center gap-1 lg:gap-2 my-auto lg:h-full justify-between w-full flex nav-tab font-lexend">
-                                        Projects
+                                        <a href="./projects.html" class="dropdown-text">
+                                            Projects
+                                        </a>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="12" height="11"
                                             viewBox="0 0 19 11" fill="none"
-                                            class="dropdown-svg transition-all duration-300 ease-in-out">
+                                            class="dropdown-arrow-area dropdown-svg transition-all duration-300 ease-in-out">
                                             <g clip-path="url(#clip0_128_578)">
                                                 <path d="M1.58325 1.57143L9.49992 9.42857L17.4166 1.57143"
                                                     stroke="currentcolor" class="fill-none" stroke-width="2"
                                                     stroke-linecap="round" stroke-linejoin="round" />
                                             </g>
                                         </svg>
-                                    </a>
+                                    </div>
                                     <div
                                         class="dropdown-menu fade-down lg:top-full top-0 absolute w-full z-50 lg:h-fit h-screen hidden">
-                                        <div class="bg-white lg:border-t border-[#00000026]">
-                                            <div class="lg:container mx-auto px-4">
+                                        <div class="bg-white">
+                                            <div class="container">
                                                 <!-- Mobile Header (Only visible on mobile) -->
                                                 <div
                                                     class="back-btn bg-white flex items-center lg:hidden pb-3 pt-2.5 border-b border-[#00000015]">
@@ -165,15 +167,16 @@
 
                                                 <div class="overflow-y-auto h-full lg:h-auto dropdown-scroll">
                                                     <ul
-                                                        class="grid lg:grid-cols-5 sm:grid-cols-3 min-[412px]:grid-cols-2 grid-cols-1 2xl:gap-7 xl:gap-6 gap-5 2xl:py-10 lg:py-9 py-[30px] h-full">
+                                                        class="grid lg:grid-cols-5 sm:grid-cols-3 min-[412px]:grid-cols-2 grid-cols-1 2xl:gap-7 xl:gap-6 gap-5 pt-[22px] 2xl:pb-10 lg:pb-9 pb-[30px] h-full">
                                                         <li
                                                             class="flex flex-col items-start sm:gap-[17px] gap-[12px] group/project">
                                                             <div class="relative w-full">
-                                                                <a href="./project-detail-1.html" class="w-full h-full">
+                                                                <a href="./project-detail-1.html"
+                                                                    class="w-full h-full overflow-hidden relative sm:before:pt-[116%] before:pt-[60%] before:block">
                                                                     <img src="../images/project-nav-1.webp"
                                                                         alt="project-1"
-                                                                        class="w-full h-full object-cover"
-                                                                        loading="lazy" />
+                                                                        class="w-full h-full object-cover absolute top-0 left-0 right-0 bottom-0"
+                                                                        loading="lazy" decoding="async" />
                                                                 </a>
                                                                 <a href="./project-detail-1.html"
                                                                     class="project-arrow group/arrow">
@@ -200,11 +203,12 @@
                                                         <li
                                                             class="flex flex-col items-start sm:gap-[17px] gap-[12px] group/project">
                                                             <div class="relative w-full">
-                                                                <a href="./project-detail-2.html" class="w-full h-full">
+                                                                <a href="./project-detail-2.html"
+                                                                    class="w-full h-full overflow-hidden relative sm:before:pt-[116%] before:pt-[60%] before:block">
                                                                     <img src="../images/project-nav-2.webp"
                                                                         alt="project-1"
-                                                                        class="w-full h-full object-cover"
-                                                                        loading="lazy" />
+                                                                        class="w-full h-full object-cover absolute top-0 left-0 right-0 bottom-0"
+                                                                        loading="lazy" decoding="async" />
                                                                 </a>
                                                                 <a href="./project-detail-2.html"
                                                                     class="project-arrow group/arrow">
@@ -231,11 +235,12 @@
                                                         <li
                                                             class="flex flex-col items-start sm:gap-[17px] gap-[12px] group/project">
                                                             <div class="relative w-full">
-                                                                <a href="./project-detail-3.html" class="w-full h-full">
+                                                                <a href="./project-detail-3.html"
+                                                                    class="w-full h-full overflow-hidden relative sm:before:pt-[116%] before:pt-[60%] before:block">
                                                                     <img src="../images/project-nav-3.webp"
                                                                         alt="project-1"
-                                                                        class="w-full h-full object-cover"
-                                                                        loading="lazy" />
+                                                                        class="w-full h-full object-cover absolute top-0 left-0 right-0 bottom-0"
+                                                                        loading="lazy" decoding="async" />
                                                                 </a>
                                                                 <a href="./project-detail-3.html"
                                                                     class="project-arrow group/arrow">
@@ -262,11 +267,12 @@
                                                         <li
                                                             class="flex flex-col items-start sm:gap-[17px] gap-[12px] group/project">
                                                             <div class="relative w-full">
-                                                                <a href="./project-detail-4.html" class="w-full h-full">
+                                                                <a href="./project-detail-4.html"
+                                                                    class="w-full h-full overflow-hidden relative sm:before:pt-[116%] before:pt-[60%] before:block">
                                                                     <img src="../images/project-nav-4.webp"
                                                                         alt="project-1"
-                                                                        class="w-full h-full object-cover"
-                                                                        loading="lazy" />
+                                                                        class="w-full h-full object-cover absolute top-0 left-0 right-0 bottom-0"
+                                                                        loading="lazy" decoding="async" />
                                                                 </a>
                                                                 <a href="./project-detail-4.html"
                                                                     class="project-arrow group/arrow">
@@ -293,11 +299,12 @@
                                                         <li
                                                             class="flex flex-col items-start sm:gap-[17px] gap-[12px] group/project">
                                                             <div class="relative w-full">
-                                                                <a href="./project-detail-5.html" class="w-full h-full">
+                                                                <a href="./project-detail-5.html"
+                                                                    class="w-full h-full overflow-hidden relative sm:before:pt-[116%] before:pt-[60%] before:block">
                                                                     <img src="../images/project-nav-5.webp"
                                                                         alt="project-1"
-                                                                        class="w-full h-full object-cover"
-                                                                        loading="lazy" />
+                                                                        class="w-full h-full object-cover absolute top-0 left-0 right-0 bottom-0"
+                                                                        loading="lazy" decoding="async" />
                                                                 </a>
                                                                 <a href="./project-detail-5.html"
                                                                     class="project-arrow group/arrow">
@@ -322,7 +329,7 @@
                                                         </li>
                                                     </ul>
                                                     <div
-                                                        class="flex sm:items-center items-start sm:flex-nowrap flex-wrap sm:gap-[18px] gap-2 justify-between w-full border-t border-[#00000026] xl:py-[30px] sm:py-6 py-[18px]">
+                                                        class="flex sm:items-center items-start sm:flex-nowrap flex-wrap sm:gap-[18px] gap-2 justify-between w-full border-t border-[#00000026] 2xl:py-[30px] 1xl:py-6 sm:py-5 py-[18px]">
                                                         <p
                                                             class="m-0 font-lexend font-light normal-case sm:text-center text-start text-black cursor-default">
                                                             © All rights reserved to Orion Constructions
@@ -339,27 +346,29 @@
                                 </li>
 
                                 <li
-                                    class="dropdown group my-auto lg:h-full lg:static flex items-center justify-between 2xl:px-[18px] xl:px-[14px] lg:px-[10px] px-[6px]">
-                                    <a href="javascript:;"
-                                        class="dropdown-toggle items-center gap-1 lg:gap-2 my-auto lg:h-full justify-between w-full flex nav-tab-2">
-                                        Services
+                                    class="dropdown group my-auto lg:h-full lg:static flex items-center justify-between 2xl:px-[18px] xl:px-[14px] lg:px-[10px] sm:px-[6px]">
+                                    <div
+                                        class="dropdown-toggle items-center gap-1 lg:gap-2 my-auto lg:h-full justify-between w-full flex nav-tab font-lexend">
+                                        <a href="./services.html" class="dropdown-text">
+                                            Services
+                                        </a>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="12" height="11"
                                             viewBox="0 0 19 11" fill="none"
-                                            class="dropdown-svg transition-all duration-300 ease-in-out">
+                                            class="dropdown-arrow-area dropdown-svg transition-all duration-300 ease-in-out">
                                             <g clip-path="url(#clip0_128_578)">
                                                 <path d="M1.58325 1.57143L9.49992 9.42857L17.4166 1.57143"
-                                                    stroke="currentcolor" stroke-width="2" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
+                                                    stroke="currentcolor" class="fill-none" stroke-width="2"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
                                             </g>
                                         </svg>
-                                    </a>
+                                    </div>
                                     <div
                                         class="dropdown-menu fade-down lg:top-full top-0 absolute w-full z-50 lg:h-fit h-screen hidden">
-                                        <div class="bg-white lg:border-t border-[#00000026] h-auto flex flex-col">
-                                            <div class="lg:container mx-auto px-4 flex flex-col h-full">
+                                        <div class="bg-white">
+                                            <div class="container">
                                                 <!-- Mobile Header (Only visible on mobile) -->
                                                 <div
-                                                    class="back-btn bg-white flex items-center lg:hidden py-3 border-b border-[#00000015]">
+                                                    class="back-btn bg-white flex items-center lg:hidden pb-3 pt-2.5 border-b border-[#00000015]">
                                                     <button class="text-xl mr-3">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
                                                             viewBox="0 0 14 14" fill="none">
@@ -372,146 +381,235 @@
                                                         </svg>
                                                     </button>
                                                     <span
-                                                        class="text-primary-900 md:text-base text-[15px] font-medium p-0">Services</span>
+                                                        class="dropdown-text text-primary-900 md:text-base text-[15px] font-medium p-0">Services</span>
                                                 </div>
-                                                <div class="overflow-y-auto flex-1 lg:h-auto dropdown-scroll h-screen">
+
+                                                <div class="overflow-y-auto h-full lg:h-auto dropdown-scroll">
                                                     <ul
-                                                        class="grid xl:grid-cols-3 sm:grid-cols-2 grid-cols-1 1xl:gap-[57px] xl:gap-y-[55px] lg:gap-y-10 sm:gap-y-[28px] gap-y-5 gap-[55px] 1xl:py-[55px] lg:py-10 py-5 normal-case">
+                                                        class="grid xl:grid-cols-3 sm:grid-cols-2 grid-cols-1 2xl:gap-[57px] xl:gap-y-[50 px] lg:gap-y-10 sm:gap-y-[28px] sm:gap-x-5 sm:pt-5 pt-3 1xl:pb-[55px] lg:pb-10 pb-7 normal-case sm:divide-y-0 divide-y divide-gray-300">
                                                         <li
-                                                            class="flex flex-col items-start lg:gap-3 gap-[6px] max-w-[455px] w-full">
-                                                            <h4 class="m-0 text-start">
-                                                                <a href="./services-detail-1.html"
-                                                                    class="hover:text-primary-900">
-                                                                    Building Construction
-                                                                </a>
-                                                            </h4>
+                                                            class="flex flex-col items-start 2xl:gap-3 lg:gap-[10px] gap-[6px] max-w-[455px] w-full sm:p-0 py-4">
+                                                            <div
+                                                                class="flex items-center justify-between w-full group/services">
+                                                                <h4 class="m-0 text-start">
+                                                                    <a href="./services-detail-1.html"
+                                                                        class="group-hover/services:text-primary-900">Building
+                                                                        Construction</a>
+                                                                </h4>
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                    height="24" viewBox="0 0 24 24"
+                                                                    class="text-black group-hover/services:text-primary-900 lg:hidden block flex-shrink-0">
+                                                                    <path fill="currentColor"
+                                                                        d="M12.646 6.646a.5.5 0 0 1 .708 0l5 5a.5.5 0 0 1 0 .708l-5 5a.5.5 0 0 1-.708-.708l4.147-4.146H6a.5.5 0 0 1 0-1h10.793l-4.147-4.146a.5.5 0 0 1 0-.708"
+                                                                        stroke-width="0.3" stroke="currentColor" />
+                                                                </svg>
+                                                            </div>
                                                             <p
-                                                                class="text-[#464343] normal-case font-light m-0 text-start">
+                                                                class="text-gray-400 normal-case font-light m-0 text-start">
                                                                 We deliver high-quality structures built to
                                                                 last, with attention to safety and durability.
                                                             </p>
                                                         </li>
                                                         <li
-                                                            class="flex flex-col items-start lg:gap-3 gap-[6px] max-w-[455px] w-full">
-                                                            <h4 class="m-0 text-start">
-                                                                <a href="./services-detail-2.html"
-                                                                    class="hover:text-primary-900">
-                                                                    Architectural Design</a>
-                                                            </h4>
+                                                            class="flex flex-col items-start 2xl:gap-3 lg:gap-[10px] gap-[6px] max-w-[455px] w-full sm:p-0 py-4">
+                                                            <div
+                                                                class="flex items-center justify-between w-full group/services">
+                                                                <h4 class="m-0 text-start">
+                                                                    <a href="./services-detail-2.html"
+                                                                        class="group-hover/services:text-primary-900">Architectural
+                                                                        Design</a>
+                                                                </h4>
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                    height="24" viewBox="0 0 24 24"
+                                                                    class="text-black group-hover/services:text-primary-900 lg:hidden block flex-shrink-0">
+                                                                    <path fill="currentColor"
+                                                                        d="M12.646 6.646a.5.5 0 0 1 .708 0l5 5a.5.5 0 0 1 0 .708l-5 5a.5.5 0 0 1-.708-.708l4.147-4.146H6a.5.5 0 0 1 0-1h10.793l-4.147-4.146a.5.5 0 0 1 0-.708"
+                                                                        stroke-width="0.3" stroke="currentColor" />
+                                                                </svg>
+                                                            </div>
                                                             <p
-                                                                class="text-[#464343] normal-case font-light m-0 text-start">
+                                                                class="text-gray-400 normal-case font-light m-0 text-start">
                                                                 We create innovative designs tailored to your
                                                                 space, blending style, function, and
                                                                 precision.
                                                             </p>
                                                         </li>
                                                         <li
-                                                            class="flex flex-col items-start lg:gap-3 gap-[6px] max-w-[455px] w-full">
-                                                            <h4 class="m-0 text-start">
-                                                                <a href="./services-detail-3.html"
-                                                                    class="hover:text-primary-900">
-                                                                    Infrastructure Development
-                                                                </a>
-                                                            </h4>
+                                                            class="flex flex-col items-start 2xl:gap-3 lg:gap-[10px] gap-[6px] max-w-[455px] w-full sm:p-0 py-4">
+                                                            <div
+                                                                class="flex items-center justify-between w-full group/services">
+                                                                <h4 class="m-0 text-start">
+                                                                    <a href="./services-detail-3.html"
+                                                                        class="group-hover/services:text-primary-900">Infrastructure
+                                                                        Development</a>
+                                                                </h4>
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                    height="24" viewBox="0 0 24 24"
+                                                                    class="text-black group-hover/services:text-primary-900 lg:hidden block flex-shrink-0">
+                                                                    <path fill="currentColor"
+                                                                        d="M12.646 6.646a.5.5 0 0 1 .708 0l5 5a.5.5 0 0 1 0 .708l-5 5a.5.5 0 0 1-.708-.708l4.147-4.146H6a.5.5 0 0 1 0-1h10.793l-4.147-4.146a.5.5 0 0 1 0-.708"
+                                                                        stroke-width="0.3" stroke="currentColor" />
+                                                                </svg>
+                                                            </div>
                                                             <p
-                                                                class="text-[#464343] normal-case font-light m-0 text-start">
+                                                                class="text-gray-400 normal-case font-light m-0 text-start">
                                                                 We build public infrastructure that supports
                                                                 growth, ensures utility access, and lasts
                                                                 long.
                                                             </p>
                                                         </li>
                                                         <li
-                                                            class="flex flex-col items-start lg:gap-3 gap-[6px] max-w-[455px] w-full">
-                                                            <h4 class="m-0 text-start">
-                                                                <a href="./services-detail-4.html"
-                                                                    class="hover:text-primary-900">
-                                                                    Building Renovation</a>
-                                                            </h4>
+                                                            class="flex flex-col items-start 2xl:gap-3 lg:gap-[10px] gap-[6px] max-w-[455px] w-full sm:p-0 py-4">
+                                                            <div
+                                                                class="flex items-center justify-between w-full group/services">
+                                                                <h4 class="m-0 text-start">
+                                                                    <a href="./services-detail-4.html"
+                                                                        class="group-hover/services:text-primary-900">Building
+                                                                        Renovation</a>
+                                                                </h4>
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                    height="24" viewBox="0 0 24 24"
+                                                                    class="text-black group-hover/services:text-primary-900 lg:hidden block flex-shrink-0">
+                                                                    <path fill="currentColor"
+                                                                        d="M12.646 6.646a.5.5 0 0 1 .708 0l5 5a.5.5 0 0 1 0 .708l-5 5a.5.5 0 0 1-.708-.708l4.147-4.146H6a.5.5 0 0 1 0-1h10.793l-4.147-4.146a.5.5 0 0 1 0-.708"
+                                                                        stroke-width="0.3" stroke="currentColor" />
+                                                                </svg>
+                                                            </div>
                                                             <p
-                                                                class="text-[#464343] normal-case font-light m-0 text-start">
+                                                                class="text-gray-400 normal-case font-light m-0 text-start">
                                                                 We transform outdated buildings into modern,
                                                                 functional spaces through expert
                                                                 craftsmanship.
                                                             </p>
                                                         </li>
                                                         <li
-                                                            class="flex flex-col items-start lg:gap-3 gap-[6px] max-w-[455px] w-full">
-                                                            <h4 class="m-0 text-start">
-                                                                <a href="./services-detail-5.html"
-                                                                    class="hover:text-primary-900">
-                                                                    Pre-Construction Planning
-                                                                </a>
-                                                            </h4>
+                                                            class="flex flex-col items-start 2xl:gap-3 lg:gap-[10px] gap-[6px] max-w-[455px] w-full sm:p-0 py-4">
+                                                            <div
+                                                                class="flex items-center justify-between w-full group/services">
+                                                                <h4 class="m-0 text-start">
+                                                                    <a href="./services-detail-5.html"
+                                                                        class="group-hover/services:text-primary-900">Pre-Construction
+                                                                        Planning</a>
+                                                                </h4>
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                    height="24" viewBox="0 0 24 24"
+                                                                    class="text-black group-hover/services:text-primary-900 lg:hidden block flex-shrink-0">
+                                                                    <path fill="currentColor"
+                                                                        d="M12.646 6.646a.5.5 0 0 1 .708 0l5 5a.5.5 0 0 1 0 .708l-5 5a.5.5 0 0 1-.708-.708l4.147-4.146H6a.5.5 0 0 1 0-1h10.793l-4.147-4.146a.5.5 0 0 1 0-.708"
+                                                                        stroke-width="0.3" stroke="currentColor" />
+                                                                </svg>
+                                                            </div>
                                                             <p
-                                                                class="text-[#464343] normal-case font-light m-0 text-start">
+                                                                class="text-gray-400 normal-case font-light m-0 text-start">
                                                                 We offer project planning to align scope,
                                                                 budget, and timeline before construction
                                                                 begins.
                                                             </p>
                                                         </li>
                                                         <li
-                                                            class="flex flex-col items-start lg:gap-3 gap-[6px] max-w-[455px] w-full">
-                                                            <h4 class="m-0 text-start">
-                                                                <a href="./services-detail-6.html"
-                                                                    class="hover:text-primary-900">
-                                                                    Project Management</a>
-                                                            </h4>
+                                                            class="flex flex-col items-start 2xl:gap-3 lg:gap-[10px] gap-[6px] max-w-[455px] w-full sm:p-0 py-4">
+                                                            <div
+                                                                class="flex items-center justify-between w-full group/services">
+                                                                <h4 class="m-0 text-start">
+                                                                    <a href="./services-detail-6.html"
+                                                                        class="group-hover/services:text-primary-900">Project
+                                                                        Management</a>
+                                                                </h4>
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                    height="24" viewBox="0 0 24 24"
+                                                                    class="text-black group-hover/services:text-primary-900 lg:hidden block flex-shrink-0">
+                                                                    <path fill="currentColor"
+                                                                        d="M12.646 6.646a.5.5 0 0 1 .708 0l5 5a.5.5 0 0 1 0 .708l-5 5a.5.5 0 0 1-.708-.708l4.147-4.146H6a.5.5 0 0 1 0-1h10.793l-4.147-4.146a.5.5 0 0 1 0-.708"
+                                                                        stroke-width="0.3" stroke="currentColor" />
+                                                                </svg>
+                                                            </div>
                                                             <p
-                                                                class="text-[#464343] normal-case font-light m-0 text-start">
+                                                                class="text-gray-400 normal-case font-light m-0 text-start">
                                                                 We manage all project phases, ensuring
                                                                 quality, speed, and clear coordination.
                                                             </p>
                                                         </li>
                                                         <li
-                                                            class="flex flex-col items-start lg:gap-3 gap-[6px] max-w-[455px] w-full">
-                                                            <h4 class="m-0 text-start">
-                                                                <a href="./services-detail-7.html"
-                                                                    class="hover:text-primary-900">
-                                                                    Bridge Construction</a>
-                                                            </h4>
+                                                            class="flex flex-col items-start 2xl:gap-3 lg:gap-[10px] gap-[6px] max-w-[455px] w-full sm:p-0 py-4">
+                                                            <div
+                                                                class="flex items-center justify-between w-full group/services">
+                                                                <h4 class="m-0 text-start">
+                                                                    <a href="./services-detail-7.html"
+                                                                        class="group-hover/services:text-primary-900">Bridge
+                                                                        Construction</a>
+                                                                </h4>
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                    height="24" viewBox="0 0 24 24"
+                                                                    class="text-black group-hover/services:text-primary-900 lg:hidden block flex-shrink-0">
+                                                                    <path fill="currentColor"
+                                                                        d="M12.646 6.646a.5.5 0 0 1 .708 0l5 5a.5.5 0 0 1 0 .708l-5 5a.5.5 0 0 1-.708-.708l4.147-4.146H6a.5.5 0 0 1 0-1h10.793l-4.147-4.146a.5.5 0 0 1 0-.708"
+                                                                        stroke-width="0.3" stroke="currentColor" />
+                                                                </svg>
+                                                            </div>
                                                             <p
-                                                                class="text-[#464343] normal-case font-light m-0 text-start">
+                                                                class="text-gray-400 normal-case font-light m-0 text-start">
                                                                 We construct durable, high-load bridges with
                                                                 precise engineering and performance.
                                                             </p>
                                                         </li>
                                                         <li
-                                                            class="flex flex-col items-start lg:gap-3 gap-[6px] max-w-[455px] w-full">
-                                                            <h4 class="m-0 text-start">
-                                                                <a href="./services-detail-8.html"
-                                                                    class="hover:text-primary-900">
-                                                                    Landscape Construction
-                                                                </a>
-                                                            </h4>
+                                                            class="flex flex-col items-start 2xl:gap-3 lg:gap-[10px] gap-[6px] max-w-[455px] w-full sm:p-0 py-4">
+                                                            <div
+                                                                class="flex items-center justify-between w-full group/services">
+                                                                <h4 class="m-0 text-start">
+                                                                    <a href="./service-detail-8.html"
+                                                                        class="group-hover/services:text-primary-900">Landscape
+                                                                        Construction</a>
+                                                                </h4>
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                    height="24" viewBox="0 0 24 24"
+                                                                    class="text-black group-hover/services:text-primary-900 lg:hidden block flex-shrink-0">
+                                                                    <path fill="currentColor"
+                                                                        d="M12.646 6.646a.5.5 0 0 1 .708 0l5 5a.5.5 0 0 1 0 .708l-5 5a.5.5 0 0 1-.708-.708l4.147-4.146H6a.5.5 0 0 1 0-1h10.793l-4.147-4.146a.5.5 0 0 1 0-.708"
+                                                                        stroke-width="0.3" stroke="currentColor" />
+                                                                </svg>
+                                                            </div>
                                                             <p
-                                                                class="text-[#464343] normal-case font-light m-0 text-start">
+                                                                class="text-gray-400 normal-case font-light m-0 text-start">
                                                                 We design and build outdoor spaces that
                                                                 enhance beauty, usability, and value.
                                                             </p>
                                                         </li>
                                                         <li
-                                                            class="flex flex-col items-start lg:gap-3 gap-[6px] max-w-[455px] w-full">
-                                                            <h4 class="m-0 text-start">
-                                                                <a href="./services-detail-9.html"
-                                                                    class="hover:text-primary-900">
-                                                                    Flooring & Roofing Solutions
-                                                                </a>
-                                                            </h4>
+                                                            class="flex flex-col items-start 2xl:gap-3 lg:gap-[10px] gap-[6px] max-w-[455px] w-full sm:p-0 py-4">
+                                                            <div
+                                                                class="flex items-center justify-between w-full group/services">
+                                                                <h4 class="m-0 text-start">
+                                                                    <a href="./services-detail-9.html"
+                                                                        class="group-hover/services:text-primary-900">Flooring
+                                                                        &
+                                                                        Roofing
+                                                                        Solutions</a>
+                                                                </h4>
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                    height="24" viewBox="0 0 24 24"
+                                                                    class="text-black group-hover/services:text-primary-900 lg:hidden block flex-shrink-0">
+                                                                    <path fill="currentColor"
+                                                                        d="M12.646 6.646a.5.5 0 0 1 .708 0l5 5a.5.5 0 0 1 0 .708l-5 5a.5.5 0 0 1-.708-.708l4.147-4.146H6a.5.5 0 0 1 0-1h10.793l-4.147-4.146a.5.5 0 0 1 0-.708"
+                                                                        stroke-width="0.3" stroke="currentColor" />
+                                                                </svg>
+                                                            </div>
                                                             <p
-                                                                class="text-[#464343] normal-case font-light m-0 text-start">
+                                                                class="text-gray-400 normal-case font-light m-0 text-start">
                                                                 We install weatherproof roofing and durable
                                                                 flooring built for performance and appeal.
                                                             </p>
                                                         </li>
                                                     </ul>
                                                     <div
-                                                        class="flex sm:items-center items-start sm:flex-nowrap flex-wrap sm:gap-[18px] gap-2 justify-between w-full border-t border-[#00000026] xl:py-[30px] sm:py-6 py-[18px]">
-                                                        <p class="m-0 font-lexend font-light normal-case">
+                                                        class="flex sm:items-center items-start sm:flex-nowrap flex-wrap sm:gap-[18px] gap-2 justify-between w-full border-t border-[#00000026] 2xl:py-[30px] 1xl:py-6 sm:py-5 py-[18px]">
+                                                        <p
+                                                            class="m-0 font-lexend font-light normal-case sm:text-center text-start text-black cursor-default">
                                                             © All rights reserved to Orion Constructions
                                                         </p>
-                                                        <a href="./services-2.html"
-                                                            class="!tracking-[3px] btn-border-b btn font-messiri !px-0">
-                                                            View Services
+                                                        <a href="./services.html"
+                                                            class="!tracking-[3px] btn-border-b btn font-messiri !px-0">View
+                                                            Services
                                                         </a>
                                                     </div>
                                                 </div>
@@ -520,28 +618,28 @@
                                     </div>
                                 </li>
                                 <li
-                                    class="my-auto lg:h-full flex 2xl:px-[18px] xl:px-[14px] lg:px-[10px] px-[6px] group">
+                                    class="my-auto lg:h-full flex 2xl:px-[18px] xl:px-[14px] lg:px-[10px] sm:px-[6px] group">
                                     <a href="./careers.html" class="nav-tab-2">Careers</a>
                                 </li>
                                 <li
-                                    class="my-auto lg:h-full flex 2xl:px-[18px] xl:px-[14px] lg:px-[10px] px-[6px] group">
+                                    class="my-auto lg:h-full flex 2xl:px-[18px] xl:px-[14px] lg:px-[10px] sm:px-[6px] group">
                                     <a href="./blogs.html" class="nav-tab-2">Blog</a>
                                 </li>
                                 <li
-                                    class="dropdown group my-auto lg:h-full flex items-center justify-between lg:relative 2xl:px-[18px] xl:px-[14px] lg:px-[10px] px-[6px] pages">
-                                    <a href="javascript:;"
+                                    class="dropdown group my-auto lg:h-full flex items-center justify-between lg:relative 2xl:px-[18px] xl:px-[14px] lg:px-[10px] sm:px-[6px] pages">
+                                    <div
                                         class="dropdown-toggle items-center gap-1 lg:gap-2 my-auto lg:h-full justify-between w-full flex nav-tab font-lexend">
                                         Pages
                                         <svg xmlns="http://www.w3.org/2000/svg" width="12" height="11"
                                             viewBox="0 0 19 11" fill="none"
-                                            class="dropdown-svg transition-all duration-300 ease-in-out">
+                                            class="dropdown-arrow-area dropdown-svg transition-all duration-300 ease-in-out">
                                             <g clip-path="url(#clip0_128_578)">
                                                 <path d="M1.58325 1.57143L9.49992 9.42857L17.4166 1.57143"
                                                     stroke="currentcolor" class="fill-none" stroke-width="2"
                                                     stroke-linecap="round" stroke-linejoin="round" />
                                             </g>
                                         </svg>
-                                    </a>
+                                    </div>
                                     <!-- Mobile Header (Only visible on mobile) -->
                                     <div
                                         class="dropdown-menu border-0 lg:h-fit h-screen overflow-auto lg:shadow-[0_15px_19px_0_#0000001c] absolute lg:top-full top-0 bg-white left-auto right-0 1xl:min-w-[240px] lg:min-w-[215px] md:min-w-[195px] w-full hidden lg:pb-2 group-hover/services:flex group-active/services:flex group-focus/services:flex z-50 flex-col">
@@ -564,7 +662,7 @@
                                             <ul class="bg-white flex flex-col lg:!max-h-full lg:!overflow-visible">
                                                 <!-- Mobile Header (Only visible on mobile) -->
                                                 <li
-                                                    class="relative pages-submenu-parent group/home lg:px-[22px] px-[14px] border-b border-[#0000001A]">
+                                                    class="relative pages-submenu-parent group/home lg:px-[22px] sm:px-[14px] border-b border-[#0000001A]">
                                                     <div
                                                         class="p2 !font-normal 2xl:py-3 lg:py-[10px] py-3 flex items-center justify-between text-gray-400 hover:text-primary-900 dropdown-link">
                                                         Homes
@@ -586,7 +684,7 @@
                                                         <span
                                                             class="absolute left-auto 1xl:right-[204px] xl:right-[166px] right-[144px] top-6 w-3 h-3 bg-white rotate-45 sm:border border-gray-200 z-[-1] lg:block hidden"></span>
                                                         <ul
-                                                            class="lg:border lg:divide-y lg:border-gray-200 lg:divide-[#0000001A] bg-white xl:px-[22px] lg:px-[14px] px-[12px] lg:py-0 py-3">
+                                                            class="lg:border lg:divide-y lg:border-gray-200 lg:divide-[#0000001A] bg-white xl:px-[22px] lg:px-[14px] sm:px-[12px] lg:py-0 py-3">
                                                             <li class="p2 2xl:py-3 lg:py-[10px] py-2">
                                                                 <a href="./index.html"
                                                                     class="block text-gray-400 hover:text-primary-900 font-normal">Home
@@ -611,7 +709,7 @@
                                                     </div>
                                                 </li>
 
-                                                <li class="lg:px-[22px] px-[14px] border-b border-[#0000001A]">
+                                                <li class="lg:px-[22px] sm:px-[14px] border-b border-[#0000001A]">
                                                     <div
                                                         class="p2 !font-normal 2xl:py-3 lg:py-[10px] py-3 flex items-center justify-between text-gray-400 hover:text-primary-900">
                                                         <a href="./about-us.html"
@@ -621,7 +719,7 @@
                                                 </li>
 
                                                 <li
-                                                    class="relative pages-submenu-parent group/projects lg:px-[22px] px-[14px] border-b border-[#0000001A]">
+                                                    class="relative pages-submenu-parent group/projects lg:px-[22px] sm:px-[14px] border-b border-[#0000001A]">
                                                     <div
                                                         class="p2 !font-normal 2xl:py-3 lg:py-[10px] py-3 flex items-center justify-between text-gray-400 hover:text-primary-900">
                                                         Projects
@@ -643,7 +741,7 @@
                                                         <span
                                                             class="absolute left-auto 1xl:right-[204px] xl:right-[166px] right-[144px] top-6 w-3 h-3 bg-white rotate-45 sm:border border-gray-200 z-[-1] lg:block hidden"></span>
                                                         <ul
-                                                            class="lg:border lg:divide-y lg:border-gray-200 lg:divide-[#0000001A] bg-white xl:px-[22px] lg:px-[14px] px-[12px] lg:py-0 py-3">
+                                                            class="lg:border lg:divide-y lg:border-gray-200 lg:divide-[#0000001A] bg-white xl:px-[22px] lg:px-[14px] sm:px-[12px] lg:py-0 py-3">
                                                             <li class="p2 2xl:py-3 lg:py-[10px] py-2">
                                                                 <a href="./projects.html"
                                                                     class="block text-gray-400 hover:text-primary-900 font-normal">Project
@@ -670,7 +768,7 @@
 
                                                 <!-- Nested submenu parent -->
                                                 <li
-                                                    class="relative pages-submenu-parent group/services lg:px-[22px] px-[14px] border-b border-[#0000001A]">
+                                                    class="relative pages-submenu-parent group/services lg:px-[22px] sm:px-[14px] border-b border-[#0000001A]">
                                                     <div
                                                         class="p2 !font-normal 2xl:py-3 lg:py-[10px] py-3 flex items-center justify-between text-gray-400 hover:text-primary-900 dropdown-link">
                                                         Services
@@ -692,7 +790,7 @@
                                                         <span
                                                             class="absolute left-auto 1xl:right-[204px] xl:right-[166px] right-[144px] top-6 w-3 h-3 bg-white rotate-45 sm:border border-gray-200 z-[-1] lg:block hidden"></span>
                                                         <ul
-                                                            class="lg:border lg:divide-y lg:border-gray-200 lg:divide-[#0000001A] bg-white xl:px-[22px] lg:px-[14px] px-[12px] lg:py-0 py-3">
+                                                            class="lg:border lg:divide-y lg:border-gray-200 lg:divide-[#0000001A] bg-white xl:px-[22px] lg:px-[14px] sm:px-[12px] lg:py-0 py-3">
                                                             <li class="p2 2xl:py-3 lg:py-[10px] py-2">
                                                                 <a href="./services.html"
                                                                     class="block text-gray-400 hover:text-primary-900 font-normal">Services
@@ -719,7 +817,7 @@
 
                                                 <!-- Nested submenu parent -->
                                                 <li
-                                                    class="relative pages-submenu-parent group/team lg:px-[22px] px-[14px] border-b border-[#0000001A]">
+                                                    class="relative pages-submenu-parent group/team lg:px-[22px] sm:px-[14px] border-b border-[#0000001A]">
                                                     <div
                                                         class="p2 !font-normal 2xl:py-3 lg:py-[10px] py-3 flex items-center justify-between text-gray-400 hover:text-primary-900">
                                                         Teams
@@ -741,7 +839,7 @@
                                                         <span
                                                             class="absolute left-auto 1xl:right-[204px] xl:right-[166px] right-[144px] top-6 w-3 h-3 bg-white rotate-45 sm:border border-gray-200 z-[-1] lg:block hidden"></span>
                                                         <ul
-                                                            class="lg:border lg:divide-y lg:border-gray-200 lg:divide-[#0000001A] bg-white xl:px-[22px] lg:px-[14px] px-[12px] lg:py-0 py-3">
+                                                            class="lg:border lg:divide-y lg:border-gray-200 lg:divide-[#0000001A] bg-white xl:px-[22px] lg:px-[14px] sm:px-[12px] lg:py-0 py-3">
                                                             <li class="p2 2xl:py-3 lg:py-[10px] py-2">
                                                                 <a href="./team.html"
                                                                     class="block text-gray-400 hover:text-primary-900 font-normal">Team
@@ -763,7 +861,7 @@
 
                                                 <!-- Nested submenu parent -->
                                                 <li
-                                                    class="relative pages-submenu-parent group/blogs lg:px-[22px] px-[14px] border-b border-[#0000001A]">
+                                                    class="relative pages-submenu-parent group/blogs lg:px-[22px] sm:px-[14px] border-b border-[#0000001A]">
                                                     <div
                                                         class="p2 !font-normal 2xl:py-3 lg:py-[10px] py-3 flex items-center justify-between text-gray-400 hover:text-primary-900">
                                                         Blogs
@@ -780,12 +878,12 @@
 
                                                     <!-- Nested dropdown -->
                                                     <div
-                                                        class="pages-submenu-panel lg:px-0 px-4 absolute top-0 1xl:left-[239px] lg:left-[214px] left-0 1xl:min-w-[220px] xl:min-w-[182px] lg:min-w-[160px] hidden lg:group-hover/home:blogs lg:group-active/home:blogs lg:group-focus/home:blogs z-50 lg:pl-[10px]">
+                                                        class="pages-submenu-panel lg:px-0 px-4 absolute top-0 1xl:left-[239px] lg:left-[214px] left-0 1xl:min-w-[220px] xl:min-w-[182px] lg:min-w-[160px] hidden lg:group-hover/blogs:block lg:group-active/blogs:block lg:group-focus/blogs:block z-50 lg:pl-[10px]">
                                                         <!-- Triangle arrow -->
                                                         <span
                                                             class="absolute left-auto 1xl:right-[204px] xl:right-[166px] right-[144px] top-6 w-3 h-3 bg-white rotate-45 sm:border border-gray-200 z-[-1] lg:block hidden"></span>
                                                         <ul
-                                                            class="lg:border lg:divide-y lg:border-gray-200 lg:divide-[#0000001A] bg-white xl:px-[22px] lg:px-[14px] px-[12px] lg:py-0 py-3">
+                                                            class="lg:border lg:divide-y lg:border-gray-200 lg:divide-[#0000001A] bg-white xl:px-[22px] lg:px-[14px] sm:px-[12px] lg:py-0 py-3">
                                                             <li class="p2 2xl:py-3 lg:py-[10px] py-2">
                                                                 <a href="./blogs.html"
                                                                     class="block text-gray-400 hover:text-primary-900 font-normal">Blog
@@ -811,7 +909,7 @@
                                                 </li>
                                                 <!-- More items -->
 
-                                                <li class="lg:px-[22px] px-[14px] border-b border-[#0000001A]">
+                                                <li class="lg:px-[22px] sm:px-[14px] border-b border-[#0000001A]">
                                                     <div
                                                         class="p2 !font-normal 2xl:py-3 lg:py-[10px] py-3 flex items-center justify-between text-gray-400 hover:text-primary-900">
                                                         <a href="./careers.html"
@@ -819,7 +917,7 @@
                                                     </div>
                                                 </li>
 
-                                                <li class="lg:px-[22px] px-[14px] border-b border-[#0000001A]">
+                                                <li class="lg:px-[22px] sm:px-[14px] border-b border-[#0000001A]">
                                                     <div
                                                         class="p2 !font-normal 2xl:py-3 lg:py-[10px] py-3 flex items-center justify-between text-gray-400 hover:text-primary-900">
                                                         <a href="./contact-us.html"
@@ -827,7 +925,7 @@
                                                     </div>
                                                 </li>
 
-                                                <li class="lg:px-[22px] px-[14px] border-b border-[#0000001A]">
+                                                <li class="lg:px-[22px] sm:px-[14px] border-b border-[#0000001A]">
                                                     <div
                                                         class="p2 !font-normal 2xl:py-3 lg:py-[10px] py-3 flex items-center justify-between text-gray-400 hover:text-primary-900">
                                                         <a href="./privacy-policy.html"
@@ -836,7 +934,7 @@
                                                     </div>
                                                 </li>
 
-                                                <li class="lg:px-[22px] px-[14px] border-b border-[#0000001A]">
+                                                <li class="lg:px-[22px] sm:px-[14px] border-b border-[#0000001A]">
                                                     <div
                                                         class="p2 !font-normal 2xl:py-3 lg:py-[10px] py-3 flex items-center justify-between text-gray-400 hover:text-primary-900">
                                                         <a href="./terms-condition.html"
@@ -846,7 +944,7 @@
                                                 </li>
 
                                                 <li
-                                                    class="relative pages-submenu-parent group/other lg:px-[22px] px-[14px]">
+                                                    class="relative pages-submenu-parent group/other lg:px-[22px] sm:px-[14px]">
                                                     <div
                                                         class="p2 !font-normal py-3 flex items-center justify-between text-gray-400 hover:text-primary-900">
                                                         Other Pages
@@ -872,7 +970,7 @@
                                                         <div
                                                             class="2xl:max-h-60 1xl:max-h-50 xl:max-h-45 lg:max-h-28 max-h-fit overflow-y-auto">
                                                             <ul
-                                                                class="lg:border lg:divide-y lg:border-gray-200 lg:divide-[#0000001A] bg-white xl:px-[22px] lg:px-[14px] px-[12px] lg:py-0 py-3">
+                                                                class="lg:border lg:divide-y lg:border-gray-200 lg:divide-[#0000001A] bg-white xl:px-[22px] lg:px-[14px] sm:px-[12px] lg:py-0 py-3">
                                                                 <li class="p2 2xl:py-3 lg:py-[10px] py-2">
                                                                     <a href="./faq.html"
                                                                         class="block text-gray-400 hover:text-primary-900 font-normal">Faq's</a>
@@ -896,7 +994,15 @@
                                                                 <li class="p2 2xl:py-3 lg:py-[10px] py-2">
                                                                     <a href="./category.html"
                                                                         class="block text-gray-400 hover:text-primary-900 font-normal">Category</a>
-                                                                </li>
+                                </li>
+                                <li class="p2 2xl:py-3 lg:py-[10px] py-2">
+                                  <a href="./packages.html"
+                                    class="block text-gray-400 hover:text-primary-900 font-normal">Packages</a>
+                                </li>
+                                <li class="p2 2xl:py-3 lg:py-[10px] py-2">
+                                  <a href="./testimonials.html"
+                                    class="block text-gray-400 hover:text-primary-900 font-normal">Testimonials</a>
+                                </li>
                                                                 <li class="p2 2xl:py-3 lg:py-[10px] py-2">
                                                                     <a href="./gallery.html"
                                                                         class="block text-gray-400 hover:text-primary-900 font-normal">Gallery</a>
@@ -911,7 +1017,7 @@
                                 </li>
 
                                 <li
-                                    class="my-auto lg:h-full flex 2xl:px-[18px] xl:px-[14px] lg:px-[10px] px-[6px] group">
+                                    class="my-auto lg:h-full flex 2xl:px-[18px] xl:px-[14px] lg:px-[10px] sm:px-[6px] group">
                                     <a href="./contact-us.html" class="nav-tab-2">Contact</a>
                                 </li>
                             </ul>
@@ -1155,36 +1261,16 @@
                                         <p>- Summit Ventures</p>
                                     </div>
                                     <div class="flex items-center gap-[5px] text-green-700">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22"
-                                            viewBox="0 0 24 22" fill="none"
-                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px] fill-primary-900">
-                                            <path
-                                                d="M11.0489 0.927049C11.3483 0.0057385 12.6517 0.00573993 12.9511 0.927051L14.9187 6.98278C15.0526 7.3948 15.4365 7.67376 15.8697 7.67376H22.2371C23.2058 7.67376 23.6086 8.91338 22.8249 9.48278L17.6736 13.2254C17.3231 13.4801 17.1764 13.9314 17.3103 14.3435L19.2779 20.3992C19.5773 21.3205 18.5228 22.0866 17.7391 21.5172L12.5878 17.7746C12.2373 17.5199 11.7627 17.5199 11.4122 17.7746L6.2609 21.5172C5.47719 22.0866 4.42271 21.3205 4.72206 20.3992L6.68969 14.3435C6.82356 13.9314 6.6769 13.4801 6.32642 13.2254L1.17511 9.48278C0.391392 8.91338 0.794168 7.67376 1.76289 7.67376H8.13026C8.56349 7.67376 8.94744 7.3948 9.08132 6.98278L11.0489 0.927049Z" />
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22"
-                                            viewBox="0 0 24 22" fill="none"
-                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px] fill-primary-900">
-                                            <path
-                                                d="M11.0489 0.927049C11.3483 0.0057385 12.6517 0.00573993 12.9511 0.927051L14.9187 6.98278C15.0526 7.3948 15.4365 7.67376 15.8697 7.67376H22.2371C23.2058 7.67376 23.6086 8.91338 22.8249 9.48278L17.6736 13.2254C17.3231 13.4801 17.1764 13.9314 17.3103 14.3435L19.2779 20.3992C19.5773 21.3205 18.5228 22.0866 17.7391 21.5172L12.5878 17.7746C12.2373 17.5199 11.7627 17.5199 11.4122 17.7746L6.2609 21.5172C5.47719 22.0866 4.42271 21.3205 4.72206 20.3992L6.68969 14.3435C6.82356 13.9314 6.6769 13.4801 6.32642 13.2254L1.17511 9.48278C0.391392 8.91338 0.794168 7.67376 1.76289 7.67376H8.13026C8.56349 7.67376 8.94744 7.3948 9.08132 6.98278L11.0489 0.927049Z" />
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22"
-                                            viewBox="0 0 24 22" fill="none"
-                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px] fill-primary-900">
-                                            <path
-                                                d="M11.0489 0.927049C11.3483 0.0057385 12.6517 0.00573993 12.9511 0.927051L14.9187 6.98278C15.0526 7.3948 15.4365 7.67376 15.8697 7.67376H22.2371C23.2058 7.67376 23.6086 8.91338 22.8249 9.48278L17.6736 13.2254C17.3231 13.4801 17.1764 13.9314 17.3103 14.3435L19.2779 20.3992C19.5773 21.3205 18.5228 22.0866 17.7391 21.5172L12.5878 17.7746C12.2373 17.5199 11.7627 17.5199 11.4122 17.7746L6.2609 21.5172C5.47719 22.0866 4.42271 21.3205 4.72206 20.3992L6.68969 14.3435C6.82356 13.9314 6.6769 13.4801 6.32642 13.2254L1.17511 9.48278C0.391392 8.91338 0.794168 7.67376 1.76289 7.67376H8.13026C8.56349 7.67376 8.94744 7.3948 9.08132 6.98278L11.0489 0.927049Z" />
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22"
-                                            viewBox="0 0 24 22" fill="none"
-                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px] fill-primary-900">
-                                            <path
-                                                d="M11.0489 0.927049C11.3483 0.0057385 12.6517 0.00573993 12.9511 0.927051L14.9187 6.98278C15.0526 7.3948 15.4365 7.67376 15.8697 7.67376H22.2371C23.2058 7.67376 23.6086 8.91338 22.8249 9.48278L17.6736 13.2254C17.3231 13.4801 17.1764 13.9314 17.3103 14.3435L19.2779 20.3992C19.5773 21.3205 18.5228 22.0866 17.7391 21.5172L12.5878 17.7746C12.2373 17.5199 11.7627 17.5199 11.4122 17.7746L6.2609 21.5172C5.47719 22.0866 4.42271 21.3205 4.72206 20.3992L6.68969 14.3435C6.82356 13.9314 6.6769 13.4801 6.32642 13.2254L1.17511 9.48278C0.391392 8.91338 0.794168 7.67376 1.76289 7.67376H8.13026C8.56349 7.67376 8.94744 7.3948 9.08132 6.98278L11.0489 0.927049Z" />
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22"
-                                            viewBox="0 0 24 22" fill="none"
-                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px] fill-primary-900">
-                                            <path
-                                                d="M11.0489 0.927049C11.3483 0.0057385 12.6517 0.00573993 12.9511 0.927051L14.9187 6.98278C15.0526 7.3948 15.4365 7.67376 15.8697 7.67376H22.2371C23.2058 7.67376 23.6086 8.91338 22.8249 9.48278L17.6736 13.2254C17.3231 13.4801 17.1764 13.9314 17.3103 14.3435L19.2779 20.3992C19.5773 21.3205 18.5228 22.0866 17.7391 21.5172L12.5878 17.7746C12.2373 17.5199 11.7627 17.5199 11.4122 17.7746L6.2609 21.5172C5.47719 22.0866 4.42271 21.3205 4.72206 20.3992L6.68969 14.3435C6.82356 13.9314 6.6769 13.4801 6.32642 13.2254L1.17511 9.48278C0.391392 8.91338 0.794168 7.67376 1.76289 7.67376H8.13026C8.56349 7.67376 8.94744 7.3948 9.08132 6.98278L11.0489 0.927049Z" />
-                                        </svg>
+                                        <img src="../images/fill-star.png" alt="star"
+                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px]" />
+                                        <img src="../images/fill-star.png" alt="star"
+                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px]" />
+                                        <img src="../images/fill-star.png" alt="star"
+                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px]" />
+                                        <img src="../images/fill-star.png" alt="star"
+                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px]" />
+                                        <img src="../images/fill-star.png" alt="star"
+                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px]" />
                                     </div>
                                 </div>
                                 <h6 class="font-medium font-lexend 1xl:mb-4 mb-3 sm:text-start text-center">
@@ -1215,37 +1301,16 @@
                                         <p>- Crystal Group</p>
                                     </div>
                                     <div class="flex items-center gap-[5px] text-green-700">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22"
-                                            viewBox="0 0 24 22" fill="none"
-                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px] fill-primary-900">
-                                            <path
-                                                d="M11.0489 0.927049C11.3483 0.0057385 12.6517 0.00573993 12.9511 0.927051L14.9187 6.98278C15.0526 7.3948 15.4365 7.67376 15.8697 7.67376H22.2371C23.2058 7.67376 23.6086 8.91338 22.8249 9.48278L17.6736 13.2254C17.3231 13.4801 17.1764 13.9314 17.3103 14.3435L19.2779 20.3992C19.5773 21.3205 18.5228 22.0866 17.7391 21.5172L12.5878 17.7746C12.2373 17.5199 11.7627 17.5199 11.4122 17.7746L6.2609 21.5172C5.47719 22.0866 4.42271 21.3205 4.72206 20.3992L6.68969 14.3435C6.82356 13.9314 6.6769 13.4801 6.32642 13.2254L1.17511 9.48278C0.391392 8.91338 0.794168 7.67376 1.76289 7.67376H8.13026C8.56349 7.67376 8.94744 7.3948 9.08132 6.98278L11.0489 0.927049Z" />
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22"
-                                            viewBox="0 0 24 22" fill="none"
-                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px] fill-primary-900">
-                                            <path
-                                                d="M11.0489 0.927049C11.3483 0.0057385 12.6517 0.00573993 12.9511 0.927051L14.9187 6.98278C15.0526 7.3948 15.4365 7.67376 15.8697 7.67376H22.2371C23.2058 7.67376 23.6086 8.91338 22.8249 9.48278L17.6736 13.2254C17.3231 13.4801 17.1764 13.9314 17.3103 14.3435L19.2779 20.3992C19.5773 21.3205 18.5228 22.0866 17.7391 21.5172L12.5878 17.7746C12.2373 17.5199 11.7627 17.5199 11.4122 17.7746L6.2609 21.5172C5.47719 22.0866 4.42271 21.3205 4.72206 20.3992L6.68969 14.3435C6.82356 13.9314 6.6769 13.4801 6.32642 13.2254L1.17511 9.48278C0.391392 8.91338 0.794168 7.67376 1.76289 7.67376H8.13026C8.56349 7.67376 8.94744 7.3948 9.08132 6.98278L11.0489 0.927049Z" />
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22"
-                                            viewBox="0 0 24 22" fill="none"
-                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px] fill-primary-900">
-                                            <path
-                                                d="M11.0489 0.927049C11.3483 0.0057385 12.6517 0.00573993 12.9511 0.927051L14.9187 6.98278C15.0526 7.3948 15.4365 7.67376 15.8697 7.67376H22.2371C23.2058 7.67376 23.6086 8.91338 22.8249 9.48278L17.6736 13.2254C17.3231 13.4801 17.1764 13.9314 17.3103 14.3435L19.2779 20.3992C19.5773 21.3205 18.5228 22.0866 17.7391 21.5172L12.5878 17.7746C12.2373 17.5199 11.7627 17.5199 11.4122 17.7746L6.2609 21.5172C5.47719 22.0866 4.42271 21.3205 4.72206 20.3992L6.68969 14.3435C6.82356 13.9314 6.6769 13.4801 6.32642 13.2254L1.17511 9.48278C0.391392 8.91338 0.794168 7.67376 1.76289 7.67376H8.13026C8.56349 7.67376 8.94744 7.3948 9.08132 6.98278L11.0489 0.927049Z" />
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22"
-                                            viewBox="0 0 24 22" fill="none"
-                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px] fill-primary-900">
-                                            <path
-                                                d="M11.0489 0.927049C11.3483 0.0057385 12.6517 0.00573993 12.9511 0.927051L14.9187 6.98278C15.0526 7.3948 15.4365 7.67376 15.8697 7.67376H22.2371C23.2058 7.67376 23.6086 8.91338 22.8249 9.48278L17.6736 13.2254C17.3231 13.4801 17.1764 13.9314 17.3103 14.3435L19.2779 20.3992C19.5773 21.3205 18.5228 22.0866 17.7391 21.5172L12.5878 17.7746C12.2373 17.5199 11.7627 17.5199 11.4122 17.7746L6.2609 21.5172C5.47719 22.0866 4.42271 21.3205 4.72206 20.3992L6.68969 14.3435C6.82356 13.9314 6.6769 13.4801 6.32642 13.2254L1.17511 9.48278C0.391392 8.91338 0.794168 7.67376 1.76289 7.67376H8.13026C8.56349 7.67376 8.94744 7.3948 9.08132 6.98278L11.0489 0.927049Z" />
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22"
-                                            viewBox="0 0 24 22" fill="none"
-                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px] stroke-primary-900">
-                                            <path
-                                                d="M11.7627 1.15918C11.8375 0.928853 12.1625 0.928851 12.2373 1.15918L14.2051 7.21484C14.4394 7.93578 15.112 8.42383 15.8701 8.42383H22.2373C22.4793 8.42399 22.5797 8.73366 22.3838 8.87598L17.2324 12.6191C16.6194 13.0648 16.3625 13.8544 16.5967 14.5752L18.5645 20.6309C18.6393 20.8612 18.3756 21.0525 18.1797 20.9102L13.0283 17.168C12.415 16.7225 11.585 16.7225 10.9717 17.168L5.82031 20.9102C5.62439 21.0525 5.36071 20.8612 5.43555 20.6309L7.40332 14.5752C7.63748 13.8544 7.38058 13.0648 6.76758 12.6191L1.61621 8.87598C1.42034 8.73367 1.52065 8.424 1.7627 8.42383H8.12988C8.88796 8.42383 9.56059 7.93578 9.79492 7.21484L11.7627 1.15918Z"
-                                                stroke-width="1.5" />
-                                        </svg>
+                                        <img src="../images/fill-star.png" alt="star"
+                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px]" />
+                                        <img src="../images/fill-star.png" alt="star"
+                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px]" />
+                                        <img src="../images/fill-star.png" alt="star"
+                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px]" />
+                                        <img src="../images/half-star.png" alt="star"
+                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px]" />
+                                        <img src="../images/empty-star.png" alt="star"
+                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px]" />
                                     </div>
                                 </div>
                                 <h6 class="font-medium font-lexend 1xl:mb-4 mb-3 sm:text-start text-center">
@@ -1280,36 +1345,16 @@
                                         <p>- Everest Holdings</p>
                                     </div>
                                     <div class="flex items-center gap-[5px] text-green-700">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22"
-                                            viewBox="0 0 24 22" fill="none"
-                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px] fill-primary-900">
-                                            <path
-                                                d="M11.0489 0.927049C11.3483 0.0057385 12.6517 0.00573993 12.9511 0.927051L14.9187 6.98278C15.0526 7.3948 15.4365 7.67376 15.8697 7.67376H22.2371C23.2058 7.67376 23.6086 8.91338 22.8249 9.48278L17.6736 13.2254C17.3231 13.4801 17.1764 13.9314 17.3103 14.3435L19.2779 20.3992C19.5773 21.3205 18.5228 22.0866 17.7391 21.5172L12.5878 17.7746C12.2373 17.5199 11.7627 17.5199 11.4122 17.7746L6.2609 21.5172C5.47719 22.0866 4.42271 21.3205 4.72206 20.3992L6.68969 14.3435C6.82356 13.9314 6.6769 13.4801 6.32642 13.2254L1.17511 9.48278C0.391392 8.91338 0.794168 7.67376 1.76289 7.67376H8.13026C8.56349 7.67376 8.94744 7.3948 9.08132 6.98278L11.0489 0.927049Z" />
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22"
-                                            viewBox="0 0 24 22" fill="none"
-                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px] fill-primary-900">
-                                            <path
-                                                d="M11.0489 0.927049C11.3483 0.0057385 12.6517 0.00573993 12.9511 0.927051L14.9187 6.98278C15.0526 7.3948 15.4365 7.67376 15.8697 7.67376H22.2371C23.2058 7.67376 23.6086 8.91338 22.8249 9.48278L17.6736 13.2254C17.3231 13.4801 17.1764 13.9314 17.3103 14.3435L19.2779 20.3992C19.5773 21.3205 18.5228 22.0866 17.7391 21.5172L12.5878 17.7746C12.2373 17.5199 11.7627 17.5199 11.4122 17.7746L6.2609 21.5172C5.47719 22.0866 4.42271 21.3205 4.72206 20.3992L6.68969 14.3435C6.82356 13.9314 6.6769 13.4801 6.32642 13.2254L1.17511 9.48278C0.391392 8.91338 0.794168 7.67376 1.76289 7.67376H8.13026C8.56349 7.67376 8.94744 7.3948 9.08132 6.98278L11.0489 0.927049Z" />
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22"
-                                            viewBox="0 0 24 22" fill="none"
-                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px] fill-primary-900">
-                                            <path
-                                                d="M11.0489 0.927049C11.3483 0.0057385 12.6517 0.00573993 12.9511 0.927051L14.9187 6.98278C15.0526 7.3948 15.4365 7.67376 15.8697 7.67376H22.2371C23.2058 7.67376 23.6086 8.91338 22.8249 9.48278L17.6736 13.2254C17.3231 13.4801 17.1764 13.9314 17.3103 14.3435L19.2779 20.3992C19.5773 21.3205 18.5228 22.0866 17.7391 21.5172L12.5878 17.7746C12.2373 17.5199 11.7627 17.5199 11.4122 17.7746L6.2609 21.5172C5.47719 22.0866 4.42271 21.3205 4.72206 20.3992L6.68969 14.3435C6.82356 13.9314 6.6769 13.4801 6.32642 13.2254L1.17511 9.48278C0.391392 8.91338 0.794168 7.67376 1.76289 7.67376H8.13026C8.56349 7.67376 8.94744 7.3948 9.08132 6.98278L11.0489 0.927049Z" />
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22"
-                                            viewBox="0 0 24 22" fill="none"
-                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px] fill-primary-900">
-                                            <path
-                                                d="M11.0489 0.927049C11.3483 0.0057385 12.6517 0.00573993 12.9511 0.927051L14.9187 6.98278C15.0526 7.3948 15.4365 7.67376 15.8697 7.67376H22.2371C23.2058 7.67376 23.6086 8.91338 22.8249 9.48278L17.6736 13.2254C17.3231 13.4801 17.1764 13.9314 17.3103 14.3435L19.2779 20.3992C19.5773 21.3205 18.5228 22.0866 17.7391 21.5172L12.5878 17.7746C12.2373 17.5199 11.7627 17.5199 11.4122 17.7746L6.2609 21.5172C5.47719 22.0866 4.42271 21.3205 4.72206 20.3992L6.68969 14.3435C6.82356 13.9314 6.6769 13.4801 6.32642 13.2254L1.17511 9.48278C0.391392 8.91338 0.794168 7.67376 1.76289 7.67376H8.13026C8.56349 7.67376 8.94744 7.3948 9.08132 6.98278L11.0489 0.927049Z" />
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22"
-                                            viewBox="0 0 24 22" fill="none"
-                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px] fill-primary-900">
-                                            <path
-                                                d="M11.0489 0.927049C11.3483 0.0057385 12.6517 0.00573993 12.9511 0.927051L14.9187 6.98278C15.0526 7.3948 15.4365 7.67376 15.8697 7.67376H22.2371C23.2058 7.67376 23.6086 8.91338 22.8249 9.48278L17.6736 13.2254C17.3231 13.4801 17.1764 13.9314 17.3103 14.3435L19.2779 20.3992C19.5773 21.3205 18.5228 22.0866 17.7391 21.5172L12.5878 17.7746C12.2373 17.5199 11.7627 17.5199 11.4122 17.7746L6.2609 21.5172C5.47719 22.0866 4.42271 21.3205 4.72206 20.3992L6.68969 14.3435C6.82356 13.9314 6.6769 13.4801 6.32642 13.2254L1.17511 9.48278C0.391392 8.91338 0.794168 7.67376 1.76289 7.67376H8.13026C8.56349 7.67376 8.94744 7.3948 9.08132 6.98278L11.0489 0.927049Z" />
-                                        </svg>
+                                        <img src="../images/fill-star.png" alt="star"
+                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px]" />
+                                        <img src="../images/fill-star.png" alt="star"
+                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px]" />
+                                        <img src="../images/fill-star.png" alt="star"
+                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px]" />
+                                        <img src="../images/fill-star.png" alt="star"
+                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px]" />
+                                        <img src="../images/fill-star.png" alt="star"
+                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px]" />
                                     </div>
                                 </div>
                                 <h6 class="font-medium font-lexend 1xl:mb-4 mb-3 sm:text-start text-center">
@@ -1339,37 +1384,16 @@
                                         <p>- Harbor Point</p>
                                     </div>
                                     <div class="flex items-center gap-[5px] text-green-700">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22"
-                                            viewBox="0 0 24 22" fill="none"
-                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px] fill-primary-900">
-                                            <path
-                                                d="M11.0489 0.927049C11.3483 0.0057385 12.6517 0.00573993 12.9511 0.927051L14.9187 6.98278C15.0526 7.3948 15.4365 7.67376 15.8697 7.67376H22.2371C23.2058 7.67376 23.6086 8.91338 22.8249 9.48278L17.6736 13.2254C17.3231 13.4801 17.1764 13.9314 17.3103 14.3435L19.2779 20.3992C19.5773 21.3205 18.5228 22.0866 17.7391 21.5172L12.5878 17.7746C12.2373 17.5199 11.7627 17.5199 11.4122 17.7746L6.2609 21.5172C5.47719 22.0866 4.42271 21.3205 4.72206 20.3992L6.68969 14.3435C6.82356 13.9314 6.6769 13.4801 6.32642 13.2254L1.17511 9.48278C0.391392 8.91338 0.794168 7.67376 1.76289 7.67376H8.13026C8.56349 7.67376 8.94744 7.3948 9.08132 6.98278L11.0489 0.927049Z" />
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22"
-                                            viewBox="0 0 24 22" fill="none"
-                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px] fill-primary-900">
-                                            <path
-                                                d="M11.0489 0.927049C11.3483 0.0057385 12.6517 0.00573993 12.9511 0.927051L14.9187 6.98278C15.0526 7.3948 15.4365 7.67376 15.8697 7.67376H22.2371C23.2058 7.67376 23.6086 8.91338 22.8249 9.48278L17.6736 13.2254C17.3231 13.4801 17.1764 13.9314 17.3103 14.3435L19.2779 20.3992C19.5773 21.3205 18.5228 22.0866 17.7391 21.5172L12.5878 17.7746C12.2373 17.5199 11.7627 17.5199 11.4122 17.7746L6.2609 21.5172C5.47719 22.0866 4.42271 21.3205 4.72206 20.3992L6.68969 14.3435C6.82356 13.9314 6.6769 13.4801 6.32642 13.2254L1.17511 9.48278C0.391392 8.91338 0.794168 7.67376 1.76289 7.67376H8.13026C8.56349 7.67376 8.94744 7.3948 9.08132 6.98278L11.0489 0.927049Z" />
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22"
-                                            viewBox="0 0 24 22" fill="none"
-                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px] fill-primary-900">
-                                            <path
-                                                d="M11.0489 0.927049C11.3483 0.0057385 12.6517 0.00573993 12.9511 0.927051L14.9187 6.98278C15.0526 7.3948 15.4365 7.67376 15.8697 7.67376H22.2371C23.2058 7.67376 23.6086 8.91338 22.8249 9.48278L17.6736 13.2254C17.3231 13.4801 17.1764 13.9314 17.3103 14.3435L19.2779 20.3992C19.5773 21.3205 18.5228 22.0866 17.7391 21.5172L12.5878 17.7746C12.2373 17.5199 11.7627 17.5199 11.4122 17.7746L6.2609 21.5172C5.47719 22.0866 4.42271 21.3205 4.72206 20.3992L6.68969 14.3435C6.82356 13.9314 6.6769 13.4801 6.32642 13.2254L1.17511 9.48278C0.391392 8.91338 0.794168 7.67376 1.76289 7.67376H8.13026C8.56349 7.67376 8.94744 7.3948 9.08132 6.98278L11.0489 0.927049Z" />
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22"
-                                            viewBox="0 0 24 22" fill="none"
-                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px] fill-primary-900">
-                                            <path
-                                                d="M11.0489 0.927049C11.3483 0.0057385 12.6517 0.00573993 12.9511 0.927051L14.9187 6.98278C15.0526 7.3948 15.4365 7.67376 15.8697 7.67376H22.2371C23.2058 7.67376 23.6086 8.91338 22.8249 9.48278L17.6736 13.2254C17.3231 13.4801 17.1764 13.9314 17.3103 14.3435L19.2779 20.3992C19.5773 21.3205 18.5228 22.0866 17.7391 21.5172L12.5878 17.7746C12.2373 17.5199 11.7627 17.5199 11.4122 17.7746L6.2609 21.5172C5.47719 22.0866 4.42271 21.3205 4.72206 20.3992L6.68969 14.3435C6.82356 13.9314 6.6769 13.4801 6.32642 13.2254L1.17511 9.48278C0.391392 8.91338 0.794168 7.67376 1.76289 7.67376H8.13026C8.56349 7.67376 8.94744 7.3948 9.08132 6.98278L11.0489 0.927049Z" />
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22"
-                                            viewBox="0 0 24 22" fill="none"
-                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px] stroke-primary-900">
-                                            <path
-                                                d="M11.7627 1.15918C11.8375 0.928853 12.1625 0.928851 12.2373 1.15918L14.2051 7.21484C14.4394 7.93578 15.112 8.42383 15.8701 8.42383H22.2373C22.4793 8.42399 22.5797 8.73366 22.3838 8.87598L17.2324 12.6191C16.6194 13.0648 16.3625 13.8544 16.5967 14.5752L18.5645 20.6309C18.6393 20.8612 18.3756 21.0525 18.1797 20.9102L13.0283 17.168C12.415 16.7225 11.585 16.7225 10.9717 17.168L5.82031 20.9102C5.62439 21.0525 5.36071 20.8612 5.43555 20.6309L7.40332 14.5752C7.63748 13.8544 7.38058 13.0648 6.76758 12.6191L1.61621 8.87598C1.42034 8.73367 1.52065 8.424 1.7627 8.42383H8.12988C8.88796 8.42383 9.56059 7.93578 9.79492 7.21484L11.7627 1.15918Z"
-                                                stroke-width="1.5" />
-                                        </svg>
+                                        <img src="../images/fill-star.png" alt="star"
+                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px]" />
+                                        <img src="../images/fill-star.png" alt="star"
+                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px]" />
+                                        <img src="../images/fill-star.png" alt="star"
+                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px]" />
+                                        <img src="../images/fill-star.png" alt="star"
+                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px]" />
+                                        <img src="../images/empty-star.png" alt="star"
+                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px]" />
                                     </div>
                                 </div>
                                 <h6 class="font-medium font-lexend 1xl:mb-4 mb-3 sm:text-start text-center">
@@ -1404,36 +1428,16 @@
                                         <p>- Vista Dynamics</p>
                                     </div>
                                     <div class="flex items-center gap-[5px] text-green-700">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22"
-                                            viewBox="0 0 24 22" fill="none"
-                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px] fill-primary-900">
-                                            <path
-                                                d="M11.0489 0.927049C11.3483 0.0057385 12.6517 0.00573993 12.9511 0.927051L14.9187 6.98278C15.0526 7.3948 15.4365 7.67376 15.8697 7.67376H22.2371C23.2058 7.67376 23.6086 8.91338 22.8249 9.48278L17.6736 13.2254C17.3231 13.4801 17.1764 13.9314 17.3103 14.3435L19.2779 20.3992C19.5773 21.3205 18.5228 22.0866 17.7391 21.5172L12.5878 17.7746C12.2373 17.5199 11.7627 17.5199 11.4122 17.7746L6.2609 21.5172C5.47719 22.0866 4.42271 21.3205 4.72206 20.3992L6.68969 14.3435C6.82356 13.9314 6.6769 13.4801 6.32642 13.2254L1.17511 9.48278C0.391392 8.91338 0.794168 7.67376 1.76289 7.67376H8.13026C8.56349 7.67376 8.94744 7.3948 9.08132 6.98278L11.0489 0.927049Z" />
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22"
-                                            viewBox="0 0 24 22" fill="none"
-                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px] fill-primary-900">
-                                            <path
-                                                d="M11.0489 0.927049C11.3483 0.0057385 12.6517 0.00573993 12.9511 0.927051L14.9187 6.98278C15.0526 7.3948 15.4365 7.67376 15.8697 7.67376H22.2371C23.2058 7.67376 23.6086 8.91338 22.8249 9.48278L17.6736 13.2254C17.3231 13.4801 17.1764 13.9314 17.3103 14.3435L19.2779 20.3992C19.5773 21.3205 18.5228 22.0866 17.7391 21.5172L12.5878 17.7746C12.2373 17.5199 11.7627 17.5199 11.4122 17.7746L6.2609 21.5172C5.47719 22.0866 4.42271 21.3205 4.72206 20.3992L6.68969 14.3435C6.82356 13.9314 6.6769 13.4801 6.32642 13.2254L1.17511 9.48278C0.391392 8.91338 0.794168 7.67376 1.76289 7.67376H8.13026C8.56349 7.67376 8.94744 7.3948 9.08132 6.98278L11.0489 0.927049Z" />
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22"
-                                            viewBox="0 0 24 22" fill="none"
-                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px] fill-primary-900">
-                                            <path
-                                                d="M11.0489 0.927049C11.3483 0.0057385 12.6517 0.00573993 12.9511 0.927051L14.9187 6.98278C15.0526 7.3948 15.4365 7.67376 15.8697 7.67376H22.2371C23.2058 7.67376 23.6086 8.91338 22.8249 9.48278L17.6736 13.2254C17.3231 13.4801 17.1764 13.9314 17.3103 14.3435L19.2779 20.3992C19.5773 21.3205 18.5228 22.0866 17.7391 21.5172L12.5878 17.7746C12.2373 17.5199 11.7627 17.5199 11.4122 17.7746L6.2609 21.5172C5.47719 22.0866 4.42271 21.3205 4.72206 20.3992L6.68969 14.3435C6.82356 13.9314 6.6769 13.4801 6.32642 13.2254L1.17511 9.48278C0.391392 8.91338 0.794168 7.67376 1.76289 7.67376H8.13026C8.56349 7.67376 8.94744 7.3948 9.08132 6.98278L11.0489 0.927049Z" />
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22"
-                                            viewBox="0 0 24 22" fill="none"
-                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px] fill-primary-900">
-                                            <path
-                                                d="M11.0489 0.927049C11.3483 0.0057385 12.6517 0.00573993 12.9511 0.927051L14.9187 6.98278C15.0526 7.3948 15.4365 7.67376 15.8697 7.67376H22.2371C23.2058 7.67376 23.6086 8.91338 22.8249 9.48278L17.6736 13.2254C17.3231 13.4801 17.1764 13.9314 17.3103 14.3435L19.2779 20.3992C19.5773 21.3205 18.5228 22.0866 17.7391 21.5172L12.5878 17.7746C12.2373 17.5199 11.7627 17.5199 11.4122 17.7746L6.2609 21.5172C5.47719 22.0866 4.42271 21.3205 4.72206 20.3992L6.68969 14.3435C6.82356 13.9314 6.6769 13.4801 6.32642 13.2254L1.17511 9.48278C0.391392 8.91338 0.794168 7.67376 1.76289 7.67376H8.13026C8.56349 7.67376 8.94744 7.3948 9.08132 6.98278L11.0489 0.927049Z" />
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22"
-                                            viewBox="0 0 24 22" fill="none"
-                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px] fill-primary-900">
-                                            <path
-                                                d="M11.0489 0.927049C11.3483 0.0057385 12.6517 0.00573993 12.9511 0.927051L14.9187 6.98278C15.0526 7.3948 15.4365 7.67376 15.8697 7.67376H22.2371C23.2058 7.67376 23.6086 8.91338 22.8249 9.48278L17.6736 13.2254C17.3231 13.4801 17.1764 13.9314 17.3103 14.3435L19.2779 20.3992C19.5773 21.3205 18.5228 22.0866 17.7391 21.5172L12.5878 17.7746C12.2373 17.5199 11.7627 17.5199 11.4122 17.7746L6.2609 21.5172C5.47719 22.0866 4.42271 21.3205 4.72206 20.3992L6.68969 14.3435C6.82356 13.9314 6.6769 13.4801 6.32642 13.2254L1.17511 9.48278C0.391392 8.91338 0.794168 7.67376 1.76289 7.67376H8.13026C8.56349 7.67376 8.94744 7.3948 9.08132 6.98278L11.0489 0.927049Z" />
-                                        </svg>
+                                        <img src="../images/fill-star.png" alt="star"
+                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px]" />
+                                        <img src="../images/fill-star.png" alt="star"
+                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px]" />
+                                        <img src="../images/fill-star.png" alt="star"
+                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px]" />
+                                        <img src="../images/fill-star.png" alt="star"
+                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px]" />
+                                        <img src="../images/empty-star.png" alt="star"
+                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px]" />
                                     </div>
                                 </div>
                                 <h6 class="font-medium font-lexend 1xl:mb-4 mb-3 sm:text-start text-center">
@@ -1463,36 +1467,16 @@
                                         <p>- Brightstone Corp</p>
                                     </div>
                                     <div class="flex items-center gap-[5px] text-green-700">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22"
-                                            viewBox="0 0 24 22" fill="none"
-                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px] fill-primary-900">
-                                            <path
-                                                d="M11.0489 0.927049C11.3483 0.0057385 12.6517 0.00573993 12.9511 0.927051L14.9187 6.98278C15.0526 7.3948 15.4365 7.67376 15.8697 7.67376H22.2371C23.2058 7.67376 23.6086 8.91338 22.8249 9.48278L17.6736 13.2254C17.3231 13.4801 17.1764 13.9314 17.3103 14.3435L19.2779 20.3992C19.5773 21.3205 18.5228 22.0866 17.7391 21.5172L12.5878 17.7746C12.2373 17.5199 11.7627 17.5199 11.4122 17.7746L6.2609 21.5172C5.47719 22.0866 4.42271 21.3205 4.72206 20.3992L6.68969 14.3435C6.82356 13.9314 6.6769 13.4801 6.32642 13.2254L1.17511 9.48278C0.391392 8.91338 0.794168 7.67376 1.76289 7.67376H8.13026C8.56349 7.67376 8.94744 7.3948 9.08132 6.98278L11.0489 0.927049Z" />
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22"
-                                            viewBox="0 0 24 22" fill="none"
-                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px] fill-primary-900">
-                                            <path
-                                                d="M11.0489 0.927049C11.3483 0.0057385 12.6517 0.00573993 12.9511 0.927051L14.9187 6.98278C15.0526 7.3948 15.4365 7.67376 15.8697 7.67376H22.2371C23.2058 7.67376 23.6086 8.91338 22.8249 9.48278L17.6736 13.2254C17.3231 13.4801 17.1764 13.9314 17.3103 14.3435L19.2779 20.3992C19.5773 21.3205 18.5228 22.0866 17.7391 21.5172L12.5878 17.7746C12.2373 17.5199 11.7627 17.5199 11.4122 17.7746L6.2609 21.5172C5.47719 22.0866 4.42271 21.3205 4.72206 20.3992L6.68969 14.3435C6.82356 13.9314 6.6769 13.4801 6.32642 13.2254L1.17511 9.48278C0.391392 8.91338 0.794168 7.67376 1.76289 7.67376H8.13026C8.56349 7.67376 8.94744 7.3948 9.08132 6.98278L11.0489 0.927049Z" />
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22"
-                                            viewBox="0 0 24 22" fill="none"
-                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px] fill-primary-900">
-                                            <path
-                                                d="M11.0489 0.927049C11.3483 0.0057385 12.6517 0.00573993 12.9511 0.927051L14.9187 6.98278C15.0526 7.3948 15.4365 7.67376 15.8697 7.67376H22.2371C23.2058 7.67376 23.6086 8.91338 22.8249 9.48278L17.6736 13.2254C17.3231 13.4801 17.1764 13.9314 17.3103 14.3435L19.2779 20.3992C19.5773 21.3205 18.5228 22.0866 17.7391 21.5172L12.5878 17.7746C12.2373 17.5199 11.7627 17.5199 11.4122 17.7746L6.2609 21.5172C5.47719 22.0866 4.42271 21.3205 4.72206 20.3992L6.68969 14.3435C6.82356 13.9314 6.6769 13.4801 6.32642 13.2254L1.17511 9.48278C0.391392 8.91338 0.794168 7.67376 1.76289 7.67376H8.13026C8.56349 7.67376 8.94744 7.3948 9.08132 6.98278L11.0489 0.927049Z" />
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22"
-                                            viewBox="0 0 24 22" fill="none"
-                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px] fill-primary-900">
-                                            <path
-                                                d="M11.0489 0.927049C11.3483 0.0057385 12.6517 0.00573993 12.9511 0.927051L14.9187 6.98278C15.0526 7.3948 15.4365 7.67376 15.8697 7.67376H22.2371C23.2058 7.67376 23.6086 8.91338 22.8249 9.48278L17.6736 13.2254C17.3231 13.4801 17.1764 13.9314 17.3103 14.3435L19.2779 20.3992C19.5773 21.3205 18.5228 22.0866 17.7391 21.5172L12.5878 17.7746C12.2373 17.5199 11.7627 17.5199 11.4122 17.7746L6.2609 21.5172C5.47719 22.0866 4.42271 21.3205 4.72206 20.3992L6.68969 14.3435C6.82356 13.9314 6.6769 13.4801 6.32642 13.2254L1.17511 9.48278C0.391392 8.91338 0.794168 7.67376 1.76289 7.67376H8.13026C8.56349 7.67376 8.94744 7.3948 9.08132 6.98278L11.0489 0.927049Z" />
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22"
-                                            viewBox="0 0 24 22" fill="none"
-                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px] fill-primary-900">
-                                            <path
-                                                d="M11.0489 0.927049C11.3483 0.0057385 12.6517 0.00573993 12.9511 0.927051L14.9187 6.98278C15.0526 7.3948 15.4365 7.67376 15.8697 7.67376H22.2371C23.2058 7.67376 23.6086 8.91338 22.8249 9.48278L17.6736 13.2254C17.3231 13.4801 17.1764 13.9314 17.3103 14.3435L19.2779 20.3992C19.5773 21.3205 18.5228 22.0866 17.7391 21.5172L12.5878 17.7746C12.2373 17.5199 11.7627 17.5199 11.4122 17.7746L6.2609 21.5172C5.47719 22.0866 4.42271 21.3205 4.72206 20.3992L6.68969 14.3435C6.82356 13.9314 6.6769 13.4801 6.32642 13.2254L1.17511 9.48278C0.391392 8.91338 0.794168 7.67376 1.76289 7.67376H8.13026C8.56349 7.67376 8.94744 7.3948 9.08132 6.98278L11.0489 0.927049Z" />
-                                        </svg>
+                                        <img src="../images/fill-star.png" alt="star"
+                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px]" />
+                                        <img src="../images/fill-star.png" alt="star"
+                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px]" />
+                                        <img src="../images/fill-star.png" alt="star"
+                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px]" />
+                                        <img src="../images/fill-star.png" alt="star"
+                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px]" />
+                                        <img src="../images/fill-star.png" alt="star"
+                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px]" />
                                     </div>
                                 </div>
                                 <h6 class="font-medium font-lexend 1xl:mb-4 mb-3 sm:text-start text-center">
@@ -1526,37 +1510,16 @@
                                         <p>– Summit Real Estate</p>
                                     </div>
                                     <div class="flex items-center gap-[5px] text-green-700">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22"
-                                            viewBox="0 0 24 22" fill="none"
-                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px] fill-primary-900">
-                                            <path
-                                                d="M11.0489 0.927049C11.3483 0.0057385 12.6517 0.00573993 12.9511 0.927051L14.9187 6.98278C15.0526 7.3948 15.4365 7.67376 15.8697 7.67376H22.2371C23.2058 7.67376 23.6086 8.91338 22.8249 9.48278L17.6736 13.2254C17.3231 13.4801 17.1764 13.9314 17.3103 14.3435L19.2779 20.3992C19.5773 21.3205 18.5228 22.0866 17.7391 21.5172L12.5878 17.7746C12.2373 17.5199 11.7627 17.5199 11.4122 17.7746L6.2609 21.5172C5.47719 22.0866 4.42271 21.3205 4.72206 20.3992L6.68969 14.3435C6.82356 13.9314 6.6769 13.4801 6.32642 13.2254L1.17511 9.48278C0.391392 8.91338 0.794168 7.67376 1.76289 7.67376H8.13026C8.56349 7.67376 8.94744 7.3948 9.08132 6.98278L11.0489 0.927049Z" />
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22"
-                                            viewBox="0 0 24 22" fill="none"
-                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px] fill-primary-900">
-                                            <path
-                                                d="M11.0489 0.927049C11.3483 0.0057385 12.6517 0.00573993 12.9511 0.927051L14.9187 6.98278C15.0526 7.3948 15.4365 7.67376 15.8697 7.67376H22.2371C23.2058 7.67376 23.6086 8.91338 22.8249 9.48278L17.6736 13.2254C17.3231 13.4801 17.1764 13.9314 17.3103 14.3435L19.2779 20.3992C19.5773 21.3205 18.5228 22.0866 17.7391 21.5172L12.5878 17.7746C12.2373 17.5199 11.7627 17.5199 11.4122 17.7746L6.2609 21.5172C5.47719 22.0866 4.42271 21.3205 4.72206 20.3992L6.68969 14.3435C6.82356 13.9314 6.6769 13.4801 6.32642 13.2254L1.17511 9.48278C0.391392 8.91338 0.794168 7.67376 1.76289 7.67376H8.13026C8.56349 7.67376 8.94744 7.3948 9.08132 6.98278L11.0489 0.927049Z" />
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22"
-                                            viewBox="0 0 24 22" fill="none"
-                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px] fill-primary-900">
-                                            <path
-                                                d="M11.0489 0.927049C11.3483 0.0057385 12.6517 0.00573993 12.9511 0.927051L14.9187 6.98278C15.0526 7.3948 15.4365 7.67376 15.8697 7.67376H22.2371C23.2058 7.67376 23.6086 8.91338 22.8249 9.48278L17.6736 13.2254C17.3231 13.4801 17.1764 13.9314 17.3103 14.3435L19.2779 20.3992C19.5773 21.3205 18.5228 22.0866 17.7391 21.5172L12.5878 17.7746C12.2373 17.5199 11.7627 17.5199 11.4122 17.7746L6.2609 21.5172C5.47719 22.0866 4.42271 21.3205 4.72206 20.3992L6.68969 14.3435C6.82356 13.9314 6.6769 13.4801 6.32642 13.2254L1.17511 9.48278C0.391392 8.91338 0.794168 7.67376 1.76289 7.67376H8.13026C8.56349 7.67376 8.94744 7.3948 9.08132 6.98278L11.0489 0.927049Z" />
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22"
-                                            viewBox="0 0 24 22" fill="none"
-                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px] fill-primary-900">
-                                            <path
-                                                d="M11.0489 0.927049C11.3483 0.0057385 12.6517 0.00573993 12.9511 0.927051L14.9187 6.98278C15.0526 7.3948 15.4365 7.67376 15.8697 7.67376H22.2371C23.2058 7.67376 23.6086 8.91338 22.8249 9.48278L17.6736 13.2254C17.3231 13.4801 17.1764 13.9314 17.3103 14.3435L19.2779 20.3992C19.5773 21.3205 18.5228 22.0866 17.7391 21.5172L12.5878 17.7746C12.2373 17.5199 11.7627 17.5199 11.4122 17.7746L6.2609 21.5172C5.47719 22.0866 4.42271 21.3205 4.72206 20.3992L6.68969 14.3435C6.82356 13.9314 6.6769 13.4801 6.32642 13.2254L1.17511 9.48278C0.391392 8.91338 0.794168 7.67376 1.76289 7.67376H8.13026C8.56349 7.67376 8.94744 7.3948 9.08132 6.98278L11.0489 0.927049Z" />
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22"
-                                            viewBox="0 0 24 22" fill="none"
-                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px] stroke-primary-900">
-                                            <path
-                                                d="M11.7627 1.15918C11.8375 0.928853 12.1625 0.928851 12.2373 1.15918L14.2051 7.21484C14.4394 7.93578 15.112 8.42383 15.8701 8.42383H22.2373C22.4793 8.42399 22.5797 8.73366 22.3838 8.87598L17.2324 12.6191C16.6194 13.0648 16.3625 13.8544 16.5967 14.5752L18.5645 20.6309C18.6393 20.8612 18.3756 21.0525 18.1797 20.9102L13.0283 17.168C12.415 16.7225 11.585 16.7225 10.9717 17.168L5.82031 20.9102C5.62439 21.0525 5.36071 20.8612 5.43555 20.6309L7.40332 14.5752C7.63748 13.8544 7.38058 13.0648 6.76758 12.6191L1.61621 8.87598C1.42034 8.73367 1.52065 8.424 1.7627 8.42383H8.12988C8.88796 8.42383 9.56059 7.93578 9.79492 7.21484L11.7627 1.15918Z"
-                                                stroke-width="1.5" />
-                                        </svg>
+                                        <img src="../images/fill-star.png" alt="star"
+                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px]" />
+                                        <img src="../images/fill-star.png" alt="star"
+                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px]" />
+                                        <img src="../images/fill-star.png" alt="star"
+                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px]" />
+                                        <img src="../images/fill-star.png" alt="star"
+                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px]" />
+                                        <img src="../images/half-star.png" alt="star"
+                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px]" />
                                     </div>
                                 </div>
                                 <h6 class="font-medium font-lexend 1xl:mb-4 mb-3 sm:text-start text-center">
@@ -1586,36 +1549,16 @@
                                         <p>– Horizon Retail Group</p>
                                     </div>
                                     <div class="flex items-center gap-[5px] text-green-700">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22"
-                                            viewBox="0 0 24 22" fill="none"
-                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px] fill-primary-900">
-                                            <path
-                                                d="M11.0489 0.927049C11.3483 0.0057385 12.6517 0.00573993 12.9511 0.927051L14.9187 6.98278C15.0526 7.3948 15.4365 7.67376 15.8697 7.67376H22.2371C23.2058 7.67376 23.6086 8.91338 22.8249 9.48278L17.6736 13.2254C17.3231 13.4801 17.1764 13.9314 17.3103 14.3435L19.2779 20.3992C19.5773 21.3205 18.5228 22.0866 17.7391 21.5172L12.5878 17.7746C12.2373 17.5199 11.7627 17.5199 11.4122 17.7746L6.2609 21.5172C5.47719 22.0866 4.42271 21.3205 4.72206 20.3992L6.68969 14.3435C6.82356 13.9314 6.6769 13.4801 6.32642 13.2254L1.17511 9.48278C0.391392 8.91338 0.794168 7.67376 1.76289 7.67376H8.13026C8.56349 7.67376 8.94744 7.3948 9.08132 6.98278L11.0489 0.927049Z" />
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22"
-                                            viewBox="0 0 24 22" fill="none"
-                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px] fill-primary-900">
-                                            <path
-                                                d="M11.0489 0.927049C11.3483 0.0057385 12.6517 0.00573993 12.9511 0.927051L14.9187 6.98278C15.0526 7.3948 15.4365 7.67376 15.8697 7.67376H22.2371C23.2058 7.67376 23.6086 8.91338 22.8249 9.48278L17.6736 13.2254C17.3231 13.4801 17.1764 13.9314 17.3103 14.3435L19.2779 20.3992C19.5773 21.3205 18.5228 22.0866 17.7391 21.5172L12.5878 17.7746C12.2373 17.5199 11.7627 17.5199 11.4122 17.7746L6.2609 21.5172C5.47719 22.0866 4.42271 21.3205 4.72206 20.3992L6.68969 14.3435C6.82356 13.9314 6.6769 13.4801 6.32642 13.2254L1.17511 9.48278C0.391392 8.91338 0.794168 7.67376 1.76289 7.67376H8.13026C8.56349 7.67376 8.94744 7.3948 9.08132 6.98278L11.0489 0.927049Z" />
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22"
-                                            viewBox="0 0 24 22" fill="none"
-                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px] fill-primary-900">
-                                            <path
-                                                d="M11.0489 0.927049C11.3483 0.0057385 12.6517 0.00573993 12.9511 0.927051L14.9187 6.98278C15.0526 7.3948 15.4365 7.67376 15.8697 7.67376H22.2371C23.2058 7.67376 23.6086 8.91338 22.8249 9.48278L17.6736 13.2254C17.3231 13.4801 17.1764 13.9314 17.3103 14.3435L19.2779 20.3992C19.5773 21.3205 18.5228 22.0866 17.7391 21.5172L12.5878 17.7746C12.2373 17.5199 11.7627 17.5199 11.4122 17.7746L6.2609 21.5172C5.47719 22.0866 4.42271 21.3205 4.72206 20.3992L6.68969 14.3435C6.82356 13.9314 6.6769 13.4801 6.32642 13.2254L1.17511 9.48278C0.391392 8.91338 0.794168 7.67376 1.76289 7.67376H8.13026C8.56349 7.67376 8.94744 7.3948 9.08132 6.98278L11.0489 0.927049Z" />
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22"
-                                            viewBox="0 0 24 22" fill="none"
-                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px] fill-primary-900">
-                                            <path
-                                                d="M11.0489 0.927049C11.3483 0.0057385 12.6517 0.00573993 12.9511 0.927051L14.9187 6.98278C15.0526 7.3948 15.4365 7.67376 15.8697 7.67376H22.2371C23.2058 7.67376 23.6086 8.91338 22.8249 9.48278L17.6736 13.2254C17.3231 13.4801 17.1764 13.9314 17.3103 14.3435L19.2779 20.3992C19.5773 21.3205 18.5228 22.0866 17.7391 21.5172L12.5878 17.7746C12.2373 17.5199 11.7627 17.5199 11.4122 17.7746L6.2609 21.5172C5.47719 22.0866 4.42271 21.3205 4.72206 20.3992L6.68969 14.3435C6.82356 13.9314 6.6769 13.4801 6.32642 13.2254L1.17511 9.48278C0.391392 8.91338 0.794168 7.67376 1.76289 7.67376H8.13026C8.56349 7.67376 8.94744 7.3948 9.08132 6.98278L11.0489 0.927049Z" />
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22"
-                                            viewBox="0 0 24 22" fill="none"
-                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px] fill-primary-900">
-                                            <path
-                                                d="M11.0489 0.927049C11.3483 0.0057385 12.6517 0.00573993 12.9511 0.927051L14.9187 6.98278C15.0526 7.3948 15.4365 7.67376 15.8697 7.67376H22.2371C23.2058 7.67376 23.6086 8.91338 22.8249 9.48278L17.6736 13.2254C17.3231 13.4801 17.1764 13.9314 17.3103 14.3435L19.2779 20.3992C19.5773 21.3205 18.5228 22.0866 17.7391 21.5172L12.5878 17.7746C12.2373 17.5199 11.7627 17.5199 11.4122 17.7746L6.2609 21.5172C5.47719 22.0866 4.42271 21.3205 4.72206 20.3992L6.68969 14.3435C6.82356 13.9314 6.6769 13.4801 6.32642 13.2254L1.17511 9.48278C0.391392 8.91338 0.794168 7.67376 1.76289 7.67376H8.13026C8.56349 7.67376 8.94744 7.3948 9.08132 6.98278L11.0489 0.927049Z" />
-                                        </svg>
+                                        <img src="../images/fill-star.png" alt="star"
+                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px]" />
+                                        <img src="../images/fill-star.png" alt="star"
+                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px]" />
+                                        <img src="../images/fill-star.png" alt="star"
+                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px]" />
+                                        <img src="../images/fill-star.png" alt="star"
+                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px]" />
+                                        <img src="../images/half-star.png" alt="star"
+                                            class="1xl:w-[22px] 1xl:h-[22px] sm:w-5 sm:h-5 w-[18px] h-[18px]" />
                                     </div>
                                 </div>
                                 <h6 class="font-medium font-lexend 1xl:mb-4 mb-3 sm:text-start text-center">
@@ -1631,7 +1574,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="2xl:mt-20 1xl:mt-17 lg:mt-15 md:mt-12 mt-9 flex justify-center" data-aos="fade-up">
+                    <div class="2xl:mt-20 1xl:mt-17 lg:mt-15 md:mt-12 mt-9 flex justify-center">
                         <button class="btn btn-primary gap-2">
                             Load More
                             <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21"
@@ -1659,7 +1602,8 @@
             <div class="mb-6 md:mb-8">
                 <a href="./index.html">
                     <img src="../images/logo-white.svg" alt="img"
-                        class="max-w-[150px] xl:max-w-[180px] 2xl:max-w-full md:mx-0 mx-auto" loading="lazy" />
+                        class="max-w-[150px] xl:max-w-[180px] 2xl:max-w-full md:mx-0 mx-auto" loading="lazy"
+                        decoding="async" />
                 </a>
             </div>
             <div class="2xl:pl-20 xl:pl-16 lg:pl-10 lg:pr-5 xl:pr-0">
@@ -1671,7 +1615,7 @@
                             <summary
                                 class="cursor-pointer list-none flex items-center justify-between text-white p font-lexend">
                                 Quick Links
-                                <span class="transition-transform duration-200 group-open:rotate-180">
+                                <span class="transition-transform duration-200 group-open:rotate-[270px]">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 20 12"
                                         fill="none">
                                         <path d="M1.75 1.5L10 10.5L18.25 1.5" stroke="white" stroke-width="2"
@@ -1718,7 +1662,7 @@
                             <summary
                                 class="cursor-pointer list-none flex items-center justify-between text-white p font-lexend">
                                 Our Services
-                                <span class="transition-transform duration-200 group-open:rotate-180">
+                                <span class="transition-transform duration-200 group-open:rotate-[270px]">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 20 12"
                                         fill="none">
                                         <path d="M1.75 1.5L10 10.5L18.25 1.5" stroke="white" stroke-width="2"
@@ -1774,7 +1718,8 @@
                             </li>
                             <li>
                                 <a href="./about-us.html"
-                                    class="hover:underline underline-offset-4 p font-lexend block w-fit">About Us</a>
+                                    class="hover:underline underline-offset-4 p font-lexend block w-fit">About
+                                    Us</a>
                             </li>
                             <li>
                                 <a href="./services.html"
@@ -1787,7 +1732,8 @@
                             </li>
                             <li>
                                 <a href="./blogs.html"
-                                    class="hover:underline underline-offset-4 p font-lexend block w-fit">Our Blogs</a>
+                                    class="hover:underline underline-offset-4 p font-lexend block w-fit">Our
+                                    Blogs</a>
                             </li>
                             <li>
                                 <a href="./careers.html"
@@ -1795,7 +1741,8 @@
                             </li>
                             <li>
                                 <a href="./contact-us.html"
-                                    class="hover:underline underline-offset-4 p font-lexend block w-fit">Contact Us</a>
+                                    class="hover:underline underline-offset-4 p font-lexend block w-fit">Contact
+                                    Us</a>
                             </li>
                         </ul>
                     </div>
@@ -1840,7 +1787,7 @@
                         </ul>
                     </div>
 
-                    <div class="sm:mb-5 md:mb-0 md:order-1 order-1 2xl:w-[23%] lg:w-[28%] md:w-[29%] w-full">
+                    <div class="md:order-1 order-1 2xl:w-[23%] lg:w-[28%] md:w-[29%] w-full">
                         <ul
                             class="text-white text-md 1xl:text-1xl 2xl:text-2xl xl:space-y-1 space-y-0.5 sm:text-start text-center">
                             <li>
@@ -1937,7 +1884,7 @@
                     </div>
                 </div>
                 <div
-                    class="1xl:mt-16 xl:mt-14 lg:mt-11 md:mt-8 mt-5 xl:pt-6 pt-5 text-white text-md border-t border-[#FFFFFF33] md:text-left text-center font-lexend">
+                    class="2xl:mt-16 xl:mt-13 lg:mt-11 md:mt-8 mt-5 xl:pt-6 pt-5 text-white text-md border-t border-[#FFFFFF33] md:text-left text-center font-lexend">
                     <div class="flex sm:flex-row flex-col items-center sm:gap-0 gap-[10px]">
                         <p class="mb-0">© All rights reserved to Orion Constructions</p>
                         <span class="mx-2.5 sm:block hidden"> | </span>
@@ -1954,8 +1901,10 @@
                 </div>
             </div>
         </div>
-        <div class="absolute top-0 right-0 1xl:w-[50%] xl:w-[57%] lg:w-[52%] w-[44%] h-full hidden md:block">
-            <img src="../images/footer-bg.webp" alt="img" class="w-full h-full object-cover" loading="lazy" />
+        <div
+            class="absolute top-0 right-0 2xl:w-[50%] 1xl:w-[47%] xl:w-[57%] lg:w-[52%] w-[44%] h-full hidden md:block">
+            <img src="../images/footer-bg.webp" alt="img" class="w-full h-full object-cover" loading="lazy"
+                decoding="async" />
         </div>
     </footer>
 
