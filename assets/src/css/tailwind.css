@@ -548,7 +548,7 @@ button[value="brown"] .color-block {
   }
 
   .header.sticky-header .logo-box {
-    @apply py-2 md:py-5 sm:py-4 lg:py-3 1xl:py-[14px] 2xl:py-5 px-2.5 lg:px-5 1xl:px-10;
+    @apply py-2 md:py-5 sm:py-4 lg:py-3 1xl:py-[14px] 2xl:py-5 px-5 lg:px-5 1xl:px-10;
   }
   .header.home-2.sticky-header {
     @apply sticky lg:-top-12 -top-8;

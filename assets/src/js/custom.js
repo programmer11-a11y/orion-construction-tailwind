@@ -240,9 +240,8 @@ document.addEventListener("DOMContentLoaded", () => {
           // Lock scroll using overflow hidden only (no position changes to prevent flicker)
           document.documentElement.style.overflow = "hidden";
           document.body.style.overflow = "hidden";
-          document.body.style.paddingRight = `${
-            window.innerWidth - document.documentElement.clientWidth
-          }px`;
+          document.body.style.paddingRight = `${window.innerWidth - document.documentElement.clientWidth
+            }px`;
 
           // Hide scrollbar completely for all browsers
           document.documentElement.style.scrollbarWidth = "none";
@@ -513,7 +512,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
                 phoneInput.dataset.itiInited = "1";
                 window.__newsletterPhoneInit = true;
-              } catch {}
+              } catch { }
             }
           }
 
@@ -1036,7 +1035,7 @@ document.addEventListener("DOMContentLoaded", () => {
               "aria-expanded",
               isOpen ? "true" : "false",
             );
-          } catch (err) {}
+          } catch (err) { }
         }
 
         // --- SVG helpers ---
@@ -1079,31 +1078,31 @@ document.addEventListener("DOMContentLoaded", () => {
             const color = cs.getPropertyValue("color");
             if (color && color !== "rgba(0, 0, 0, 0)")
               return { prop: "stroke", raw: color, target };
-          } catch {}
+          } catch { }
           return null;
         }
         function applyPropToSvg(svg, prop, color) {
           try {
             svg.style[prop] = color;
-          } catch {}
+          } catch { }
           svg
             .querySelectorAll("path, circle, rect, line, polyline, polygon")
             .forEach((el) => {
               try {
                 el.style[prop] = color;
-              } catch {}
+              } catch { }
             });
         }
         function removePropFromSvg(svg, prop) {
           try {
             svg.style.removeProperty(prop);
-          } catch {}
+          } catch { }
           svg
             .querySelectorAll("path, circle, rect, line, polyline, polygon")
             .forEach((el) => {
               try {
                 el.style.removeProperty(prop);
-              } catch {}
+              } catch { }
             });
         }
 
@@ -1215,7 +1214,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (bg === "rgb(255,255,255)" || bg === "#ffffff")
                   isWhite = true;
               }
-            } catch {}
+            } catch { }
           }
 
           // Apply class toggle
@@ -1335,7 +1334,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (overlayEl._overlayHideTO) {
               try {
                 clearTimeout(overlayEl._overlayHideTO);
-              } catch {}
+              } catch { }
               overlayEl._overlayHideTO = null;
             }
             overlayEl.classList.remove("hidden");
@@ -1381,7 +1380,7 @@ document.addEventListener("DOMContentLoaded", () => {
               clearTimeout(overlayEl._overlayHideTO);
               overlayEl._overlayHideTO = null;
             }
-          } catch {}
+          } catch { }
           // Disable transition for instant hide
           overlayEl.style.transition = "none";
           overlayEl.classList.remove("show");
@@ -1391,6 +1390,13 @@ document.addEventListener("DOMContentLoaded", () => {
             overlayEl.style.transition = "";
           });
           headerEl?.classList.remove("dropdown-open");
+        };
+
+        // Helper function to check if we're on careers.html
+        const isCareersPage = () => {
+          const currentPath = window.location.pathname;
+          const currentPage = currentPath.split('/').pop() || '';
+          return currentPage === 'careers.html';
         };
 
         const isMobileMenuOpen = () =>
@@ -1505,10 +1511,10 @@ document.addEventListener("DOMContentLoaded", () => {
               // ensure overlay state updated
               try {
                 showOverlay();
-              } catch (e) {}
+              } catch (e) { }
               try {
                 updateOverlayState?.();
-              } catch (e) {}
+              } catch (e) { }
             });
           } else {
             // Mobile version unchanged
@@ -1560,7 +1566,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 } else {
                   try {
                     updateOverlayState();
-                  } catch (err) {}
+                  } catch (err) { }
                 }
               }
             });
@@ -1652,15 +1658,13 @@ document.addEventListener("DOMContentLoaded", () => {
             showOverlay();
             try {
               // (removed: prevent body/page from scrolling while an overlay is open)
-            } catch (e) {}
+            } catch (e) { }
           } else {
             // Use immediate hide to avoid delayed overlay showing after dropdown close
             hideOverlayImmediate();
-            fixMobileIdleIconColor();
-
             try {
               // (removed: re-enable scrolling)
-            } catch (e) {}
+            } catch (e) { }
           }
         };
 
@@ -1809,8 +1813,6 @@ document.addEventListener("DOMContentLoaded", () => {
             updateDropdownToggleColors();
             if (typeof updateHeaderBtnState === "function")
               updateHeaderBtnState();
-            fixMobileIdleIconColor();
-
           }
         });
 
@@ -1900,6 +1902,46 @@ document.addEventListener("DOMContentLoaded", () => {
         function updateAllSVGFills() {
           if (!shouldToggleColors()) return;
 
+          // Check for careers.html idle state first
+          const isCareersIdle = isCareersPage() && 
+            window.innerWidth <= 991 && 
+            window.scrollY === 0 && 
+            !isSearchOpen && 
+            !isMobileMenuOpen() && 
+            !anyMenuOpen() &&
+            headerEl && 
+            headerEl.classList.contains("bg-primary-900");
+
+          if (isCareersIdle) {
+            // For careers idle state, icons should be white
+            const color = "white";
+            document
+              .querySelectorAll("#searchButton svg")
+              .forEach((el) => setSVGColor(el, color));
+            document
+              .querySelectorAll("#menuToggle svg")
+              .forEach((el) => setSVGColor(el, color));
+            document.querySelectorAll(".nav-right svg").forEach((svgEl) => {
+              if (svgEl.closest(".back-btn")) return;
+              if (svgEl.closest(".dropdown-menu li.relative")) return;
+              if (svgEl.classList.contains("dropdown-arrow")) return;
+              setSVGColor(svgEl, color);
+            });
+            document
+              .querySelectorAll(".dropdown-svg, .dropdown .dropdown-toggle svg")
+              .forEach((el) => setSVGColor(el, color));
+            document
+              .querySelectorAll(".back-btn svg")
+              .forEach((el) => setSVGColor(el, color));
+            document
+              .querySelectorAll(".dropdown-menu svg, .dropdown-menu .transform")
+              .forEach((el) => setSVGColor(el, color));
+            updateDropdownToggleColors();
+            if (typeof updateHeaderBtnState === "function")
+              updateHeaderBtnState();
+            return;
+          }
+
           const dropdownOpen = !!document.querySelector(
             ".dropdown .dropdown-menu.open:not(.hidden), .dropdown ul.open:not(.hidden)",
           );
@@ -1908,10 +1950,10 @@ document.addEventListener("DOMContentLoaded", () => {
             (navRight && navRight.classList.contains("bg-white"));
           const color =
             navIsWhite ||
-            isSearchOpen ||
-            dropdownOpen ||
-            window.scrollY > 0 ||
-            mobileMenuToggle?.classList.contains("open")
+              isSearchOpen ||
+              dropdownOpen ||
+              window.scrollY > 0 ||
+              mobileMenuToggle?.classList.contains("open")
               ? "black"
               : "white";
 
@@ -1942,23 +1984,6 @@ document.addEventListener("DOMContentLoaded", () => {
             updateHeaderBtnState();
         }
 
-        function fixMobileIdleIconColor() {
-          const isMobile = window.innerWidth <= 991;
-          const noOpen =
-            !isSearchOpen && !isMobileMenuOpen() && !anyMenuOpen();
-          const atTop = window.scrollY === 0;
-        
-          if (isMobile && noOpen && atTop) {
-            headerEl.classList.remove("bg-white");
-            headerEl.classList.add("bg-transparent");
-        
-            document.querySelectorAll(
-              "#menuToggle svg, #searchButton svg, .nav-right svg"
-            ).forEach(svg => setSVGColor(svg, "white"));
-          }
-        }
-        
-
         window.updateAllSVGFills = updateAllSVGFills;
 
         ["openSearch", "closeSearch"].forEach((fn) => {
@@ -1985,8 +2010,7 @@ document.addEventListener("DOMContentLoaded", () => {
           updateAllSVGFills();
           updateDropdownToggleColors();
           updateHeaderBtnState();
-          fixMobileIdleIconColor();
-
+          applyCareersIdleState();
         });
         updateHeaderBtnState();
         updateDropdownToggleColors();
@@ -1999,16 +2023,27 @@ document.addEventListener("DOMContentLoaded", () => {
           const nothingOpen =
             !isSearchOpen && !isMobileMenuOpen() && !anyMenuOpen();
           if (nothingOpen && window.scrollY === 0) {
-            removeNavWhiteIfNoSearch();
-            updateAllSVGFills();
+            // For careers.html on mobile, apply special idle state
+            if (isCareersPage() && window.innerWidth <= 991) {
+              applyCareersIdleState();
+            } else {
+              removeNavWhiteIfNoSearch();
+              updateAllSVGFills();
+            }
           }
         };
         // run immediately after listeners are attached
-        setTimeout(enforceIdleTransparent, 0);
+        setTimeout(() => {
+          enforceIdleTransparent();
+          applyCareersIdleState();
+        }, 0);
         // and once the page fully loads (images/fonts can shift hover areas)
-        window.addEventListener("load", () =>
-          setTimeout(enforceIdleTransparent, 0),
-        );
+        window.addEventListener("load", () => {
+          setTimeout(() => {
+            enforceIdleTransparent();
+            applyCareersIdleState();
+          }, 0);
+        });
 
         // --- Search open/close ---
         function openSearch() {
@@ -2167,7 +2202,7 @@ document.addEventListener("DOMContentLoaded", () => {
                   if (
                     originalSuggestionsParent &&
                     suggestionsStaticEl.parentElement !==
-                      originalSuggestionsParent
+                    originalSuggestionsParent
                   ) {
                     originalSuggestionsParent.appendChild(suggestionsStaticEl);
                   }
@@ -2184,6 +2219,15 @@ document.addEventListener("DOMContentLoaded", () => {
               if (searchPanel && searchPanel.parentElement === headerEl) {
                 searchPanel.remove();
                 searchPanel = null;
+              }
+              
+              // Apply careers.html idle state after mobile search animation completes if at top
+              if (isCareersPage() && window.innerWidth <= 991 && window.scrollY === 0 && !isSearchOpen && !isMobileMenuOpen() && !anyMenuOpen()) {
+                applyCareersIdleState();
+                // Force update after applying careers state - this will now respect careers state
+                updateAllSVGFills();
+                if (typeof updateHeaderBtnState === "function")
+                  updateHeaderBtnState();
               }
             }, 250);
           } else {
@@ -2210,7 +2254,7 @@ document.addEventListener("DOMContentLoaded", () => {
                   if (
                     originalSuggestionsParent &&
                     suggestionsStaticEl.parentElement !==
-                      originalSuggestionsParent
+                    originalSuggestionsParent
                   ) {
                     originalSuggestionsParent.appendChild(suggestionsStaticEl);
                   }
@@ -2242,11 +2286,29 @@ document.addEventListener("DOMContentLoaded", () => {
               navRight?.classList.remove("relative");
             }
           }, 500);
-          removeNavWhiteIfNoSearch();
-          updateAllSVGFills();
-          if (typeof updateHeaderBtnState === "function")
-            updateHeaderBtnState();
-          forceMobileIdleBlack();
+          // Don't call removeNavWhiteIfNoSearch immediately for careers - handle in callback
+          if (!isCareersPage() || window.innerWidth > 991 || window.scrollY > 0) {
+            removeNavWhiteIfNoSearch();
+          }
+          
+          // Apply careers.html idle state after closing search if at top (with delay for animations)
+          // Use longer delay to ensure all animations complete
+          setTimeout(() => {
+            if (isCareersPage() && window.innerWidth <= 991 && window.scrollY === 0 && !isSearchOpen && !isMobileMenuOpen() && !anyMenuOpen()) {
+              applyCareersIdleState();
+              // Force update after applying careers state - this will now respect careers state
+              updateAllSVGFills();
+              if (typeof updateHeaderBtnState === "function")
+                updateHeaderBtnState();
+            } else {
+              if (!isCareersPage() || window.innerWidth > 991 || window.scrollY > 0) {
+                removeNavWhiteIfNoSearch();
+              }
+              updateAllSVGFills();
+              if (typeof updateHeaderBtnState === "function")
+                updateHeaderBtnState();
+            }
+          }, 600);
         }
 
         searchButton?.addEventListener("click", (e) => {
@@ -2284,36 +2346,35 @@ document.addEventListener("DOMContentLoaded", () => {
               closeMobileMenu(() => {
                 mobileMenuToggle.classList.remove("open");
                 updateMenuToggleIcon(false);
-              fixMobileIdleIconColor();
-
-                // If mobile, at top, and nothing else is open, force transparent (with a short re-check)
-                if (
-                  window.innerWidth <= 991 &&
-                  window.scrollY === 0 &&
-                  !isSearchOpen &&
-                  !anyMenuOpen()
-                ) {
-                  navRightSetTransparent();
-                  setTimeout(() => {
-                    if (
-                      window.scrollY === 0 &&
-                      !isSearchOpen &&
-                      !anyMenuOpen() &&
-                      !(
-                        mobileMenuToggle &&
-                        mobileMenuToggle.classList.contains("open")
-                      )
-                    ) {
-                      navRightSetTransparent();
-                    }
-                  }, 60);
-                } else {
-                  removeNavWhiteIfNoSearch();
-                }
+                
                 updateOverlayState();
-                updateAllSVGFills();
-                if (typeof updateHeaderBtnState === "function")
-                  updateHeaderBtnState();
+                
+                // If mobile, at top, and nothing else is open, restore default state
+                // Use setTimeout to ensure menu close animation completes
+                setTimeout(() => {
+                  if (
+                    window.innerWidth <= 991 &&
+                    window.scrollY === 0 &&
+                    !isSearchOpen &&
+                    !isMobileMenuOpen() &&
+                    !anyMenuOpen()
+                  ) {
+                    // For careers.html, apply special idle state; otherwise use transparent
+                    if (isCareersPage()) {
+                      applyCareersIdleState();
+                      // Force update after applying careers state - this will now respect careers state
+                      updateAllSVGFills();
+                    } else {
+                      navRightSetTransparent();
+                      updateAllSVGFills();
+                    }
+                  } else {
+                    removeNavWhiteIfNoSearch();
+                    updateAllSVGFills();
+                  }
+                  if (typeof updateHeaderBtnState === "function")
+                    updateHeaderBtnState();
+                }, 400);
               });
             }
           });
@@ -2378,7 +2439,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
           // Update nav color state based on scroll, dropdown state, or hover on header
           const headerHovered = headerEl.matches(":hover");
-          if (
+          const isMobile = window.innerWidth <= 991;
+          
+          // Special handling for careers.html on mobile when idle
+          if (isCareersPage() && isMobile && !scrolled && !isSearchOpen && !anyMenuOpen() && !isMobileMenuOpen() && !headerHovered) {
+            // Apply careers idle state (bg-primary-900 with white icons)
+            applyCareersIdleState();
+          } else if (
             scrolled ||
             isSearchOpen ||
             anyMenuOpen() ||
@@ -2398,8 +2465,10 @@ document.addEventListener("DOMContentLoaded", () => {
           // Small debounce to recheck SVG color after layout paints
           requestAnimationFrame(() => {
             updateAllSVGFills();
-            fixMobileIdleIconColor();
-
+            // Apply careers idle state if conditions are met
+            if (isCareersPage() && window.innerWidth <= 991 && window.scrollY === 0 && !isSearchOpen && !isMobileMenuOpen() && !anyMenuOpen()) {
+              applyCareersIdleState();
+            }
           });
         });
 
@@ -2407,8 +2476,16 @@ document.addEventListener("DOMContentLoaded", () => {
         const navRightSetWhite = () => {
           if (!shouldToggleColors()) return;
           if (!headerEl) return;
+          
+          // Don't set bg-white if we're in careers idle state (unless something is open)
+          const isMobile = window.innerWidth <= 991;
+          if (isCareersPage() && isMobile && window.scrollY === 0 && !isSearchOpen && !isMobileMenuOpen() && !anyMenuOpen()) {
+            // We're in careers idle state, don't override with bg-white
+            return;
+          }
+          
           headerEl.classList.add("bg-white");
-          headerEl.classList.remove("bg-transparent");
+          headerEl.classList.remove("bg-transparent", "bg-primary-900");
           // Update colors using the new function
           updateNavColors();
         };
@@ -2416,6 +2493,40 @@ document.addEventListener("DOMContentLoaded", () => {
         const navRightSetTransparent = () => {
           if (!shouldToggleColors()) return;
           if (!headerEl) return;
+          
+          // Special handling for careers.html on mobile when idle
+          const isMobile = window.innerWidth <= 991;
+          if (isCareersPage() && isMobile && window.scrollY === 0 && !isSearchOpen && !isMobileMenuOpen() && !anyMenuOpen()) {
+            // Set bg-primary-900 and white icons for careers.html
+            headerEl.classList.remove("bg-white", "bg-transparent");
+            headerEl.classList.add("bg-primary-900");
+            
+            // Set icons to white
+            document.querySelectorAll("#menuToggle svg, #searchButton svg, .nav-right svg").forEach(svg => {
+              if (svg.closest(".back-btn")) return;
+              if (svg.closest(".dropdown-menu li.relative")) return;
+              if (svg.classList.contains("dropdown-arrow")) return;
+              setSVGColor(svg, "white");
+            });
+            
+            // Set navbar text to white
+            navRight?.querySelectorAll(".navbar > li").forEach((li) => {
+              li.classList.remove("text-black", "text-white");
+              li.classList.add("text-white");
+            });
+            
+            // Set button colors to white
+            if (mobileMenuToggle) {
+              mobileMenuToggle.classList.remove("text-black", "text-white");
+              mobileMenuToggle.classList.add("text-white");
+            }
+            if (searchButton) {
+              searchButton.classList.remove("text-black", "text-white");
+              searchButton.classList.add("text-white");
+            }
+            return;
+          }
+          
           headerEl.classList.remove("bg-white");
           headerEl.classList.add("bg-transparent");
           // Update colors using the new function
@@ -2441,7 +2552,14 @@ document.addEventListener("DOMContentLoaded", () => {
               pointerInHeader ||
               pointerInDropdown;
           }
-          if (!keepWhite) navRightSetTransparent();
+          if (!keepWhite) {
+            // For careers.html on mobile at top, apply special idle state
+            if (isCareersPage() && isMobileView && window.scrollY === 0) {
+              applyCareersIdleState();
+            } else {
+              navRightSetTransparent();
+            }
+          }
         };
 
         // --- Idle background controller: when no dropdown/search/mobile is open
@@ -2465,10 +2583,65 @@ document.addEventListener("DOMContentLoaded", () => {
             !anyMenuOpen() &&
             !pointerOverHeader()
           ) {
-            navRightSetTransparent();
+            // For careers.html on mobile at top, apply special idle state
+            if (isCareersPage() && window.innerWidth <= 991 && window.scrollY === 0) {
+              applyCareersIdleState();
+            } else {
+              navRightSetTransparent();
+            }
             updateAllSVGFills?.();
             if (typeof updateHeaderBtnState === "function")
               updateHeaderBtnState();
+          }
+        }
+        
+        // Function to apply careers.html idle state (bg-primary-900 with white icons)
+        function applyCareersIdleState() {
+          if (!isCareersPage()) return;
+          const isMobile = window.innerWidth <= 991;
+          if (!isMobile) return;
+          if (window.scrollY > 0) return;
+          if (isSearchOpen || isMobileMenuOpen() || anyMenuOpen()) return;
+          
+          // Set bg-primary-900 - ensure it's applied and bg-white is removed
+          if (headerEl) {
+            headerEl.classList.remove("bg-white", "bg-transparent");
+            headerEl.classList.add("bg-primary-900");
+            // Force remove bg-white in case it was added via inline styles or other means
+            if (headerEl.style.backgroundColor) {
+              headerEl.style.backgroundColor = "";
+            }
+          }
+          
+          // Set icons to white - do this first before any other color updates
+          document.querySelectorAll("#menuToggle svg, #searchButton svg, .nav-right svg").forEach(svg => {
+            if (svg.closest(".back-btn")) return;
+            if (svg.closest(".dropdown-menu li.relative")) return;
+            if (svg.classList.contains("dropdown-arrow")) return;
+            setSVGColor(svg, "white");
+          });
+          
+          // Set navbar text to white
+          if (navRight) {
+            navRight.querySelectorAll(".navbar > li").forEach((li) => {
+              li.classList.remove("text-black", "text-white");
+              li.classList.add("text-white");
+            });
+          }
+          
+          // Set button colors to white
+          if (mobileMenuToggle) {
+            mobileMenuToggle.classList.remove("text-black", "text-white");
+            mobileMenuToggle.classList.add("text-white");
+          }
+          if (searchButton) {
+            searchButton.classList.remove("text-black", "text-white");
+            searchButton.classList.add("text-white");
+          }
+          
+          // Force a re-render to ensure styles are applied
+          if (headerEl) {
+            void headerEl.offsetWidth; // Trigger reflow
           }
         }
 
@@ -2728,11 +2901,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 // Keep overlay & nav white consistent with your main script (if global functions exist)
                 try {
                   if (typeof showOverlay === "function") showOverlay();
-                } catch (err) {}
+                } catch (err) { }
                 try {
                   if (typeof navRightSetWhite === "function")
                     navRightSetWhite();
-                } catch (err) {}
+                } catch (err) { }
               });
 
               // Back button handler (the mobile-back-button we injected)
@@ -2777,7 +2950,7 @@ document.addEventListener("DOMContentLoaded", () => {
                   try {
                     if (typeof updateOverlayState === "function")
                       updateOverlayState();
-                  } catch (err) {}
+                  } catch (err) { }
                 });
               }
 
@@ -2840,7 +3013,7 @@ document.addEventListener("DOMContentLoaded", () => {
                   });
               }
             });
-
+            // --- GLOBAL POINTER EXIT FIX (navbar idle reset) ---
             // --- GLOBAL POINTER EXIT FIX (Address bar / outside window) ---
             document.addEventListener("pointerout", (e) => {
               // Pointer left browser content area (into tabs, URL bar, OS area)
@@ -2895,26 +3068,6 @@ document.addEventListener("DOMContentLoaded", () => {
             }
           };
         })();
-        function forceMobileIdleBlack() {
-          const isMobile = window.innerWidth <= 991;
-          if (!isMobile) return;
-          if (isSearchOpen || isMobileMenuOpen() || anyMenuOpen()) return;
-        
-          // Header background & text
-          // headerEl.classList.add("bg-white");
-          // headerEl.classList.remove("bg-transparent");
-        
-          // Navbar text
-          document.querySelectorAll(".nav-right .navbar > li").forEach(li => {
-            li.classList.remove("text-white");
-            li.classList.add("text-black");
-          });
-        
-          // SVG icons
-          document.querySelectorAll("#menuToggle svg, #searchButton svg, .nav-right svg")
-            .forEach(svg => setSVGColor(svg, "black"));
-        }
-        
       });
 
       document.addEventListener("DOMContentLoaded", () => {
@@ -4190,7 +4343,7 @@ document.addEventListener("DOMContentLoaded", () => {
     /*======================================
      03. Popup Open JS
     ========================================*/
-    popup_open: function () {},
+    popup_open: function () { },
 
     /*======================================
       04. Preloader JS
@@ -4209,9 +4362,8 @@ document.addEventListener("DOMContentLoaded", () => {
           document.documentElement.scrollTop;
         document.documentElement.style.overflow = "hidden";
         document.body.style.overflow = "hidden";
-        document.body.style.paddingRight = `${
-          window.innerWidth - document.documentElement.clientWidth
-        }px`;
+        document.body.style.paddingRight = `${window.innerWidth - document.documentElement.clientWidth
+          }px`;
         // Hide scrollbar completely for all browsers
         document.documentElement.style.scrollbarWidth = "none";
         const webkitStyle = document.createElement("style");
@@ -4265,7 +4417,7 @@ document.addEventListener("DOMContentLoaded", () => {
     /*======================================
      05. Isotope JS
     ========================================*/
-    Isotope_js: function () {},
+    Isotope_js: function () { },
   };
   journea_travel_agency.init();
 })(jQuery);
@@ -4949,7 +5101,7 @@ document.addEventListener("DOMContentLoaded", () => {
           // keep drop area label static (never show filenames here)
           fileLabelEl.textContent =
             window.location.pathname.includes("contact") ||
-            window.location.pathname.includes("enquiry")
+              window.location.pathname.includes("enquiry")
               ? "No File Choosen"
               : "Drop files here or Select Files";
 
@@ -5009,7 +5161,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // keep drop area label static
         fileLabelEl.textContent =
           window.location.pathname.includes("contact") ||
-          window.location.pathname.includes("enquiry")
+            window.location.pathname.includes("enquiry")
             ? "No File Choosen"
             : "Drop files here or Select Files";
 
